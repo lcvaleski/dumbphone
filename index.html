@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Phone - Disconnect to Reconnect</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Build an iPhone with only the <span class="emphasis">apps you need</span></h1>
+            <a href="#customize" class="hero-button">Build Your Phone</a>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section id="features" class="screenshots">
+        <div class="container">
+            <h2>The only screen time solution <span class="highlight highlight--green">worth your money</span></h2>
+            <p class="section-subtitle">Just the essentials. Nothing more.</p>
+            <div class="phone-gallery">
+                <div class="phone-showcase">
+                    <div class="phone-frame">
+                        <div class="phone-screen">
+                            <div class="status-bar">9:41</div>
+                            <div class="app-grid minimal">
+                                <div class="app-icon phone"><div class="emoji-icon">📞</div><span>Phone</span></div>
+                                <div class="app-icon messages"><div class="emoji-icon">💬</div><span>Messages</span></div>
+                                <div class="app-icon maps"><div class="emoji-icon">🗺️</div><span>Maps</span></div>
+                                <div class="app-icon camera"><img src="camera.png" alt="Camera"><span>Camera</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="phone-caption">Clean. Focused. Intentional.</p>
+                </div>
+                <div class="features-list">
+                    <div class="feature">
+                        <span class="feature-icon">✓</span>
+                        <div>
+                            <h3>No Social Media</h3>
+                            <p>Break free from endless scrolling</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">✓</span>
+                        <div>
+                            <h3>No App Store</h3>
+                            <p>Prevent impulse downloads</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">✓</span>
+                        <div>
+                            <h3>Essential Apps Only</h3>
+                            <p>Keep what truly matters</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">✓</span>
+                        <div>
+                            <h3>Website Blocking</h3>
+                            <p>Stay away from distracting sites</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customize Section -->
+    <section id="customize" class="customize">
+        <div class="container">
+            <h2>Make It <span class="highlight highlight--blue">Yours</span></h2>
+            <p class="section-subtitle">Choose exactly what you need. Nothing you don't.</p>
+
+            <div class="customizer">
+                <div class="customizer-section">
+                    <h3>Select Your Apps</h3>
+                    <p>Choose which apps to keep on your device</p>
+                    <div class="app-selector">
+                        <div class="app-option selected" data-app="phone">
+                            <span class="app-emoji">📞</span>
+                            <span>Phone</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="app-option selected" data-app="messages">
+                            <span class="app-emoji">💬</span>
+                            <span>Messages</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="app-option" data-app="camera">
+                            <img src="camera.png" alt="Camera" style="width: 24px; height: 24px; border-radius: 5px;">
+                            <span>Camera</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="app-option" data-app="maps">
+                            <span class="app-emoji">🗺️</span>
+                            <span>Maps</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="app-option" data-app="notes">
+                            <img src="notes.png" alt="Notes" style="width: 24px; height: 24px; border-radius: 5px;">
+                            <span>Notes</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="app-option" data-app="calendar">
+                            <span class="app-emoji">📅</span>
+                            <span>Calendar</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="app-option" data-app="music">
+                            <span class="app-emoji">🎵</span>
+                            <span>Music</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="app-option" data-app="weather">
+                            <span class="app-emoji">☀️</span>
+                            <span>Weather</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="app-option" data-app="clock">
+                            <span class="app-emoji">⏰</span>
+                            <span>Clock</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                        <div class="app-option" data-app="calculator">
+                            <span class="app-emoji">🧮</span>
+                            <span>Calculator</span>
+                            <span class="checkmark">✓</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="customizer-section">
+                    <h3>Block Websites</h3>
+                    <p>Add distracting websites you want to block</p>
+                    <div class="website-blocker">
+                        <div class="blocked-sites">
+                            <div class="blocked-site">
+                                <img src="instagram.png" alt="Instagram" style="width: 20px; height: 20px; border-radius: 4px; margin-right: 5px;">
+                                instagram.com
+                                <span class="remove">×</span>
+                            </div>
+                            <div class="blocked-site">
+                                youtube.com
+                                <span class="remove">×</span>
+                            </div>
+                            <div class="blocked-site">
+                                tiktok.com
+                                <span class="remove">×</span>
+                            </div>
+                            <div class="blocked-site">
+                                reddit.com
+                                <span class="remove">×</span>
+                            </div>
+                        </div>
+                        <div class="add-website">
+                            <input type="text" placeholder="Add website to block..." id="website-input">
+                            <button id="add-website-btn">+ Add</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preview-phone">
+                    <h3>Preview</h3>
+                    <div class="phone-frame small">
+                        <div class="phone-screen">
+                            <div class="status-bar">9:41</div>
+                            <div class="app-grid" id="preview-apps">
+                                <!-- Apps will be dynamically added here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Models Section -->
+    <section id="models" class="models">
+        <div class="container">
+            <h2>Pick Your <span class="highlight highlight--yellow">Model</span></h2>
+            <p class="section-subtitle">Professionally refurbished iPhones, configured to your needs</p>
+
+            <div class="model-grid">
+                <div class="model-card" data-model="iphone-13-mini">
+                    <div class="model-image">
+                        <div class="model-phone"></div>
+                    </div>
+                    <h3>iPhone 13 Mini</h3>
+                    <p class="model-specs">5.4" · Compact & Powerful</p>
+                    <ul class="model-features">
+                        <li>Perfect pocket size</li>
+                        <li>All-day battery</li>
+                        <li>A15 Bionic chip</li>
+                    </ul>
+                    <p class="model-price">From $299</p>
+                    <button class="select-model">Select</button>
+                </div>
+
+                <div class="model-card popular" data-model="iphone-12">
+                    <span class="popular-badge">Most Popular</span>
+                    <div class="model-image">
+                        <div class="model-phone"></div>
+                    </div>
+                    <h3>iPhone 12</h3>
+                    <p class="model-specs">6.1" · Best Value</p>
+                    <ul class="model-features">
+                        <li>5G capable</li>
+                        <li>Dual camera system</li>
+                        <li>Ceramic Shield</li>
+                    </ul>
+                    <p class="model-price">From $349</p>
+                    <button class="select-model">Select</button>
+                </div>
+
+                <div class="model-card" data-model="iphone-11">
+                    <div class="model-image">
+                        <div class="model-phone"></div>
+                    </div>
+                    <h3>iPhone 11</h3>
+                    <p class="model-specs">6.1" · Budget Friendly</p>
+                    <ul class="model-features">
+                        <li>Great battery life</li>
+                        <li>Night mode</li>
+                        <li>Water resistant</li>
+                    </ul>
+                    <p class="model-price">From $249</p>
+                    <button class="select-model">Select</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2><span class="highlight highlight--blue">Real people</span> using our phones</h2>
+            <p class="section-subtitle">Join thousands who've already reclaimed their attention</p>
+
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"This changed my life. I actually have time to read books again. My kids have their dad back."</p>
+                    <p class="testimonial-author">— Michael R.</p>
+                    <div class="testimonial-rating">★★★★★</div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"I went from 8 hours of screen time to under 2. Best purchase I've made this year."</p>
+                    <p class="testimonial-author">— Sarah L.</p>
+                    <div class="testimonial-rating">★★★★★</div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Finally, a solution that actually works. No willpower needed - the apps just aren't there."</p>
+                    <p class="testimonial-author">— David K.</p>
+                    <div class="testimonial-rating">★★★★★</div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"My anxiety is gone. I sleep better. I'm more present. This phone gave me my life back."</p>
+                    <p class="testimonial-author">— Emma T.</p>
+                    <div class="testimonial-rating">★★★★★</div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"I tried every app blocker out there. This is the only thing that actually stopped my addiction."</p>
+                    <p class="testimonial-author">— James M.</p>
+                    <div class="testimonial-rating">★★★★★</div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Worth every penny. My productivity has skyrocketed and my relationships have improved."</p>
+                    <p class="testimonial-author">— Lisa P.</p>
+                    <div class="testimonial-rating">★★★★★</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="faq-heading">Frequently Asked <span class="highlight highlight--red">Questions</span></h2>
+            <p class="section-subtitle">Everything you need to know before making the switch</p>
+
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What exactly is a Minimal Phone?
+                        <span class="faq-arrow">⌵</span>
+                    </div>
+                    <div class="faq-answer">
+                        A Minimal Phone is a professionally refurbished iPhone that has been permanently modified to remove all distracting apps and features. It keeps essential functions like calling, texting, maps, and camera while removing social media, games, and the app store.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I get my apps back later?
+                        <span class="faq-arrow">⌵</span>
+                    </div>
+                    <div class="faq-answer">
+                        No, and that's the point. The modification is permanent and cannot be reversed. This eliminates the temptation to reinstall distracting apps during moments of weakness.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What apps will I still have?
+                        <span class="faq-arrow">⌵</span>
+                    </div>
+                    <div class="faq-answer">
+                        You'll keep essential apps like Phone, Messages, Camera, Maps, Weather, Calendar, Notes, Clock, and Calculator. You can customize which apps you want during the ordering process.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is this legal?
+                        <span class="faq-arrow">⌵</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, absolutely. Once you purchase a phone, you have the right to modify it as you wish. We're simply providing a service to help you create a healthier relationship with technology.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What about emergencies?
+                        <span class="faq-arrow">⌵</span>
+                    </div>
+                    <div class="faq-answer">
+                        All emergency features remain intact. You can still call 911, use maps for navigation, and access important contacts. The phone remains fully functional for all practical purposes.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you offer a warranty?
+                        <span class="faq-arrow">⌵</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, all phones come with a 90-day warranty covering any hardware defects. We also offer a 30-day money-back guarantee if you're not satisfied with your purchase.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Section -->
+    <section id="order" class="order-section">
+        <div class="container">
+            <div class="order-summary">
+                <h2>Your Minimal Phone</h2>
+                <div class="summary-content">
+                    <div class="summary-item">
+                        <span>Selected Model:</span>
+                        <span id="selected-model">Choose a model</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Apps Selected:</span>
+                        <span id="app-count">2 apps</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Websites Blocked:</span>
+                        <span id="blocked-count">4 sites</span>
+                    </div>
+                </div>
+                <button class="order-button">Continue to Checkout</button>
+                <p class="order-note">✓ 30-day money back guarantee · ✓ Free shipping</p>
+                <div class="money-back-badge">💸 Money back if it doesn't change your life</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Minimal Phone</h3>
+                    <p>Disconnect to reconnect.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#">About</a>
+                    <a href="#">Support</a>
+                    <a href="#">Returns</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Minimal Phone. Not affiliated with Apple Inc.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
