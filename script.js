@@ -177,11 +177,138 @@ document.querySelector('.order-button').addEventListener('click', () => {
     alert('Order functionality would be implemented here. Check console for order details.');
 });
 
+// App data with icons
+const appIcons = {
+    phone: { emoji: '📞', name: 'Phone', hasImage: false },
+    messages: { emoji: '💬', name: 'Messages', hasImage: false },
+    camera: { image: 'camera.png', name: 'Camera', hasImage: true },
+    settings: { emoji: '⚙️', name: 'Settings', hasImage: false },
+    notes: { image: 'notes.png', name: 'Notes', hasImage: true },
+    calendar: { emoji: '📅', name: 'Calendar', hasImage: false },
+    reminders: { emoji: '📝', name: 'Reminders', hasImage: false },
+    clock: { emoji: '⏰', name: 'Clock', hasImage: false },
+    maps: { emoji: '🗺️', name: 'Maps', hasImage: false },
+    weather: { emoji: '☀️', name: 'Weather', hasImage: false },
+    wallet: { emoji: '💳', name: 'Wallet', hasImage: false },
+    music: { emoji: '🎵', name: 'Music', hasImage: false },
+    photos: { emoji: '🖼️', name: 'Photos', hasImage: false },
+    podcasts: { emoji: '🎙️', name: 'Podcasts', hasImage: false }
+};
+
+// Live customization functionality
+function initLiveCustomizer() {
+    const checkboxes = document.querySelectorAll('.app-checkbox input');
+    const livePreview = document.getElementById('live-preview');
+    const appCounter = document.getElementById('live-app-count');
+
+    function updateLivePreview() {
+        const selectedApps = [];
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                selectedApps.push(checkbox.dataset.app);
+            }
+        });
+
+        // Update the live iPhone display
+        livePreview.innerHTML = '';
+        selectedApps.forEach(appId => {
+            const appInfo = appIcons[appId];
+            if (appInfo) {
+                const appDiv = document.createElement('div');
+                appDiv.className = 'app-icon';
+
+                if (appInfo.hasImage) {
+                    appDiv.innerHTML = `
+                        <img src="${appInfo.image}" alt="${appInfo.name}">
+                        <span>${appInfo.name}</span>
+                    `;
+                } else {
+                    appDiv.innerHTML = `
+                        <div class="emoji-icon">${appInfo.emoji}</div>
+                        <span>${appInfo.name}</span>
+                    `;
+                }
+
+                livePreview.appendChild(appDiv);
+            }
+        });
+
+        // Update counter
+        appCounter.textContent = selectedApps.length;
+    }
+
+    // Add event listeners
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateLivePreview);
+    });
+
+    // Initial update
+    updateLivePreview();
+}
+
 // Initialize on load
 document.addEventListener('DOMContentLoaded', () => {
-    updatePreview();
-    updateAppCount();
-    updateBlockedCount();
+    // Initialize live customizer
+    initLiveCustomizer();
+
+    // Keep old functionality for the lower customization section if it still exists
+    if (document.getElementById('preview-apps')) {
+        updatePreview();
+        updateAppCount();
+        updateBlockedCount();
+    }
+
+    // Phone transition functionality
+    const transitionPhone = document.querySelector('.transition-phone');
+    const transitionToggle = document.querySelector('.transition-toggle');
+    const clutteredImage = document.querySelector('.phone-image.cluttered');
+    const cleanImage = document.querySelector('.phone-image.clean');
+    const toggleText = document.querySelector('.toggle-text');
+
+    let autoAnimating = true;
+    let currentState = 'cluttered';
+
+    // Start auto-animation after a short delay
+    setTimeout(() => {
+        if (transitionPhone) {
+            transitionPhone.classList.add('auto-animate');
+        }
+    }, 1000);
+
+    // Handle manual toggle
+    if (transitionToggle) {
+        transitionToggle.addEventListener('click', () => {
+            // Stop auto-animation
+            autoAnimating = false;
+            transitionPhone.classList.remove('auto-animate');
+
+            // Toggle between states
+            if (currentState === 'cluttered') {
+                clutteredImage.classList.remove('active');
+                cleanImage.classList.add('active');
+                currentState = 'clean';
+                toggleText.textContent = 'See the problem';
+            } else {
+                clutteredImage.classList.add('active');
+                cleanImage.classList.remove('active');
+                currentState = 'cluttered';
+                toggleText.textContent = 'See the transformation';
+            }
+        });
+    }
+
+    // Auto-animate between states if not manually controlled
+    if (transitionPhone && autoAnimating) {
+        setInterval(() => {
+            if (!autoAnimating) return;
+
+            if (currentState === 'cluttered') {
+                currentState = 'clean';
+            } else {
+                currentState = 'cluttered';
+            }
+        }, 4000);
+    }
 });
 
 

@@ -81,27 +81,229 @@ body {
     border-radius: 50px;
 }
 
-/* Hero Section */
-.hero {
-    min-height: 100vh;
+/* Hero Section with Live Customization */
+.hero-customize {
+    padding: 30px 20px;
+    background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+    min-height: 90vh;
+}
+
+.hero-customize .hero-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.live-customizer {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    align-items: start;
+}
+
+.customizer-left h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.app-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.app-category {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.app-category h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.app-grid-selector {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+.app-checkbox {
+    display: block;
+    cursor: pointer;
+}
+
+.app-checkbox input {
+    display: none;
+}
+
+.app-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    transition: all 0.2s;
+    gap: 5px;
+}
+
+.app-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+}
+
+.app-item .emoji-icon {
+    font-size: 32px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    padding: 40px 20px;
-    background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
 }
 
-.hero-content {
-    max-width: 800px;
+.app-item span:last-child {
+    font-size: 11px;
+    color: var(--primary-color);
+}
+
+.app-checkbox input:checked + .app-item {
+    border-color: var(--success-color);
+    background: rgba(52, 199, 89, 0.05);
+}
+
+.app-checkbox input:disabled + .app-item {
+    opacity: 0.7;
+    background: var(--bg-light);
+}
+
+/* iPhone Live Preview */
+.customizer-right {
+    position: sticky;
+    top: 20px;
+}
+
+.iphone-live {
+    width: 280px;
+    height: 580px;
+    background: #000;
+    border-radius: 35px;
+    padding: 10px;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.iphone-notch {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 25px;
+    background: #000;
+    border-radius: 0 0 15px 15px;
+    z-index: 10;
+}
+
+.iphone-screen {
+    background: white;
+    height: 100%;
+    border-radius: 25px;
+    overflow: hidden;
+    padding: 35px 15px 15px;
+}
+
+.status-bar {
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.live-apps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    padding: 10px;
+}
+
+.live-apps .app-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.live-apps .app-icon img {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+}
+
+.live-apps .app-icon .emoji-icon {
+    font-size: 40px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+    border-radius: 12px;
+}
+
+.live-apps .app-icon span:last-child {
+    font-size: 10px;
+    color: var(--primary-color);
+}
+
+.app-counter {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.app-counter #live-app-count {
+    font-weight: 700;
+    color: var(--success-color);
+    font-size: 18px;
+}
+
+.order-now-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.order-now-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .hero-title {
-    font-size: clamp(48px, 9vw, 80px);
-    font-weight: 800;
-    line-height: 0.95;
-    margin-bottom: 30px;
-    letter-spacing: -0.03em;
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
 }
 
 .hero-title .emphasis {
@@ -139,10 +341,10 @@ body {
     display: inline-block;
     background: var(--primary-color);
     color: white;
-    padding: 20px 50px;
-    border-radius: 8px;
+    padding: 12px 30px;
+    border-radius: 6px;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 600;
     transition: transform 0.2s, box-shadow 0.2s;
     text-transform: uppercase;
@@ -158,17 +360,126 @@ body {
     transform: translateY(0);
 }
 
+/* Phone Transition Section */
+.phone-transition {
+    padding: 40px 20px;
+    background: white;
+    overflow: hidden;
+}
+
+.transition-container {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.transition-phone {
+    position: relative;
+    width: 300px;
+    height: 650px;
+    margin: 0 auto 40px;
+}
+
+.phone-image {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+    border-radius: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.phone-image.active {
+    opacity: 1;
+}
+
+.transition-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.transition-toggle {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.transition-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Auto-fade animation */
+@keyframes autoFade {
+    0%, 45% {
+        opacity: 1;
+    }
+    55%, 100% {
+        opacity: 0;
+    }
+}
+
+@keyframes autoFadeReverse {
+    0%, 45% {
+        opacity: 0;
+    }
+    55%, 100% {
+        opacity: 1;
+    }
+}
+
+.transition-phone.auto-animate .phone-image.cluttered {
+    animation: autoFade 4s ease-in-out infinite;
+}
+
+.transition-phone.auto-animate .phone-image.clean {
+    animation: autoFadeReverse 4s ease-in-out infinite;
+}
+
 /* Screenshots Section */
 .screenshots {
-    padding: 100px 0;
+    padding: 60px 0;
     background: white;
 }
 
 .screenshots h2 {
-    font-size: clamp(36px, 5vw, 56px);
-    font-weight: 800;
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 700;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     line-height: 1.1;
 }
 
@@ -197,10 +508,10 @@ body {
 .section-subtitle {
     text-align: center;
     color: var(--text-light);
-    font-size: 22px;
-    margin-bottom: 60px;
-    font-weight: 500;
-    max-width: 600px;
+    font-size: 16px;
+    margin-bottom: 40px;
+    font-weight: 400;
+    max-width: 500px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -349,15 +660,15 @@ body {
 
 /* Customize Section */
 .customize {
-    padding: 100px 0;
+    padding: 60px 0;
     background: var(--bg-light);
 }
 
 .customize h2 {
-    font-size: clamp(36px, 5vw, 56px);
-    font-weight: 800;
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 700;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     line-height: 1.1;
 }
 
@@ -956,8 +1267,23 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
+    .live-customizer {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .customizer-right {
+        position: relative;
+        top: 0;
+    }
+
+    .iphone-live {
+        width: 240px;
+        height: 500px;
+    }
+
+    .app-grid-selector {
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .phone-gallery {

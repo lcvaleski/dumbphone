@@ -7,11 +7,155 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
+    <!-- Hero Section with Live Customization -->
+    <section class="hero-customize">
+        <div class="container">
             <h1 class="hero-title">Build an iPhone with only the <span class="emphasis">apps you need</span></h1>
-            <a href="#customize" class="hero-button">Build Your Phone</a>
+
+            <div class="live-customizer">
+                <div class="customizer-left">
+                    <h3>Choose Your Apps</h3>
+                    <div class="app-categories">
+                        <div class="app-category">
+                            <h4>Essentials</h4>
+                            <div class="app-grid-selector">
+                                <label class="app-checkbox">
+                                    <input type="checkbox" data-app="phone" checked disabled>
+                                    <span class="app-item">
+                                        <span class="emoji-icon">📞</span>
+                                        <span>Phone</span>
+                                    </span>
+                                </label>
+                                <label class="app-checkbox">
+                                    <input type="checkbox" data-app="messages" checked disabled>
+                                    <span class="app-item">
+                                        <span class="emoji-icon">💬</span>
+                                        <span>Messages</span>
+                                    </span>
+                                </label>
+                                <label class="app-checkbox">
+                                    <input type="checkbox" data-app="camera" checked>
+                                    <span class="app-item">
+                                        <img src="camera.png" alt="Camera">
+                                        <span>Camera</span>
+                                    </span>
+                                </label>
+                                <label class="app-checkbox">
+                                    <input type="checkbox" data-app="settings" checked disabled>
+                                    <span class="app-item">
+                                        <span class="emoji-icon">⚙️</span>
+                                        <span>Settings</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="app-category">
+                            <h4>Productivity</h4>
+                            <div class="app-grid-selector">
+                                <label class="app-checkbox">
+                                    <input type="checkbox" data-app="notes">
+                                    <span class="app-item">
+                                        <img src="notes.png" alt="Notes">
+                                        <span>Notes</span>
+                                    </span>
+                                </label>
+                                <label class="app-checkbox">
+                                    <input type="checkbox" data-app="calendar">
+                                    <span class="app-item">
+                                        <span class="emoji-icon">📅</span>
+                                        <span>Calendar</span>
+                                    </span>
+                                </label>
+                                <label class="app-checkbox">
+                                    <input type="checkbox" data-app="reminders">
+                                    <span class="app-item">
+                                        <span class="emoji-icon">📝</span>
+                                        <span>Reminders</span>
+                                    </span>
+                                </label>
+                                <label class="app-checkbox">
+                                    <input type="checkbox" data-app="clock">
+                                    <span class="app-item">
+                                        <span class="emoji-icon">⏰</span>
+                                        <span>Clock</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="app-category">
+                            <h4>Navigation & Travel</h4>
+                            <div class="app-grid-selector">
+                                <label class="app-checkbox">
+                                    <input type="checkbox" data-app="maps">
+                                    <span class="app-item">
+                                        <span class="emoji-icon">🗺️</span>
+                                        <span>Maps</span>
+                                    </span>
+                                </label>
+                                <label class="app-checkbox">
+                                    <input type="checkbox" data-app="weather">
+                                    <span class="app-item">
+                                        <span class="emoji-icon">☀️</span>
+                                        <span>Weather</span>
+                                    </span>
+                                </label>
+                                <label class="app-checkbox">
+                                    <input type="checkbox" data-app="wallet">
+                                    <span class="app-item">
+                                        <span class="emoji-icon">💳</span>
+                                        <span>Wallet</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="app-category">
+                            <h4>Media (Optional)</h4>
+                            <div class="app-grid-selector">
+                                <label class="app-checkbox">
+                                    <input type="checkbox" data-app="music">
+                                    <span class="app-item">
+                                        <span class="emoji-icon">🎵</span>
+                                        <span>Music</span>
+                                    </span>
+                                </label>
+                                <label class="app-checkbox">
+                                    <input type="checkbox" data-app="photos">
+                                    <span class="app-item">
+                                        <span class="emoji-icon">🖼️</span>
+                                        <span>Photos</span>
+                                    </span>
+                                </label>
+                                <label class="app-checkbox">
+                                    <input type="checkbox" data-app="podcasts">
+                                    <span class="app-item">
+                                        <span class="emoji-icon">🎙️</span>
+                                        <span>Podcasts</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="customizer-right">
+                    <div class="iphone-live">
+                        <div class="iphone-notch"></div>
+                        <div class="iphone-screen">
+                            <div class="status-bar">9:41</div>
+                            <div class="live-apps" id="live-preview">
+                                <!-- Apps will be dynamically added here -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="app-counter">
+                        <span id="live-app-count">4</span> essential apps selected
+                    </div>
+                    <button class="order-now-btn">Order This Configuration</button>
+                </div>
+            </div>
         </div>
     </section>
 
