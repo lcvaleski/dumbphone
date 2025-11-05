@@ -3,533 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimal Phone - Disconnect to Reconnect</title>
+    <title>Dumb Phone - The Final Solution</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Hero Section with Live Customization -->
-    <section class="hero-customize">
+    <!-- Header -->
+    <header>
         <div class="container">
-            <h1 class="hero-title">Build an iPhone with only the <span class="emphasis">apps you need</span></h1>
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>This is the <span class="underline-accent">final</span> dumb phone solution, on the <span class="underline-red">iPhone</span>.</h1>
+                    <p class="subtitle">Tell us the apps + websites you <span class="italic">don't want</span>, be unable to ever install again.</p>
 
-            <div class="live-customizer">
-                <div class="customizer-left">
-                    <h3>Choose Your Apps</h3>
-                    <div class="app-categories">
-                        <div class="app-category">
-                            <h4>Essentials</h4>
-                            <div class="app-grid-selector">
-                                <label class="app-checkbox">
-                                    <input type="checkbox" data-app="phone" checked disabled>
-                                    <span class="app-item">
-                                        <span class="emoji-icon">📞</span>
-                                        <span>Phone</span>
-                                    </span>
-                                </label>
-                                <label class="app-checkbox">
-                                    <input type="checkbox" data-app="messages" checked disabled>
-                                    <span class="app-item">
-                                        <span class="emoji-icon">💬</span>
-                                        <span>Messages</span>
-                                    </span>
-                                </label>
-                                <label class="app-checkbox">
-                                    <input type="checkbox" data-app="camera" checked>
-                                    <span class="app-item">
-                                        <img src="camera.png" alt="Camera">
-                                        <span>Camera</span>
-                                    </span>
-                                </label>
-                                <label class="app-checkbox">
-                                    <input type="checkbox" data-app="settings" checked disabled>
-                                    <span class="app-item">
-                                        <span class="emoji-icon">⚙️</span>
-                                        <span>Settings</span>
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="app-category">
-                            <h4>Productivity</h4>
-                            <div class="app-grid-selector">
-                                <label class="app-checkbox">
-                                    <input type="checkbox" data-app="notes">
-                                    <span class="app-item">
-                                        <img src="notes.png" alt="Notes">
-                                        <span>Notes</span>
-                                    </span>
-                                </label>
-                                <label class="app-checkbox">
-                                    <input type="checkbox" data-app="calendar">
-                                    <span class="app-item">
-                                        <span class="emoji-icon">📅</span>
-                                        <span>Calendar</span>
-                                    </span>
-                                </label>
-                                <label class="app-checkbox">
-                                    <input type="checkbox" data-app="reminders">
-                                    <span class="app-item">
-                                        <span class="emoji-icon">📝</span>
-                                        <span>Reminders</span>
-                                    </span>
-                                </label>
-                                <label class="app-checkbox">
-                                    <input type="checkbox" data-app="clock">
-                                    <span class="app-item">
-                                        <span class="emoji-icon">⏰</span>
-                                        <span>Clock</span>
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="app-category">
-                            <h4>Navigation & Travel</h4>
-                            <div class="app-grid-selector">
-                                <label class="app-checkbox">
-                                    <input type="checkbox" data-app="maps">
-                                    <span class="app-item">
-                                        <span class="emoji-icon">🗺️</span>
-                                        <span>Maps</span>
-                                    </span>
-                                </label>
-                                <label class="app-checkbox">
-                                    <input type="checkbox" data-app="weather">
-                                    <span class="app-item">
-                                        <span class="emoji-icon">☀️</span>
-                                        <span>Weather</span>
-                                    </span>
-                                </label>
-                                <label class="app-checkbox">
-                                    <input type="checkbox" data-app="wallet">
-                                    <span class="app-item">
-                                        <span class="emoji-icon">💳</span>
-                                        <span>Wallet</span>
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="app-category">
-                            <h4>Media (Optional)</h4>
-                            <div class="app-grid-selector">
-                                <label class="app-checkbox">
-                                    <input type="checkbox" data-app="music">
-                                    <span class="app-item">
-                                        <span class="emoji-icon">🎵</span>
-                                        <span>Music</span>
-                                    </span>
-                                </label>
-                                <label class="app-checkbox">
-                                    <input type="checkbox" data-app="photos">
-                                    <span class="app-item">
-                                        <span class="emoji-icon">🖼️</span>
-                                        <span>Photos</span>
-                                    </span>
-                                </label>
-                                <label class="app-checkbox">
-                                    <input type="checkbox" data-app="podcasts">
-                                    <span class="app-item">
-                                        <span class="emoji-icon">🎙️</span>
-                                        <span>Podcasts</span>
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+                    <button class="add-to-cart">Customize your allowed apps →</button>
                 </div>
 
-                <div class="customizer-right">
-                    <div class="iphone-live">
-                        <div class="iphone-notch"></div>
-                        <div class="iphone-screen">
-                            <div class="status-bar">9:41</div>
-                            <div class="live-apps" id="live-preview">
-                                <!-- Apps will be dynamically added here -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="app-counter">
-                        <span id="live-app-count">4</span> essential apps selected
-                    </div>
-                    <button class="order-now-btn">Order This Configuration</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Screenshots Section -->
-    <section id="features" class="screenshots">
-        <div class="container">
-            <h2>The only screen time solution <span class="highlight highlight--green">worth your money</span></h2>
-            <p class="section-subtitle">Just the essentials. Nothing more.</p>
-            <div class="phone-gallery">
                 <div class="phone-showcase">
-                    <div class="phone-frame">
-                        <div class="phone-screen">
-                            <div class="status-bar">9:41</div>
-                            <div class="app-grid minimal">
-                                <div class="app-icon phone"><div class="emoji-icon">📞</div><span>Phone</span></div>
-                                <div class="app-icon messages"><div class="emoji-icon">💬</div><span>Messages</span></div>
-                                <div class="app-icon maps"><div class="emoji-icon">🗺️</div><span>Maps</span></div>
-                                <div class="app-icon camera"><img src="camera.png" alt="Camera"><span>Camera</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="phone-caption">Clean. Focused. Intentional.</p>
-                </div>
-                <div class="features-list">
-                    <div class="feature">
-                        <span class="feature-icon">✓</span>
-                        <div>
-                            <h3>No Social Media</h3>
-                            <p>Break free from endless scrolling</p>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <span class="feature-icon">✓</span>
-                        <div>
-                            <h3>No App Store</h3>
-                            <p>Prevent impulse downloads</p>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <span class="feature-icon">✓</span>
-                        <div>
-                            <h3>Essential Apps Only</h3>
-                            <p>Keep what truly matters</p>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <span class="feature-icon">✓</span>
-                        <div>
-                            <h3>Website Blocking</h3>
-                            <p>Stay away from distracting sites</p>
+                    <div class="iphone-mockup">
+                        <img src="phone-before.png" alt="iPhone with social media" class="phone-image before active">
+                        <img src="phone-after.png" alt="iPhone without social media" class="phone-image after">
+                        <div class="toggle-indicator">
+                            <span class="before-label active">Before</span>
+                            <span class="divider">→</span>
+                            <span class="after-label">After</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- Customize Section -->
-    <section id="customize" class="customize">
+    <!-- Process Flow -->
+    <section class="process-flow">
         <div class="container">
-            <h2>Make It <span class="highlight highlight--blue">Yours</span></h2>
-            <p class="section-subtitle">Choose exactly what you need. Nothing you don't.</p>
-
-            <div class="customizer">
-                <div class="customizer-section">
-                    <h3>Select Your Apps</h3>
-                    <p>Choose which apps to keep on your device</p>
-                    <div class="app-selector">
-                        <div class="app-option selected" data-app="phone">
-                            <span class="app-emoji">📞</span>
-                            <span>Phone</span>
-                            <span class="checkmark">✓</span>
-                        </div>
-                        <div class="app-option selected" data-app="messages">
-                            <span class="app-emoji">💬</span>
-                            <span>Messages</span>
-                            <span class="checkmark">✓</span>
-                        </div>
-                        <div class="app-option" data-app="camera">
-                            <img src="camera.png" alt="Camera" style="width: 24px; height: 24px; border-radius: 5px;">
-                            <span>Camera</span>
-                            <span class="checkmark">✓</span>
-                        </div>
-                        <div class="app-option" data-app="maps">
-                            <span class="app-emoji">🗺️</span>
-                            <span>Maps</span>
-                            <span class="checkmark">✓</span>
-                        </div>
-                        <div class="app-option" data-app="notes">
-                            <img src="notes.png" alt="Notes" style="width: 24px; height: 24px; border-radius: 5px;">
-                            <span>Notes</span>
-                            <span class="checkmark">✓</span>
-                        </div>
-                        <div class="app-option" data-app="calendar">
-                            <span class="app-emoji">📅</span>
-                            <span>Calendar</span>
-                            <span class="checkmark">✓</span>
-                        </div>
-                        <div class="app-option" data-app="music">
-                            <span class="app-emoji">🎵</span>
-                            <span>Music</span>
-                            <span class="checkmark">✓</span>
-                        </div>
-                        <div class="app-option" data-app="weather">
-                            <span class="app-emoji">☀️</span>
-                            <span>Weather</span>
-                            <span class="checkmark">✓</span>
-                        </div>
-                        <div class="app-option" data-app="clock">
-                            <span class="app-emoji">⏰</span>
-                            <span>Clock</span>
-                            <span class="checkmark">✓</span>
-                        </div>
-                        <div class="app-option" data-app="calculator">
-                            <span class="app-emoji">🧮</span>
-                            <span>Calculator</span>
-                            <span class="checkmark">✓</span>
-                        </div>
-                    </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <p>Pick your refurbished iPhone model</p>
                 </div>
-
-                <div class="customizer-section">
-                    <h3>Block Websites</h3>
-                    <p>Add distracting websites you want to block</p>
-                    <div class="website-blocker">
-                        <div class="blocked-sites">
-                            <div class="blocked-site">
-                                <img src="instagram.png" alt="Instagram" style="width: 20px; height: 20px; border-radius: 4px; margin-right: 5px;">
-                                instagram.com
-                                <span class="remove">×</span>
-                            </div>
-                            <div class="blocked-site">
-                                youtube.com
-                                <span class="remove">×</span>
-                            </div>
-                            <div class="blocked-site">
-                                tiktok.com
-                                <span class="remove">×</span>
-                            </div>
-                            <div class="blocked-site">
-                                reddit.com
-                                <span class="remove">×</span>
-                            </div>
-                        </div>
-                        <div class="add-website">
-                            <input type="text" placeholder="Add website to block..." id="website-input">
-                            <button id="add-website-btn">+ Add</button>
-                        </div>
-                    </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <p>Choose which apps to block forever</p>
                 </div>
-
-                <div class="preview-phone">
-                    <h3>Preview</h3>
-                    <div class="phone-frame small">
-                        <div class="phone-screen">
-                            <div class="status-bar">9:41</div>
-                            <div class="app-grid" id="preview-apps">
-                                <!-- Apps will be dynamically added here -->
-                            </div>
-                        </div>
-                    </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <p>We ship your configured iPhone</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Models Section -->
-    <section id="models" class="models">
+    <!-- Blocker Selection -->
+    <section class="blocker">
         <div class="container">
-            <h2>Pick Your <span class="highlight highlight--yellow">Model</span></h2>
-            <p class="section-subtitle">Professionally refurbished iPhones, configured to your needs</p>
+            <h2>Block <span class="underline-red">forever</span></h2>
+
+            <div class="blocker-grid">
+                <div class="blocker-column">
+                    <h3>Apps to block</h3>
+                    <div class="block-list">
+                        <label>
+                            <input type="checkbox" checked>
+                            <span>Instagram</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" checked>
+                            <span>TikTok</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" checked>
+                            <span>Twitter</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" checked>
+                            <span>Facebook</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" checked>
+                            <span>Snapchat</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" checked>
+                            <span>YouTube</span>
+                        </label>
+                        <label>
+                            <input type="checkbox">
+                            <span>Reddit</span>
+                        </label>
+                        <label>
+                            <input type="checkbox">
+                            <span>Discord</span>
+                        </label>
+                        <label>
+                            <input type="checkbox">
+                            <span>Twitch</span>
+                        </label>
+                        <label>
+                            <input type="checkbox">
+                            <span>Netflix</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="blocker-column">
+                    <h3>Websites to block</h3>
+                    <div class="block-list">
+                        <label>
+                            <input type="checkbox" checked>
+                            <span>instagram.com</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" checked>
+                            <span>tiktok.com</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" checked>
+                            <span>twitter.com</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" checked>
+                            <span>facebook.com</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" checked>
+                            <span>youtube.com</span>
+                        </label>
+                        <label>
+                            <input type="checkbox">
+                            <span>reddit.com</span>
+                        </label>
+                        <label>
+                            <input type="checkbox">
+                            <span>twitch.tv</span>
+                        </label>
+                        <label>
+                            <input type="checkbox">
+                            <span>netflix.com</span>
+                        </label>
+                    </div>
+                    <input type="text" placeholder="Add custom website..." class="custom-input">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Model Selection -->
+    <section class="models">
+        <div class="container">
+            <h2>Select iPhone model</h2>
+            <p class="availability-note">⚠️ Used/refurbished iPhones - <span class="underline-yellow">Limited supply!</span> Join waitlist if sold out.</p>
 
             <div class="model-grid">
-                <div class="model-card" data-model="iphone-13-mini">
-                    <div class="model-image">
-                        <div class="model-phone"></div>
-                    </div>
-                    <h3>iPhone 13 Mini</h3>
-                    <p class="model-specs">5.4" · Compact & Powerful</p>
-                    <ul class="model-features">
-                        <li>Perfect pocket size</li>
-                        <li>All-day battery</li>
-                        <li>A15 Bionic chip</li>
-                    </ul>
-                    <p class="model-price">From $299</p>
-                    <button class="select-model">Select</button>
-                </div>
-
-                <div class="model-card popular" data-model="iphone-12">
-                    <span class="popular-badge">Most Popular</span>
-                    <div class="model-image">
-                        <div class="model-phone"></div>
-                    </div>
+                <div class="model-card">
                     <h3>iPhone 12</h3>
-                    <p class="model-specs">6.1" · Best Value</p>
-                    <ul class="model-features">
-                        <li>5G capable</li>
-                        <li>Dual camera system</li>
-                        <li>Ceramic Shield</li>
-                    </ul>
-                    <p class="model-price">From $349</p>
-                    <button class="select-model">Select</button>
+                    <p class="specs">128GB</p>
+                    <p class="price">$399</p>
+                    <p class="stock in-stock">In stock</p>
+                    <button>Select</button>
                 </div>
-
-                <div class="model-card" data-model="iphone-11">
-                    <div class="model-image">
-                        <div class="model-phone"></div>
-                    </div>
-                    <h3>iPhone 11</h3>
-                    <p class="model-specs">6.1" · Budget Friendly</p>
-                    <ul class="model-features">
-                        <li>Great battery life</li>
-                        <li>Night mode</li>
-                        <li>Water resistant</li>
-                    </ul>
-                    <p class="model-price">From $249</p>
-                    <button class="select-model">Select</button>
+                <div class="model-card">
+                    <h3>iPhone 13</h3>
+                    <p class="specs">128GB</p>
+                    <p class="price">$499</p>
+                    <p class="stock low-stock">3 left</p>
+                    <button>Select</button>
+                </div>
+                <div class="model-card">
+                    <h3>iPhone 14</h3>
+                    <p class="specs">128GB</p>
+                    <p class="price">$599</p>
+                    <p class="stock out-stock">Sold out</p>
+                    <button disabled>Join waitlist</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials">
+    <!-- FAQ -->
+    <section class="faq">
         <div class="container">
-            <h2><span class="highlight highlight--blue">Real people</span> using our phones</h2>
-            <p class="section-subtitle">Join thousands who've already reclaimed their attention</p>
+            <h2>FAQ</h2>
 
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">"This changed my life. I actually have time to read books again. My kids have their dad back."</p>
-                    <p class="testimonial-author">— Michael R.</p>
-                    <div class="testimonial-rating">★★★★★</div>
+            <div class="faq-item">
+                <h3>How does it work?</h3>
+                <p>We install supervised profiles on your iPhone using Apple's Mobile Device Management (MDM) system. This is the same technology used by schools and enterprises to manage devices.</p>
+                <div class="documentation-link">
+                    <a href="https://support.apple.com/guide/deployment/intro-to-mdm-dep1c27dfe6d/web" target="_blank">
+                        📄 Apple MDM Documentation →
+                    </a>
                 </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">"I went from 8 hours of screen time to under 2. Best purchase I've made this year."</p>
-                    <p class="testimonial-author">— Sarah L.</p>
-                    <div class="testimonial-rating">★★★★★</div>
+                <p>The supervised profile permanently restricts app installation and website access based on your selections. Once configured, these restrictions cannot be removed without our supervision certificate.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Concerned about <span class="underline-green">monitoring or privacy?</span></h3>
+                <p>We cannot and do not monitor your personal data. Apple's MDM architecture specifically prevents supervision profiles from accessing:</p>
+                <ul>
+                    <li>Messages, calls, or personal communications</li>
+                    <li>Photos, files, or personal content</li>
+                    <li>Location data or browsing history</li>
+                    <li>App-specific data or passwords</li>
+                </ul>
+                <div class="documentation-link">
+                    <a href="https://support.apple.com/guide/deployment/restrictions-for-supervised-devices-dep3c6a62a2/web" target="_blank">
+                        🔒 Apple Privacy & MDM Restrictions →
+                    </a>
                 </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">"Finally, a solution that actually works. No willpower needed - the apps just aren't there."</p>
-                    <p class="testimonial-author">— David K.</p>
-                    <div class="testimonial-rating">★★★★★</div>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">"My anxiety is gone. I sleep better. I'm more present. This phone gave me my life back."</p>
-                    <p class="testimonial-author">— Emma T.</p>
-                    <div class="testimonial-rating">★★★★★</div>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">"I tried every app blocker out there. This is the only thing that actually stopped my addiction."</p>
-                    <p class="testimonial-author">— James M.</p>
-                    <div class="testimonial-rating">★★★★★</div>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">"Worth every penny. My productivity has skyrocketed and my relationships have improved."</p>
-                    <p class="testimonial-author">— Lisa P.</p>
-                    <div class="testimonial-rating">★★★★★</div>
-                </div>
+                <p>The supervision profile ONLY controls which apps can be installed and which websites can be accessed. Nothing more.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Why can't I just do this myself?</h3>
+                <p>By having us set it up, you will never have the opportunity to perform a factory reset and remove our restrictions on your own computer. The supervision certificate is locked to our servers - even if you wanted to undo it in a moment of weakness, you couldn't. This permanence is the entire point.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Can I ever switch back to my "normal" phone?</h3>
+                <p>Yes. Switching eSIMs between phones takes less than 5 minutes. Our phones make excellent secondary devices for:</p>
+                <ul>
+                    <li>Travel and vacations</li>
+                    <li>Focus periods and deep work</li>
+                    <li>Digital detox weekends</li>
+                    <li>Evening wind-down device</li>
+                </ul>
+                <p>Keep your regular phone for when you need full access, use ours when you want peace.</p>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="faq-section">
+    <!-- Final CTA -->
+    <section class="final-cta">
         <div class="container">
-            <h2 class="faq-heading">Frequently Asked <span class="highlight highlight--red">Questions</span></h2>
-            <p class="section-subtitle">Everything you need to know before making the switch</p>
-
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        What exactly is a Minimal Phone?
-                        <span class="faq-arrow">⌵</span>
-                    </div>
-                    <div class="faq-answer">
-                        A Minimal Phone is a professionally refurbished iPhone that has been permanently modified to remove all distracting apps and features. It keeps essential functions like calling, texting, maps, and camera while removing social media, games, and the app store.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Can I get my apps back later?
-                        <span class="faq-arrow">⌵</span>
-                    </div>
-                    <div class="faq-answer">
-                        No, and that's the point. The modification is permanent and cannot be reversed. This eliminates the temptation to reinstall distracting apps during moments of weakness.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        What apps will I still have?
-                        <span class="faq-arrow">⌵</span>
-                    </div>
-                    <div class="faq-answer">
-                        You'll keep essential apps like Phone, Messages, Camera, Maps, Weather, Calendar, Notes, Clock, and Calculator. You can customize which apps you want during the ordering process.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Is this legal?
-                        <span class="faq-arrow">⌵</span>
-                    </div>
-                    <div class="faq-answer">
-                        Yes, absolutely. Once you purchase a phone, you have the right to modify it as you wish. We're simply providing a service to help you create a healthier relationship with technology.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        What about emergencies?
-                        <span class="faq-arrow">⌵</span>
-                    </div>
-                    <div class="faq-answer">
-                        All emergency features remain intact. You can still call 911, use maps for navigation, and access important contacts. The phone remains fully functional for all practical purposes.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Do you offer a warranty?
-                        <span class="faq-arrow">⌵</span>
-                    </div>
-                    <div class="faq-answer">
-                        Yes, all phones come with a 90-day warranty covering any hardware defects. We also offer a 30-day money-back guarantee if you're not satisfied with your purchase.
-                    </div>
-                </div>
-            </div>
+            <button class="add-to-cart large">Customize your allowed apps →</button>
+            <p class="guarantee">30-day money-back guarantee</p>
         </div>
     </section>
-
-    <!-- Order Section -->
-    <section id="order" class="order-section">
-        <div class="container">
-            <div class="order-summary">
-                <h2>Your Minimal Phone</h2>
-                <div class="summary-content">
-                    <div class="summary-item">
-                        <span>Selected Model:</span>
-                        <span id="selected-model">Choose a model</span>
-                    </div>
-                    <div class="summary-item">
-                        <span>Apps Selected:</span>
-                        <span id="app-count">2 apps</span>
-                    </div>
-                    <div class="summary-item">
-                        <span>Websites Blocked:</span>
-                        <span id="blocked-count">4 sites</span>
-                    </div>
-                </div>
-                <button class="order-button">Continue to Checkout</button>
-                <p class="order-note">✓ 30-day money back guarantee · ✓ Free shipping</p>
-                <div class="money-back-badge">💸 Money back if it doesn't change your life</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>Minimal Phone</h3>
-                    <p>Disconnect to reconnect.</p>
-                </div>
-                <div class="footer-links">
-                    <a href="#">About</a>
-                    <a href="#">Support</a>
-                    <a href="#">Returns</a>
-                    <a href="#">Contact</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2024 Minimal Phone. Not affiliated with Apple Inc.</p>
-            </div>
-        </div>
-    </footer>
 
     <script src="script.js"></script>
 </body>
