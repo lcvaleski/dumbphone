@@ -111,7 +111,7 @@ function createOrderNotes() {
     const config = collectConfiguration();
     const model = getSelectedModel();
 
-    let notes = '=== DUMBPHONE CONFIGURATION ===\n\n';
+    let notes = '=== COREPHONE CONFIGURATION ===\n\n';
     notes += `IPHONE MODEL: ${model}\n\n`;
     notes += `MODE: ${config.mode.toUpperCase()}\n\n`;
 
