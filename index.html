@@ -18,7 +18,7 @@
                     <h1>A brand new iPhone with <span class="underline-accent">built-in settings</span> that block addictive apps and websites for your child.</h1>
                     <p class="subtitle">Tell us the apps + websites you <span class="italic">don't want</span>, be unable to ever install again.</p>
 
-                    <button class="add-to-cart">Select allowed apps →</button>
+                    <button class="add-to-cart scroll-to-config">Select allowed apps →</button>
                     <p class="effectiveness-badge"><span class="underline-green">100% effective.</span> <span class="underline-red">Zero workarounds.</span></p>
                 </div>
 
@@ -175,124 +175,222 @@
         </div>
     </section>
 
-    <!-- Blocker Selection -->
-    <section class="blocker">
+    <!-- App Configuration Section -->
+    <section class="app-config">
         <div class="container">
-            <h2>Block <span class="underline-red">forever</span></h2>
+            <h2>Choose your approach</h2>
+            <p class="config-subtitle">Select which apps and websites your child can access</p>
 
-            <div class="blocker-grid">
-                <div class="blocker-column">
-                    <h3>Apps to block</h3>
-                    <div class="block-list">
-                        <label>
-                            <input type="checkbox" checked>
-                            <span>Instagram</span>
-                        </label>
-                        <label>
-                            <input type="checkbox" checked>
-                            <span>TikTok</span>
-                        </label>
-                        <label>
-                            <input type="checkbox" checked>
-                            <span>Twitter</span>
-                        </label>
-                        <label>
-                            <input type="checkbox" checked>
-                            <span>Facebook</span>
-                        </label>
-                        <label>
-                            <input type="checkbox" checked>
-                            <span>Snapchat</span>
-                        </label>
-                        <label>
-                            <input type="checkbox" checked>
-                            <span>YouTube</span>
-                        </label>
-                        <label>
-                            <input type="checkbox">
-                            <span>Reddit</span>
-                        </label>
-                        <label>
-                            <input type="checkbox">
-                            <span>Discord</span>
-                        </label>
-                        <label>
-                            <input type="checkbox">
-                            <span>Twitch</span>
-                        </label>
-                        <label>
-                            <input type="checkbox">
-                            <span>Netflix</span>
-                        </label>
-                    </div>
+            <!-- Tabs -->
+            <div class="config-tabs">
+                <button class="tab-button active" data-tab="whitelist">
+                    <span class="tab-icon">✓</span>
+                    <span class="tab-label">Whitelist Mode</span>
+                    <span class="tab-desc">Only allow specific apps</span>
+                </button>
+                <button class="tab-button" data-tab="blacklist">
+                    <span class="tab-icon">✕</span>
+                    <span class="tab-label">Blacklist Mode</span>
+                    <span class="tab-desc">Block specific apps</span>
+                </button>
+            </div>
+
+            <!-- Whitelist Tab Content -->
+            <div class="tab-content active" id="whitelist-tab">
+                <div class="mode-description">
+                    <p><strong>Safest option:</strong> Only the apps you check below can be installed. Everything else is permanently blocked.</p>
                 </div>
 
-                <div class="blocker-column">
-                    <h3>Websites to block</h3>
-                    <div class="block-list">
-                        <label>
-                            <input type="checkbox" checked>
-                            <span>instagram.com</span>
-                        </label>
-                        <label>
-                            <input type="checkbox" checked>
-                            <span>tiktok.com</span>
-                        </label>
-                        <label>
-                            <input type="checkbox" checked>
-                            <span>twitter.com</span>
-                        </label>
-                        <label>
-                            <input type="checkbox" checked>
-                            <span>facebook.com</span>
-                        </label>
-                        <label>
-                            <input type="checkbox" checked>
-                            <span>youtube.com</span>
-                        </label>
-                        <label>
-                            <input type="checkbox">
-                            <span>reddit.com</span>
-                        </label>
-                        <label>
-                            <input type="checkbox">
-                            <span>twitch.tv</span>
-                        </label>
-                        <label>
-                            <input type="checkbox">
-                            <span>netflix.com</span>
-                        </label>
+                <div class="selection-grid">
+                    <div class="selection-column">
+                        <h3>Essential Apps <span class="recommended">Recommended</span></h3>
+                        <div class="app-list whitelist-mode">
+                            <label>
+                                <input type="checkbox" checked>
+                                <span>Phone</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" checked>
+                                <span>Messages</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" checked>
+                                <span>FaceTime</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" checked>
+                                <span>Maps</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" checked>
+                                <span>Calendar</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" checked>
+                                <span>Weather</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" checked>
+                                <span>Calculator</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" checked>
+                                <span>Camera</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" checked>
+                                <span>Photos</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" checked>
+                                <span>Banking Apps</span>
+                            </label>
+                        </div>
                     </div>
-                    <input type="text" placeholder="Add custom website..." class="custom-input">
+
+                    <div class="selection-column">
+                        <h3>Educational & Productivity</h3>
+                        <div class="app-list whitelist-mode">
+                            <label>
+                                <input type="checkbox">
+                                <span>Khan Academy</span>
+                            </label>
+                            <label>
+                                <input type="checkbox">
+                                <span>Duolingo</span>
+                            </label>
+                            <label>
+                                <input type="checkbox">
+                                <span>Google Classroom</span>
+                            </label>
+                            <label>
+                                <input type="checkbox">
+                                <span>Notion</span>
+                            </label>
+                            <label>
+                                <input type="checkbox">
+                                <span>Spotify (Music)</span>
+                            </label>
+                            <label>
+                                <input type="checkbox">
+                                <span>Kindle</span>
+                            </label>
+                            <label>
+                                <input type="checkbox">
+                                <span>Audible</span>
+                            </label>
+                            <label>
+                                <input type="checkbox">
+                                <span>Uber/Lyft</span>
+                            </label>
+                        </div>
+                        <input type="text" placeholder="Add custom app to allow..." class="custom-input whitelist-custom">
+                    </div>
                 </div>
+            </div>
+
+            <!-- Blacklist Tab Content -->
+            <div class="tab-content" id="blacklist-tab">
+                <div class="mode-description">
+                    <p><strong>Flexible option:</strong> Block only the apps you select. Everything else remains available.</p>
+                </div>
+
+                <div class="selection-grid">
+                    <div class="selection-column">
+                        <h3>Social Media & Entertainment</h3>
+                        <div class="app-list blacklist-mode">
+                            <label>
+                                <input type="checkbox" checked>
+                                <span>Instagram</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" checked>
+                                <span>TikTok</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" checked>
+                                <span>Twitter/X</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" checked>
+                                <span>Facebook</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" checked>
+                                <span>Snapchat</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" checked>
+                                <span>YouTube</span>
+                            </label>
+                            <label>
+                                <input type="checkbox">
+                                <span>Reddit</span>
+                            </label>
+                            <label>
+                                <input type="checkbox">
+                                <span>Discord</span>
+                            </label>
+                            <label>
+                                <input type="checkbox">
+                                <span>Twitch</span>
+                            </label>
+                            <label>
+                                <input type="checkbox">
+                                <span>Netflix</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="selection-column">
+                        <h3>Websites to Block</h3>
+                        <div class="app-list blacklist-mode">
+                            <label>
+                                <input type="checkbox" checked>
+                                <span>instagram.com</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" checked>
+                                <span>tiktok.com</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" checked>
+                                <span>twitter.com</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" checked>
+                                <span>facebook.com</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" checked>
+                                <span>youtube.com</span>
+                            </label>
+                            <label>
+                                <input type="checkbox">
+                                <span>reddit.com</span>
+                            </label>
+                            <label>
+                                <input type="checkbox">
+                                <span>twitch.tv</span>
+                            </label>
+                            <label>
+                                <input type="checkbox">
+                                <span>netflix.com</span>
+                            </label>
+                        </div>
+                        <input type="text" placeholder="Add website to block..." class="custom-input blacklist-custom">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add to Cart Button -->
+            <div class="config-cta">
+                <button class="add-to-cart config-button">Add to Cart →</button>
+                <p class="config-note">You can review your configuration before checkout</p>
             </div>
         </div>
     </section>
 
-    <!-- Model Selection -->
-    <section class="models">
-        <div class="container">
-            <h2>Your new iPhone</h2>
-            <p class="availability-note">Brand new iPhone 16e - <span class="underline-green">Latest model</span> with permanent parental controls</p>
-
-            <div class="single-model">
-                <div class="model-card featured">
-                    <div class="new-badge">NEW</div>
-                    <h3>iPhone 16e</h3>
-                    <p class="specs">128GB • A18 Chip • 6.1" Display</p>
-                    <ul class="features-list">
-                        <li>48MP Fusion camera system</li>
-                        <li>All-day battery life</li>
-                        <li>Face ID security</li>
-                        <li>5G connectivity</li>
-                    </ul>
-                    <p class="price">$799</p>
-                    <p class="stock in-stock">Ready to configure</p>
-                    <button class="selected">✓ Included</button>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- FAQ -->
     <section class="faq">
@@ -349,10 +447,54 @@
     <!-- Final CTA -->
     <section class="final-cta">
         <div class="container">
-            <button class="add-to-cart large">Customize your allowed apps →</button>
+            <button class="add-to-cart large scroll-to-config">Customize your allowed apps →</button>
             <p class="guarantee">30-day money-back guarantee</p>
         </div>
     </section>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmation-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Review Your Configuration</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="config-summary">
+                    <div class="summary-section">
+                        <h3>📱 Device</h3>
+                        <p class="summary-device">iPhone 16e - 128GB</p>
+                        <p class="summary-price">$799.00</p>
+                    </div>
+
+                    <div class="summary-section">
+                        <h3 id="mode-title">Configuration Mode</h3>
+                        <p id="mode-description" class="mode-badge"></p>
+                    </div>
+
+                    <div class="summary-section" id="allowed-section">
+                        <h3>✅ Allowed Apps</h3>
+                        <div id="allowed-list" class="app-summary-list"></div>
+                    </div>
+
+                    <div class="summary-section" id="blocked-section">
+                        <h3>🚫 Blocked Apps & Sites</h3>
+                        <div id="blocked-list" class="app-summary-list"></div>
+                    </div>
+
+                    <div class="summary-note">
+                        <p><strong>Important:</strong> This configuration is permanent and cannot be changed after purchase.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-secondary" id="modal-edit">← Edit Configuration</button>
+                <button class="btn-primary" id="modal-checkout">Proceed to Checkout →</button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
