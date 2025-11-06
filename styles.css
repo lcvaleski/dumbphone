@@ -1571,6 +1571,101 @@ header {
         padding: 60px 0;
     }
 
+    /* App Configuration Mobile */
+    .app-config {
+        padding: 60px 0;
+    }
+
+    .config-tabs {
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 32px;
+    }
+
+    .tab-button {
+        width: 100%;
+        flex-direction: row;
+        justify-content: flex-start;
+        padding: 16px 20px;
+        gap: 12px;
+    }
+
+    .tab-icon {
+        font-size: 20px;
+    }
+
+    .tab-label {
+        font-size: 15px;
+    }
+
+    .tab-desc {
+        display: none;
+    }
+
+    .selection-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .selection-column h3 {
+        font-size: 16px;
+        margin-bottom: 16px;
+    }
+
+    .app-list {
+        gap: 8px;
+    }
+
+    .app-list label {
+        padding: 14px 12px;
+        font-size: 15px;
+    }
+
+    .app-list input {
+        width: 24px;
+        height: 24px;
+        margin-right: 12px;
+        flex-shrink: 0;
+    }
+
+    .app-list span {
+        font-size: 15px;
+        line-height: 1.3;
+    }
+
+    .custom-input {
+        padding: 16px;
+        font-size: 16px;
+        -webkit-appearance: none;
+        appearance: none;
+        border-radius: 10px;
+    }
+
+    .config-cta {
+        padding-top: 32px;
+        margin-top: 32px;
+    }
+
+    .config-button {
+        width: 100%;
+        font-size: 16px;
+        padding: 20px 32px;
+    }
+
+    .mode-description {
+        padding: 14px;
+        margin-bottom: 24px;
+    }
+
+    .mode-description p {
+        font-size: 14px;
+    }
+
+    .recommended {
+        font-size: 10px;
+        padding: 3px 6px;
+    }
+
     /* Comparison table mobile */
     .comparison-table {
         font-size: 12px;
@@ -1589,5 +1684,45 @@ header {
     .comparison-subtitle {
         font-size: 16px;
         padding: 0 20px;
+    }
+
+    /* Modal Mobile */
+    .modal-content {
+        width: 95%;
+        margin: 20px;
+        border-radius: 16px;
+    }
+
+    .modal-header {
+        padding: 20px;
+    }
+
+    .modal-header h2 {
+        font-size: 20px;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .summary-section {
+        padding: 16px;
+    }
+
+    .modal-footer {
+        flex-direction: column;
+        padding: 20px;
+        gap: 12px;
+    }
+
+    .btn-secondary,
+    .btn-primary {
+        width: 100%;
+        padding: 16px;
+    }
+
+    .app-pill {
+        font-size: 12px;
+        padding: 5px 10px;
     }
 }
