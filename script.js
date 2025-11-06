@@ -30,7 +30,8 @@ setInterval(() => {
 
 // Shopify Integration
 const SHOPIFY_STORE_URL = 'coventry-labs-llc.myshopify.com'; // Your Shopify store
-const VARIANT_ID = '48824194588916'; // Your actual variant ID
+const VARIANT_ID = '47492615405822'; // Blue variant ID
+const PRODUCT_HANDLE = 'iphone-16e-dumbphone-configuration'; // Product handle as backup
 
 // Collect all blocked apps and websites
 function collectBlockedItems() {
