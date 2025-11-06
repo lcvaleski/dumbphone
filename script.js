@@ -29,8 +29,8 @@ setInterval(() => {
 }, 3000);
 
 // Shopify Integration
-const SHOPIFY_STORE_URL = 'YOUR-STORE.myshopify.com'; // Replace with your store URL
-const VARIANT_ID = 'YOUR-VARIANT-ID'; // Replace with your product variant ID
+const SHOPIFY_STORE_URL = 'coventry-labs-llc.myshopify.com'; // Your Shopify store
+const VARIANT_ID = '48824194588916'; // Your actual variant ID
 
 // Collect all blocked apps and websites
 function collectBlockedItems() {
@@ -97,14 +97,43 @@ document.querySelectorAll('.add-to-cart:not(.model-card button)').forEach(button
         // For testing - log the order notes
         console.log('Order Notes:', orderNotes);
 
-        // Create Shopify checkout URL with the order notes
-        // This will add 1 unit of the product with the custom notes
-        const checkoutUrl = `https://${SHOPIFY_STORE_URL}/cart/${VARIANT_ID}:1?note=${encodeURIComponent(orderNotes)}`;
+        // Show confirmation before redirecting
+        const confirmCheckout = confirm(
+            'Your configuration:\n\n' +
+            orderNotes +
+            '\n\nProceed to checkout?'
+        );
 
-        // Uncomment this line when ready to go live:
-        // window.location.href = checkoutUrl;
+        if (confirmCheckout) {
+            // Create a form and submit it to Shopify
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = `https://${SHOPIFY_STORE_URL}/cart/add`;
 
-        // For now, just alert the user
-        alert('Ready to checkout!\n\nPlease update the SHOPIFY_STORE_URL and VARIANT_ID in script.js with your Shopify details.\n\nOrder notes will include:\n' + orderNotes);
+            // Add variant ID
+            const idInput = document.createElement('input');
+            idInput.type = 'hidden';
+            idInput.name = 'id';
+            idInput.value = VARIANT_ID;
+            form.appendChild(idInput);
+
+            // Add quantity
+            const qtyInput = document.createElement('input');
+            qtyInput.type = 'hidden';
+            qtyInput.name = 'quantity';
+            qtyInput.value = '1';
+            form.appendChild(qtyInput);
+
+            // Add return URL to go to cart with note
+            const returnInput = document.createElement('input');
+            returnInput.type = 'hidden';
+            returnInput.name = 'return_to';
+            returnInput.value = `/cart?note=${encodeURIComponent(orderNotes)}`;
+            form.appendChild(returnInput);
+
+            // Append form to body and submit
+            document.body.appendChild(form);
+            form.submit();
+        }
     });
 });
