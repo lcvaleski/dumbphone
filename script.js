@@ -1,13 +1,4 @@
-// Scroll to configuration section when clicking scroll buttons
-document.querySelectorAll('.scroll-to-config').forEach(button => {
-    button.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.querySelector('.app-config').scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-    });
-});
+// Scroll and add-to-cart button handling is now done through event delegation below
 
 // Tab switching functionality
 const tabButtons = document.querySelectorAll('.tab-button');
@@ -101,40 +92,180 @@ function collectConfiguration() {
     if (isWhitelistMode) {
         // Whitelist mode: collect allowed apps
         const allowedApps = [];
-        document.querySelectorAll('#whitelist-tab input[type="checkbox"]:checked').forEach(checkbox => {
-            allowedApps.push(checkbox.nextElementSibling.textContent.trim());
+        const bundleIds = [];
+
+        // Get essential apps if checked
+        document.querySelectorAll('.essential-app:checked').forEach(checkbox => {
+            const appName = checkbox.nextElementSibling.textContent.trim();
+            const bundleId = checkbox.getAttribute('data-bundle-id');
+            allowedApps.push(appName);
+            if (bundleId) {
+                bundleIds.push(`${appName}: ${bundleId}`);
+            }
         });
+
+        // Get apps from App Store search if available
+        if (window.appStoreSearch) {
+            const searchedApps = window.appStoreSearch.getSelectedApps('whitelist');
+            searchedApps.forEach(app => {
+                allowedApps.push(app.name);
+                bundleIds.push(`${app.name}: ${app.bundleId}`);
+            });
+        }
 
         return {
             mode: 'whitelist',
             allowedApps: allowedApps,
+            bundleIds: bundleIds,
             blockedApps: [], // Everything else is blocked
             blockedWebsites: [] // All non-essential websites blocked
         };
     } else {
         // Blacklist mode: collect blocked items
         const blockedApps = [];
+        const bundleIds = [];
         const blockedWebsites = [];
 
-        document.querySelectorAll('#blacklist-tab .selection-column:first-child input[type="checkbox"]:checked').forEach(checkbox => {
-            blockedApps.push(checkbox.nextElementSibling.textContent.trim());
+        // Get social media apps if checked
+        document.querySelectorAll('.social-app:checked').forEach(checkbox => {
+            const appName = checkbox.nextElementSibling.textContent.trim();
+            const bundleId = checkbox.getAttribute('data-bundle-id');
+            blockedApps.push(appName);
+            if (bundleId) {
+                bundleIds.push(`${appName}: ${bundleId}`);
+            }
         });
 
-        document.querySelectorAll('#blacklist-tab .selection-column:last-child input[type="checkbox"]:checked').forEach(checkbox => {
+        // Get blocked websites if checked
+        document.querySelectorAll('.social-website:checked').forEach(checkbox => {
             blockedWebsites.push(checkbox.nextElementSibling.textContent.trim());
         });
+
+        // Get apps from App Store search if available
+        if (window.appStoreSearch) {
+            const searchedApps = window.appStoreSearch.getSelectedApps('blacklist');
+            searchedApps.forEach(app => {
+                blockedApps.push(app.name);
+                bundleIds.push(`${app.name}: ${app.bundleId}`);
+            });
+        }
 
         return {
             mode: 'blacklist',
             allowedApps: [], // Everything else is allowed
             blockedApps: blockedApps,
+            bundleIds: bundleIds,
             blockedWebsites: blockedWebsites
         };
     }
 }
 
-// Handle model card selection
+// Handle essential apps package
 document.addEventListener('DOMContentLoaded', () => {
+    // Essential apps expand/collapse
+    const expandToggle = document.querySelector('.expand-toggle');
+    const expandedSection = document.querySelector('.essential-apps-expanded');
+    const previewSection = document.querySelector('.essential-apps-preview');
+    const showMorePill = document.querySelector('.app-pill.show-more');
+
+    if (expandToggle && expandedSection) {
+        expandToggle.addEventListener('click', () => {
+            const isExpanded = expandedSection.style.display !== 'none';
+            expandedSection.style.display = isExpanded ? 'none' : 'block';
+            expandToggle.classList.toggle('expanded');
+            previewSection.style.display = isExpanded ? 'block' : 'none';
+        });
+    }
+
+    if (showMorePill && expandedSection) {
+        showMorePill.addEventListener('click', () => {
+            expandedSection.style.display = 'block';
+            expandToggle.classList.add('expanded');
+            previewSection.style.display = 'none';
+        });
+    }
+
+    // Essential package checkbox
+    const essentialPackage = document.getElementById('essential-package');
+    const essentialApps = document.querySelectorAll('.essential-app');
+
+    if (essentialPackage && essentialApps.length > 0) {
+        essentialPackage.addEventListener('change', () => {
+            essentialApps.forEach(checkbox => {
+                checkbox.checked = essentialPackage.checked;
+            });
+        });
+
+        // Update package checkbox if individual apps are changed
+        essentialApps.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                const allChecked = Array.from(essentialApps).every(cb => cb.checked);
+                const someChecked = Array.from(essentialApps).some(cb => cb.checked);
+
+                essentialPackage.checked = allChecked;
+                essentialPackage.indeterminate = someChecked && !allChecked;
+            });
+        });
+    }
+
+    // Social media package checkbox
+    const socialPackage = document.getElementById('social-package');
+    const socialApps = document.querySelectorAll('.social-app');
+    const socialWebsites = document.querySelectorAll('.social-website');
+
+    if (socialPackage && socialApps.length > 0) {
+        socialPackage.addEventListener('change', () => {
+            socialApps.forEach(checkbox => {
+                checkbox.checked = socialPackage.checked;
+            });
+            socialWebsites.forEach(checkbox => {
+                checkbox.checked = socialPackage.checked;
+            });
+        });
+
+        // Update package checkbox if individual apps are changed
+        const updateSocialPackage = () => {
+            const allAppsChecked = Array.from(socialApps).every(cb => cb.checked);
+            const allWebsitesChecked = Array.from(socialWebsites).every(cb => cb.checked);
+            const someChecked = Array.from([...socialApps, ...socialWebsites]).some(cb => cb.checked);
+
+            socialPackage.checked = allAppsChecked && allWebsitesChecked;
+            socialPackage.indeterminate = someChecked && !(allAppsChecked && allWebsitesChecked);
+        };
+
+        socialApps.forEach(checkbox => {
+            checkbox.addEventListener('change', updateSocialPackage);
+        });
+
+        socialWebsites.forEach(checkbox => {
+            checkbox.addEventListener('change', updateSocialPackage);
+        });
+    }
+
+    // Social media expand/collapse
+    const expandToggleSocial = document.querySelector('.expand-toggle-social');
+    const expandedSectionSocial = document.querySelector('.social-apps-expanded');
+    const previewSectionSocial = document.querySelector('.social-apps-preview');
+    const showMorePillSocial = document.querySelector('.social-apps-preview .show-more');
+
+    if (expandToggleSocial && expandedSectionSocial) {
+        expandToggleSocial.addEventListener('click', () => {
+            const isExpanded = expandedSectionSocial.style.display !== 'none';
+            expandedSectionSocial.style.display = isExpanded ? 'none' : 'block';
+            expandToggleSocial.classList.toggle('expanded');
+            previewSectionSocial.style.display = isExpanded ? 'block' : 'none';
+        });
+    }
+
+    if (showMorePillSocial && expandedSectionSocial) {
+        showMorePillSocial.addEventListener('click', () => {
+            expandedSectionSocial.style.display = 'block';
+            expandToggleSocial.classList.add('expanded');
+            previewSectionSocial.style.display = 'none';
+        });
+    }
+
+    // Model card selection
     const modelCards = document.querySelectorAll('.model-card');
     const storageOptions = document.querySelectorAll('.storage-option');
 
@@ -233,10 +364,16 @@ function createOrderNotes() {
         notes += `ALLOWED APPS ONLY (${config.allowedApps.length}):\n`;
         notes += config.allowedApps.length > 0 ? config.allowedApps.join('\n') : 'None';
         notes += '\n\n';
+        notes += `BUNDLE IDS FOR MDM CONFIGURATION:\n`;
+        notes += config.bundleIds.length > 0 ? config.bundleIds.join('\n') : 'None';
+        notes += '\n\n';
         notes += 'ALL OTHER APPS AND WEBSITES: BLOCKED';
     } else {
         notes += `BLOCKED APPS (${config.blockedApps.length}):\n`;
         notes += config.blockedApps.length > 0 ? config.blockedApps.join('\n') : 'None';
+        notes += '\n\n';
+        notes += `BUNDLE IDS FOR MDM CONFIGURATION:\n`;
+        notes += config.bundleIds.length > 0 ? config.bundleIds.join('\n') : 'None';
         notes += '\n\n';
         notes += `BLOCKED WEBSITES (${config.blockedWebsites.length}):\n`;
         notes += config.blockedWebsites.length > 0 ? config.blockedWebsites.join('\n') : 'None';
@@ -304,19 +441,33 @@ function showConfirmationModal() {
             blockedList.appendChild(pill);
         });
     } else {
-        blockedSection.innerHTML = '<h3>🚫 Everything Else</h3><p style="color: #666; margin: 0;">All apps and websites not listed above will be permanently blocked.</p>';
+        blockedSection.innerHTML = '<h3>Everything Else</h3><p style="color: #666; margin: 0;">All apps and websites not listed above will be permanently blocked.</p>';
     }
 
     // Show modal
     modal.classList.add('show');
 }
 
-// Handle ONLY the checkout button (not scroll buttons)
-document.querySelectorAll('.add-to-cart.config-button').forEach(button => {
-    button.addEventListener('click', function(e) {
+// Handle all add-to-cart buttons using event delegation
+document.addEventListener('click', function(e) {
+    // Check if clicked element or its parent is an add-to-cart button
+    const button = e.target.closest('.add-to-cart');
+
+    if (button) {
         e.preventDefault();
-        showConfirmationModal();
-    });
+
+        // Check if it's a scroll button or the config button
+        if (button.classList.contains('scroll-to-config')) {
+            // Scroll to configuration section
+            document.querySelector('.app-config').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        } else if (button.classList.contains('config-button') || button.classList.contains('large')) {
+            // Show confirmation modal for checkout buttons
+            showConfirmationModal();
+        }
+    }
 });
 
 // Modal close button
@@ -337,10 +488,11 @@ document.getElementById('modal-checkout').addEventListener('click', () => {
     console.log('Order Notes:', orderNotes);
     console.log('Selected Model:', modelInfo);
 
-    // Create a form and submit it to Shopify
+    // Create a form and submit it to Shopify in a new tab
     const form = document.createElement('form');
     form.method = 'POST';
     form.action = `https://${SHOPIFY_STORE_URL}/cart/add`;
+    form.target = '_blank'; // Open in new tab
 
     // Add variant ID based on selected model and storage
     const idInput = document.createElement('input');
@@ -402,4 +554,23 @@ document.getElementById('modal-checkout').addEventListener('click', () => {
     // Append form to body and submit
     document.body.appendChild(form);
     form.submit();
+
+    // Remove form after submission
+    setTimeout(() => {
+        form.remove();
+    }, 100);
+
+    // Show success message in modal
+    const modalContent = document.querySelector('.modal-content');
+    modalContent.innerHTML = `
+        <div style="text-align: center; padding: 40px;">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" style="margin-bottom: 20px;">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h2 style="margin-bottom: 10px;">Added to Cart!</h2>
+            <p style="color: #666; margin-bottom: 30px;">Your CorePhone configuration has been added to the cart. The cart opened in a new tab.</p>
+            <button class="btn btn-primary" onclick="document.getElementById('confirmation-modal').classList.remove('show'); location.reload();">Continue Shopping</button>
+            <button class="btn btn-secondary" style="margin-left: 10px;" onclick="document.getElementById('confirmation-modal').classList.remove('show');">Close</button>
+        </div>
+    `;
 });

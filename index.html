@@ -165,93 +165,87 @@
             <!-- Whitelist Tab Content -->
             <div class="tab-content active" id="whitelist-tab">
                 <div class="mode-description">
-                    <p><strong>Safest option:</strong> Only the apps you check below can be installed. Everything else is permanently blocked.</p>
+                    <p><strong>Safest option:</strong> Only the apps you select below can be installed. Everything else is permanently blocked.</p>
                 </div>
 
-                <div class="selection-grid">
-                    <div class="selection-column">
-                        <h3>Essential Apps <span class="recommended">Recommended</span></h3>
-                        <div class="app-list whitelist-mode">
-                            <label>
-                                <input type="checkbox" checked>
-                                <span>Phone</span>
+                <div class="essential-apps-section">
+                    <div class="essential-apps-header">
+                        <div class="essential-title">
+                            <input type="checkbox" id="essential-package" checked>
+                            <label for="essential-package">
+                                <h3>Essential Apps Package <span class="recommended">Recommended</span></h3>
+                                <p class="essential-subtitle">Core iPhone functionality - 12 essential apps pre-selected</p>
                             </label>
-                            <label>
-                                <input type="checkbox" checked>
-                                <span>Messages</span>
-                            </label>
-                            <label>
-                                <input type="checkbox" checked>
-                                <span>FaceTime</span>
-                            </label>
-                            <label>
-                                <input type="checkbox" checked>
-                                <span>Maps</span>
-                            </label>
-                            <label>
-                                <input type="checkbox" checked>
-                                <span>Calendar</span>
-                            </label>
-                            <label>
-                                <input type="checkbox" checked>
-                                <span>Weather</span>
-                            </label>
-                            <label>
-                                <input type="checkbox" checked>
-                                <span>Calculator</span>
-                            </label>
-                            <label>
-                                <input type="checkbox" checked>
-                                <span>Camera</span>
-                            </label>
-                            <label>
-                                <input type="checkbox" checked>
-                                <span>Photos</span>
-                            </label>
-                            <label>
-                                <input type="checkbox" checked>
-                                <span>Banking Apps</span>
-                            </label>
+                        </div>
+                        <button class="expand-toggle" aria-label="Show/hide essential apps">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="essential-apps-preview">
+                        <div class="preview-pills">
+                            <span class="app-pill">Phone</span>
+                            <span class="app-pill">Messages</span>
+                            <span class="app-pill">FaceTime</span>
+                            <span class="app-pill">Maps</span>
+                            <span class="app-pill">Find My</span>
+                            <span class="app-pill show-more">+7 more</span>
                         </div>
                     </div>
 
-                    <div class="selection-column">
-                        <h3>Educational & Productivity</h3>
+                    <div class="essential-apps-expanded" style="display: none;">
                         <div class="app-list whitelist-mode">
                             <label>
-                                <input type="checkbox">
-                                <span>Khan Academy</span>
+                                <input type="checkbox" checked class="essential-app" data-bundle-id="com.apple.mobilephone">
+                                <span>Phone</span>
                             </label>
                             <label>
-                                <input type="checkbox">
-                                <span>Duolingo</span>
+                                <input type="checkbox" checked class="essential-app" data-bundle-id="com.apple.MobileSMS">
+                                <span>Messages</span>
                             </label>
                             <label>
-                                <input type="checkbox">
-                                <span>Google Classroom</span>
+                                <input type="checkbox" checked class="essential-app" data-bundle-id="com.apple.facetime">
+                                <span>FaceTime</span>
                             </label>
                             <label>
-                                <input type="checkbox">
-                                <span>Notion</span>
+                                <input type="checkbox" checked class="essential-app" data-bundle-id="com.apple.Maps">
+                                <span>Maps</span>
                             </label>
                             <label>
-                                <input type="checkbox">
-                                <span>Spotify (Music)</span>
+                                <input type="checkbox" checked class="essential-app" data-bundle-id="com.apple.mobilecal">
+                                <span>Calendar</span>
                             </label>
                             <label>
-                                <input type="checkbox">
-                                <span>Kindle</span>
+                                <input type="checkbox" checked class="essential-app" data-bundle-id="com.apple.weather">
+                                <span>Weather</span>
                             </label>
                             <label>
-                                <input type="checkbox">
-                                <span>Audible</span>
+                                <input type="checkbox" checked class="essential-app" data-bundle-id="com.apple.calculator">
+                                <span>Calculator</span>
                             </label>
                             <label>
-                                <input type="checkbox">
-                                <span>Uber/Lyft</span>
+                                <input type="checkbox" checked class="essential-app" data-bundle-id="com.apple.camera">
+                                <span>Camera</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" checked class="essential-app" data-bundle-id="com.apple.mobileslideshow">
+                                <span>Photos</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" checked class="essential-app" data-bundle-id="com.apple.findmy">
+                                <span>Find My</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" checked class="essential-app" data-bundle-id="com.apple.mobilenotes">
+                                <span>Notes</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" checked class="essential-app" data-bundle-id="com.apple.reminders">
+                                <span>Reminders</span>
                             </label>
                         </div>
-                        <input type="text" placeholder="Add custom app to allow..." class="custom-input whitelist-custom">
                     </div>
                 </div>
             </div>
@@ -262,90 +256,106 @@
                     <p><strong>Flexible option:</strong> Block only the apps you select. Everything else remains available.</p>
                 </div>
 
-                <div class="selection-grid">
-                    <div class="selection-column">
-                        <h3>Social Media & Entertainment</h3>
-                        <div class="app-list blacklist-mode">
-                            <label>
-                                <input type="checkbox" checked>
-                                <span>Instagram</span>
+                <div class="social-media-section">
+                    <div class="social-media-header">
+                        <div class="social-title">
+                            <input type="checkbox" id="social-package" checked>
+                            <label for="social-package">
+                                <h3>Social Media Package <span class="recommended">Recommended</span></h3>
+                                <p class="social-subtitle">Block the most addictive social apps - 10 apps pre-selected</p>
                             </label>
-                            <label>
-                                <input type="checkbox" checked>
-                                <span>TikTok</span>
-                            </label>
-                            <label>
-                                <input type="checkbox" checked>
-                                <span>Twitter/X</span>
-                            </label>
-                            <label>
-                                <input type="checkbox" checked>
-                                <span>Facebook</span>
-                            </label>
-                            <label>
-                                <input type="checkbox" checked>
-                                <span>Snapchat</span>
-                            </label>
-                            <label>
-                                <input type="checkbox" checked>
-                                <span>YouTube</span>
-                            </label>
-                            <label>
-                                <input type="checkbox">
-                                <span>Reddit</span>
-                            </label>
-                            <label>
-                                <input type="checkbox">
-                                <span>Discord</span>
-                            </label>
-                            <label>
-                                <input type="checkbox">
-                                <span>Twitch</span>
-                            </label>
-                            <label>
-                                <input type="checkbox">
-                                <span>Netflix</span>
-                            </label>
+                        </div>
+                        <button class="expand-toggle-social" aria-label="Show/hide social media apps">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="social-apps-preview">
+                        <div class="preview-pills">
+                            <span class="app-pill blocked">Instagram</span>
+                            <span class="app-pill blocked">TikTok</span>
+                            <span class="app-pill blocked">Snapchat</span>
+                            <span class="app-pill blocked">Facebook</span>
+                            <span class="app-pill blocked">Twitter/X</span>
+                            <span class="app-pill show-more">+5 more</span>
                         </div>
                     </div>
 
-                    <div class="selection-column">
-                        <h3>Websites to Block</h3>
+                    <div class="social-apps-expanded" style="display: none;">
                         <div class="app-list blacklist-mode">
                             <label>
-                                <input type="checkbox" checked>
-                                <span>instagram.com</span>
+                                <input type="checkbox" checked class="social-app" data-bundle-id="com.burbn.instagram">
+                                <span>Instagram</span>
                             </label>
                             <label>
-                                <input type="checkbox" checked>
-                                <span>tiktok.com</span>
+                                <input type="checkbox" checked class="social-app" data-bundle-id="com.zhiliaoapp.musically">
+                                <span>TikTok</span>
                             </label>
                             <label>
-                                <input type="checkbox" checked>
-                                <span>twitter.com</span>
+                                <input type="checkbox" checked class="social-app" data-bundle-id="com.toyopagroup.picaboo">
+                                <span>Snapchat</span>
                             </label>
                             <label>
-                                <input type="checkbox" checked>
-                                <span>facebook.com</span>
+                                <input type="checkbox" checked class="social-app" data-bundle-id="com.facebook.Facebook">
+                                <span>Facebook</span>
                             </label>
                             <label>
-                                <input type="checkbox" checked>
-                                <span>youtube.com</span>
+                                <input type="checkbox" checked class="social-app" data-bundle-id="com.atebits.Tweetie2">
+                                <span>Twitter/X</span>
                             </label>
                             <label>
-                                <input type="checkbox">
-                                <span>reddit.com</span>
+                                <input type="checkbox" checked class="social-app" data-bundle-id="com.google.ios.youtube">
+                                <span>YouTube</span>
                             </label>
                             <label>
-                                <input type="checkbox">
-                                <span>twitch.tv</span>
+                                <input type="checkbox" checked class="social-app" data-bundle-id="com.reddit.Reddit">
+                                <span>Reddit</span>
                             </label>
                             <label>
-                                <input type="checkbox">
-                                <span>netflix.com</span>
+                                <input type="checkbox" checked class="social-app" data-bundle-id="com.hammerandchisel.discord">
+                                <span>Discord</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" checked class="social-app" data-bundle-id="net.whatsapp.WhatsApp">
+                                <span>WhatsApp</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" checked class="social-app" data-bundle-id="ph.telegra.Telegraph">
+                                <span>Telegram</span>
                             </label>
                         </div>
-                        <input type="text" placeholder="Add website to block..." class="custom-input blacklist-custom">
+
+                        <div class="websites-section">
+                            <h4>Also block these websites:</h4>
+                            <div class="app-list blacklist-mode">
+                                <label>
+                                    <input type="checkbox" checked class="social-website">
+                                    <span>instagram.com</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" checked class="social-website">
+                                    <span>tiktok.com</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" checked class="social-website">
+                                    <span>facebook.com</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" checked class="social-website">
+                                    <span>twitter.com</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" checked class="social-website">
+                                    <span>youtube.com</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" checked class="social-website">
+                                    <span>reddit.com</span>
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -493,7 +503,7 @@
                 <p>We install supervised profiles on your iPhone using Apple's Mobile Device Management (MDM) system. This is the same technology used by schools and enterprises to manage devices.</p>
                 <div class="documentation-link">
                     <a href="https://support.apple.com/guide/deployment/intro-to-mdm-dep1c27dfe6d/web" target="_blank">
-                        📄 Apple MDM Documentation →
+                        Apple MDM Documentation →
                     </a>
                 </div>
                 <p>The supervised profile permanently restricts app installation and website access based on your selections. Once configured, these restrictions cannot be removed without our supervision certificate.</p>
@@ -510,7 +520,7 @@
                 </ul>
                 <div class="documentation-link">
                     <a href="https://support.apple.com/guide/deployment/restrictions-for-supervised-devices-dep3c6a62a2/web" target="_blank">
-                        🔒 Apple Privacy & MDM Restrictions →
+                        Apple Privacy & MDM Restrictions →
                     </a>
                 </div>
                 <p>The supervision profile ONLY controls which apps can be installed and which websites can be accessed. Nothing more.</p>
@@ -554,7 +564,7 @@
             <div class="modal-body">
                 <div class="config-summary">
                     <div class="summary-section">
-                        <h3>📱 Device</h3>
+                        <h3>Device</h3>
                         <p class="summary-device">iPhone 16e - 128GB</p>
                         <p class="summary-price">$799.00</p>
                     </div>
@@ -565,12 +575,12 @@
                     </div>
 
                     <div class="summary-section" id="allowed-section">
-                        <h3>✅ Allowed Apps</h3>
+                        <h3>Allowed Apps</h3>
                         <div id="allowed-list" class="app-summary-list"></div>
                     </div>
 
                     <div class="summary-section" id="blocked-section">
-                        <h3>🚫 Blocked Apps & Sites</h3>
+                        <h3>Blocked Apps & Sites</h3>
                         <div id="blocked-list" class="app-summary-list"></div>
                     </div>
 
@@ -587,6 +597,7 @@
         </div>
     </div>
 
+    <script src="app-search.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

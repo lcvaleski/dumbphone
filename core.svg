@@ -1,0 +1,25 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Refined, contrasting palette -->
+    <radialGradient id="outer" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#f4e4ec"></stop>
+      <stop offset="100%" stop-color="#c0a3e5"></stop>
+    </radialGradient>
+    <radialGradient id="middle" cx="45%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#dcd6f7"></stop>
+      <stop offset="100%" stop-color="#9fa8da"></stop>
+    </radialGradient>
+    <radialGradient id="core" cx="50%" cy="45%" r="45%">
+      <stop offset="0%" stop-color="#fff2cc"></stop>
+      <stop offset="60%" stop-color="#ffd166"></stop>
+      <stop offset="100%" stop-color="#f4a261"></stop>
+    </radialGradient>
+  </defs>
+
+  <!-- Outer layer -->
+  <circle cx="100" cy="100" r="90" fill="url(#outer)"></circle>
+  <!-- Middle layer -->
+  <circle cx="100" cy="100" r="60" fill="url(#middle)"></circle>
+  <!-- Bold, warm core -->
+  <circle cx="100" cy="100" r="30" fill="url(#core)"></circle>
+</svg>
