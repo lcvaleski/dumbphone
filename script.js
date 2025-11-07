@@ -56,31 +56,10 @@ setInterval(() => {
 // Shopify Integration
 const SHOPIFY_STORE_URL = 'coventry-labs-llc.myshopify.com'; // Your Shopify store
 
-// Variant IDs for each iPhone model and storage configuration
+// Variant ID for iPhone 16e 128GB
 const VARIANT_IDS = {
-    'iphone-17-pro-max': {
-        '256': '47492615405822', // Update with actual variant ID
-        '512': '47492615405823', // Update with actual variant ID
-        '1024': '47492615405824', // Update with actual variant ID
-        '2048': '47492615405825'  // Update with actual variant ID
-    },
-    'iphone-17-pro': {
-        '256': '47492615405826', // Update with actual variant ID
-        '512': '47492615405827', // Update with actual variant ID
-        '1024': '47492615405828' // Update with actual variant ID
-    },
-    'iphone-17': {
-        '256': '47492615405829', // Update with actual variant ID
-        '512': '47492615405830'  // Update with actual variant ID
-    },
-    'iphone-air': {
-        '256': '47492615405831', // Update with actual variant ID
-        '512': '47492615405832', // Update with actual variant ID
-        '1024': '47492615405833' // Update with actual variant ID
-    },
     'iphone-16e': {
-        '128': '47492615405822', // Current variant ID
-        '256': '47492615405834'  // Update with actual variant ID
+        '128': '47492615405822' // Only variant available
     }
 };
 
@@ -265,89 +244,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Model card selection
-    const modelCards = document.querySelectorAll('.model-card');
-    const storageOptions = document.querySelectorAll('.storage-option');
-
-    // Handle model card clicks
-    modelCards.forEach(card => {
-        card.addEventListener('click', (e) => {
-            // Don't trigger on storage option clicks
-            if (e.target.closest('.storage-option')) return;
-
-            // Remove active from all cards
-            modelCards.forEach(c => c.classList.remove('active'));
-            // Add active to clicked card
-            card.classList.add('active');
-
-            // Select first storage option for this model
-            const firstStorage = card.querySelector('.storage-option');
-            if (firstStorage) {
-                firstStorage.click();
-            }
-        });
-    });
-
-    // Handle storage option clicks
-    storageOptions.forEach(option => {
-        option.addEventListener('click', (e) => {
-            e.stopPropagation();
-
-            // Find parent model card
-            const modelCard = option.closest('.model-card');
-
-            // Make this model card active
-            modelCards.forEach(c => c.classList.remove('active'));
-            modelCard.classList.add('active');
-
-            // Remove active from other storage options in this card
-            modelCard.querySelectorAll('.storage-option').forEach(opt => {
-                opt.classList.remove('active');
-            });
-
-            // Add active to clicked option
-            option.classList.add('active');
-
-            // Check the radio button
-            const radio = option.querySelector('input[type="radio"]');
-            if (radio) {
-                radio.checked = true;
-            }
-        });
-    });
+    // No model selection needed - only one model available
 });
 
-// Get selected iPhone model
+// Get selected iPhone model (simplified - only one option)
 function getSelectedModel() {
-    const activeCard = document.querySelector('.model-card.active');
-    if (!activeCard) return {
+    return {
         display: 'iPhone 16e 128GB - $499',
         model: 'iphone-16e',
         storage: '128',
         variantId: VARIANT_IDS['iphone-16e']['128']
-    };
-
-    const modelName = activeCard.querySelector('h4').textContent;
-    const modelKey = activeCard.getAttribute('data-model');
-    const activeStorage = activeCard.querySelector('.storage-option.active');
-
-    if (!activeStorage) {
-        return {
-            display: `${modelName} 128GB - $499`,
-            model: modelKey,
-            storage: '128',
-            variantId: VARIANT_IDS[modelKey] ? VARIANT_IDS[modelKey]['128'] : VARIANT_IDS['iphone-16e']['128']
-        };
-    }
-
-    const storageText = activeStorage.querySelector('span').textContent;
-    const storageValue = activeStorage.querySelector('input[type="radio"]').value;
-
-    return {
-        display: `${modelName} ${storageText}`,
-        model: modelKey,
-        storage: storageValue,
-        variantId: VARIANT_IDS[modelKey] ? VARIANT_IDS[modelKey][storageValue] : VARIANT_IDS['iphone-16e']['128']
     };
 }
 
