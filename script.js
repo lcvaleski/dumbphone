@@ -281,11 +281,11 @@ function getSelectedModel() {
     if (!selectedCard) {
         // Default to iPhone 16e if nothing selected
         return {
-            display: 'iPhone 16e 128GB - $499',
+            display: 'iPhone 16e 128GB - $949.99',
             model: 'iphone-16e',
             storage: '128',
             variantId: VARIANT_IDS['iphone-16e']['128'],
-            price: 499
+            price: 949.99
         };
     }
 
@@ -302,11 +302,11 @@ function getSelectedModel() {
         };
     } else {
         return {
-            display: 'iPhone 16e 128GB - $499',
+            display: 'iPhone 16e 128GB - $949.99',
             model: 'iphone-16e',
             storage: '128',
             variantId: VARIANT_IDS['iphone-16e']['128'],
-            price: 499
+            price: 949.99
         };
     }
 }
@@ -362,7 +362,7 @@ function showConfirmationModal() {
     if (summaryDevice && summaryPrice) {
         const [modelPart, pricePart] = modelInfo.display.split(' - ');
         summaryDevice.textContent = modelPart;
-        summaryPrice.textContent = pricePart || '$499';
+        summaryPrice.textContent = pricePart || '$949.99';
     }
 
     // Update mode section
