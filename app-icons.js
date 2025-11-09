@@ -1,46 +1,46 @@
 // App Icons for Essential and Social packages
 const appIconLoader = {
-    // Map of app names to their iTunes app IDs (for fetching icons)
-    essentialAppIds: {
-        'Phone': '1146562108', // Phone app
-        'Messages': '1146560473', // Messages app
-        'Maps': '915056765', // Apple Maps
-        'Weather': '1069513131', // Weather
-        'Calendar': '1108185179', // Calendar
-        'Clock': '1584215688', // Clock app
-        'Notes': '1110145109', // Notes
-        'Reminders': '1108187841', // Reminders
-        'Calculator': '1069511488', // Calculator
-        'Camera': 'builtin-camera', // Built-in iOS app (no App Store listing)
-        'Photos': 'builtin-photos', // Built-in iOS app (no App Store listing)
-        'Settings': 'builtin-settings' // Built-in iOS app (no App Store listing)
+    // Map of app names to their local icon files
+    essentialAppIcons: {
+        'Phone': 'icons/phone.png',
+        'Messages': 'icons/messages.png',
+        'Maps': 'icons/maps.png',
+        'Weather': 'icons/weather.png',
+        'Calendar': 'icons/calendar.png',
+        'Clock': 'icons/clock.png',
+        'Notes': 'icons/notes.png',
+        'Reminders': 'icons/reminders.png',
+        'Calculator': 'icons/calculator.png',
+        'Camera': 'builtin-camera',
+        'Photos': 'builtin-photos',
+        'Settings': 'builtin-settings'
     },
 
-    socialAppIds: {
-        'Instagram': '389801252',
-        'TikTok': '835599320',
-        'Snapchat': '447188370',
-        'Facebook': '284882215',
-        'Twitter/X': '333903271',
-        'Discord': '985746746',
-        'Reddit': '1064216828',
-        'Twitch': '460177396',
-        'BeReal': '1459645446',
-        'Pinterest': '429047995',
-        'Tumblr': '305343404',
-        'LinkedIn': '288429040'
+    socialAppIcons: {
+        'Instagram': 'icons/instagram.png',
+        'TikTok': 'icons/tiktok.png',
+        'Snapchat': 'icons/snapchat.png',
+        'Facebook': 'icons/facebook.png',
+        'Twitter/X': 'icons/twitter.png',
+        'Discord': 'icons/discord.png',
+        'Reddit': 'icons/reddit.png',
+        'Twitch': 'icons/twitch.png',
+        'BeReal': 'icons/bereal.png',
+        'Pinterest': 'icons/pinterest.png',
+        'Tumblr': 'icons/tumblr.png',
+        'LinkedIn': 'icons/linkedin.png'
     },
 
     iconCache: new Map(),
 
     async loadAppIcons() {
         // Load essential app icons
-        await this.loadIconsForSection('essential', this.essentialAppIds);
+        this.loadIconsForSection('essential', this.essentialAppIcons);
         // Load social app icons
-        await this.loadIconsForSection('social', this.socialAppIds);
+        this.loadIconsForSection('social', this.socialAppIcons);
     },
 
-    async loadIconsForSection(section, appIds) {
+    loadIconsForSection(section, appIcons) {
         const container = section === 'essential'
             ? document.querySelector('.essential-apps-preview .preview-pills')
             : document.querySelector('.social-apps-preview .preview-pills');
@@ -51,44 +51,24 @@ const appIconLoader = {
         container.innerHTML = '';
 
         // Create icon pills
-        const iconPromises = Object.entries(appIds).slice(0, 8).map(async ([appName, appId]) => {
-            let iconUrl = this.iconCache.get(appId);
-
-            // Skip API call for built-in apps
-            if (!iconUrl && !appId.startsWith('builtin-')) {
-                try {
-                    const response = await fetch(`https://itunes.apple.com/lookup?id=${appId}`);
-                    const data = await response.json();
-                    if (data.results && data.results[0]) {
-                        iconUrl = data.results[0].artworkUrl100;
-                        this.iconCache.set(appId, iconUrl);
-                    }
-                } catch (error) {
-                    console.log(`Could not fetch icon for ${appName}`);
-                }
-            }
-
-            // Use emoji icons for built-in apps
+        const iconHtmlArray = Object.entries(appIcons).slice(0, 8).map(([appName, iconPath]) => {
             let iconContent;
-            if (iconUrl) {
-                iconContent = `<img src="${iconUrl}" alt="${appName}" class="app-icon-img">`;
-            } else if (appId.startsWith('builtin-')) {
+
+            if (iconPath.startsWith('builtin-')) {
                 // Use emojis for built-in apps
                 const emojiMap = {
-                    'builtin-phone': '📱',
-                    'builtin-messages': '💬',
-                    'builtin-clock': '⏰',
                     'builtin-camera': '📷',
                     'builtin-photos': '🖼️',
                     'builtin-settings': '⚙️'
                 };
-                const emoji = emojiMap[appId] || '📱';
+                const emoji = emojiMap[iconPath] || '📱';
                 iconContent = `<span class="app-icon-emoji">${emoji}</span>`;
             } else {
-                iconContent = `<span class="app-icon-text">${appName}</span>`;
+                // Use local icon file
+                iconContent = `<img src="${iconPath}" alt="${appName}" class="app-icon-img" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\\'app-icon-text\\'>${appName}</span>'">`;
             }
 
-            // Create pill with icon or fallback
+            // Create pill with icon
             return `
                 <div class="app-icon-pill ${section === 'social' ? 'blocked' : ''}" title="${appName}">
                     ${iconContent}
@@ -96,12 +76,11 @@ const appIconLoader = {
             `;
         });
 
-        // Wait for all icons to load
-        const iconHtml = await Promise.all(iconPromises);
-        container.innerHTML = iconHtml.join('');
+        // Add all icons
+        container.innerHTML = iconHtmlArray.join('');
 
         // Add "show more" indicator
-        const remainingCount = Object.keys(appIds).length - 8;
+        const remainingCount = Object.keys(appIcons).length - 8;
         if (remainingCount > 0) {
             container.innerHTML += `
                 <div class="app-pill show-more">
