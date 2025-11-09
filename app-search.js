@@ -26,9 +26,7 @@ class AppStoreSearch {
                 <div class="search-header">
                     <div class="search-title-row">
                         <h3>Add More Apps</h3>
-                        <span class="search-badge">Optional</span>
                     </div>
-                    <p class="search-description">Search the App Store to add specific apps to your ${mode === 'whitelist' ? 'allowed' : 'blocked'} list</p>
                 </div>
                 <div class="search-box">
                     <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
