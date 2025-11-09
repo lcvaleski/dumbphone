@@ -127,22 +127,6 @@ function collectConfiguration() {
 
 // Handle essential apps package
 document.addEventListener('DOMContentLoaded', () => {
-    // Rotate text animation
-    const textOptions = document.querySelectorAll('.text-option');
-    let currentIndex = 0;
-
-    if (textOptions.length > 0) {
-        setInterval(() => {
-            // Remove active from current
-            textOptions[currentIndex].classList.remove('active');
-
-            // Move to next index
-            currentIndex = (currentIndex + 1) % textOptions.length;
-
-            // Add active to new current
-            textOptions[currentIndex].classList.add('active');
-        }, 3000); // Change every 3 seconds
-    }
     // Essential apps expand/collapse
     const expandToggle = document.querySelector('.expand-toggle');
     const expandedSection = document.querySelector('.essential-apps-expanded');
