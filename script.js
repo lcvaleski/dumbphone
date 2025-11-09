@@ -35,23 +35,6 @@ document.querySelectorAll('.custom-input').forEach(customInput => {
     });
 });
 
-// Animate phone mockup labels and images in sync
-setInterval(() => {
-    const beforeLabel = document.querySelector('.before-label');
-    const afterLabel = document.querySelector('.after-label');
-    const beforeImage = document.querySelector('.phone-image.before');
-    const afterImage = document.querySelector('.phone-image.after');
-
-    if (beforeLabel && afterLabel) {
-        beforeLabel.classList.toggle('active');
-        afterLabel.classList.toggle('active');
-    }
-
-    if (beforeImage && afterImage) {
-        beforeImage.classList.toggle('active');
-        afterImage.classList.toggle('active');
-    }
-}, 3000);
 
 // Shopify Integration
 const SHOPIFY_STORE_URL = 'coventry-labs-llc.myshopify.com'; // Your Shopify store
@@ -60,6 +43,9 @@ const SHOPIFY_STORE_URL = 'coventry-labs-llc.myshopify.com'; // Your Shopify sto
 const VARIANT_IDS = {
     'iphone-16e': {
         '128': '47492615405822' // Only variant available
+    },
+    'ship-in': {
+        'service': '47492615405823' // Ship-in service variant (you'll need to create this in Shopify)
     }
 };
 
@@ -141,6 +127,22 @@ function collectConfiguration() {
 
 // Handle essential apps package
 document.addEventListener('DOMContentLoaded', () => {
+    // Rotate text animation
+    const textOptions = document.querySelectorAll('.text-option');
+    let currentIndex = 0;
+
+    if (textOptions.length > 0) {
+        setInterval(() => {
+            // Remove active from current
+            textOptions[currentIndex].classList.remove('active');
+
+            // Move to next index
+            currentIndex = (currentIndex + 1) % textOptions.length;
+
+            // Add active to new current
+            textOptions[currentIndex].classList.add('active');
+        }, 3000); // Change every 3 seconds
+    }
     // Essential apps expand/collapse
     const expandToggle = document.querySelector('.expand-toggle');
     const expandedSection = document.querySelector('.essential-apps-expanded');
@@ -244,17 +246,69 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // No model selection needed - only one model available
+    // Handle device card selection
+    const modelCards = document.querySelectorAll('.model-card');
+    const shipInInfo = document.querySelector('.ship-in-info');
+
+    modelCards.forEach(card => {
+        card.addEventListener('click', () => {
+            // Remove active from all cards
+            modelCards.forEach(c => c.classList.remove('active'));
+            // Add active to clicked card
+            card.classList.add('active');
+
+            // Show/hide ship-in info
+            if (shipInInfo) {
+                if (card.getAttribute('data-model') === 'ship-in') {
+                    shipInInfo.style.display = 'block';
+                } else {
+                    shipInInfo.style.display = 'none';
+                }
+            }
+        });
+    });
+
+    // Set initial active state (default to iPhone 16e)
+    const defaultCard = document.querySelector('.model-card[data-model="iphone-16e"]');
+    if (defaultCard) {
+        defaultCard.classList.add('active');
+    }
 });
 
-// Get selected iPhone model (simplified - only one option)
+// Get selected iPhone model
 function getSelectedModel() {
-    return {
-        display: 'iPhone 16e 128GB - $499',
-        model: 'iphone-16e',
-        storage: '128',
-        variantId: VARIANT_IDS['iphone-16e']['128']
-    };
+    const selectedCard = document.querySelector('.model-card.active');
+    if (!selectedCard) {
+        // Default to iPhone 16e if nothing selected
+        return {
+            display: 'iPhone 16e 128GB - $499',
+            model: 'iphone-16e',
+            storage: '128',
+            variantId: VARIANT_IDS['iphone-16e']['128'],
+            price: 499
+        };
+    }
+
+    const model = selectedCard.getAttribute('data-model');
+    const price = parseInt(selectedCard.getAttribute('data-price'));
+
+    if (model === 'ship-in') {
+        return {
+            display: 'Ship-In Service - $199',
+            model: 'ship-in',
+            storage: 'service',
+            variantId: VARIANT_IDS['ship-in']['service'],
+            price: 199
+        };
+    } else {
+        return {
+            display: 'iPhone 16e 128GB - $499',
+            model: 'iphone-16e',
+            storage: '128',
+            variantId: VARIANT_IDS['iphone-16e']['128'],
+            price: 499
+        };
+    }
 }
 
 // Create order notes
@@ -263,7 +317,12 @@ function createOrderNotes() {
     const modelInfo = getSelectedModel();
 
     let notes = '=== COREPHONE CONFIGURATION ===\n\n';
-    notes += `IPHONE MODEL: ${modelInfo.display}\n\n`;
+    notes += `DEVICE OPTION: ${modelInfo.display}\n`;
+    if (modelInfo.model === 'ship-in') {
+        notes += `SERVICE TYPE: Configuration Service Only\n`;
+        notes += `CUSTOMER WILL SHIP: Their existing iPhone\n`;
+    }
+    notes += `\n`;
     notes += `MODE: ${config.mode.toUpperCase()}\n\n`;
 
     if (config.mode === 'whitelist') {
