@@ -304,7 +304,7 @@
 
                             <div class="websites-section">
                                 <h5>Also block these websites:</h5>
-                                <div class="app-list blacklist-mode">
+                                <div class="app-list blacklist-mode" id="blocked-websites-list">
                                     <label>
                                         <input type="checkbox" checked class="social-website">
                                         <span>instagram.com</span>
@@ -329,6 +329,13 @@
                                         <input type="checkbox" checked class="social-website">
                                         <span>reddit.com</span>
                                     </label>
+                                </div>
+                                <div class="add-website-section">
+                                    <input type="text"
+                                           id="custom-website-input"
+                                           class="custom-website-input"
+                                           placeholder="Enter website to block (e.g., example.com)">
+                                    <button type="button" id="add-website-btn" class="add-website-btn">+ Add Website</button>
                                 </div>
                             </div>
                         </div>

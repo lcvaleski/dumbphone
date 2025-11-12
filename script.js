@@ -176,6 +176,56 @@ document.querySelectorAll('.continue-btn').forEach(btn => {
     });
 });
 
+// Add custom website blocking functionality
+const customWebsiteInput = document.getElementById('custom-website-input');
+const addWebsiteBtn = document.getElementById('add-website-btn');
+const blockedWebsitesList = document.getElementById('blocked-websites-list');
+
+function addCustomWebsite() {
+    const website = customWebsiteInput.value.trim();
+
+    if (website) {
+        // Clean up the URL - remove http/https and www if present
+        let cleanedWebsite = website
+            .replace(/^https?:\/\//, '')
+            .replace(/^www\./, '')
+            .replace(/\/$/, '');
+
+        // Check if website already exists
+        const existingWebsites = Array.from(document.querySelectorAll('#blocked-websites-list span')).map(span => span.textContent);
+        if (existingWebsites.includes(cleanedWebsite)) {
+            customWebsiteInput.value = '';
+            return;
+        }
+
+        // Create new label element
+        const newLabel = document.createElement('label');
+        newLabel.innerHTML = `
+            <input type="checkbox" checked class="social-website custom-added-website">
+            <span>${cleanedWebsite}</span>
+        `;
+
+        // Add to the list
+        blockedWebsitesList.appendChild(newLabel);
+
+        // Clear input
+        customWebsiteInput.value = '';
+    }
+}
+
+if (addWebsiteBtn) {
+    addWebsiteBtn.addEventListener('click', addCustomWebsite);
+}
+
+if (customWebsiteInput) {
+    customWebsiteInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            addCustomWebsite();
+        }
+    });
+}
+
 // Handle custom input for both whitelist and blacklist
 document.querySelectorAll('.custom-input').forEach(customInput => {
     customInput.addEventListener('keypress', (e) => {
