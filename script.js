@@ -288,110 +288,15 @@ function collectConfiguration() {
     }
 }
 
-// Handle essential apps package
+// Package functionality removed - apps are now shown individually
 document.addEventListener('DOMContentLoaded', () => {
-    // Essential apps expand/collapse
-    const expandToggle = document.querySelector('.expand-toggle');
-    const expandedSection = document.querySelector('.essential-apps-expanded');
-    const previewSection = document.querySelector('.essential-apps-preview');
-    const showMorePill = document.querySelector('.app-pill.show-more');
-
-    if (expandToggle && expandedSection) {
-        expandToggle.addEventListener('click', () => {
-            const isExpanded = expandedSection.style.display !== 'none';
-            expandedSection.style.display = isExpanded ? 'none' : 'block';
-            expandToggle.classList.toggle('expanded');
-            previewSection.style.display = isExpanded ? 'block' : 'none';
-        });
-    }
-
-    if (showMorePill && expandedSection) {
-        showMorePill.addEventListener('click', () => {
-            expandedSection.style.display = 'block';
-            expandToggle.classList.add('expanded');
-            previewSection.style.display = 'none';
-        });
-    }
-
-    // Essential package checkbox
-    const essentialPackage = document.getElementById('essential-package');
+    // Apps are displayed directly without package grouping
     const essentialApps = document.querySelectorAll('.essential-app');
-
-    if (essentialPackage && essentialApps.length > 0) {
-        essentialPackage.addEventListener('change', () => {
-            essentialApps.forEach(checkbox => {
-                checkbox.checked = essentialPackage.checked;
-            });
-        });
-
-        // Update package checkbox if individual apps are changed
-        essentialApps.forEach(checkbox => {
-            checkbox.addEventListener('change', () => {
-                const allChecked = Array.from(essentialApps).every(cb => cb.checked);
-                const someChecked = Array.from(essentialApps).some(cb => cb.checked);
-
-                essentialPackage.checked = allChecked;
-                essentialPackage.indeterminate = someChecked && !allChecked;
-            });
-        });
-    }
-
-    // Social media package checkbox
-    const socialPackage = document.getElementById('social-package');
     const socialApps = document.querySelectorAll('.social-app');
     const socialWebsites = document.querySelectorAll('.social-website');
 
-    if (socialPackage && socialApps.length > 0) {
-        socialPackage.addEventListener('change', () => {
-            socialApps.forEach(checkbox => {
-                checkbox.checked = socialPackage.checked;
-            });
-            socialWebsites.forEach(checkbox => {
-                checkbox.checked = socialPackage.checked;
-            });
-        });
-
-        // Update package checkbox if individual apps are changed
-        const updateSocialPackage = () => {
-            const allAppsChecked = Array.from(socialApps).every(cb => cb.checked);
-            const allWebsitesChecked = Array.from(socialWebsites).every(cb => cb.checked);
-            const someChecked = Array.from([...socialApps, ...socialWebsites]).some(cb => cb.checked);
-
-            socialPackage.checked = allAppsChecked && allWebsitesChecked;
-            socialPackage.indeterminate = someChecked && !(allAppsChecked && allWebsitesChecked);
-        };
-
-        socialApps.forEach(checkbox => {
-            checkbox.addEventListener('change', updateSocialPackage);
-        });
-
-        socialWebsites.forEach(checkbox => {
-            checkbox.addEventListener('change', updateSocialPackage);
-        });
-    }
-
-    // Social media expand/collapse
-    const expandToggleSocial = document.querySelector('.expand-toggle-social');
-    const expandedSectionSocial = document.querySelector('.social-apps-expanded');
-    const previewSectionSocial = document.querySelector('.social-apps-preview');
-    const showMorePillSocial = document.querySelector('.social-apps-preview .show-more');
-
-    if (expandToggleSocial && expandedSectionSocial) {
-        expandToggleSocial.addEventListener('click', () => {
-            const isExpanded = expandedSectionSocial.style.display !== 'none';
-            expandedSectionSocial.style.display = isExpanded ? 'none' : 'block';
-            expandToggleSocial.classList.toggle('expanded');
-            previewSectionSocial.style.display = isExpanded ? 'block' : 'none';
-        });
-    }
-
-    if (showMorePillSocial && expandedSectionSocial) {
-        showMorePillSocial.addEventListener('click', () => {
-            expandedSectionSocial.style.display = 'block';
-            expandToggleSocial.classList.add('expanded');
-            previewSectionSocial.style.display = 'none';
-        });
-    }
+    // All package-related functionality has been removed
+    // Apps are now shown individually without grouping or expand/collapse
 
     // Handle device card selection
     const modelCards = document.querySelectorAll('.model-card');
