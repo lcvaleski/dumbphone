@@ -572,8 +572,8 @@ header {
     background: linear-gradient(135deg, #ffffff 0%, #f8fafb 100%);
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 20px;
-    padding: 40px;
-    margin-bottom: 48px;
+    padding: 48px;
+    margin-bottom: 56px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
     position: relative;
     overflow: hidden;
@@ -831,15 +831,15 @@ header {
 }
 
 .websites-section {
-    margin-top: 40px;
-    padding-top: 8px;
+    margin-top: 48px;
+    padding-top: 16px;
 }
 
 .websites-section h4 {
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 600;
     color: var(--text-primary);
-    margin-bottom: 24px;
+    margin-bottom: 28px;
     padding-left: 4px;
 }
 
@@ -847,12 +847,13 @@ header {
 .social-apps-expanded .app-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0;
-    background: white;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 16px;
-    overflow: hidden;
-    margin-bottom: 24px;
+    gap: 12px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+    margin-bottom: 32px;
+    padding: 8px 0;
 }
 
 .essential-apps-expanded label,
@@ -860,44 +861,46 @@ header {
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 20px 24px;
+    padding: 24px 28px;
     background: white;
-    border-right: 1px solid rgba(0, 0, 0, 0.06);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
     cursor: pointer;
     transition: all 0.15s ease;
     font-weight: 500;
     font-size: 15px;
     position: relative;
-    min-height: 70px;
+    min-height: 80px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
-.essential-apps-expanded label:nth-child(2n),
-.social-apps-expanded label:nth-child(2n) {
-    border-right: none;
-}
-
-.essential-apps-expanded label:nth-last-child(-n+2),
-.social-apps-expanded label:nth-last-child(-n+2) {
-    border-bottom: none;
-}
 
 .essential-apps-expanded label:hover {
     background: #F8FBFF;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: rgba(33, 150, 243, 0.3);
     z-index: 1;
 }
 
 .social-apps-expanded label:hover {
     background: #FFF5F5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: rgba(244, 67, 54, 0.3);
     z-index: 1;
 }
 
 .essential-apps-expanded label:has(input:checked) {
     background: #F0F9FF;
+    border-color: rgba(33, 150, 243, 0.4);
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.08);
 }
 
 .social-apps-expanded label:has(input:checked) {
     background: #ffebee;
+    border-color: rgba(244, 67, 54, 0.4);
+    box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.08);
 }
 
 .essential-apps-expanded input[type="checkbox"],
@@ -3142,6 +3145,42 @@ header {
 
     .flow-header h3 {
         font-size: 18px;
+    }
+
+    /* App selection mobile */
+    .essential-apps-section,
+    .social-media-section {
+        padding: 32px 20px;
+        margin-bottom: 32px;
+    }
+
+    .essential-apps-expanded .app-list,
+    .social-apps-expanded .app-list {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 4px 0;
+    }
+
+    .essential-apps-expanded label,
+    .social-apps-expanded label {
+        padding: 18px 20px;
+        min-height: 64px;
+        font-size: 16px;
+    }
+
+    .websites-section {
+        margin-top: 32px;
+        padding-top: 8px;
+    }
+
+    .websites-section h4 {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .app-icon {
+        width: 36px;
+        height: 36px;
     }
 
     .continue-btn {
