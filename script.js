@@ -274,11 +274,14 @@ function collectConfiguration() {
 
         // Get essential apps if checked
         document.querySelectorAll('.essential-app:checked').forEach(checkbox => {
-            const appName = checkbox.nextElementSibling.textContent.trim();
+            const appItem = checkbox.nextElementSibling;
+            const appName = appItem ? appItem.querySelector('span')?.textContent.trim() : '';
             const bundleId = checkbox.getAttribute('data-bundle-id');
-            allowedApps.push(appName);
-            if (bundleId) {
-                bundleIds.push(`${appName}: ${bundleId}`);
+            if (appName) {
+                allowedApps.push(appName);
+                if (bundleId) {
+                    bundleIds.push(`${appName}: ${bundleId}`);
+                }
             }
         });
 
@@ -306,17 +309,23 @@ function collectConfiguration() {
 
         // Get social media apps if checked
         document.querySelectorAll('.social-app:checked').forEach(checkbox => {
-            const appName = checkbox.nextElementSibling.textContent.trim();
+            const appItem = checkbox.nextElementSibling;
+            const appName = appItem ? appItem.querySelector('span')?.textContent.trim() : '';
             const bundleId = checkbox.getAttribute('data-bundle-id');
-            blockedApps.push(appName);
-            if (bundleId) {
-                bundleIds.push(`${appName}: ${bundleId}`);
+            if (appName) {
+                blockedApps.push(appName);
+                if (bundleId) {
+                    bundleIds.push(`${appName}: ${bundleId}`);
+                }
             }
         });
 
         // Get blocked websites if checked
         document.querySelectorAll('.social-website:checked').forEach(checkbox => {
-            blockedWebsites.push(checkbox.nextElementSibling.textContent.trim());
+            const websiteName = checkbox.nextElementSibling?.textContent.trim();
+            if (websiteName) {
+                blockedWebsites.push(websiteName);
+            }
         });
 
         // Get apps from App Store search if available
@@ -438,6 +447,10 @@ function createOrderNotes() {
     const config = collectConfiguration();
     const modelInfo = getSelectedModel();
 
+    // Debug logging to verify configuration
+    console.log('Configuration collected:', config);
+    console.log('Model info:', modelInfo);
+
     let notes = '=== COREPHONE CONFIGURATION ===\n\n';
     notes += `DEVICE OPTION: ${modelInfo.display}\n`;
     if (modelInfo.model === 'ship-in') {
@@ -445,7 +458,7 @@ function createOrderNotes() {
         notes += `CUSTOMER WILL SHIP: Their existing iPhone\n`;
     }
     notes += `\n`;
-    notes += `MODE: ${config.mode.toUpperCase()}\n\n`;
+    notes += `MODE: ${config.mode === 'whitelist' ? 'ALLOW LIST' : 'BLOCK LIST'}\n\n`;
 
     if (config.mode === 'whitelist') {
         notes += `ALLOWED APPS ONLY (${config.allowedApps.length}):\n`;
@@ -598,8 +611,11 @@ document.addEventListener('click', (e) => {
         const orderNotes = createOrderNotes();
         const config = collectConfiguration();
         const modelInfo = getSelectedModel();
-        console.log('Order Notes:', orderNotes);
-        console.log('Selected Model:', modelInfo);
+        console.log('=== ORDER SUBMISSION DEBUG ===');
+        console.log('Configuration:', config);
+        console.log('Model Info:', modelInfo);
+        console.log('Order Notes:\n', orderNotes);
+        console.log('=== END DEBUG ===');
 
         // Create a form and submit it to Shopify in a new tab
         const form = document.createElement('form');
