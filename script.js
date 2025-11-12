@@ -552,7 +552,13 @@ document.addEventListener('click', function(e) {
             });
         } else if (button.classList.contains('config-button') || button.classList.contains('large')) {
             // Show confirmation modal for checkout buttons
-            showConfirmationModal();
+            try {
+                showConfirmationModal();
+            } catch (error) {
+                console.error('Error showing modal:', error);
+                // Fallback: reload and try again
+                location.reload();
+            }
         }
     }
 });
@@ -562,102 +568,145 @@ document.querySelector('.modal-close').addEventListener('click', () => {
     document.getElementById('confirmation-modal').classList.remove('show');
 });
 
-// Modal edit button
-document.getElementById('modal-edit').addEventListener('click', () => {
-    document.getElementById('confirmation-modal').classList.remove('show');
+// Modal edit button - using event delegation to handle dynamically created content
+document.addEventListener('click', (e) => {
+    if (e.target && e.target.id === 'modal-edit') {
+        const modal = document.getElementById('confirmation-modal');
+        modal.classList.remove('show');
+
+        // Check if we need to restore the modal (after checkout success)
+        const modalBody = document.querySelector('.modal-body');
+        if (modalBody && modalBody.querySelector('svg')) {
+            // Modal was replaced with success message, reload to restore
+            location.reload();
+            return;
+        }
+
+        // Scroll to configuration section for editing
+        const appConfig = document.querySelector('.app-config');
+        if (appConfig) {
+            setTimeout(() => {
+                appConfig.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 300);
+        }
+    }
 });
 
-// Modal checkout button
-document.getElementById('modal-checkout').addEventListener('click', () => {
-    const orderNotes = createOrderNotes();
-    const config = collectConfiguration();
-    const modelInfo = getSelectedModel();
-    console.log('Order Notes:', orderNotes);
-    console.log('Selected Model:', modelInfo);
+// Modal checkout button - using event delegation
+document.addEventListener('click', (e) => {
+    if (e.target && e.target.id === 'modal-checkout') {
+        const orderNotes = createOrderNotes();
+        const config = collectConfiguration();
+        const modelInfo = getSelectedModel();
+        console.log('Order Notes:', orderNotes);
+        console.log('Selected Model:', modelInfo);
 
-    // Create a form and submit it to Shopify in a new tab
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = `https://${SHOPIFY_STORE_URL}/cart/add`;
-    form.target = '_blank'; // Open in new tab
+        // Create a form and submit it to Shopify in a new tab
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = `https://${SHOPIFY_STORE_URL}/cart/add`;
+        form.target = '_blank'; // Open in new tab
 
-    // Add variant ID based on selected model and storage
-    const idInput = document.createElement('input');
-    idInput.type = 'hidden';
-    idInput.name = 'id';
-    idInput.value = modelInfo.variantId;
-    form.appendChild(idInput);
+        // Add variant ID based on selected model and storage
+        const idInput = document.createElement('input');
+        idInput.type = 'hidden';
+        idInput.name = 'id';
+        idInput.value = modelInfo.variantId;
+        form.appendChild(idInput);
 
-    // Add quantity
-    const qtyInput = document.createElement('input');
-    qtyInput.type = 'hidden';
-    qtyInput.name = 'quantity';
-    qtyInput.value = '1';
-    form.appendChild(qtyInput);
+        // Add quantity
+        const qtyInput = document.createElement('input');
+        qtyInput.type = 'hidden';
+        qtyInput.name = 'quantity';
+        qtyInput.value = '1';
+        form.appendChild(qtyInput);
 
-    // Add iPhone model as a property
-    const modelInput = document.createElement('input');
-    modelInput.type = 'hidden';
-    modelInput.name = 'properties[iPhone Model]';
-    modelInput.value = modelInfo.display;
-    form.appendChild(modelInput);
+        // Add iPhone model as a property
+        const modelInput = document.createElement('input');
+        modelInput.type = 'hidden';
+        modelInput.name = 'properties[iPhone Model]';
+        modelInput.value = modelInfo.display;
+        form.appendChild(modelInput);
 
-    // Add mode as a property
-    const modeInput = document.createElement('input');
-    modeInput.type = 'hidden';
-    modeInput.name = 'properties[Configuration Mode]';
-    modeInput.value = config.mode === 'whitelist' ? 'Allow List (Safest)' : 'Block List (Flexible)';
-    form.appendChild(modeInput);
+        // Add mode as a property
+        const modeInput = document.createElement('input');
+        modeInput.type = 'hidden';
+        modeInput.name = 'properties[Configuration Mode]';
+        modeInput.value = config.mode === 'whitelist' ? 'Allow List (Safest)' : 'Block List (Flexible)';
+        form.appendChild(modeInput);
 
-    if (config.mode === 'whitelist') {
-        // Add allowed apps for whitelist mode
-        const appsInput = document.createElement('input');
-        appsInput.type = 'hidden';
-        appsInput.name = 'properties[Allowed Apps Only]';
-        appsInput.value = config.allowedApps.slice(0, 5).join(', ') + (config.allowedApps.length > 5 ? '...' : '');
-        form.appendChild(appsInput);
-    } else {
-        // Add blocked apps and sites for blacklist mode
-        const appsInput = document.createElement('input');
-        appsInput.type = 'hidden';
-        appsInput.name = 'properties[Blocked Apps]';
-        appsInput.value = config.blockedApps.join(', ') || 'None';
-        form.appendChild(appsInput);
+        if (config.mode === 'whitelist') {
+            // Add allowed apps for whitelist mode
+            const appsInput = document.createElement('input');
+            appsInput.type = 'hidden';
+            appsInput.name = 'properties[Allowed Apps Only]';
+            appsInput.value = config.allowedApps.slice(0, 5).join(', ') + (config.allowedApps.length > 5 ? '...' : '');
+            form.appendChild(appsInput);
+        } else {
+            // Add blocked apps and sites for blacklist mode
+            const appsInput = document.createElement('input');
+            appsInput.type = 'hidden';
+            appsInput.name = 'properties[Blocked Apps]';
+            appsInput.value = config.blockedApps.join(', ') || 'None';
+            form.appendChild(appsInput);
 
-        const sitesInput = document.createElement('input');
-        sitesInput.type = 'hidden';
-        sitesInput.name = 'properties[Blocked Websites]';
-        sitesInput.value = config.blockedWebsites.join(', ') || 'None';
-        form.appendChild(sitesInput);
+            const sitesInput = document.createElement('input');
+            sitesInput.type = 'hidden';
+            sitesInput.name = 'properties[Blocked Websites]';
+            sitesInput.value = config.blockedWebsites.join(', ') || 'None';
+            form.appendChild(sitesInput);
+        }
+
+        // Add return URL to go to cart with note
+        const returnInput = document.createElement('input');
+        returnInput.type = 'hidden';
+        returnInput.name = 'return_to';
+        returnInput.value = `/cart?note=${encodeURIComponent(orderNotes)}`;
+        form.appendChild(returnInput);
+
+        // Append form to body and submit
+        document.body.appendChild(form);
+        form.submit();
+
+        // Remove form after submission
+        setTimeout(() => {
+            form.remove();
+        }, 100);
+
+        // Show success message in modal body while preserving modal structure
+        const modalBody = document.querySelector('.modal-body');
+        const modalHeader = document.querySelector('.modal-header');
+        const modalFooter = document.querySelector('.modal-footer');
+
+        // Hide header and footer for success message
+        if (modalHeader) modalHeader.style.display = 'none';
+        if (modalFooter) modalFooter.style.display = 'none';
+
+        if (modalBody) {
+            modalBody.innerHTML = `
+            <div style="text-align: center; padding: 40px;">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" style="margin-bottom: 20px;">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h2 style="margin-bottom: 10px;">Added to Cart!</h2>
+                <p style="color: #666; margin-bottom: 30px;">Your CorePhone configuration has been added to the cart. The cart opened in a new tab.</p>
+                <button class="btn btn-primary" id="continue-shopping">Continue Shopping</button>
+                <button class="btn btn-secondary" style="margin-left: 10px;" id="close-success">Close</button>
+            </div>
+        `;
+
+        // Add event listeners for the new buttons
+        document.getElementById('continue-shopping').addEventListener('click', () => {
+            location.reload();
+        });
+
+        document.getElementById('close-success').addEventListener('click', () => {
+            document.getElementById('confirmation-modal').classList.remove('show');
+            // Reload to restore modal structure
+            setTimeout(() => {
+                location.reload();
+            }, 300);
+        });
+        }
     }
-
-    // Add return URL to go to cart with note
-    const returnInput = document.createElement('input');
-    returnInput.type = 'hidden';
-    returnInput.name = 'return_to';
-    returnInput.value = `/cart?note=${encodeURIComponent(orderNotes)}`;
-    form.appendChild(returnInput);
-
-    // Append form to body and submit
-    document.body.appendChild(form);
-    form.submit();
-
-    // Remove form after submission
-    setTimeout(() => {
-        form.remove();
-    }, 100);
-
-    // Show success message in modal
-    const modalContent = document.querySelector('.modal-content');
-    modalContent.innerHTML = `
-        <div style="text-align: center; padding: 40px;">
-            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" style="margin-bottom: 20px;">
-                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <h2 style="margin-bottom: 10px;">Added to Cart!</h2>
-            <p style="color: #666; margin-bottom: 30px;">Your CorePhone configuration has been added to the cart. The cart opened in a new tab.</p>
-            <button class="btn btn-primary" onclick="document.getElementById('confirmation-modal').classList.remove('show'); location.reload();">Continue Shopping</button>
-            <button class="btn btn-secondary" style="margin-left: 10px;" onclick="document.getElementById('confirmation-modal').classList.remove('show');">Close</button>
-        </div>
-    `;
 });
