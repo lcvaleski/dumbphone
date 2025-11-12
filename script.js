@@ -18,6 +18,22 @@ document.querySelectorAll('.faq-question').forEach(button => {
     });
 });
 
+// Color selection for iPhone 16e
+document.querySelectorAll('.color-option').forEach(radio => {
+    radio.addEventListener('change', () => {
+        // Update visual state of color boxes
+        document.querySelectorAll('.color-box').forEach(box => {
+            if (box.dataset.color === radio.value) {
+                box.style.borderColor = '#0066cc';
+                box.style.boxShadow = '0 0 0 3px rgba(0, 102, 204, 0.1)';
+            } else {
+                box.style.borderColor = '#e0e0e0';
+                box.style.boxShadow = 'none';
+            }
+        });
+    });
+});
+
 // Tab switching functionality
 const tabButtons = document.querySelectorAll('.tab-button');
 const tabContents = document.querySelectorAll('.tab-content');
@@ -57,10 +73,14 @@ document.querySelectorAll('.custom-input').forEach(customInput => {
 // Shopify Integration
 const SHOPIFY_STORE_URL = 'coventry-labs-llc.myshopify.com'; // Your Shopify store
 
-// Variant ID for iPhone 16e 128GB
+// Variant IDs from Shopify
 const VARIANT_IDS = {
     'iphone-16e': {
-        '128': '47492615405822' // Only variant available
+        'black': '47506004279550', // iPhone 16e 128GB - Black
+        'white': '47506004312318'  // iPhone 16e 128GB - White
+    },
+    'refurbished': {
+        '128': '47506007294206' // Refurbished iPhone
     },
     'ship-in': {
         'service': '47492615405823' // Ship-in service variant (you'll need to create this in Shopify)
@@ -281,20 +301,29 @@ document.addEventListener('DOMContentLoaded', () => {
 function getSelectedModel() {
     const selectedCard = document.querySelector('.model-card.active');
     if (!selectedCard) {
-        // Default to iPhone 16e if nothing selected
+        // Default to iPhone 16e black if nothing selected
         return {
-            display: 'iPhone 16e 128GB - $949.99',
+            display: 'iPhone 16e 128GB (Black) - $949.99',
             model: 'iphone-16e',
-            storage: '128',
-            variantId: VARIANT_IDS['iphone-16e']['128'],
+            color: 'black',
+            variantId: VARIANT_IDS['iphone-16e']['black'],
             price: 949.99
         };
     }
 
     const model = selectedCard.getAttribute('data-model');
-    const price = parseInt(selectedCard.getAttribute('data-price'));
+    const price = parseFloat(selectedCard.getAttribute('data-price'));
 
-    if (model === 'ship-in') {
+    if (model === 'refurbished') {
+        return {
+            display: 'Refurbished iPhone (Black) - $449.99',
+            model: 'refurbished',
+            color: 'black',
+            storage: '128',
+            variantId: VARIANT_IDS['refurbished']['128'],
+            price: price
+        };
+    } else if (model === 'ship-in') {
         return {
             display: 'Ship-In Service - $199',
             model: 'ship-in',
@@ -302,12 +331,23 @@ function getSelectedModel() {
             variantId: VARIANT_IDS['ship-in']['service'],
             price: 199
         };
+    } else if (model === 'iphone-16e') {
+        // Get selected color
+        const selectedColor = document.querySelector('input[name="iphone-color"]:checked')?.value || 'black';
+        const colorDisplay = selectedColor.charAt(0).toUpperCase() + selectedColor.slice(1);
+        return {
+            display: `iPhone 16e 128GB (${colorDisplay}) - $949.99`,
+            model: 'iphone-16e',
+            color: selectedColor,
+            variantId: VARIANT_IDS['iphone-16e'][selectedColor],
+            price: 949.99
+        };
     } else {
         return {
-            display: 'iPhone 16e 128GB - $949.99',
+            display: 'iPhone 16e 128GB (Black) - $949.99',
             model: 'iphone-16e',
-            storage: '128',
-            variantId: VARIANT_IDS['iphone-16e']['128'],
+            color: 'black',
+            variantId: VARIANT_IDS['iphone-16e']['black'],
             price: 949.99
         };
     }
