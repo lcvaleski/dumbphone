@@ -48,6 +48,114 @@ tabButtons.forEach(button => {
 
         button.classList.add('active');
         document.getElementById(`${targetTab}-tab`).classList.add('active');
+
+        // Reset to intro view when switching tabs
+        document.querySelectorAll('.mode-intro').forEach(intro => intro.style.display = 'block');
+        document.querySelectorAll('.app-selection-flow').forEach(flow => flow.style.display = 'none');
+    });
+});
+
+// Flow navigation for Allow Mode
+const allowAppsBtn = document.getElementById('allow-apps-btn');
+const allowSelection = document.getElementById('allow-selection');
+const allowContinue = document.getElementById('allow-continue');
+
+if (allowAppsBtn) {
+    allowAppsBtn.addEventListener('click', () => {
+        const introSection = allowAppsBtn.parentElement;
+
+        // Fade out intro
+        introSection.style.opacity = '0';
+        introSection.style.transform = 'translateY(-10px)';
+
+        setTimeout(() => {
+            introSection.style.display = 'none';
+
+            // Prepare selection for fade in
+            allowSelection.style.display = 'block';
+            allowSelection.style.opacity = '0';
+            allowSelection.style.transform = 'translateY(20px)';
+
+            // Trigger reflow
+            allowSelection.offsetHeight;
+
+            // Fade in selection
+            allowSelection.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+            allowSelection.style.opacity = '1';
+            allowSelection.style.transform = 'translateY(0)';
+        }, 300);
+    });
+}
+
+// Flow navigation for Block Mode
+const blockAppsBtn = document.getElementById('block-apps-btn');
+const blockSelection = document.getElementById('block-selection');
+const blockContinue = document.getElementById('block-continue');
+
+if (blockAppsBtn) {
+    blockAppsBtn.addEventListener('click', () => {
+        const introSection = blockAppsBtn.parentElement;
+
+        // Fade out intro
+        introSection.style.opacity = '0';
+        introSection.style.transform = 'translateY(-10px)';
+
+        setTimeout(() => {
+            introSection.style.display = 'none';
+
+            // Prepare selection for fade in
+            blockSelection.style.display = 'block';
+            blockSelection.style.opacity = '0';
+            blockSelection.style.transform = 'translateY(20px)';
+
+            // Trigger reflow
+            blockSelection.offsetHeight;
+
+            // Fade in selection
+            blockSelection.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+            blockSelection.style.opacity = '1';
+            blockSelection.style.transform = 'translateY(0)';
+        }, 300);
+    });
+}
+
+// Back button functionality
+document.querySelectorAll('.back-to-intro').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const flow = btn.closest('.app-selection-flow');
+        const intro = flow.parentElement.querySelector('.mode-intro');
+
+        // Fade out current flow
+        flow.style.opacity = '0';
+        flow.style.transform = 'translateY(-10px)';
+
+        setTimeout(() => {
+            flow.style.display = 'none';
+
+            // Prepare intro for fade in
+            intro.style.display = 'block';
+            intro.style.opacity = '0';
+            intro.style.transform = 'translateY(20px)';
+
+            // Trigger reflow
+            intro.offsetHeight;
+
+            // Fade in intro
+            intro.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+            intro.style.opacity = '1';
+            intro.style.transform = 'translateY(0)';
+        }, 300);
+    });
+});
+
+// Continue to device selection
+document.querySelectorAll('.continue-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Scroll to device selection
+        const deviceSection = document.querySelector('.model-selection');
+        if (deviceSection) {
+            deviceSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
     });
 });
 
