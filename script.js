@@ -440,10 +440,10 @@ function showConfirmationModal() {
     // Update mode section
     const modeDesc = document.getElementById('mode-description');
     if (config.mode === 'whitelist') {
-        modeDesc.textContent = 'Whitelist Mode - Only allow specific apps';
+        modeDesc.textContent = 'Allow List Mode - Only allow specific apps';
         modeDesc.className = 'mode-badge whitelist';
     } else {
-        modeDesc.textContent = 'Blacklist Mode - Block specific apps';
+        modeDesc.textContent = 'Block List Mode - Block specific apps';
         modeDesc.className = 'mode-badge blacklist';
     }
 
@@ -556,7 +556,7 @@ document.getElementById('modal-checkout').addEventListener('click', () => {
     const modeInput = document.createElement('input');
     modeInput.type = 'hidden';
     modeInput.name = 'properties[Configuration Mode]';
-    modeInput.value = config.mode === 'whitelist' ? 'Whitelist (Safest)' : 'Blacklist (Flexible)';
+    modeInput.value = config.mode === 'whitelist' ? 'Allow List (Safest)' : 'Block List (Flexible)';
     form.appendChild(modeInput);
 
     if (config.mode === 'whitelist') {
