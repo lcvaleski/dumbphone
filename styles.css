@@ -2764,6 +2764,11 @@ header {
     border-radius: 8px;
 }
 
+.summary-note-red {
+    background: #FEF2F2;
+    border: 1px solid #DC2626;
+}
+
 .summary-note p {
     margin: 0;
     font-size: 14px;
