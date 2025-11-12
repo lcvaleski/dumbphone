@@ -49,9 +49,17 @@ tabButtons.forEach(button => {
         button.classList.add('active');
         document.getElementById(`${targetTab}-tab`).classList.add('active');
 
-        // Reset to intro view when switching tabs
-        document.querySelectorAll('.mode-intro').forEach(intro => intro.style.display = 'block');
-        document.querySelectorAll('.app-selection-flow').forEach(flow => flow.style.display = 'none');
+        // Reset to intro view when switching tabs - with proper opacity reset
+        document.querySelectorAll('.mode-intro').forEach(intro => {
+            intro.style.display = 'block';
+            intro.style.opacity = '1';
+            intro.style.transform = 'translateY(0)';
+        });
+        document.querySelectorAll('.app-selection-flow').forEach(flow => {
+            flow.style.display = 'none';
+            flow.style.opacity = '1';
+            flow.style.transform = 'translateY(0)';
+        });
     });
 });
 
@@ -63,6 +71,9 @@ const allowContinue = document.getElementById('allow-continue');
 if (allowAppsBtn) {
     allowAppsBtn.addEventListener('click', () => {
         const introSection = allowAppsBtn.parentElement;
+
+        // Add transition before fading
+        introSection.style.transition = 'opacity 0.3s ease-out, transform 0.3s ease-out';
 
         // Fade out intro
         introSection.style.opacity = '0';
@@ -96,6 +107,9 @@ if (blockAppsBtn) {
     blockAppsBtn.addEventListener('click', () => {
         const introSection = blockAppsBtn.parentElement;
 
+        // Add transition before fading
+        introSection.style.transition = 'opacity 0.3s ease-out, transform 0.3s ease-out';
+
         // Fade out intro
         introSection.style.opacity = '0';
         introSection.style.transform = 'translateY(-10px)';
@@ -124,6 +138,9 @@ document.querySelectorAll('.back-to-intro').forEach(btn => {
     btn.addEventListener('click', () => {
         const flow = btn.closest('.app-selection-flow');
         const intro = flow.parentElement.querySelector('.mode-intro');
+
+        // Add transition before fading
+        flow.style.transition = 'opacity 0.3s ease-out, transform 0.3s ease-out';
 
         // Fade out current flow
         flow.style.opacity = '0';
