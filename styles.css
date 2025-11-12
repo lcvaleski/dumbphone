@@ -2097,6 +2097,138 @@ header {
     transform: translateX(2px);
 }
 
+/* Terms of Service */
+.tos {
+    padding: 80px 0;
+    background: white;
+    border-top: 1px solid var(--border-light);
+}
+
+.tos h2 {
+    text-align: center;
+    margin-bottom: 48px;
+    font-size: 36px;
+}
+
+.tos-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--bg-gray);
+    border-radius: 16px;
+    padding: 48px;
+    border: 1px solid var(--border-light);
+}
+
+.tos-content h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 32px;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.tos-content h3:first-child {
+    margin-top: 0;
+}
+
+.tos-content p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.tos-update {
+    margin-top: 48px !important;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-light);
+    font-style: italic;
+    text-align: center;
+    color: #999;
+}
+
+/* Footer */
+.site-footer {
+    background: #1a1a1a;
+    color: white;
+    padding: 60px 0 30px;
+    border-top: 1px solid var(--border-light);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 48px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-logo-img {
+    width: 32px;
+    height: 32px;
+    filter: brightness(0) invert(1);
+}
+
+.footer-logo-text {
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+}
+
+.footer-links {
+    display: flex;
+    gap: 32px;
+    flex: 1;
+    justify-content: center;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.footer-contact h4 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-contact a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.2s;
+}
+
+.footer-contact a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.footer-bottom p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
 /* Meet the Founders Section */
 .founders-section {
     padding: 50px 0;
@@ -2560,6 +2692,50 @@ header {
     /* FAQ section */
     .faq {
         padding: 60px 0;
+    }
+
+    /* TOS section */
+    .tos {
+        padding: 60px 0;
+    }
+
+    .tos h2 {
+        font-size: 28px;
+        margin-bottom: 36px;
+    }
+
+    .tos-content {
+        padding: 32px 24px;
+    }
+
+    .tos-content h3 {
+        font-size: 16px;
+        margin-top: 24px;
+    }
+
+    .tos-content p {
+        font-size: 14px;
+    }
+
+    /* Footer */
+    .site-footer {
+        padding: 40px 0 20px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 32px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .footer-contact {
+        text-align: center;
     }
 
     .faq-item {
