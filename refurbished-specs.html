@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refurbished iPhone 12 Specs - CorePhone</title>
+    <link rel="icon" type="image/svg+xml" href="core.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .specs-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .specs-header {
+            background: white;
+            border-bottom: 1px solid var(--border-light);
+            padding: 24px 0;
+        }
+        .specs-main {
+            flex: 1;
+            padding: 60px 0;
+            background: var(--bg-gray);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+            margin-bottom: 24px;
+        }
+        .back-link:hover {
+            transform: translateX(-4px);
+            color: var(--accent-blue);
+        }
+        .specs-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .device-header {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 32px;
+            border: 1px solid var(--border-light);
+            text-align: center;
+        }
+        .device-header h1 {
+            font-size: 36px;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+        .device-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+        .refurb-notice {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+            border: 1px solid #10b981;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 32px;
+        }
+        .refurb-notice h3 {
+            color: #10b981;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+        .refurb-notice p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .specs-grid {
+            display: grid;
+            gap: 24px;
+        }
+        .specs-section {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            border: 1px solid var(--border-light);
+        }
+        .specs-section h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border-light);
+        }
+        .specs-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .spec-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .spec-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .spec-value {
+            font-size: 16px;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        .warranty-note {
+            background: #fef3c7;
+            border: 1px solid #fde047;
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 24px;
+            text-align: center;
+        }
+        .warranty-note p {
+            color: #92400e;
+            font-size: 14px;
+            margin: 0;
+        }
+        @media (max-width: 768px) {
+            .specs-list {
+                grid-template-columns: 1fr;
+            }
+            .device-header h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body class="specs-page">
+    <!-- Header -->
+    <header class="specs-header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="core.svg" alt="CorePhone" class="logo">
+                <span class="logo-text">CorePhone</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="specs-main">
+        <div class="container specs-container">
+            <a href="index.html" class="back-link">
+                ← Back to Home
+            </a>
+
+            <div class="device-header">
+                <h1>iPhone 12 - 64GB</h1>
+                <p class="device-subtitle">Black • Unlocked • Professionally Refurbished</p>
+            </div>
+
+            <div class="specs-grid">
+                <!-- Display & Design -->
+                <div class="specs-section">
+                    <h2>Display & Design</h2>
+                    <div class="specs-list">
+                        <div class="spec-item">
+                            <span class="spec-label">Screen Size</span>
+                            <span class="spec-value">6.1 inches</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Display Type</span>
+                            <span class="spec-value">Super Retina XDR OLED</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Resolution</span>
+                            <span class="spec-value">1170 x 2532 pixels</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Color</span>
+                            <span class="spec-value">Black</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Weight</span>
+                            <span class="spec-value">7 oz (198g)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance & Storage -->
+                <div class="specs-section">
+                    <h2>Performance & Storage</h2>
+                    <div class="specs-list">
+                        <div class="spec-item">
+                            <span class="spec-label">Storage Capacity</span>
+                            <span class="spec-value">64 GB</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">RAM</span>
+                            <span class="spec-value">4 GB</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Operating System</span>
+                            <span class="spec-value">iOS (Latest Compatible)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Release Year</span>
+                            <span class="spec-value">2020</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Camera -->
+                <div class="specs-section">
+                    <h2>Camera</h2>
+                    <div class="specs-list">
+                        <div class="spec-item">
+                            <span class="spec-label">Main Camera</span>
+                            <span class="spec-value">12 megapixels</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Front Camera</span>
+                            <span class="spec-value">12 megapixels</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Connectivity -->
+                <div class="specs-section">
+                    <h2>Connectivity & Network</h2>
+                    <div class="specs-list">
+                        <div class="spec-item">
+                            <span class="spec-label">Network</span>
+                            <span class="spec-value">5G</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Carrier Status</span>
+                            <span class="spec-value">Unlocked</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">SIM Support</span>
+                            <span class="spec-value">Physical SIM + eSIM</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Charging Port</span>
+                            <span class="spec-value">Lightning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carrier Compatibility -->
+                <div class="specs-section">
+                    <h2>Carrier Compatibility</h2>
+                    <div class="specs-list">
+                        <div class="spec-item">
+                            <span class="spec-label">Verizon</span>
+                            <span class="spec-value">✓ Compatible</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">AT&T</span>
+                            <span class="spec-value">✓ Compatible</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">T-Mobile</span>
+                            <span class="spec-value">✓ Compatible</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Other Carriers</span>
+                            <span class="spec-value">Unlocked for all carriers</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Details -->
+                <div class="specs-section">
+                    <h2>Technical Details</h2>
+                    <div class="specs-list">
+                        <div class="spec-item">
+                            <span class="spec-label">Model Number</span>
+                            <span class="spec-value">A2172</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Part Number (MPN)</span>
+                            <span class="spec-value">MGH63LL/A</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">SAR Head</span>
+                            <span class="spec-value">0.97</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Memory Card Slot</span>
+                            <span class="spec-value">No</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="core.svg" alt="CorePhone" class="footer-logo-img">
+                    <span class="footer-logo-text">CorePhone</span>
+                </div>
+
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#faq">FAQ</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+
+                <div class="footer-contact">
+                    <a href="mailto:support@coventrylabs.net">support@coventrylabs.net</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Coventry Labs LLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
