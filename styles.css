@@ -1667,6 +1667,28 @@ header {
     padding: 0 20px;
 }
 
+.flexibility-banner {
+    max-width: 600px;
+    margin: 16px auto 0;
+    background: #FFFBEB;
+    border: 1px solid #FCD34D;
+    border-radius: 12px;
+    padding: 14px 20px;
+    text-align: center;
+}
+
+.flexibility-banner p {
+    margin: 0;
+    font-size: 14px;
+    color: #92400E;
+    line-height: 1.5;
+}
+
+.flexibility-banner strong {
+    color: #78350F;
+    font-weight: 600;
+}
+
 @media (max-width: 768px) {
     .better-solution {
         margin: 40px 0 30px;
