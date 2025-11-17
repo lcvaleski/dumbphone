@@ -593,7 +593,7 @@ function createOrderNotes() {
     let notes = '=== COREPHONE CONFIGURATION ===\n\n';
     notes += `DEVICE: ${modelInfo.display}\n`;
     notes += `RETAIL PRICE: $${modelInfo.price}\n`;
-    notes += `MDM REMOTE UPDATES: $${modelInfo.subscription}/year\n`;
+    notes += `REMOTE CONTROL SERVICE: $${modelInfo.subscription}/year\n`;
     notes += `\n`;
     notes += `MODE: ${config.mode === 'whitelist' ? 'ALLOW LIST' : 'BLOCK LIST'}\n\n`;
 
@@ -601,7 +601,7 @@ function createOrderNotes() {
         notes += `ALLOWED APPS ONLY (${config.allowedApps.length}):\n`;
         notes += config.allowedApps.length > 0 ? config.allowedApps.join('\n') : 'None';
         notes += '\n\n';
-        notes += `BUNDLE IDS FOR MDM CONFIGURATION:\n`;
+        notes += `TECHNICAL APP IDENTIFIERS:\n`;
         notes += config.bundleIds.length > 0 ? config.bundleIds.join('\n') : 'None';
         notes += '\n\n';
         notes += 'ALL OTHER APPS AND WEBSITES: BLOCKED';
@@ -609,7 +609,7 @@ function createOrderNotes() {
         notes += `BLOCKED APPS (${config.blockedApps.length}):\n`;
         notes += config.blockedApps.length > 0 ? config.blockedApps.join('\n') : 'None';
         notes += '\n\n';
-        notes += `BUNDLE IDS FOR MDM CONFIGURATION:\n`;
+        notes += `TECHNICAL APP IDENTIFIERS:\n`;
         notes += config.bundleIds.length > 0 ? config.bundleIds.join('\n') : 'None';
         notes += '\n\n';
         notes += `BLOCKED WEBSITES (${config.blockedWebsites.length}):\n`;
