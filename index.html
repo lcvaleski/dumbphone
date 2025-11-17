@@ -89,25 +89,29 @@
     <!-- App Configuration Section -->
     <section class="app-config">
         <div class="container">
-            <h2>Choose your approach</h2>
-            <p class="approach-subtitle">Parents can always change configurations later through their Parent Accounts</p>
+            <h2>Choose your configuration approach</h2>
 
             <!-- Tabs -->
             <div class="config-tabs">
-                <button class="tab-button active" data-tab="whitelist">
-                    <span class="tab-icon">✓</span>
-                    <span class="tab-label">Allow Mode</span>
-                </button>
-                <button class="tab-button" data-tab="blacklist">
-                    <span class="tab-icon">✕</span>
-                    <span class="tab-label">Block Mode</span>
-                </button>
+                <div class="tab-wrapper">
+                    <button class="tab-button active" data-tab="whitelist">
+                        <span class="tab-icon">✓</span>
+                        <span class="tab-label">Allow Mode</span>
+                    </button>
+                    <span class="tab-subtitle">Safest option</span>
+                </div>
+                <div class="tab-wrapper">
+                    <button class="tab-button" data-tab="blacklist">
+                        <span class="tab-icon">✕</span>
+                        <span class="tab-label">Block Mode</span>
+                    </button>
+                    <span class="tab-subtitle">Flexible option</span>
+                </div>
             </div>
 
             <!-- Allow List Tab Content -->
             <div class="tab-content active" id="whitelist-tab">
                 <div class="mode-intro">
-                    <h3>Safest option</h3>
                     <p>Select the apps you'd like on your child's phone—communication and safety essentials like Find My, iMessage, FaceTime, and Maps. Everything you don't select will be blocked.</p>
                     <button class="flow-button" id="allow-apps-btn">Allow apps →</button>
                 </div>
@@ -218,7 +222,6 @@
             <!-- Block List Tab Content -->
             <div class="tab-content" id="blacklist-tab">
                 <div class="mode-intro">
-                    <h3>Flexible option</h3>
                     <p>Select the apps and websites you would like to block on your child's phone. Your child will be able to download most apps and access most websites, except for those you choose here.</p>
                     <button class="flow-button" id="block-apps-btn">Block apps →</button>
                 </div>
@@ -516,7 +519,7 @@
                     </svg>
                 </button>
                 <div class="faq-answer">
-                    <p>It is impossible to download any apps that you've blocked, or haven't approved via whitelisting. On the off chance your child attempts to perform a factory reset on the phone, they will be required to enter the Apple ID password associated with the device to get back in. So as long as they do not have your Apple ID password, then yes, there are truly zero workarounds.</p>
+                    <p>It is impossible to download any apps that you've blocked, or haven't allowed. On the off chance your child attempts to perform a factory reset on the phone, they will be required to enter the Apple ID password associated with the device to get back in. So as long as they do not have your Apple ID password, then yes, there are truly zero workarounds.</p>
                     <p>If a factory reset is performed, the device will automatically reconnect to our management system and reapply all restrictions when it connects to the internet. This happens seamlessly through Apple's Business Manager program.</p>
                 </div>
             </div>
