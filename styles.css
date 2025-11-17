@@ -185,27 +185,11 @@ header {
     text-align: left;
 }
 
-.header-pricing {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 20px 0 28px;
-    font-size: 17px;
-    color: #4B5563;
-}
-
-.pricing-text {
-    font-weight: 400;
-}
-
-.pricing-divider {
-    color: #D1D5DB;
-    font-weight: 300;
-}
-
-.pricing-subscription {
-    font-weight: 600;
-    color: #111827;
+.header-subtitle {
+    font-size: 20px;
+    color: #6B7280;
+    margin: 16px 0 28px;
+    font-weight: 500;
 }
 
 .subtitle {
