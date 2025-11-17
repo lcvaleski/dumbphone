@@ -686,7 +686,7 @@
     <script src="app-icons.js"></script>
     <script src="script.js"></script>
 
-    <!-- Initialize Vanilla Tilt on sticky notes -->
+    <!-- Initialize Vanilla Tilt on various elements -->
     <script>
         // Apply to sticky note cards (Allowed/Removed) - subtle effect
         VanillaTilt.init(document.querySelectorAll(".sticky-note"), {
@@ -699,7 +699,7 @@
             gyroscope: false
         });
 
-        // Still apply to tab buttons but with different settings
+        // Apply to Allow/Block mode tab buttons
         VanillaTilt.init(document.querySelectorAll(".tab-button"), {
             max: 10,
             speed: 400,
@@ -707,6 +707,17 @@
             "max-glare": 0.2,
             perspective: 1000,
             scale: 1.02,
+            gyroscope: false
+        });
+
+        // Apply to all Add to Cart buttons and flow buttons (Select allowed apps, etc.)
+        VanillaTilt.init(document.querySelectorAll(".add-to-cart, .flow-button, .continue-btn, .config-button"), {
+            max: 6,
+            speed: 500,
+            glare: true,
+            "max-glare": 0.15,
+            perspective: 1000,
+            scale: 1.01,
             gyroscope: false
         });
     </script>
