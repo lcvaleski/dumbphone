@@ -271,6 +271,12 @@ header {
     position: relative;
     font-family: 'Inter', sans-serif;
     min-width: 180px;
+    transform-style: preserve-3d;
+    transition: box-shadow 0.3s;
+}
+
+.sticky-note:hover {
+    box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 .sticky-note:nth-child(2) {
