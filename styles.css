@@ -2191,10 +2191,13 @@ header {
 
 /* iPhone Visual Selector */
 .iphone-selector {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     margin: 32px 0;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 @media (max-width: 640px) {
@@ -2225,17 +2228,19 @@ header {
 .iphone-option {
     background: white;
     border: 2px solid #e5e7eb;
-    border-radius: 20px;
-    padding: 24px;
+    border-radius: 12px;
+    padding: 16px 20px;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .iphone-option:hover {
     border-color: var(--accent-blue);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .iphone-option.selected {
@@ -2296,17 +2301,22 @@ header {
 }
 
 .iphone-option img {
-    width: 100%;
-    max-width: 65px;
+    width: 50px;
     height: auto;
-    margin: 0 auto 12px;
-    display: block;
+    flex-shrink: 0;
+}
+
+.iphone-info {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .iphone-info h4 {
     font-size: 16px;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin: 0;
     color: var(--text-primary);
 }
 
