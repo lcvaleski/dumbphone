@@ -435,18 +435,34 @@ document.addEventListener('DOMContentLoaded', () => {
             const modelKey = option.getAttribute('data-model');
             selectedModel = modelKey;
 
-            // Show configuration for this model
-            showModelConfiguration(modelKey);
+            // Add animation classes and show configuration after delay
+            iphoneSelector.classList.add('fade-out');
+            setTimeout(() => {
+                showModelConfiguration(modelKey);
+                modelConfig.classList.add('fade-in');
+            }, 300);
         });
     });
 
     // Back to models button
     if (backBtn) {
         backBtn.addEventListener('click', () => {
-            modelConfig.style.display = 'none';
-            iphoneSelector.style.display = 'grid';
-            iphoneOptions.forEach(opt => opt.classList.remove('selected'));
-            selectedModel = null;
+            modelConfig.classList.remove('fade-in');
+            modelConfig.classList.add('fade-out');
+
+            setTimeout(() => {
+                modelConfig.style.display = 'none';
+                modelConfig.classList.remove('fade-out');
+                iphoneSelector.classList.remove('fade-out');
+                iphoneSelector.style.display = 'grid';
+                iphoneSelector.classList.add('fade-in');
+                iphoneOptions.forEach(opt => opt.classList.remove('selected'));
+                selectedModel = null;
+
+                setTimeout(() => {
+                    iphoneSelector.classList.remove('fade-in');
+                }, 300);
+            }, 300);
         });
     }
 

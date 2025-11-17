@@ -2242,6 +2242,57 @@ header {
     border-color: var(--accent-blue);
     border-width: 3px;
     background: linear-gradient(135deg, #f7f9fc 0%, #ffffff 100%);
+    animation: selectClick 0.15s ease-out;
+}
+
+@keyframes selectClick {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.iphone-selector.fade-out {
+    animation: fadeSlideOut 0.3s ease-out forwards;
+}
+
+.model-configuration.fade-in {
+    animation: fadeSlideIn 0.3s ease-out forwards;
+}
+
+.model-configuration.fade-out {
+    animation: fadeSlideOut 0.3s ease-out forwards;
+}
+
+.iphone-selector.fade-in {
+    animation: fadeSlideIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeSlideOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .iphone-option img {
@@ -2284,18 +2335,24 @@ header {
 }
 
 .back-to-models {
-    padding: 8px 16px;
-    background: transparent;
-    border: 2px solid #e5e7eb;
-    border-radius: 8px;
+    padding: 10px 20px;
+    background: #f8f9fa;
+    border: none;
+    border-radius: 10px;
     font-size: 14px;
+    font-weight: 500;
+    color: #6b7280;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .back-to-models:hover {
-    border-color: var(--accent-blue);
-    color: var(--accent-blue);
+    background: #e5e7eb;
+    color: #374151;
+    transform: translateX(-3px);
 }
 
 #selected-model-name {
