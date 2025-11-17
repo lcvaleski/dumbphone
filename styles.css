@@ -933,6 +933,14 @@ header {
     margin-bottom: 48px;
 }
 
+.approach-subtitle {
+    font-size: 16px;
+    color: #6B7280;
+    text-align: center;
+    margin: -20px 0 32px;
+    font-weight: 400;
+}
+
 .config-subtitle {
     text-align: center;
     font-size: 18px;
