@@ -46,7 +46,7 @@ h1 {
 h2 {
     font-family: 'Inter', sans-serif;
     font-size: 28px;
-    font-weight: 500;
+    font-weight: 700;
     margin-bottom: 32px;
     letter-spacing: -0.01em;
     color: #111827;
@@ -2112,34 +2112,38 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 16px;
+    gap: 0;
     margin: 24px 0 16px;
     flex-wrap: wrap;
 }
 
 .subscription-card {
-    background: white;
-    border: 2px solid #e5e7eb;
+    background: transparent;
+    border: none;
     border-radius: 12px;
-    padding: 16px 24px;
+    padding: 14px 24px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: center;
+    gap: 10px;
     transition: all 0.2s;
+    min-width: 200px;
+    color: #000000;
 }
 
 .subscription-card.active {
-    border-color: var(--accent-green);
-    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    background: transparent;
 }
 
 .subscription-card.plus {
-    padding: 0 12px;
+    padding: 0;
     border: none;
-    background: none;
-    color: #9CA3AF;
+    background: transparent;
+    min-width: auto;
+    color: #000000;
     font-size: 20px;
     font-weight: 600;
+    margin: 0 8px;
 }
 
 @media (max-width: 640px) {
@@ -2164,22 +2168,15 @@ header {
 }
 
 .card-icon {
-    width: 24px;
-    height: 24px;
-    background: var(--accent-green);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    color: #000000;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .card-label {
     font-size: 15px;
     font-weight: 600;
-    color: #1F2937;
+    color: #000000;
 }
 
 .subscription-note {
