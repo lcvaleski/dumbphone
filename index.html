@@ -22,6 +22,12 @@
                 <div class="header-text">
                     <h1>A <span class="underline-accent">custom iPhone</span> that blocks addictive apps and sites for your child. <span class="underline-red">Zero workarounds.</span></h1>
 
+                    <div class="header-pricing">
+                        <span class="pricing-text">Latest iPhone models at retail price</span>
+                        <span class="pricing-divider">•</span>
+                        <span class="pricing-subscription">$199/year for remote updates</span>
+                    </div>
+
                     <button class="add-to-cart scroll-to-config">Select allowed apps →</button>
                 </div>
 
@@ -343,65 +349,100 @@
 
             <!-- iPhone Model Selection -->
             <div class="model-selection">
-                <h3>Your Device</h3>
-                <p class="model-subtitle">Choose how to get your configured iPhone</p>
+                <h3>Select Your iPhone</h3>
+                <div class="subscription-cards">
+                    <div class="subscription-card active">
+                        <span class="card-icon">✓</span>
+                        <span class="card-label">iPhone at Retail</span>
+                    </div>
+                    <div class="subscription-card plus">+</div>
+                    <div class="subscription-card active">
+                        <span class="card-icon">✓</span>
+                        <span class="card-label">$199/year Remote Updates</span>
+                    </div>
+                </div>
+                <p class="subscription-note">Annual subscription enables remote app restriction updates via MDM</p>
 
-                <div class="device-options">
-                    <div class="model-card" data-model="iphone-16e" data-price="949.99">
-                        <h4>New iPhone 16e</h4>
-                        <div class="model-specs">
-                            <span class="spec">128GB storage</span>
-                            <span class="spec"><a href="https://www.apple.com/iphone-16e/specs/" target="_blank" style="color: #0066cc; text-decoration: none;">View full specs →</a></span>
-                        </div>
-                        <div class="color-selection" style="margin: 16px 0; padding: 12px; background: #f8f9fa; border-radius: 8px;">
-                            <p style="font-size: 12px; margin-bottom: 8px; font-weight: 600; color: #666;">Select Color:</p>
-                            <div style="display: flex; gap: 12px;">
-                                <label style="flex: 1; cursor: pointer;">
-                                    <input type="radio" name="iphone-color" value="black" checked style="display: none;" class="color-option">
-                                    <div class="color-box" data-color="black" style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; border: 2px solid #0066cc; border-radius: 8px; background: white; transition: all 0.2s;">
-                                        <span style="width: 20px; height: 20px; background: #1a1a1a; border-radius: 50%; border: 1px solid #ddd;"></span>
-                                        <span style="font-size: 13px; font-weight: 500;">Black</span>
-                                    </div>
-                                </label>
-                                <label style="flex: 1; cursor: pointer;">
-                                    <input type="radio" name="iphone-color" value="white" style="display: none;" class="color-option">
-                                    <div class="color-box" data-color="white" style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; border: 2px solid #e0e0e0; border-radius: 8px; background: white; transition: all 0.2s;">
-                                        <span style="width: 20px; height: 20px; background: #f5f5f5; border-radius: 50%; border: 1px solid #ddd;"></span>
-                                        <span style="font-size: 13px; font-weight: 500;">White</span>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="model-price">
-                            <span class="price-amount">$949.99</span>
-                            <span class="price-note">Brand new device + permanent configuration</span>
+                <!-- iPhone Visual Selector -->
+                <div class="iphone-selector">
+                    <div class="iphone-option" data-model="iphone-17-pro">
+                        <img src="images/iphone-17-pro.png" alt="iPhone 17 Pro">
+                        <div class="iphone-info">
+                            <h4>iPhone 17 Pro</h4>
+                            <p class="iphone-price">From $1,099</p>
                         </div>
                     </div>
-
-                    <div class="model-card" data-model="refurbished" data-price="449.99">
-                        <h4>Refurbished iPhone 12</h4>
-                        <div class="model-specs">
-                            <span class="spec">64GB storage</span>
-                            <span class="spec"><a href="refurbished-specs.html" target="_blank" style="color: #10b981; text-decoration: none;">View full specs →</a></span>
-                        </div>
-                        <div class="color-selection" style="margin: 16px 0; padding: 12px; background: #f8f9fa; border-radius: 8px;">
-                            <p style="font-size: 12px; margin-bottom: 8px; font-weight: 600; color: #666; text-align: center;">Color:</p>
-                            <div style="display: flex; justify-content: center;">
-                                <label style="cursor: pointer; pointer-events: none;">
-                                    <input type="radio" name="refurb-color" value="black" checked style="display: none;" disabled>
-                                    <div style="display: flex; align-items: center; gap: 8px; padding: 8px 24px; border: 2px solid #10b981; border-radius: 8px; background: white;">
-                                        <span style="width: 20px; height: 20px; background: #1a1a1a; border-radius: 50%; border: 1px solid #ddd;"></span>
-                                        <span style="font-size: 13px; font-weight: 500;">Black</span>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="model-price">
-                            <span class="price-amount">$449.99</span>
-                            <span class="price-note">Refurbished device + permanent configuration</span>
+                    <div class="iphone-option" data-model="iphone-air">
+                        <img src="images/iphone-air.png" alt="iPhone Air">
+                        <div class="iphone-info">
+                            <h4>iPhone Air</h4>
+                            <p class="iphone-price">From $999</p>
                         </div>
                     </div>
+                    <div class="iphone-option" data-model="iphone-17">
+                        <img src="images/iphone-17.png" alt="iPhone 17">
+                        <div class="iphone-info">
+                            <h4>iPhone 17</h4>
+                            <p class="iphone-price">From $799</p>
+                        </div>
+                    </div>
+                    <div class="iphone-option" data-model="iphone-16">
+                        <img src="images/iphone-16.png" alt="iPhone 16">
+                        <div class="iphone-info">
+                            <h4>iPhone 16</h4>
+                            <p class="iphone-price">From $699</p>
+                        </div>
+                    </div>
+                    <div class="iphone-option" data-model="iphone-16e">
+                        <img src="images/iphone-16e.png" alt="iPhone 16e">
+                        <div class="iphone-info">
+                            <h4>iPhone 16e</h4>
+                            <p class="iphone-price">From $599</p>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Selected Model Configuration -->
+                <div class="model-configuration" style="display: none;">
+                    <div class="config-header">
+                        <button class="back-to-models">← Back to models</button>
+                        <h4 id="selected-model-name">iPhone 17 Pro</h4>
+                    </div>
+
+                    <div class="config-options">
+                        <!-- Storage Selection -->
+                        <div class="config-section">
+                            <h5>Storage</h5>
+                            <div class="storage-options">
+                                <!-- Will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <!-- Color Selection -->
+                        <div class="config-section">
+                            <h5>Color</h5>
+                            <div class="color-options">
+                                <!-- Will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <!-- Price Summary -->
+                        <div class="price-summary">
+                            <div class="price-line">
+                                <span>Device:</span>
+                                <span id="device-price">$1,099</span>
+                            </div>
+                            <div class="price-line highlight">
+                                <span>MDM Remote Updates:</span>
+                                <span class="subscription-highlight">$199/year</span>
+                            </div>
+                            <div class="price-total">
+                                <span>Total first year:</span>
+                                <span id="total-price">$1,298</span>
+                            </div>
+                            <p class="price-note">Annual subscription allows you to update app restrictions remotely</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -565,7 +606,7 @@
                     <div class="summary-section">
                         <h3>Device</h3>
                         <p class="summary-device">iPhone 16e - 128GB</p>
-                        <p class="summary-price">$949.99</p>
+                        <p class="summary-price">$599 + $199/year service</p>
                     </div>
 
                     <div class="summary-section">
@@ -583,8 +624,8 @@
                         <div id="blocked-list" class="app-summary-list"></div>
                     </div>
 
-                    <div class="summary-note summary-note-red">
-                        <p><strong>Important:</strong> Please review your selections and make sure everything is correct. You will not be able to make changes once your order is placed.</p>
+                    <div class="summary-note summary-note-yellow">
+                        <p><strong>Flexibility:</strong> You, as the parent, can always add or remove apps by submitting a request to us, and we will make the change remotely.</p>
                     </div>
                 </div>
             </div>

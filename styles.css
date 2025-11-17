@@ -185,6 +185,29 @@ header {
     text-align: left;
 }
 
+.header-pricing {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0 28px;
+    font-size: 17px;
+    color: #4B5563;
+}
+
+.pricing-text {
+    font-weight: 400;
+}
+
+.pricing-divider {
+    color: #D1D5DB;
+    font-weight: 300;
+}
+
+.pricing-subscription {
+    font-weight: 600;
+    color: #111827;
+}
+
 .subtitle {
     font-family: 'Crimson Text', Georgia, serif;
     font-size: 22px;
@@ -2008,6 +2031,272 @@ header {
     border-color: #05C390;
 }
 
+/* Subscription Cards */
+.subscription-cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 24px 0 16px;
+}
+
+.subscription-card {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.2s;
+}
+
+.subscription-card.active {
+    border-color: var(--accent-green);
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+}
+
+.subscription-card.plus {
+    padding: 0 12px;
+    border: none;
+    background: none;
+    color: #9CA3AF;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.card-icon {
+    width: 24px;
+    height: 24px;
+    background: var(--accent-green);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.card-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1F2937;
+}
+
+.subscription-note {
+    text-align: center;
+    font-size: 14px;
+    color: #6B7280;
+    margin: 0 0 32px;
+}
+
+/* iPhone Visual Selector */
+.iphone-selector {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin: 32px 0;
+}
+
+.iphone-option {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 24px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+}
+
+.iphone-option:hover {
+    border-color: var(--accent-blue);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.iphone-option.selected {
+    border-color: var(--accent-blue);
+    border-width: 3px;
+    background: linear-gradient(135deg, #f7f9fc 0%, #ffffff 100%);
+}
+
+.iphone-option img {
+    width: 100%;
+    max-width: 80px;
+    height: auto;
+    margin: 0 auto 12px;
+    display: block;
+}
+
+.iphone-info h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.iphone-price {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+/* Model Configuration */
+.model-configuration {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 32px;
+    margin-top: 32px;
+}
+
+.config-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.back-to-models {
+    padding: 8px 16px;
+    background: transparent;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.back-to-models:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+}
+
+#selected-model-name {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.config-section {
+    margin-bottom: 32px;
+}
+
+.config-section h5 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.price-summary {
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 32px;
+}
+
+.price-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+.price-line.highlight {
+    background: linear-gradient(135deg, #f0f4ff 0%, #e8ecff 100%);
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin: 12px -12px;
+    font-weight: 600;
+}
+
+.subscription-highlight {
+    color: #4A5FFF;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.price-total {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 2px solid #e5e7eb;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.price-note {
+    font-size: 13px;
+    color: #6B7280;
+    text-align: center;
+    margin-top: 12px;
+    font-style: italic;
+}
+
+/* Model Colors */
+.model-colors {
+    display: flex;
+    gap: 8px;
+    margin: 16px 0;
+    justify-content: center;
+}
+
+.color-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #e0e0e0;
+}
+
+/* Premium Model Cards */
+.model-card.premium {
+    background: linear-gradient(135deg, #f7f8fa 0%, #ffffff 100%);
+    border: 2px solid #d4d4d8;
+}
+
+.model-card.premium:hover {
+    border-color: var(--accent-blue);
+    box-shadow: 0 20px 40px rgba(74, 95, 255, 0.15);
+}
+
+/* Storage and Color Selection */
+.selected-model-details {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 20px;
+    padding: 32px;
+    margin-top: 32px;
+}
+
+.storage-options, .color-options {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+.storage-option, .color-option {
+    padding: 12px 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.storage-option:hover, .color-option:hover {
+    border-color: var(--accent-blue);
+}
+
+.storage-option.selected, .color-option.selected {
+    background: var(--accent-blue);
+    color: white;
+    border-color: var(--accent-blue);
+}
+
 /* App Store Search */
 .app-store-search-section {
     margin-top: 32px;
@@ -2813,6 +3102,11 @@ header {
 .summary-note-red {
     background: #FEF2F2;
     border: 1px solid #DC2626;
+}
+
+.summary-note-yellow {
+    background: #FFFBEB;
+    border: 1px solid #FCD34D;
 }
 
 .summary-note p {
