@@ -4606,32 +4606,67 @@ header {
 }
 
 @media (max-width: 580px) {
+    .packages-hero h1 {
+        font-size: 38px;
+    }
+
     .packages-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
 
     .package-card {
-        padding: 28px 24px;
+        padding: 16px;
+    }
+
+    .package-icon {
+        margin-bottom: 8px;
+    }
+
+    .package-icon svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .package-card h3 {
+        font-size: 14px;
+        margin-bottom: 6px;
+    }
+
+    .package-description {
+        font-size: 11px;
+        line-height: 1.4;
+        margin-bottom: 10px;
+    }
+
+    .package-price {
+        font-size: 22px;
+        margin-bottom: 8px;
+    }
+
+    .package-cta {
+        padding: 10px 12px;
+        font-size: 13px;
+        border-radius: 8px;
     }
 
     .bundle-card {
         flex-direction: column;
         text-align: center;
-        padding: 24px;
+        padding: 28px 24px;
         gap: 16px;
+    }
+
+    .bundle-content h3 {
+        font-size: 24px;
     }
 
     .bundle-pricing {
         flex-direction: column;
-        gap: 8px;
+        gap: 12px;
     }
 
-    .packages-hero h1 {
-        font-size: 30px;
-    }
-
-    .package-cta {
-        padding: 14px 24px;
+    .bundle-price-main {
+        font-size: 36px;
     }
 }
