@@ -4269,21 +4269,22 @@ header {
 
 .testimonial {
     background: white;
-    border-radius: 16px;
-    padding: 28px 32px;
+    border-radius: 12px;
+    padding: 16px 20px;
     border: 1px solid var(--border-light);
     margin: 0;
-    min-width: 340px;
-    max-width: 340px;
+    min-width: 220px;
+    max-width: 220px;
     flex-shrink: 0;
 }
 
 .testimonial p {
     font-family: 'Inter', sans-serif;
     font-size: 15px;
-    line-height: 1.6;
+    font-weight: 500;
+    line-height: 1.5;
     color: var(--text-primary);
-    margin: 0 0 16px;
+    margin: 0 0 8px;
 }
 
 .testimonial cite {
