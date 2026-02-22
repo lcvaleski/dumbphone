@@ -33,77 +33,36 @@
     <!-- Hero -->
     <section class="packages-hero">
         <div class="container">
-            <h1><span class="underline-accent">Quickly</span> fix your<br>child's screen time</h1>
+            <h1>Finally <span class="underline-red">stop worrying</span><br>about your kids and tech</h1>
+            <p class="packages-subtitle">All of your questions answered, in one place</p>
         </div>
     </section>
 
-    <!-- Package Cards -->
+    <!-- Offer -->
     <section class="packages-section">
         <div class="container">
-            <div class="packages-grid">
-
-                <!-- Apple Configurator Guide -->
-                <div class="package-card pastel-blue">
-                    <div class="package-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4A5FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                    </div>
-                    <h3>Apple Configurator</h3>
-                    <p class="package-description">Permanent, unremovable restrictions. Requires a Mac.</p>
-                    <div class="package-price">$29</div>
-                    <a href="#" class="package-cta" data-guide="configurator">Get Guide</a>
-                </div>
-
-                <div class="package-card pastel-purple">
-                    <div class="package-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                    </div>
-                    <h3>Screen Time</h3>
-                    <p class="package-description">Built-in Apple controls. No extra tools needed.</p>
-                    <div class="package-price">$19</div>
-                    <a href="#" class="package-cta" data-guide="screentime">Get Guide</a>
-                </div>
-
-                <div class="package-card pastel-peach">
-                    <div class="package-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E85D3A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    </div>
-                    <h3>Blocking Apps</h3>
-                    <p class="package-description">Best third-party apps compared and reviewed.</p>
-                    <div class="package-price">$19</div>
-                    <a href="#" class="package-cta" data-guide="blocking-apps">Get Guide</a>
-                </div>
-
-                <div class="package-card pastel-yellow">
-                    <div class="package-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    </div>
-                    <h3>Weekly Newsletter</h3>
-                    <p class="package-description">Weekly tips on keeping your child safe online.</p>
-                    <div class="package-price">$5<span class="price-period">/mo</span></div>
-                    <a href="#" class="package-cta" data-guide="newsletter">Subscribe</a>
-                </div>
-
-
-            </div>
-
-            <!-- Bundle -->
             <div class="bundle-card">
+                <!-- Preview placeholder -->
+                <div class="bundle-preview">
+                    <div class="bundle-preview-inner">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D1A97A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        <span>Preview</span>
+                    </div>
+                </div>
                 <div class="bundle-content">
-                    <h3>Skip the research.</h3>
-                    <p>Get every guide and the newsletter for one price.</p>
+                    <h3>Everything you need, in one place</h3>
+                    <ul class="bundle-includes">
+                        <li>Apple Configurator</li>
+                        <li>Screen Time</li>
+                        <li>Blocking Apps</li>
+                        <li>Weekly newsletter</li>
+                    </ul>
                 </div>
                 <div class="bundle-pricing">
-                    <div class="bundle-price-block">
-                        <div class="bundle-price-main">$49</div>
-                        <div class="bundle-price-details">
-                            <span class="original">$72</span>
-                            <span class="package-savings">Save $23</span>
-                        </div>
-                    </div>
+                    <div class="bundle-price-main">$39.99</div>
                     <a href="#" class="bundle-cta" data-guide="bundle">Get Everything</a>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -146,19 +105,6 @@
         </div>
     </section>
 
-    <!-- Vanilla Tilt -->
-    <script src="https://unpkg.com/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
     <script src="script.js"></script>
-    <script>
-        VanillaTilt.init(document.querySelectorAll(".package-card"), {
-            max: 8,
-            speed: 600,
-            glare: true,
-            "max-glare": 0.15,
-            perspective: 1000,
-            scale: 1.02,
-            gyroscope: false
-        });
-    </script>
 </body>
 </html>
