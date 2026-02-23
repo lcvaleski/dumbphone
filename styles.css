@@ -5560,3 +5560,19 @@ button.bundle-preview:hover {
     color: var(--text-primary, #1a1a1a);
     text-decoration: underline;
 }
+
+/* ── Bundle preview video ───────────────────────────────────── */
+.bundle-preview-video {
+    width: 100%;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+    background: #000;
+    line-height: 0;
+}
+
+.preview-video {
+    width: 100%;
+    display: block;
+    max-height: 420px;
+    object-fit: cover;
+}
