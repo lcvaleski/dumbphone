@@ -111,7 +111,8 @@
 
             <!-- Apple Configurator -->
             <div id="tab-configurator" class="db-panel active" role="tabpanel" data-guide="configurator">
-                <div class="guide-progress-bar"><div class="guide-progress-fill"></div></div>
+                <div class="guide-layout">
+                <div class="guide-index"></div>
                 <div class="guide-stage">
                     <!-- Step cards -->
                     <div class="guide-card active" data-step="0">
@@ -154,7 +155,8 @@
                         <h2 class="guide-card-title">Guide complete</h2>
                         <p class="guide-card-body">You've set up hardware-enforced parental controls. Check the other guides for Screen Time and app blocking layers.</p>
                     </div>
-                </div>
+                </div><!-- /.guide-stage -->
+                </div><!-- /.guide-layout -->
                 <div class="guide-controls">
                     <button class="guide-btn guide-prev" disabled>← Back</button>
                     <div class="guide-dots"></div>
@@ -164,7 +166,8 @@
 
             <!-- Screen Time -->
             <div id="tab-screentime" class="db-panel" role="tabpanel" data-guide="screentime">
-                <div class="guide-progress-bar"><div class="guide-progress-fill"></div></div>
+                <div class="guide-layout">
+                <div class="guide-index"></div>
                 <div class="guide-stage">
                     <div class="guide-card active" data-step="0">
                         <div class="guide-card-eyebrow">Screen Time · Step 1 of 5</div>
@@ -204,7 +207,8 @@
                         <h2 class="guide-card-title">Guide complete</h2>
                         <p class="guide-card-body">Screen Time is live. For stronger protection, combine it with the Apple Configurator guide.</p>
                     </div>
-                </div>
+                </div><!-- /.guide-stage -->
+                </div><!-- /.guide-layout -->
                 <div class="guide-controls">
                     <button class="guide-btn guide-prev" disabled>← Back</button>
                     <div class="guide-dots"></div>
@@ -214,7 +218,8 @@
 
             <!-- Blocking Apps -->
             <div id="tab-blocking" class="db-panel" role="tabpanel" data-guide="blocking">
-                <div class="guide-progress-bar"><div class="guide-progress-fill"></div></div>
+                <div class="guide-layout">
+                <div class="guide-index"></div>
                 <div class="guide-stage">
                     <div class="guide-card active" data-step="0">
                         <div class="guide-card-eyebrow">Blocking Apps · Step 1 of 5</div>
@@ -267,7 +272,8 @@
                         <h2 class="guide-card-title">Guide complete</h2>
                         <p class="guide-card-body">All three blocking layers are in place. Sign up for the newsletter to stay ahead of new workarounds.</p>
                     </div>
-                </div>
+                </div><!-- /.guide-stage -->
+                </div><!-- /.guide-layout -->
                 <div class="guide-controls">
                     <button class="guide-btn guide-prev" disabled>← Back</button>
                     <div class="guide-dots"></div>
@@ -356,20 +362,23 @@
 
     function initGuide(panel) {
         var cards = Array.from(panel.querySelectorAll('.guide-card'));
+        var indexWrap = panel.querySelector('.guide-index');
         var dotsWrap = panel.querySelector('.guide-dots');
         var prevBtn = panel.querySelector('.guide-prev');
         var nextBtn = panel.querySelector('.guide-next');
-        var progressFill = panel.querySelector('.guide-progress-fill');
-        var total = cards.length - 1; // last card is the done card
+        var total = cards.length - 1; // last card is done card
         var current = 0;
 
-        // Build dots (exclude done card)
+        // Build left index from card titles (exclude done card)
         for (var i = 0; i < total; i++) {
-            var dot = document.createElement('button');
-            dot.className = 'guide-dot' + (i === 0 ? ' active' : '');
-            dot.setAttribute('aria-label', 'Step ' + (i + 1));
-            (function(idx) { dot.addEventListener('click', function() { goTo(idx); }); })(i);
-            dotsWrap.appendChild(dot);
+            var title = cards[i].querySelector('.guide-card-title').textContent.trim();
+            var item = document.createElement('button');
+            item.className = 'guide-index-item' + (i === 0 ? ' active' : '');
+            item.innerHTML =
+                '<span class="guide-index-num">' + (i + 1) + '</span>' +
+                '<span class="guide-index-label">' + title + '</span>';
+            (function(idx) { item.addEventListener('click', function() { goTo(idx); }); })(i);
+            indexWrap.appendChild(item);
         }
 
         function goTo(idx) {
@@ -377,14 +386,29 @@
             current = idx;
             cards[current].classList.add('active');
 
-            var dots = dotsWrap.querySelectorAll('.guide-dot');
-            dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+            // Update index items
+            indexWrap.querySelectorAll('.guide-index-item').forEach(function(item, i) {
+                item.classList.toggle('active', i === current);
+                item.classList.toggle('done', i < current);
+            });
+
+            // Update dots (still shown on mobile)
+            dotsWrap.querySelectorAll('.guide-dot').forEach(function(d, i) {
+                d.classList.toggle('active', i === current);
+                d.classList.toggle('done', i < current);
+            });
 
             prevBtn.disabled = current === 0;
             nextBtn.textContent = current >= total ? 'Start over' : (current === total - 1 ? 'Finish ✓' : 'Next →');
+        }
 
-            var pct = current >= total ? 100 : Math.round((current / total) * 100);
-            progressFill.style.width = pct + '%';
+        // Build mobile dots too
+        for (var j = 0; j < total; j++) {
+            var dot = document.createElement('button');
+            dot.className = 'guide-dot' + (j === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', 'Step ' + (j + 1));
+            (function(idx) { dot.addEventListener('click', function() { goTo(idx); }); })(j);
+            dotsWrap.appendChild(dot);
         }
 
         prevBtn.addEventListener('click', function() {
@@ -392,7 +416,7 @@
         });
         nextBtn.addEventListener('click', function() {
             if (current < total) goTo(current + 1);
-            else goTo(0); // restart
+            else goTo(0);
         });
 
         goTo(0);

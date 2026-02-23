@@ -5844,3 +5844,135 @@ button.bundle-preview:hover {
         padding: 0 16px;
     }
 }
+
+/* ── Guide two-column layout ────────────────────────────────── */
+.guide-layout {
+    display: flex;
+    gap: 0;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.guide-index {
+    width: 220px;
+    flex-shrink: 0;
+    padding: 40px 24px 40px 0;
+    border-right: 1px solid #ece9e3;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.guide-index-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 12px;
+    border: none;
+    background: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.15s;
+    width: 100%;
+}
+
+.guide-index-item:hover {
+    background: #f5f4f0;
+}
+
+.guide-index-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #bbb;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1.5px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+    transition: all 0.2s;
+}
+
+.guide-index-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #aaa;
+    line-height: 1.4;
+    transition: color 0.2s;
+}
+
+/* Active state */
+.guide-index-item.active .guide-index-num {
+    background: #1a1a1a;
+    border-color: #1a1a1a;
+    color: white;
+}
+
+.guide-index-item.active .guide-index-label {
+    color: #1a1a1a;
+    font-weight: 600;
+}
+
+/* Done state */
+.guide-index-item.done .guide-index-num {
+    background: #e8f5ee;
+    border-color: #86efac;
+    color: #16a34a;
+    font-size: 10px;
+}
+
+.guide-index-item.done .guide-index-num::before {
+    content: '✓';
+}
+
+.guide-index-item.done .guide-index-label {
+    color: #999;
+    text-decoration: line-through;
+    text-decoration-color: #ccc;
+}
+
+/* Stage takes remaining space */
+.guide-stage {
+    flex: 1;
+    max-width: 100%;
+    padding: 40px 0 0 40px;
+    min-height: 340px;
+    position: relative;
+}
+
+/* Hide progress bar (index IS the progress now) */
+.guide-progress-bar {
+    display: none;
+}
+
+/* Hide dots on desktop, show on mobile */
+@media (min-width: 601px) {
+    .guide-dots {
+        display: none;
+    }
+}
+
+/* Mobile: hide index, show dots */
+@media (max-width: 600px) {
+    .guide-layout {
+        flex-direction: column;
+    }
+
+    .guide-index {
+        display: none;
+    }
+
+    .guide-stage {
+        padding: 32px 16px 0;
+    }
+
+    .guide-dots {
+        display: flex;
+    }
+}
