@@ -108,238 +108,185 @@
 
     <!-- Tab panels -->
     <div class="db-panels">
-        <div class="container">
 
             <!-- Apple Configurator -->
-            <div id="tab-configurator" class="db-panel active" role="tabpanel">
-                <div class="db-guide">
-                    <div class="db-guide-header">
-                        <div class="db-guide-badge">Most Effective</div>
-                        <h2>Apple Configurator 2</h2>
-                        <p class="db-guide-intro">Apple Configurator lets you push a supervised MDM profile onto an iPhone, locking settings so permanently that the only way to remove them is a full factory reset — which erases everything.</p>
+            <div id="tab-configurator" class="db-panel active" role="tabpanel" data-guide="configurator">
+                <div class="guide-progress-bar"><div class="guide-progress-fill"></div></div>
+                <div class="guide-stage">
+                    <!-- Step cards -->
+                    <div class="guide-card active" data-step="0">
+                        <div class="guide-card-eyebrow">Apple Configurator · Step 1 of 5</div>
+                        <h2 class="guide-card-title">Download Apple Configurator 2</h2>
+                        <p class="guide-card-body">Open the Mac App Store and search for <strong>Apple Configurator 2</strong>. It's free. You'll need a Mac — this tool is Mac-only.</p>
                     </div>
-
-                    <div class="db-steps">
-                        <div class="db-step">
-                            <div class="db-step-num">1</div>
-                            <div class="db-step-body">
-                                <h3>Download Apple Configurator 2</h3>
-                                <p>Open the Mac App Store and search for <strong>Apple Configurator 2</strong>. It's free. You'll need a Mac — this tool is Mac-only.</p>
-                            </div>
-                        </div>
-
-                        <div class="db-step">
-                            <div class="db-step-num">2</div>
-                            <div class="db-step-body">
-                                <h3>Put the iPhone in DFU / Recovery mode</h3>
-                                <p>Connect the iPhone to your Mac via USB. In Apple Configurator, go to <strong>Actions → Prepare</strong>. Follow the on-screen prompts to supervise the device. This will erase it, so do this before handing it to your child.</p>
-                                <div class="db-callout db-callout-yellow">
-                                    <strong>Heads up:</strong> Supervising the device erases all existing data. Set it up from scratch or restore from a backup <em>after</em> supervising.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="db-step">
-                            <div class="db-step-num">3</div>
-                            <div class="db-step-body">
-                                <h3>Create a configuration profile</h3>
-                                <p>In Apple Configurator, click <strong>File → New Profile</strong>. Give it a name like "Family Controls". Under the <strong>Restrictions</strong> payload, you can:</p>
-                                <ul class="db-list">
-                                    <li>Disable the ability to install apps</li>
-                                    <li>Disable Safari</li>
-                                    <li>Force all web traffic through a content filter</li>
-                                    <li>Prevent changing passcodes</li>
-                                    <li>Disable AirDrop and iMessage to unknown contacts</li>
-                                    <li>Lock specific apps from running</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="db-step">
-                            <div class="db-step-num">4</div>
-                            <div class="db-step-body">
-                                <h3>Install the profile on the device</h3>
-                                <p>With the iPhone connected, select it in Apple Configurator and drag your <code>.mobileconfig</code> file onto it — or go to <strong>Actions → Add → Profiles</strong>. The profile installs silently.</p>
-                                <div class="db-callout db-callout-green">
-                                    <strong>Why this beats Screen Time:</strong> Because the device is supervised, your child cannot remove the profile, reset Screen Time, or even see the Management section in Settings. It's hardware-enforced.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="db-step">
-                            <div class="db-step-num">5</div>
-                            <div class="db-step-body">
-                                <h3>Lock it with a passcode your child doesn't know</h3>
-                                <p>In the profile's <strong>Passcode</strong> payload, you can enforce minimum complexity and set a maximum number of failed attempts. Use <strong>Screen Time → Communication Limits</strong> on top of this for added control.</p>
-                            </div>
-                        </div>
+                    <div class="guide-card" data-step="1">
+                        <div class="guide-card-eyebrow">Apple Configurator · Step 2 of 5</div>
+                        <h2 class="guide-card-title">Connect &amp; supervise the iPhone</h2>
+                        <p class="guide-card-body">Plug the iPhone into your Mac via USB. In Apple Configurator, go to <strong>Actions → Prepare</strong> and follow the prompts. This supervises the device — do it before handing it to your child.</p>
+                        <div class="guide-card-callout warn">⚠️ Supervision erases all data. Restore from backup <em>after</em>.</div>
                     </div>
-
-                    <div class="db-resource">
-                        <h4>Official Apple documentation</h4>
-                        <a href="https://support.apple.com/guide/apple-configurator-2/welcome/mac" target="_blank" rel="noopener" class="db-resource-link">
-                            Apple Configurator 2 User Guide →
-                        </a>
+                    <div class="guide-card" data-step="2">
+                        <div class="guide-card-eyebrow">Apple Configurator · Step 3 of 5</div>
+                        <h2 class="guide-card-title">Create a configuration profile</h2>
+                        <p class="guide-card-body">Click <strong>File → New Profile</strong>. Name it "Family Controls". Under <strong>Restrictions</strong>, disable app installation, Safari, passcode changes, and AirDrop.</p>
+                        <ul class="guide-card-list">
+                            <li>Disable installing apps</li>
+                            <li>Disable Safari</li>
+                            <li>Force content filter</li>
+                            <li>Prevent passcode changes</li>
+                        </ul>
                     </div>
+                    <div class="guide-card" data-step="3">
+                        <div class="guide-card-eyebrow">Apple Configurator · Step 4 of 5</div>
+                        <h2 class="guide-card-title">Push the profile to the device</h2>
+                        <p class="guide-card-body">With the iPhone connected, drag your <code>.mobileconfig</code> file onto it in Apple Configurator — or go to <strong>Actions → Add → Profiles</strong>. Installs silently.</p>
+                        <div class="guide-card-callout good">✓ Because the device is supervised, your child cannot remove this profile or reset Screen Time. It's hardware-enforced.</div>
+                    </div>
+                    <div class="guide-card" data-step="4">
+                        <div class="guide-card-eyebrow">Apple Configurator · Step 5 of 5</div>
+                        <h2 class="guide-card-title">Set a passcode they don't know</h2>
+                        <p class="guide-card-body">In the profile's <strong>Passcode</strong> payload, enforce minimum complexity and a max number of failed attempts. Layer Screen Time → Communication Limits on top for extra control.</p>
+                        <a href="https://support.apple.com/guide/apple-configurator-2/welcome/mac" target="_blank" rel="noopener" class="guide-card-link">Official Apple Configurator docs →</a>
+                    </div>
+                    <!-- Done card -->
+                    <div class="guide-card guide-done-card" data-step="5">
+                        <div class="guide-done-icon">✓</div>
+                        <h2 class="guide-card-title">Guide complete</h2>
+                        <p class="guide-card-body">You've set up hardware-enforced parental controls. Check the other guides for Screen Time and app blocking layers.</p>
+                    </div>
+                </div>
+                <div class="guide-controls">
+                    <button class="guide-btn guide-prev" disabled>← Back</button>
+                    <div class="guide-dots"></div>
+                    <button class="guide-btn guide-next">Next →</button>
                 </div>
             </div>
 
             <!-- Screen Time -->
-            <div id="tab-screentime" class="db-panel" role="tabpanel">
-                <div class="db-guide">
-                    <div class="db-guide-header">
-                        <div class="db-guide-badge db-guide-badge-blue">Built-in to iOS</div>
-                        <h2>Screen Time</h2>
-                        <p class="db-guide-intro">Screen Time is Apple's built-in parental control system. It's the easiest way to get started, and when combined with a supervised MDM profile, it becomes nearly impossible for kids to bypass.</p>
+            <div id="tab-screentime" class="db-panel" role="tabpanel" data-guide="screentime">
+                <div class="guide-progress-bar"><div class="guide-progress-fill"></div></div>
+                <div class="guide-stage">
+                    <div class="guide-card active" data-step="0">
+                        <div class="guide-card-eyebrow">Screen Time · Step 1 of 5</div>
+                        <h2 class="guide-card-title">Turn on Screen Time</h2>
+                        <p class="guide-card-body">Go to <strong>Settings → Screen Time → Turn On Screen Time</strong>. Tap <strong>"This is my child's iPhone"</strong>. Set a passcode only you know.</p>
+                        <div class="guide-card-callout warn">⚠️ Use a random 6-digit code stored in your password manager — not a birthday.</div>
                     </div>
-
-                    <div class="db-steps">
-                        <div class="db-step">
-                            <div class="db-step-num">1</div>
-                            <div class="db-step-body">
-                                <h3>Enable Screen Time from your iPhone</h3>
-                                <p>Go to <strong>Settings → Screen Time → Turn On Screen Time</strong>. Tap <strong>"This is my child's iPhone"</strong>. Set a Screen Time passcode that only you know — use something different from the device unlock passcode.</p>
-                                <div class="db-callout db-callout-red">
-                                    <strong>Critical:</strong> Do not use a passcode your child could guess. Use a random 6-digit code and store it in your password manager.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="db-step">
-                            <div class="db-step-num">2</div>
-                            <div class="db-step-body">
-                                <h3>Set Content &amp; Privacy Restrictions</h3>
-                                <p>Under <strong>Screen Time → Content &amp; Privacy Restrictions</strong>, toggle it on. Key settings:</p>
-                                <ul class="db-list">
-                                    <li><strong>iTunes &amp; App Store Purchases:</strong> Set "Installing Apps" to Don't Allow</li>
-                                    <li><strong>Allowed Apps:</strong> Disable Safari, FaceTime, or any app you want hidden</li>
-                                    <li><strong>Content Restrictions → Web Content:</strong> Set to "Limit Adult Websites" or "Allowed Websites Only"</li>
-                                    <li><strong>Privacy:</strong> Prevent changes to Location Services and Accounts</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="db-step">
-                            <div class="db-step-num">3</div>
-                            <div class="db-step-body">
-                                <h3>Set App Limits</h3>
-                                <p>Under <strong>App Limits</strong>, tap <strong>Add Limit</strong> and choose a category or specific app. Set a daily time limit of 0 minutes to effectively block it while still showing the icon (useful for allowing emergency calls from Phone).</p>
-                            </div>
-                        </div>
-
-                        <div class="db-step">
-                            <div class="db-step-num">4</div>
-                            <div class="db-step-body">
-                                <h3>Use Communication Limits</h3>
-                                <p>Under <strong>Communication Limits</strong>, you can restrict who your child can call or text — both during allowed hours and during downtime. Set "Allowed Contacts" to your family's contact list only.</p>
-                            </div>
-                        </div>
-
-                        <div class="db-step">
-                            <div class="db-step-num">5</div>
-                            <div class="db-step-body">
-                                <h3>Enable Family Sharing for remote management</h3>
-                                <p>If you set this up through <strong>Settings → [Your Name] → Family Sharing</strong>, you can manage Screen Time remotely from your own iPhone. Any Screen Time extension requests come to you as notifications to approve or deny.</p>
-                                <div class="db-callout db-callout-green">
-                                    <strong>Pro tip:</strong> Pair Screen Time with a supervised MDM profile (see Apple Configurator tab) to prevent your child from resetting Screen Time settings by signing out of iCloud.
-                                </div>
-                            </div>
-                        </div>
+                    <div class="guide-card" data-step="1">
+                        <div class="guide-card-eyebrow">Screen Time · Step 2 of 5</div>
+                        <h2 class="guide-card-title">Enable Content &amp; Privacy Restrictions</h2>
+                        <p class="guide-card-body">Under <strong>Screen Time → Content &amp; Privacy Restrictions</strong>, toggle it on and set:</p>
+                        <ul class="guide-card-list">
+                            <li>Installing Apps → Don't Allow</li>
+                            <li>Disable Safari &amp; unwanted apps</li>
+                            <li>Web Content → Limit Adult Websites</li>
+                            <li>Prevent Location Services changes</li>
+                        </ul>
                     </div>
+                    <div class="guide-card" data-step="2">
+                        <div class="guide-card-eyebrow">Screen Time · Step 3 of 5</div>
+                        <h2 class="guide-card-title">Set App Limits</h2>
+                        <p class="guide-card-body">Under <strong>App Limits → Add Limit</strong>, pick a specific app or category. Set it to 0 minutes and enable <strong>Block at End of Limit</strong> to effectively lock it out.</p>
+                    </div>
+                    <div class="guide-card" data-step="3">
+                        <div class="guide-card-eyebrow">Screen Time · Step 4 of 5</div>
+                        <h2 class="guide-card-title">Restrict communication</h2>
+                        <p class="guide-card-body">Under <strong>Communication Limits</strong>, set who your child can call and text. Restrict to your family's contacts only — both during normal hours and during Downtime.</p>
+                    </div>
+                    <div class="guide-card" data-step="4">
+                        <div class="guide-card-eyebrow">Screen Time · Step 5 of 5</div>
+                        <h2 class="guide-card-title">Enable Family Sharing</h2>
+                        <p class="guide-card-body">Go to <strong>Settings → [Your Name] → Family Sharing</strong> to manage Screen Time remotely. Time extension requests come to your phone as notifications.</p>
+                        <div class="guide-card-callout good">✓ Pair with Apple Configurator supervision so your child can't bypass Screen Time by signing out of iCloud.</div>
+                    </div>
+                    <div class="guide-card guide-done-card" data-step="5">
+                        <div class="guide-done-icon">✓</div>
+                        <h2 class="guide-card-title">Guide complete</h2>
+                        <p class="guide-card-body">Screen Time is live. For stronger protection, combine it with the Apple Configurator guide.</p>
+                    </div>
+                </div>
+                <div class="guide-controls">
+                    <button class="guide-btn guide-prev" disabled>← Back</button>
+                    <div class="guide-dots"></div>
+                    <button class="guide-btn guide-next">Next →</button>
                 </div>
             </div>
 
             <!-- Blocking Apps -->
-            <div id="tab-blocking" class="db-panel" role="tabpanel">
-                <div class="db-guide">
-                    <div class="db-guide-header">
-                        <div class="db-guide-badge db-guide-badge-red">Nuclear Option</div>
-                        <h2>Blocking Specific Apps &amp; Websites</h2>
-                        <p class="db-guide-intro">A layered approach — using Screen Time, DNS filtering, and MDM profiles together — creates overlapping locks that are extremely difficult to bypass even for tech-savvy teens.</p>
+            <div id="tab-blocking" class="db-panel" role="tabpanel" data-guide="blocking">
+                <div class="guide-progress-bar"><div class="guide-progress-fill"></div></div>
+                <div class="guide-stage">
+                    <div class="guide-card active" data-step="0">
+                        <div class="guide-card-eyebrow">Blocking Apps · Step 1 of 5</div>
+                        <h2 class="guide-card-title">Block via App Limits</h2>
+                        <p class="guide-card-body">Go to <strong>Screen Time → App Limits → Add Limit</strong>. Pick TikTok, Instagram, or any app. Set the daily limit to 1 minute and enable <strong>"Block at End of Limit"</strong>.</p>
+                        <p class="guide-card-body">To hide the icon entirely: delete the app and disable App Store installs under Content &amp; Privacy Restrictions.</p>
                     </div>
-
-                    <div class="db-steps">
-                        <div class="db-step">
-                            <div class="db-step-num">1</div>
-                            <div class="db-step-body">
-                                <h3>Block apps via Screen Time App Limits</h3>
-                                <p>Go to <strong>Settings → Screen Time → App Limits → Add Limit</strong>. Choose a specific app (e.g., TikTok, Instagram) and set its daily limit to 1 minute. Tap <strong>"Block at End of Limit"</strong> and enable it.</p>
-                                <p>To fully hide the icon, delete the app and prevent reinstallation by going to <strong>Content &amp; Privacy Restrictions → iTunes &amp; App Store Purchases → Installing Apps: Don't Allow</strong>.</p>
-                            </div>
-                        </div>
-
-                        <div class="db-step">
-                            <div class="db-step-num">2</div>
-                            <div class="db-step-body">
-                                <h3>Block websites in Screen Time</h3>
-                                <p>Go to <strong>Screen Time → Content &amp; Privacy Restrictions → Content Restrictions → Web Content</strong>. Switch to <strong>"Limit Adult Websites"</strong> and scroll down to <strong>Never Allow</strong>. Add specific domains:</p>
-                                <ul class="db-list">
-                                    <li>tiktok.com</li>
-                                    <li>instagram.com</li>
-                                    <li>snapchat.com</li>
-                                    <li>twitter.com / x.com</li>
-                                    <li>reddit.com</li>
-                                    <li>youtube.com (if desired)</li>
-                                </ul>
-                                <div class="db-callout db-callout-yellow">
-                                    This blocks the web versions of apps, but the native apps still work unless you block them separately.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="db-step">
-                            <div class="db-step-num">3</div>
-                            <div class="db-step-body">
-                                <h3>Add DNS-level filtering (strongest website blocking)</h3>
-                                <p>DNS filtering blocks websites at the network level — even in apps that use their own browsers. The most effective free option is <strong>1.1.1.3</strong> (Cloudflare for Families).</p>
-                                <p>Install a DNS profile on the iPhone by going to <strong>Settings → General → VPN &amp; Device Management</strong> and installing a profile that sets the device's DNS to a family-safe resolver.</p>
-                                <p>Services like <strong>NextDNS</strong> or <strong>CleanBrowsing</strong> provide free profiles you can download directly to the device. They block thousands of social media, adult, and gambling domains automatically.</p>
-                            </div>
-                        </div>
-
-                        <div class="db-step">
-                            <div class="db-step-num">4</div>
-                            <div class="db-step-body">
-                                <h3>Use MDM to allowlist only specific apps</h3>
-                                <p>The strongest approach: use Apple Configurator to create a profile that only allows specific App IDs. All other apps are hidden and cannot be reinstalled. This is what CorePhone's full service does automatically — you can replicate it yourself with Configurator.</p>
-                                <p>In the profile, go to <strong>Restrictions → Applications → Restrict App Usage: Allow specific apps</strong> and add the bundle IDs of apps you want to allow (e.g., <code>com.apple.mobilephone</code>, <code>com.apple.MobileSMS</code>).</p>
-                            </div>
-                        </div>
-
-                        <div class="db-step">
-                            <div class="db-step-num">5</div>
-                            <div class="db-step-body">
-                                <h3>Remove the browser entirely</h3>
-                                <p>The easiest workaround kids use is Safari or Chrome to access blocked apps' web versions. Prevent this entirely:</p>
-                                <ul class="db-list">
-                                    <li>In Screen Time: <strong>Allowed Apps → Safari: OFF</strong></li>
-                                    <li>Delete Chrome, Firefox, and any other browser</li>
-                                    <li>In Content Restrictions: Set Web Content to <strong>"Allowed Websites Only"</strong> with zero allowed sites</li>
-                                </ul>
-                                <div class="db-callout db-callout-green">
-                                    Without a browser and with the App Store disabled, your child has no way to install new apps or access blocked websites.
-                                </div>
-                            </div>
-                        </div>
+                    <div class="guide-card" data-step="1">
+                        <div class="guide-card-eyebrow">Blocking Apps · Step 2 of 5</div>
+                        <h2 class="guide-card-title">Block websites in Screen Time</h2>
+                        <p class="guide-card-body">Go to <strong>Content Restrictions → Web Content → Limit Adult Websites → Never Allow</strong>. Add domains:</p>
+                        <ul class="guide-card-list">
+                            <li>tiktok.com</li>
+                            <li>instagram.com</li>
+                            <li>snapchat.com</li>
+                            <li>x.com &amp; twitter.com</li>
+                            <li>reddit.com</li>
+                        </ul>
+                        <div class="guide-card-callout warn">⚠️ This blocks the website — the native app still works unless blocked separately.</div>
                     </div>
+                    <div class="guide-card" data-step="2">
+                        <div class="guide-card-eyebrow">Blocking Apps · Step 3 of 5</div>
+                        <h2 class="guide-card-title">Add DNS-level filtering</h2>
+                        <p class="guide-card-body">DNS filtering blocks domains at the network level — even inside apps. Install a profile via <strong>Settings → General → VPN &amp; Device Management</strong>.</p>
+                        <p class="guide-card-body"><strong>NextDNS</strong> and <strong>CleanBrowsing</strong> offer free profiles that block thousands of social, adult, and gambling domains automatically.</p>
+                    </div>
+                    <div class="guide-card" data-step="3">
+                        <div class="guide-card-eyebrow">Blocking Apps · Step 4 of 5</div>
+                        <h2 class="guide-card-title">Allowlist only specific apps via MDM</h2>
+                        <p class="guide-card-body">In Apple Configurator, go to <strong>Restrictions → Applications → Allow specific apps</strong> and add only the bundle IDs you want:</p>
+                        <ul class="guide-card-list">
+                            <li><code>com.apple.mobilephone</code></li>
+                            <li><code>com.apple.MobileSMS</code></li>
+                            <li><code>com.apple.maps</code></li>
+                        </ul>
+                    </div>
+                    <div class="guide-card" data-step="4">
+                        <div class="guide-card-eyebrow">Blocking Apps · Step 5 of 5</div>
+                        <h2 class="guide-card-title">Remove the browser entirely</h2>
+                        <p class="guide-card-body">The most common bypass: kids use Safari or Chrome to reach blocked apps on the web.</p>
+                        <ul class="guide-card-list">
+                            <li>Screen Time → Allowed Apps → Safari: OFF</li>
+                            <li>Delete Chrome &amp; Firefox</li>
+                            <li>Web Content → Allowed Websites Only → zero sites</li>
+                        </ul>
+                        <div class="guide-card-callout good">✓ No browser + App Store disabled = nothing new can be installed or accessed.</div>
+                    </div>
+                    <div class="guide-card guide-done-card" data-step="5">
+                        <div class="guide-done-icon">✓</div>
+                        <h2 class="guide-card-title">Guide complete</h2>
+                        <p class="guide-card-body">All three blocking layers are in place. Sign up for the newsletter to stay ahead of new workarounds.</p>
+                    </div>
+                </div>
+                <div class="guide-controls">
+                    <button class="guide-btn guide-prev" disabled>← Back</button>
+                    <div class="guide-dots"></div>
+                    <button class="guide-btn guide-next">Next →</button>
                 </div>
             </div>
 
             <!-- Newsletter -->
             <div id="tab-newsletter" class="db-panel" role="tabpanel">
-                <div class="db-guide">
-                    <div class="db-guide-header">
-                        <h2>Stay up to date</h2>
-                        <p class="db-guide-intro">Kids find new workarounds, social apps change, and iOS updates shift what's possible. Our newsletter covers what's new and what to watch out for — delivered to your inbox monthly.</p>
-                    </div>
-
-                    <div class="db-newsletter-card">
-                        <h3>Join the CorePhone newsletter</h3>
-                        <ul class="db-newsletter-perks">
+                <div class="guide-newsletter-wrap">
+                    <div class="guide-newsletter-card">
+                        <div class="guide-newsletter-icon">📬</div>
+                        <h2>Stay one step ahead</h2>
+                        <p>Kids find new workarounds. iOS updates shift what's possible. Our monthly newsletter covers what's changed and what to do about it.</p>
+                        <ul class="guide-newsletter-perks">
                             <li>New apps parents should know about</li>
                             <li>iOS update impact on parental controls</li>
-                            <li>Workarounds kids are using (and how to close them)</li>
-                            <li>Community Q&amp;A from other parents</li>
+                            <li>Workarounds kids are using — and how to close them</li>
+                            <li>Q&amp;A from other parents</li>
                         </ul>
                         <form class="db-newsletter-form" action="https://app.convertkit.com/forms/subscribe" method="post" target="_blank">
                             <input type="hidden" name="form_id" value="newsletter">
@@ -351,7 +298,6 @@
                 </div>
             </div>
 
-        </div><!-- /.container -->
     </div><!-- /.db-panels -->
 
     <!-- Footer -->
@@ -406,6 +352,52 @@
         localStorage.removeItem(ORDER_KEY);
     }
 
+    // ── step navigator ─────────────────────────────────────────────────────────
+
+    function initGuide(panel) {
+        var cards = Array.from(panel.querySelectorAll('.guide-card'));
+        var dotsWrap = panel.querySelector('.guide-dots');
+        var prevBtn = panel.querySelector('.guide-prev');
+        var nextBtn = panel.querySelector('.guide-next');
+        var progressFill = panel.querySelector('.guide-progress-fill');
+        var total = cards.length - 1; // last card is the done card
+        var current = 0;
+
+        // Build dots (exclude done card)
+        for (var i = 0; i < total; i++) {
+            var dot = document.createElement('button');
+            dot.className = 'guide-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', 'Step ' + (i + 1));
+            (function(idx) { dot.addEventListener('click', function() { goTo(idx); }); })(i);
+            dotsWrap.appendChild(dot);
+        }
+
+        function goTo(idx) {
+            cards[current].classList.remove('active');
+            current = idx;
+            cards[current].classList.add('active');
+
+            var dots = dotsWrap.querySelectorAll('.guide-dot');
+            dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+
+            prevBtn.disabled = current === 0;
+            nextBtn.textContent = current >= total ? 'Start over' : (current === total - 1 ? 'Finish ✓' : 'Next →');
+
+            var pct = current >= total ? 100 : Math.round((current / total) * 100);
+            progressFill.style.width = pct + '%';
+        }
+
+        prevBtn.addEventListener('click', function() {
+            if (current > 0) goTo(current - 1);
+        });
+        nextBtn.addEventListener('click', function() {
+            if (current < total) goTo(current + 1);
+            else goTo(0); // restart
+        });
+
+        goTo(0);
+    }
+
     // ── tab logic ──────────────────────────────────────────────────────────────
 
     function initTabs() {
@@ -425,6 +417,11 @@
                 var panel = document.getElementById('tab-' + target);
                 if (panel) panel.classList.add('active');
             });
+        });
+
+        // Init step guides
+        document.querySelectorAll('.db-panel[data-guide]').forEach(function(panel) {
+            initGuide(panel);
         });
     }
 

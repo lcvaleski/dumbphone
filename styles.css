@@ -5580,3 +5580,267 @@ button.bundle-preview:hover {
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.18), 0 0 0 1px rgba(0,0,0,0.06);
 }
+
+/* ── Step-by-step guide navigator ──────────────────────────── */
+.db-panels {
+    min-height: 60vh;
+}
+
+.guide-progress-bar {
+    height: 3px;
+    background: #ece9e3;
+    width: 100%;
+}
+
+.guide-progress-fill {
+    height: 100%;
+    background: #1a1a1a;
+    transition: width 0.4s ease;
+    width: 0%;
+}
+
+.guide-stage {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 48px 24px 0;
+    min-height: 340px;
+    position: relative;
+}
+
+.guide-card {
+    display: none;
+    animation: guideFadeIn 0.3s ease-out forwards;
+}
+
+.guide-card.active {
+    display: block;
+}
+
+@keyframes guideFadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.guide-card-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 12px;
+}
+
+.guide-card-title {
+    font-family: 'Crimson Text', Georgia, serif;
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #1a1a1a;
+    margin: 0 0 20px;
+}
+
+.guide-card-body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #444;
+    margin: 0 0 16px;
+}
+
+.guide-card-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.guide-card-list li {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #333;
+    padding: 10px 14px;
+    background: #f5f4f0;
+    border-radius: 8px;
+    border-left: 3px solid #ccc;
+}
+
+.guide-card-callout {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-top: 16px;
+}
+
+.guide-card-callout.warn {
+    background: #fef9ec;
+    border: 1px solid #f5d87a;
+    color: #7a5c00;
+}
+
+.guide-card-callout.good {
+    background: #f0faf4;
+    border: 1px solid #86efac;
+    color: #166534;
+}
+
+.guide-card-link {
+    display: inline-block;
+    margin-top: 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #555;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* Done card */
+.guide-done-card {
+    text-align: center;
+    padding: 32px 0;
+}
+
+.guide-done-icon {
+    width: 56px;
+    height: 56px;
+    background: #1a1a1a;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin: 0 auto 24px;
+}
+
+/* Controls */
+.guide-controls {
+    max-width: 620px;
+    margin: 32px auto 60px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.guide-btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 22px;
+    border-radius: 8px;
+    border: 1.5px solid #e0ddd8;
+    background: white;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.guide-btn:hover:not(:disabled) {
+    background: #1a1a1a;
+    color: white;
+    border-color: #1a1a1a;
+}
+
+.guide-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.guide-dots {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.guide-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: #ddd;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.2s;
+}
+
+.guide-dot.active {
+    background: #1a1a1a;
+    transform: scale(1.25);
+}
+
+/* Newsletter panel */
+.guide-newsletter-wrap {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 60px 24px;
+}
+
+.guide-newsletter-card {
+    text-align: center;
+}
+
+.guide-newsletter-icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.guide-newsletter-card h2 {
+    font-family: 'Crimson Text', Georgia, serif;
+    font-size: 36px;
+    font-weight: 400;
+    margin: 0 0 12px;
+}
+
+.guide-newsletter-card > p {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+    margin: 0 0 24px;
+}
+
+.guide-newsletter-perks {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.guide-newsletter-perks li {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #333;
+    padding-left: 20px;
+    position: relative;
+}
+
+.guide-newsletter-perks li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #999;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .guide-card-title {
+        font-size: 26px;
+    }
+
+    .guide-stage {
+        padding: 32px 16px 0;
+    }
+
+    .guide-controls {
+        padding: 0 16px;
+    }
+}
