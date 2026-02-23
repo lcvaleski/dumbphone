@@ -4231,7 +4231,7 @@ header {
 }
 
 .packages-hero {
-    padding: 60px 0 40px;
+    padding: 60px 0 20px;
     background: var(--bg-cream);
     text-align: center;
 }
