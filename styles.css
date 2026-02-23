@@ -5500,3 +5500,22 @@ button.bundle-preview:hover {
         padding-bottom: 16px;
     }
 }
+/* ── Returning user bar ─────────────────────────────────────── */
+.returning-bar {
+    text-align: center;
+    padding: 10px 16px;
+    background: #fafaf8;
+    border-bottom: 1px solid #ece9e3;
+}
+
+.returning-bar a {
+    font-size: 13px;
+    color: var(--text-secondary, #666);
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+}
+
+.returning-bar a:hover {
+    color: var(--text-primary, #1a1a1a);
+    text-decoration: underline;
+}

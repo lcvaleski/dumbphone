@@ -30,6 +30,11 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Returning user login link -->
+    <div class="returning-bar">
+        <a href="/dashboard" id="returning-link">Already purchased? Access your guides →</a>
+    </div>
+
     <!-- Hero -->
     <section class="packages-hero">
         <div class="container">
@@ -170,6 +175,14 @@
         </div>
     </div>
 
+    <script>
+        // If returning user has a session, the dashboard will auto-show content
+        // If not, dashboard shows the login form — either way, just go there
+        var returningLink = document.getElementById('returning-link');
+        if (returningLink && localStorage.getItem('cp_access_token')) {
+            returningLink.textContent = 'Access your guides →';
+        }
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
