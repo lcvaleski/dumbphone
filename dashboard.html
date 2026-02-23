@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Guides - CorePhone</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="core.svg">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Loading state -->
+<div id="db-loading" class="db-loading">
+    <div class="db-loading-inner">
+        <div class="db-spinner"></div>
+        <p>Verifying your order…</p>
+    </div>
+</div>
+
+<!-- Error / manual entry state -->
+<div id="db-gate" class="db-gate" style="display:none">
+    <div class="container">
+        <div class="db-gate-card">
+            <div class="db-gate-logo">
+                <img src="core.svg" alt="CorePhone" class="logo">
+                <span class="logo-text">CorePhone</span>
+            </div>
+            <h1>Access your guides</h1>
+            <p class="db-gate-subtitle">Enter the email address and order number from your confirmation email.</p>
+
+            <div id="db-gate-error" class="db-gate-error" style="display:none"></div>
+
+            <form id="db-verify-form" class="db-verify-form">
+                <div class="db-field">
+                    <label for="db-email">Email address</label>
+                    <input type="email" id="db-email" name="email" placeholder="you@example.com" required autocomplete="email">
+                </div>
+                <div class="db-field">
+                    <label for="db-order">Order number</label>
+                    <input type="text" id="db-order" name="order" placeholder="e.g. 12345" required>
+                </div>
+                <button type="submit" class="db-submit-btn">
+                    <span class="db-submit-label">Access my guides</span>
+                    <span class="db-submit-spinner" style="display:none"></span>
+                </button>
+            </form>
+
+            <p class="db-gate-help">Need help? Email <a href="mailto:hello@corephone.org">hello@corephone.org</a></p>
+        </div>
+    </div>
+</div>
+
+<!-- Dashboard (authenticated) -->
+<div id="db-content" class="db-page" style="display:none">
+
+    <!-- Top bar -->
+    <div class="db-topbar">
+        <div class="container">
+            <div class="db-topbar-inner">
+                <div class="db-topbar-logo">
+                    <img src="core.svg" alt="CorePhone" class="logo">
+                    <span class="logo-text">CorePhone</span>
+                </div>
+                <button id="db-logout" class="db-logout-btn">Sign out</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="db-hero">
+        <div class="container">
+            <h1>Your <span class="underline-accent">2026 Tech Parenting</span> guides</h1>
+            <p class="db-hero-sub">Step-by-step instructions to lock down your child's iPhone — for good.</p>
+        </div>
+    </section>
+
+    <!-- Tab nav -->
+    <div class="db-tabs-wrap">
+        <div class="container">
+            <nav class="db-tabs" role="tablist">
+                <button class="db-tab active" data-tab="configurator" role="tab" aria-selected="true">
+                    Apple Configurator
+                </button>
+                <button class="db-tab" data-tab="screentime" role="tab" aria-selected="false">
+                    Screen Time
+                </button>
+                <button class="db-tab" data-tab="blocking" role="tab" aria-selected="false">
+                    Blocking Apps
+                </button>
+                <button class="db-tab" data-tab="newsletter" role="tab" aria-selected="false">
+                    Newsletter
+                </button>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Tab panels -->
+    <div class="db-panels">
+        <div class="container">
+
+            <!-- Apple Configurator -->
+            <div id="tab-configurator" class="db-panel active" role="tabpanel">
+                <div class="db-guide">
+                    <div class="db-guide-header">
+                        <div class="db-guide-badge">Most Effective</div>
+                        <h2>Apple Configurator 2</h2>
+                        <p class="db-guide-intro">Apple Configurator lets you push a supervised MDM profile onto an iPhone, locking settings so permanently that the only way to remove them is a full factory reset — which erases everything.</p>
+                    </div>
+
+                    <div class="db-steps">
+                        <div class="db-step">
+                            <div class="db-step-num">1</div>
+                            <div class="db-step-body">
+                                <h3>Download Apple Configurator 2</h3>
+                                <p>Open the Mac App Store and search for <strong>Apple Configurator 2</strong>. It's free. You'll need a Mac — this tool is Mac-only.</p>
+                            </div>
+                        </div>
+
+                        <div class="db-step">
+                            <div class="db-step-num">2</div>
+                            <div class="db-step-body">
+                                <h3>Put the iPhone in DFU / Recovery mode</h3>
+                                <p>Connect the iPhone to your Mac via USB. In Apple Configurator, go to <strong>Actions → Prepare</strong>. Follow the on-screen prompts to supervise the device. This will erase it, so do this before handing it to your child.</p>
+                                <div class="db-callout db-callout-yellow">
+                                    <strong>Heads up:</strong> Supervising the device erases all existing data. Set it up from scratch or restore from a backup <em>after</em> supervising.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="db-step">
+                            <div class="db-step-num">3</div>
+                            <div class="db-step-body">
+                                <h3>Create a configuration profile</h3>
+                                <p>In Apple Configurator, click <strong>File → New Profile</strong>. Give it a name like "Family Controls". Under the <strong>Restrictions</strong> payload, you can:</p>
+                                <ul class="db-list">
+                                    <li>Disable the ability to install apps</li>
+                                    <li>Disable Safari</li>
+                                    <li>Force all web traffic through a content filter</li>
+                                    <li>Prevent changing passcodes</li>
+                                    <li>Disable AirDrop and iMessage to unknown contacts</li>
+                                    <li>Lock specific apps from running</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="db-step">
+                            <div class="db-step-num">4</div>
+                            <div class="db-step-body">
+                                <h3>Install the profile on the device</h3>
+                                <p>With the iPhone connected, select it in Apple Configurator and drag your <code>.mobileconfig</code> file onto it — or go to <strong>Actions → Add → Profiles</strong>. The profile installs silently.</p>
+                                <div class="db-callout db-callout-green">
+                                    <strong>Why this beats Screen Time:</strong> Because the device is supervised, your child cannot remove the profile, reset Screen Time, or even see the Management section in Settings. It's hardware-enforced.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="db-step">
+                            <div class="db-step-num">5</div>
+                            <div class="db-step-body">
+                                <h3>Lock it with a passcode your child doesn't know</h3>
+                                <p>In the profile's <strong>Passcode</strong> payload, you can enforce minimum complexity and set a maximum number of failed attempts. Use <strong>Screen Time → Communication Limits</strong> on top of this for added control.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="db-resource">
+                        <h4>Official Apple documentation</h4>
+                        <a href="https://support.apple.com/guide/apple-configurator-2/welcome/mac" target="_blank" rel="noopener" class="db-resource-link">
+                            Apple Configurator 2 User Guide →
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen Time -->
+            <div id="tab-screentime" class="db-panel" role="tabpanel">
+                <div class="db-guide">
+                    <div class="db-guide-header">
+                        <div class="db-guide-badge db-guide-badge-blue">Built-in to iOS</div>
+                        <h2>Screen Time</h2>
+                        <p class="db-guide-intro">Screen Time is Apple's built-in parental control system. It's the easiest way to get started, and when combined with a supervised MDM profile, it becomes nearly impossible for kids to bypass.</p>
+                    </div>
+
+                    <div class="db-steps">
+                        <div class="db-step">
+                            <div class="db-step-num">1</div>
+                            <div class="db-step-body">
+                                <h3>Enable Screen Time from your iPhone</h3>
+                                <p>Go to <strong>Settings → Screen Time → Turn On Screen Time</strong>. Tap <strong>"This is my child's iPhone"</strong>. Set a Screen Time passcode that only you know — use something different from the device unlock passcode.</p>
+                                <div class="db-callout db-callout-red">
+                                    <strong>Critical:</strong> Do not use a passcode your child could guess. Use a random 6-digit code and store it in your password manager.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="db-step">
+                            <div class="db-step-num">2</div>
+                            <div class="db-step-body">
+                                <h3>Set Content &amp; Privacy Restrictions</h3>
+                                <p>Under <strong>Screen Time → Content &amp; Privacy Restrictions</strong>, toggle it on. Key settings:</p>
+                                <ul class="db-list">
+                                    <li><strong>iTunes &amp; App Store Purchases:</strong> Set "Installing Apps" to Don't Allow</li>
+                                    <li><strong>Allowed Apps:</strong> Disable Safari, FaceTime, or any app you want hidden</li>
+                                    <li><strong>Content Restrictions → Web Content:</strong> Set to "Limit Adult Websites" or "Allowed Websites Only"</li>
+                                    <li><strong>Privacy:</strong> Prevent changes to Location Services and Accounts</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="db-step">
+                            <div class="db-step-num">3</div>
+                            <div class="db-step-body">
+                                <h3>Set App Limits</h3>
+                                <p>Under <strong>App Limits</strong>, tap <strong>Add Limit</strong> and choose a category or specific app. Set a daily time limit of 0 minutes to effectively block it while still showing the icon (useful for allowing emergency calls from Phone).</p>
+                            </div>
+                        </div>
+
+                        <div class="db-step">
+                            <div class="db-step-num">4</div>
+                            <div class="db-step-body">
+                                <h3>Use Communication Limits</h3>
+                                <p>Under <strong>Communication Limits</strong>, you can restrict who your child can call or text — both during allowed hours and during downtime. Set "Allowed Contacts" to your family's contact list only.</p>
+                            </div>
+                        </div>
+
+                        <div class="db-step">
+                            <div class="db-step-num">5</div>
+                            <div class="db-step-body">
+                                <h3>Enable Family Sharing for remote management</h3>
+                                <p>If you set this up through <strong>Settings → [Your Name] → Family Sharing</strong>, you can manage Screen Time remotely from your own iPhone. Any Screen Time extension requests come to you as notifications to approve or deny.</p>
+                                <div class="db-callout db-callout-green">
+                                    <strong>Pro tip:</strong> Pair Screen Time with a supervised MDM profile (see Apple Configurator tab) to prevent your child from resetting Screen Time settings by signing out of iCloud.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blocking Apps -->
+            <div id="tab-blocking" class="db-panel" role="tabpanel">
+                <div class="db-guide">
+                    <div class="db-guide-header">
+                        <div class="db-guide-badge db-guide-badge-red">Nuclear Option</div>
+                        <h2>Blocking Specific Apps &amp; Websites</h2>
+                        <p class="db-guide-intro">A layered approach — using Screen Time, DNS filtering, and MDM profiles together — creates overlapping locks that are extremely difficult to bypass even for tech-savvy teens.</p>
+                    </div>
+
+                    <div class="db-steps">
+                        <div class="db-step">
+                            <div class="db-step-num">1</div>
+                            <div class="db-step-body">
+                                <h3>Block apps via Screen Time App Limits</h3>
+                                <p>Go to <strong>Settings → Screen Time → App Limits → Add Limit</strong>. Choose a specific app (e.g., TikTok, Instagram) and set its daily limit to 1 minute. Tap <strong>"Block at End of Limit"</strong> and enable it.</p>
+                                <p>To fully hide the icon, delete the app and prevent reinstallation by going to <strong>Content &amp; Privacy Restrictions → iTunes &amp; App Store Purchases → Installing Apps: Don't Allow</strong>.</p>
+                            </div>
+                        </div>
+
+                        <div class="db-step">
+                            <div class="db-step-num">2</div>
+                            <div class="db-step-body">
+                                <h3>Block websites in Screen Time</h3>
+                                <p>Go to <strong>Screen Time → Content &amp; Privacy Restrictions → Content Restrictions → Web Content</strong>. Switch to <strong>"Limit Adult Websites"</strong> and scroll down to <strong>Never Allow</strong>. Add specific domains:</p>
+                                <ul class="db-list">
+                                    <li>tiktok.com</li>
+                                    <li>instagram.com</li>
+                                    <li>snapchat.com</li>
+                                    <li>twitter.com / x.com</li>
+                                    <li>reddit.com</li>
+                                    <li>youtube.com (if desired)</li>
+                                </ul>
+                                <div class="db-callout db-callout-yellow">
+                                    This blocks the web versions of apps, but the native apps still work unless you block them separately.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="db-step">
+                            <div class="db-step-num">3</div>
+                            <div class="db-step-body">
+                                <h3>Add DNS-level filtering (strongest website blocking)</h3>
+                                <p>DNS filtering blocks websites at the network level — even in apps that use their own browsers. The most effective free option is <strong>1.1.1.3</strong> (Cloudflare for Families).</p>
+                                <p>Install a DNS profile on the iPhone by going to <strong>Settings → General → VPN &amp; Device Management</strong> and installing a profile that sets the device's DNS to a family-safe resolver.</p>
+                                <p>Services like <strong>NextDNS</strong> or <strong>CleanBrowsing</strong> provide free profiles you can download directly to the device. They block thousands of social media, adult, and gambling domains automatically.</p>
+                            </div>
+                        </div>
+
+                        <div class="db-step">
+                            <div class="db-step-num">4</div>
+                            <div class="db-step-body">
+                                <h3>Use MDM to allowlist only specific apps</h3>
+                                <p>The strongest approach: use Apple Configurator to create a profile that only allows specific App IDs. All other apps are hidden and cannot be reinstalled. This is what CorePhone's full service does automatically — you can replicate it yourself with Configurator.</p>
+                                <p>In the profile, go to <strong>Restrictions → Applications → Restrict App Usage: Allow specific apps</strong> and add the bundle IDs of apps you want to allow (e.g., <code>com.apple.mobilephone</code>, <code>com.apple.MobileSMS</code>).</p>
+                            </div>
+                        </div>
+
+                        <div class="db-step">
+                            <div class="db-step-num">5</div>
+                            <div class="db-step-body">
+                                <h3>Remove the browser entirely</h3>
+                                <p>The easiest workaround kids use is Safari or Chrome to access blocked apps' web versions. Prevent this entirely:</p>
+                                <ul class="db-list">
+                                    <li>In Screen Time: <strong>Allowed Apps → Safari: OFF</strong></li>
+                                    <li>Delete Chrome, Firefox, and any other browser</li>
+                                    <li>In Content Restrictions: Set Web Content to <strong>"Allowed Websites Only"</strong> with zero allowed sites</li>
+                                </ul>
+                                <div class="db-callout db-callout-green">
+                                    Without a browser and with the App Store disabled, your child has no way to install new apps or access blocked websites.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter -->
+            <div id="tab-newsletter" class="db-panel" role="tabpanel">
+                <div class="db-guide">
+                    <div class="db-guide-header">
+                        <h2>Stay up to date</h2>
+                        <p class="db-guide-intro">Kids find new workarounds, social apps change, and iOS updates shift what's possible. Our newsletter covers what's new and what to watch out for — delivered to your inbox monthly.</p>
+                    </div>
+
+                    <div class="db-newsletter-card">
+                        <h3>Join the CorePhone newsletter</h3>
+                        <ul class="db-newsletter-perks">
+                            <li>New apps parents should know about</li>
+                            <li>iOS update impact on parental controls</li>
+                            <li>Workarounds kids are using (and how to close them)</li>
+                            <li>Community Q&amp;A from other parents</li>
+                        </ul>
+                        <form class="db-newsletter-form" action="https://app.convertkit.com/forms/subscribe" method="post" target="_blank">
+                            <input type="hidden" name="form_id" value="newsletter">
+                            <input type="email" name="email_address" placeholder="your@email.com" required class="db-newsletter-input">
+                            <button type="submit" class="db-newsletter-btn">Subscribe — it's free</button>
+                        </form>
+                        <p class="db-newsletter-note">No spam. Unsubscribe anytime.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /.container -->
+    </div><!-- /.db-panels -->
+
+    <!-- Footer -->
+    <footer class="db-footer">
+        <div class="container">
+            <p>© 2026 CorePhone · <a href="mailto:hello@corephone.org">hello@corephone.org</a> · <a href="/terms.html">Terms</a></p>
+        </div>
+    </footer>
+
+</div><!-- /#db-content -->
+
+<script>
+(function () {
+    const TOKEN_KEY = 'cp_access_token';
+    const ORDER_KEY = 'cp_order_id';
+
+    // ── helpers ────────────────────────────────────────────────────────────────
+
+    function showState(id) {
+        ['db-loading', 'db-gate', 'db-content'].forEach(function (s) {
+            var el = document.getElementById(s);
+            if (el) el.style.display = s === id ? '' : 'none';
+        });
+    }
+
+    function showError(msg) {
+        var el = document.getElementById('db-gate-error');
+        el.textContent = msg;
+        el.style.display = '';
+    }
+
+    function clearError() {
+        var el = document.getElementById('db-gate-error');
+        el.style.display = 'none';
+    }
+
+    async function callVerify(orderId, email) {
+        var params = new URLSearchParams({ order_id: orderId, email: email });
+        var res = await fetch('/api/verify?' + params.toString());
+        var body = await res.json();
+        if (!res.ok) throw new Error(body.error || 'Verification failed');
+        return body; // { verified, token, order_id }
+    }
+
+    function storeSession(token, orderId) {
+        localStorage.setItem(TOKEN_KEY, token);
+        localStorage.setItem(ORDER_KEY, orderId);
+    }
+
+    function clearSession() {
+        localStorage.removeItem(TOKEN_KEY);
+        localStorage.removeItem(ORDER_KEY);
+    }
+
+    // ── tab logic ──────────────────────────────────────────────────────────────
+
+    function initTabs() {
+        var tabs = document.querySelectorAll('.db-tab');
+        tabs.forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                var target = tab.dataset.tab;
+                tabs.forEach(function (t) {
+                    t.classList.remove('active');
+                    t.setAttribute('aria-selected', 'false');
+                });
+                document.querySelectorAll('.db-panel').forEach(function (p) {
+                    p.classList.remove('active');
+                });
+                tab.classList.add('active');
+                tab.setAttribute('aria-selected', 'true');
+                var panel = document.getElementById('tab-' + target);
+                if (panel) panel.classList.add('active');
+            });
+        });
+    }
+
+    // ── main flow ──────────────────────────────────────────────────────────────
+
+    async function boot() {
+        // 1. Check localStorage for existing token
+        var storedToken = localStorage.getItem(TOKEN_KEY);
+        var storedOrder = localStorage.getItem(ORDER_KEY);
+        if (storedToken && storedOrder) {
+            initTabs();
+            showState('db-content');
+            return;
+        }
+
+        // 2. Check URL params
+        var params = new URLSearchParams(window.location.search);
+        var urlOrderId = params.get('order_id');
+        var urlEmail = params.get('email');
+
+        if (urlOrderId && urlEmail) {
+            try {
+                var result = await callVerify(urlOrderId, urlEmail);
+                storeSession(result.token, urlOrderId);
+                // Clean up URL without reload
+                window.history.replaceState({}, '', '/dashboard');
+                initTabs();
+                showState('db-content');
+            } catch (err) {
+                // URL params failed — show manual form with message
+                showState('db-gate');
+                showError('We could not automatically verify your order. Please enter your details below.');
+            }
+            return;
+        }
+
+        // 3. Nothing to try — show gate
+        showState('db-gate');
+    }
+
+    // ── form submission ────────────────────────────────────────────────────────
+
+    function initForm() {
+        var form = document.getElementById('db-verify-form');
+        if (!form) return;
+
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            clearError();
+
+            var email = document.getElementById('db-email').value.trim();
+            var rawOrder = document.getElementById('db-order').value.trim();
+            // Strip leading # if user typed it
+            var orderId = rawOrder.replace(/^#/, '');
+
+            var label = form.querySelector('.db-submit-label');
+            var spinner = form.querySelector('.db-submit-spinner');
+            var btn = form.querySelector('.db-submit-btn');
+            btn.disabled = true;
+            label.style.display = 'none';
+            spinner.style.display = '';
+
+            try {
+                var result = await callVerify(orderId, email);
+                storeSession(result.token, orderId);
+                initTabs();
+                showState('db-content');
+            } catch (err) {
+                showError(err.message || 'Could not verify your order. Check the details and try again.');
+            } finally {
+                btn.disabled = false;
+                label.style.display = '';
+                spinner.style.display = 'none';
+            }
+        });
+    }
+
+    // ── logout ─────────────────────────────────────────────────────────────────
+
+    function initLogout() {
+        var btn = document.getElementById('db-logout');
+        if (btn) {
+            btn.addEventListener('click', function () {
+                clearSession();
+                showState('db-gate');
+            });
+        }
+    }
+
+    // ── init ──────────────────────────────────────────────────────────────────
+
+    document.addEventListener('DOMContentLoaded', function () {
+        initForm();
+        initLogout();
+        boot();
+    });
+
+})();
+</script>
+
+</body>
+</html>

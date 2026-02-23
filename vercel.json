@@ -4,6 +4,17 @@
       "source": "/",
       "destination": "/packages.html",
       "permanent": false
+    },
+    {
+      "source": "/dashboard",
+      "destination": "/dashboard.html",
+      "permanent": false
     }
-  ]
+  ],
+  "functions": {
+    "api/verify.js": {
+      "memory": 128,
+      "maxDuration": 10
+    }
+  }
 }

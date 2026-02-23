@@ -42,13 +42,13 @@
     <section class="packages-section">
         <div class="container">
             <div class="bundle-card">
-                <!-- Preview placeholder -->
-                <div class="bundle-preview">
+                <!-- Preview button -->
+                <button class="bundle-preview" id="preview-btn" aria-label="Preview guide content">
                     <div class="bundle-preview-inner">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D1A97A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                        <span>Preview</span>
+                        <span>Preview a sample</span>
                     </div>
-                </div>
+                </button>
                 <div class="bundle-content">
                     <h3>Everything you need, in one place</h3>
                     <ul class="bundle-includes">
@@ -104,6 +104,71 @@
             </blockquote>
         </div>
     </section>
+
+    <!-- Preview Modal -->
+    <div id="preview-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="preview-modal-title">
+        <div class="modal-content preview-modal-content">
+            <div class="modal-header">
+                <h2 id="preview-modal-title">Apple Configurator Guide — Sample</h2>
+                <button class="modal-close" id="preview-close" aria-label="Close preview">×</button>
+            </div>
+            <div class="modal-body">
+                <p class="preview-intro">Here's a taste of what's inside. The full bundle includes Apple Configurator, Screen Time, Blocking Apps guides, and a weekly newsletter.</p>
+
+                <!-- Step 1 (full) -->
+                <div class="db-step preview-step">
+                    <div class="db-step-num">1</div>
+                    <div class="db-step-body">
+                        <h3>Download Apple Configurator 2</h3>
+                        <p>Open the Mac App Store and search for <strong>Apple Configurator 2</strong>. It's free. You'll need a Mac — this tool is Mac-only.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 (full) -->
+                <div class="db-step preview-step">
+                    <div class="db-step-num">2</div>
+                    <div class="db-step-body">
+                        <h3>Put the iPhone in Recovery mode</h3>
+                        <p>Connect the iPhone to your Mac via USB. In Apple Configurator, go to <strong>Actions → Prepare</strong>. Follow the on-screen prompts to supervise the device. This will erase it, so do this before handing it to your child.</p>
+                        <div class="db-callout db-callout-yellow">
+                            <strong>Heads up:</strong> Supervising the device erases all existing data. Set it up from scratch or restore from a backup <em>after</em> supervising.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blurred remainder -->
+                <div class="preview-blur-wrap">
+                    <div class="preview-blur-content" aria-hidden="true">
+                        <div class="db-step preview-step">
+                            <div class="db-step-num">3</div>
+                            <div class="db-step-body">
+                                <h3>Create a configuration profile</h3>
+                                <p>In Apple Configurator, click <strong>File → New Profile</strong>. Under the <strong>Restrictions</strong> payload, disable app installation, Safari, and prevent passcode changes.</p>
+                            </div>
+                        </div>
+                        <div class="db-step preview-step">
+                            <div class="db-step-num">4</div>
+                            <div class="db-step-body">
+                                <h3>Install the profile on the device</h3>
+                                <p>With the iPhone connected, drag your <code>.mobileconfig</code> file onto the device in Apple Configurator. The profile installs silently.</p>
+                            </div>
+                        </div>
+                        <div class="db-step preview-step">
+                            <div class="db-step-num">5</div>
+                            <div class="db-step-body">
+                                <h3>Lock it with a passcode your child doesn't know</h3>
+                                <p>Enforce minimum complexity and set a maximum number of failed attempts from the Passcode payload.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="preview-lock-overlay">
+                        <p class="preview-lock-count">+ Screen Time, Blocking Apps, and Newsletter guides included</p>
+                        <a href="#" class="bundle-cta preview-buy-btn" data-guide="bundle">Get Everything — $39.99</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

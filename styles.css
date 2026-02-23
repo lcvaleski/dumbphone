@@ -4464,6 +4464,25 @@ header {
     background: #1976D2;
 }
 
+/* Bundle preview button reset */
+button.bundle-preview {
+    font-family: inherit;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    width: 100%;
+}
+
+button.bundle-preview:hover .bundle-preview-inner {
+    color: #A0784E;
+}
+
+button.bundle-preview:hover {
+    background: #EEE0D0;
+    border-color: #D4B08A;
+}
+
 /* Bundle card */
 .bundle-card {
     margin-top: 36px;
@@ -4583,6 +4602,21 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.protocol-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Crimson Text', Georgia, serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: #1a1a1a;
+    background: var(--bg-cream);
+    border-bottom: 1px solid #E5E0D8;
+    padding: 20px 16px;
 }
 
 .bundle-preview-inner {
@@ -4745,5 +4779,724 @@ header {
 
     .bundle-price-main {
         font-size: 36px;
+    }
+}
+
+/* ============================
+   Dashboard Page
+   ============================ */
+
+/* Loading overlay */
+.db-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: var(--bg-cream);
+}
+
+.db-loading-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    color: var(--text-secondary);
+    font-size: 15px;
+}
+
+.db-spinner,
+.db-submit-spinner {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--border-light);
+    border-top-color: var(--accent-blue);
+    border-radius: 50%;
+    animation: dbSpin 0.7s linear infinite;
+}
+
+.db-submit-spinner {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+}
+
+@keyframes dbSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* Gate / manual entry */
+.db-gate {
+    min-height: 100vh;
+    background: var(--bg-cream);
+    display: flex;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.db-gate-card {
+    max-width: 480px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 24px;
+    padding: 48px 40px;
+    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--border-light);
+}
+
+.db-gate-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 32px;
+}
+
+.db-gate-logo .logo {
+    width: 28px;
+    height: 28px;
+}
+
+.db-gate-card h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.db-gate-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 28px;
+    line-height: 1.6;
+}
+
+.db-gate-error {
+    background: #FEF2F2;
+    border: 1px solid #FECACA;
+    color: #DC2626;
+    font-size: 14px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.db-verify-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.db-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.db-field label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.02em;
+}
+
+.db-field input {
+    padding: 14px 16px;
+    border: 1.5px solid var(--border-light);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.2s;
+    background: white;
+}
+
+.db-field input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(74, 95, 255, 0.08);
+}
+
+.db-submit-btn {
+    padding: 16px 24px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.db-submit-btn:hover:not(:disabled) {
+    background: #3a4fef;
+    transform: translateY(-1px);
+}
+
+.db-submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.db-gate-help {
+    margin-top: 24px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.db-gate-help a {
+    color: var(--accent-blue);
+    text-decoration: none;
+}
+
+.db-gate-help a:hover {
+    text-decoration: underline;
+}
+
+/* Dashboard page */
+.db-page {
+    min-height: 100vh;
+    background: var(--bg-cream);
+}
+
+/* Top bar */
+.db-topbar {
+    background: white;
+    border-bottom: 1px solid var(--border-light);
+    padding: 14px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.db-topbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.db-topbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.db-topbar-logo .logo {
+    width: 24px;
+    height: 24px;
+}
+
+.db-logout-btn {
+    background: none;
+    border: 1px solid var(--border-light);
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.db-logout-btn:hover {
+    background: var(--bg-gray);
+    color: var(--text-primary);
+}
+
+/* Hero */
+.db-hero {
+    padding: 60px 0 40px;
+    text-align: center;
+}
+
+.db-hero h1 {
+    font-size: 46px;
+    margin-bottom: 12px;
+}
+
+.db-hero-sub {
+    font-size: 18px;
+    color: var(--text-secondary);
+    font-family: 'Crimson Text', Georgia, serif;
+    font-style: italic;
+}
+
+/* Tab nav */
+.db-tabs-wrap {
+    background: white;
+    border-bottom: 1px solid var(--border-light);
+    position: sticky;
+    top: 57px;
+    z-index: 90;
+}
+
+.db-tabs {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.db-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.db-tab {
+    padding: 16px 24px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+
+.db-tab:hover {
+    color: var(--text-primary);
+    background: var(--bg-gray);
+}
+
+.db-tab.active {
+    color: var(--accent-blue);
+    border-bottom-color: var(--accent-blue);
+    font-weight: 600;
+}
+
+/* Panels */
+.db-panels {
+    padding: 48px 0 80px;
+}
+
+.db-panel {
+    display: none;
+}
+
+.db-panel.active {
+    display: block;
+    animation: slideInFade 0.3s ease-out forwards;
+}
+
+/* Guide layout */
+.db-guide {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.db-guide-header {
+    margin-bottom: 40px;
+}
+
+.db-guide-badge {
+    display: inline-block;
+    background: #ECFDF5;
+    color: #059669;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+}
+
+.db-guide-badge-blue {
+    background: #EFF6FF;
+    color: #1D4ED8;
+}
+
+.db-guide-badge-red {
+    background: #FFF1F2;
+    color: #BE123C;
+}
+
+.db-guide-header h2 {
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: #111827;
+}
+
+.db-guide-intro {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+/* Steps */
+.db-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 48px;
+}
+
+.db-step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.db-step-num {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    background: var(--bg-gray);
+    border: 2px solid var(--border-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Crimson Text', Georgia, serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-top: 2px;
+}
+
+.db-step-body h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #111827;
+}
+
+.db-step-body p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.db-step-body p:last-child {
+    margin-bottom: 0;
+}
+
+.db-step-body code {
+    background: var(--bg-gray);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-size: 13px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    color: #374151;
+}
+
+/* Callouts */
+.db-callout {
+    padding: 14px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 12px;
+}
+
+.db-callout-yellow {
+    background: #FFFBEB;
+    border: 1px solid #FCD34D;
+    color: #78350F;
+}
+
+.db-callout-green {
+    background: #ECFDF5;
+    border: 1px solid #A7F3D0;
+    color: #065F46;
+}
+
+.db-callout-red {
+    background: #FFF1F2;
+    border: 1px solid #FECDD3;
+    color: #9F1239;
+}
+
+/* Lists */
+.db-list {
+    margin: 10px 0 10px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.db-list li {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Resource link */
+.db-resource {
+    background: var(--bg-gray);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 20px 24px;
+}
+
+.db-resource h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+}
+
+.db-resource-link {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--accent-blue);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.db-resource-link:hover {
+    color: #3a4fef;
+    text-decoration: underline;
+}
+
+/* Newsletter tab */
+.db-newsletter-card {
+    background: white;
+    border: 1px solid var(--border-light);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 560px;
+}
+
+.db-newsletter-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #111827;
+}
+
+.db-newsletter-perks {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.db-newsletter-perks li {
+    font-size: 15px;
+    color: var(--text-secondary);
+    padding-left: 20px;
+    position: relative;
+}
+
+.db-newsletter-perks li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent-green);
+    font-weight: 700;
+}
+
+.db-newsletter-form {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.db-newsletter-input {
+    flex: 1;
+    min-width: 200px;
+    padding: 14px 16px;
+    border: 1.5px solid var(--border-light);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.2s;
+}
+
+.db-newsletter-input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(74, 95, 255, 0.08);
+}
+
+.db-newsletter-btn {
+    padding: 14px 24px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.db-newsletter-btn:hover {
+    background: #3a4fef;
+    transform: translateY(-1px);
+}
+
+.db-newsletter-note {
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+/* Footer */
+.db-footer {
+    background: white;
+    border-top: 1px solid var(--border-light);
+    padding: 24px 0;
+    text-align: center;
+}
+
+.db-footer p {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.db-footer a {
+    color: var(--text-secondary);
+    text-decoration: none;
+}
+
+.db-footer a:hover {
+    color: var(--text-primary);
+}
+
+/* Dashboard responsive */
+@media (max-width: 768px) {
+    .db-gate-card {
+        padding: 32px 24px;
+        margin: 0 8px;
+    }
+
+    .db-gate-card h1 {
+        font-size: 24px;
+    }
+
+    .db-hero {
+        padding: 40px 0 24px;
+    }
+
+    .db-hero h1 {
+        font-size: 30px;
+    }
+
+    .db-hero-sub {
+        font-size: 16px;
+    }
+
+    .db-tab {
+        padding: 14px 16px;
+        font-size: 13px;
+    }
+
+    .db-guide-header h2 {
+        font-size: 26px;
+    }
+
+    .db-step {
+        gap: 14px;
+    }
+
+    .db-step-num {
+        width: 30px;
+        height: 30px;
+        font-size: 15px;
+    }
+
+    .db-newsletter-card {
+        padding: 28px 20px;
+    }
+
+    .db-newsletter-form {
+        flex-direction: column;
+    }
+
+    .db-newsletter-btn {
+        width: 100%;
+    }
+}
+
+/* ============================
+   Guide Preview Modal
+   ============================ */
+
+.preview-modal-content {
+    max-width: 680px;
+}
+
+.preview-intro {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.preview-step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.preview-step:last-child {
+    margin-bottom: 0;
+}
+
+.preview-blur-wrap {
+    position: relative;
+    margin-top: 8px;
+}
+
+.preview-blur-content {
+    filter: blur(5px);
+    opacity: 0.45;
+    pointer-events: none;
+    user-select: none;
+    padding-bottom: 24px;
+}
+
+.preview-lock-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.92) 28%);
+    text-align: center;
+    padding: 40px 24px 24px;
+}
+
+.preview-lock-count {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.preview-buy-btn {
+    display: inline-block;
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .preview-modal-content {
+        max-width: 100%;
+    }
+
+    .preview-intro {
+        font-size: 14px;
+        margin-bottom: 20px;
+        padding-bottom: 16px;
     }
 }

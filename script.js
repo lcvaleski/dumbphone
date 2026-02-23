@@ -1,5 +1,127 @@
 // Scroll and add-to-cart button handling is now done through event delegation below
 
+// Draggable iPhone functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const phone = document.getElementById('iphone');
+    const cablePath = document.getElementById('cable-path');
+    const macbookPort = document.getElementById('macbook-port');
+    const phonePort = document.getElementById('phone-port');
+    const demoContainer = document.querySelector('.configurator-demo');
+
+    if (!phone || !cablePath || !demoContainer) return;
+
+    let isDragging = false;
+    let currentX;
+    let currentY;
+    let initialX;
+    let initialY;
+    let xOffset = 0;
+    let yOffset = 0;
+
+    // Update cable connection
+    function updateCable() {
+        const demoRect = demoContainer.getBoundingClientRect();
+        const macbookRect = macbookPort ? macbookPort.getBoundingClientRect() : null;
+        const phoneRect = phone.getBoundingClientRect();
+
+        if (!macbookRect) return;
+
+        // Calculate relative positions within the demo container
+        const macbookX = macbookRect.left + macbookRect.width/2 - demoRect.left;
+        const macbookY = macbookRect.top + macbookRect.height/2 - demoRect.top;
+
+        const phoneX = phoneRect.left + phoneRect.width * 0.5 - demoRect.left;
+        const phoneY = phoneRect.bottom - phoneRect.height * 0.35 - demoRect.top;
+
+        // Calculate control points for natural cable curve
+        const distance = Math.sqrt(Math.pow(phoneX - macbookX, 2) + Math.pow(phoneY - macbookY, 2));
+        const sag = Math.min(distance * 0.3, 100); // Cable sag based on distance
+
+        const midX = (macbookX + phoneX) / 2;
+        const midY = (macbookY + phoneY) / 2 + sag;
+
+        // Create bezier curve path
+        const path = `M ${macbookX} ${macbookY} Q ${midX} ${midY} ${phoneX} ${phoneY}`;
+        cablePath.setAttribute('d', path);
+    }
+
+    function dragStart(e) {
+        if (e.type === "touchstart") {
+            initialX = e.touches[0].clientX - xOffset;
+            initialY = e.touches[0].clientY - yOffset;
+        } else {
+            initialX = e.clientX - xOffset;
+            initialY = e.clientY - yOffset;
+        }
+
+        if (e.target === phone) {
+            isDragging = true;
+            phone.style.cursor = 'grabbing';
+        }
+    }
+
+    function dragEnd(e) {
+        initialX = currentX;
+        initialY = currentY;
+
+        isDragging = false;
+        phone.style.cursor = 'move';
+    }
+
+    function drag(e) {
+        if (isDragging) {
+            e.preventDefault();
+
+            if (e.type === "touchmove") {
+                currentX = e.touches[0].clientX - initialX;
+                currentY = e.touches[0].clientY - initialY;
+            } else {
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+            }
+
+            // Get container boundaries
+            const containerRect = demoContainer.getBoundingClientRect();
+            const phoneRect = phone.getBoundingClientRect();
+            const macbookContainer = document.querySelector('.macbook-container');
+            const macbookRect = macbookContainer.getBoundingClientRect();
+
+            // Calculate boundaries (prevent phone from going over MacBook)
+            const maxX = macbookRect.left - containerRect.left - phoneRect.width - 20; // Stay left of MacBook with gap
+            const minX = -100; // Allow some movement to the left
+            const maxY = 150;
+            const minY = -150;
+
+            // Apply boundaries
+            xOffset = Math.max(minX, Math.min(currentX, maxX));
+            yOffset = Math.max(minY, Math.min(currentY, maxY));
+
+            setTranslate(xOffset, yOffset, phone);
+            updateCable();
+        }
+    }
+
+    function setTranslate(xPos, yPos, el) {
+        el.style.transform = `translate(${xPos}px, ${yPos}px)`;
+    }
+
+    // Mouse events
+    phone.addEventListener('mousedown', dragStart);
+    document.addEventListener('mouseup', dragEnd);
+    document.addEventListener('mousemove', drag);
+
+    // Touch events for mobile
+    phone.addEventListener('touchstart', dragStart, { passive: false });
+    document.addEventListener('touchend', dragEnd);
+    document.addEventListener('touchmove', drag, { passive: false });
+
+    // Initial cable draw
+    setTimeout(updateCable, 100);
+
+    // Update cable on window resize
+    window.addEventListener('resize', updateCable);
+});
+
 // FAQ Toggle functionality
 document.querySelectorAll('.faq-question').forEach(button => {
     button.addEventListener('click', () => {
@@ -247,6 +369,7 @@ document.querySelectorAll('.custom-input').forEach(customInput => {
 
 // Shopify Integration
 const SHOPIFY_STORE_URL = 'coventry-labs-llc.myshopify.com'; // Your Shopify store
+const BUNDLE_VARIANT_ID = '47819614978302'; // 2026 Tech Parenting Protocol bundle
 
 // iPhone Models with Shopify Variant IDs
 const IPHONE_MODELS = {
@@ -730,7 +853,7 @@ document.addEventListener('click', function(e) {
 });
 
 // Modal close button
-document.querySelector('.modal-close').addEventListener('click', () => {
+document.querySelector('.modal-close')?.addEventListener('click', () => {
     document.getElementById('confirmation-modal').classList.remove('show');
 });
 
@@ -756,6 +879,36 @@ document.addEventListener('click', (e) => {
             }, 300);
         }
     }
+});
+
+// Packages page — guide preview modal
+const previewModal = document.getElementById('preview-modal');
+if (previewModal) {
+    document.getElementById('preview-btn')?.addEventListener('click', () => {
+        previewModal.classList.add('show');
+    });
+
+    document.getElementById('preview-close')?.addEventListener('click', () => {
+        previewModal.classList.remove('show');
+    });
+
+    previewModal.addEventListener('click', (e) => {
+        if (e.target === previewModal) previewModal.classList.remove('show');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && previewModal.classList.contains('show')) {
+            previewModal.classList.remove('show');
+        }
+    });
+}
+
+// Packages page — bundle checkout
+document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-guide="bundle"]');
+    if (!btn) return;
+    e.preventDefault();
+    window.location.href = `https://${SHOPIFY_STORE_URL}/cart/${BUNDLE_VARIANT_ID}:1`;
 });
 
 // Modal checkout button - using event delegation
