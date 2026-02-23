@@ -4557,13 +4557,22 @@ button.bundle-preview:hover {
     letter-spacing: -0.02em;
 }
 
+.bundle-product-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
 .bundle-guide-header {
-    font-family: 'Crimson Text', Georgia, serif !important;
-    font-size: 26px !important;
-    font-weight: 400 !important;
-    letter-spacing: 0 !important;
-    color: var(--text-secondary) !important;
-    margin-bottom: 16px !important;
+    font-family: 'Crimson Text', Georgia, serif;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
 }
 
 .bundle-content p {
