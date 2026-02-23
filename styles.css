@@ -5566,13 +5566,17 @@ button.bundle-preview:hover {
     width: 100%;
     border-radius: 12px 12px 0 0;
     overflow: hidden;
-    background: #000;
     line-height: 0;
+    padding: 12px;
+    background: linear-gradient(135deg, #f5ede0 0%, #ede4d6 100%);
+    border-bottom: 1px solid #e8ddd0;
 }
 
 .preview-video {
     width: 100%;
     display: block;
-    max-height: 420px;
+    max-height: 400px;
     object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18), 0 0 0 1px rgba(0,0,0,0.06);
 }
