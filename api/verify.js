@@ -39,27 +39,45 @@ export default async function handler(req, res) {
 
   try {
     const shopUrl = 'coventry-labs-llc.myshopify.com';
-    const response = await fetch(
-      `https://${shopUrl}/admin/api/2024-01/orders/${order_id}.json`,
-      {
-        headers: {
-          'X-Shopify-Access-Token': adminToken,
-          'Content-Type': 'application/json',
-        },
+    const headers = {
+      'X-Shopify-Access-Token': adminToken,
+      'Content-Type': 'application/json',
+    };
+
+    let order = null;
+
+    // If it looks like a full numeric ID (>10 digits), look up directly
+    if (/^\d{10,}$/.test(order_id)) {
+      const response = await fetch(
+        `https://${shopUrl}/admin/api/2024-01/orders/${order_id}.json`,
+        { headers }
+      );
+      if (response.status === 404) {
+        return res.status(404).json({ error: 'Order not found' });
       }
-    );
-
-    if (response.status === 404) {
-      return res.status(404).json({ error: 'Order not found' });
+      if (!response.ok) {
+        console.error('Shopify API error:', response.status, await response.text());
+        return res.status(502).json({ error: 'Failed to fetch order' });
+      }
+      const data = await response.json();
+      order = data.order;
+    } else {
+      // Look up by order name (e.g. "1002" or "#1002")
+      const name = order_id.replace(/^#/, '');
+      const response = await fetch(
+        `https://${shopUrl}/admin/api/2024-01/orders.json?name=${encodeURIComponent(name)}&status=any`,
+        { headers }
+      );
+      if (!response.ok) {
+        console.error('Shopify API error:', response.status, await response.text());
+        return res.status(502).json({ error: 'Failed to fetch order' });
+      }
+      const data = await response.json();
+      if (!data.orders || data.orders.length === 0) {
+        return res.status(404).json({ error: 'Order not found' });
+      }
+      order = data.orders[0];
     }
-
-    if (!response.ok) {
-      console.error('Shopify API error:', response.status, await response.text());
-      return res.status(502).json({ error: 'Failed to fetch order' });
-    }
-
-    const data = await response.json();
-    const order = data.order;
 
     // Verify email matches
     const orderEmail = (order.email || '').toLowerCase().trim();
