@@ -4273,12 +4273,12 @@ header {
 .about-pill {
     display: block;
     width: fit-content;
-    margin: 20px auto 0;
-    padding: 6px 16px;
+    margin: 36px auto 0;
+    padding: 8px 20px;
     background: rgba(59, 130, 246, 0.08);
     color: rgba(59, 130, 246, 0.7);
     border-radius: 999px;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 500;
     text-decoration: none;
     transition: background 0.2s, color 0.2s;
