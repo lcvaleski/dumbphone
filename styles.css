@@ -4843,6 +4843,24 @@ button.bundle-preview:hover {
     }
 }
 
+/* Packages page simple footer */
+.site-footer.packages-footer {
+    padding: 28px 0;
+    text-align: center;
+}
+
+.site-footer.packages-footer a {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+}
+
+.site-footer.packages-footer a:hover {
+    color: rgba(255, 255, 255, 0.85);
+}
+
 /* ============================
    Dashboard Page
    ============================ */
