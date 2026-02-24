@@ -5743,8 +5743,8 @@ button.bundle-preview:hover {
     overflow: hidden;
     line-height: 0;
     padding: 12px;
-    background: linear-gradient(135deg, #f5ede0 0%, #ede4d6 100%);
-    border-bottom: 1px solid #e8ddd0;
+    background: linear-gradient(135deg, #f0f0ee 0%, #e8e8e5 100%);
+    border-bottom: 1px solid #dededd;
 }
 
 .preview-video {
