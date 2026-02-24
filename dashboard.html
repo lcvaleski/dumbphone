@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Guides - CorePhone</title>
 
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="core.svg">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -19,7 +18,6 @@
 
 <div id="db-content" class="db-page">
 
-    <!-- Top bar -->
     <div class="db-topbar">
         <div class="container">
             <div class="db-topbar-inner">
@@ -31,7 +29,6 @@
         </div>
     </div>
 
-    <!-- Tab nav -->
     <div class="db-tabs-wrap">
         <div class="db-tabs-scroll">
             <nav class="db-tabs" role="tablist">
@@ -46,7 +43,6 @@
         </div>
     </div>
 
-    <!-- Tab panels -->
     <div class="db-panels">
 
         <!-- 1. Apple Screen Time -->
@@ -54,47 +50,69 @@
             <div class="guide-layout">
                 <div class="guide-index"></div>
                 <div class="guide-stage">
+
                     <div class="guide-card active" data-step="0">
                         <h2 class="guide-card-title">Turn On Screen Time</h2>
-                        <p class="guide-card-body">Go to <strong>Settings → Screen Time → Turn On Screen Time</strong>. Tap <strong>"This is my child's iPhone"</strong>. You'll be prompted to set a Screen Time passcode — use one only you know, not your device passcode.</p>
-                        <div class="guide-card-callout warn">⚠️ Use a random 6-digit code stored in your password manager. Not a birthday. Not your PIN.</div>
+                        <p class="guide-card-lead">This is the master switch. Everything else builds on it.</p>
+                        <span class="guide-path">Settings → Screen Time → Turn On Screen Time</span>
+                        <p class="guide-card-body">When prompted, tap <strong>"This is my child's iPhone"</strong> — not your own device. Then set a Screen Time passcode.</p>
+                        <div class="guide-card-callout warn">Don't use a birthday or your device PIN. Use something random and store it in a password manager.</div>
                     </div>
+
                     <div class="guide-card" data-step="1">
                         <h2 class="guide-card-title">Content &amp; Privacy Restrictions</h2>
-                        <p class="guide-card-body">Under <strong>Screen Time → Content &amp; Privacy Restrictions</strong>, toggle it on. Key settings to lock down:</p>
+                        <p class="guide-card-lead">Lock down what your child can install, access, and change.</p>
+                        <span class="guide-path">Settings → Screen Time → Content &amp; Privacy Restrictions → toggle On</span>
                         <ul class="guide-card-list">
-                            <li>Installing Apps → Don't Allow</li>
-                            <li>Deleting Apps → Don't Allow</li>
-                            <li>Web Content → Limit Adult Websites</li>
-                            <li>Location Services → While Using / Don't Allow Changes</li>
-                            <li>Account Changes → Don't Allow</li>
+                            <li><strong>Installing Apps</strong> → Don't Allow</li>
+                            <li><strong>Deleting Apps</strong> → Don't Allow</li>
+                            <li><strong>Web Content</strong> → Limit Adult Websites</li>
+                            <li><strong>Account Changes</strong> → Don't Allow</li>
+                            <li><strong>Location Services</strong> → Don't Allow Changes</li>
                         </ul>
                     </div>
+
                     <div class="guide-card" data-step="2">
                         <h2 class="guide-card-title">App Limits</h2>
-                        <p class="guide-card-body">Under <strong>App Limits → Add Limit</strong>, select categories or individual apps. Set a daily time limit and enable <strong>"Block at End of Limit"</strong> so the app locks — not just shows a warning.</p>
-                        <p class="guide-card-body">Tip: Set social and entertainment categories to 0 minutes to effectively block them without deleting them.</p>
+                        <p class="guide-card-lead">Set a daily cap on specific apps — and actually enforce it.</p>
+                        <span class="guide-path">Screen Time → App Limits → Add Limit</span>
+                        <p class="guide-card-body">Pick a category or specific app. Set a daily limit. Then turn on <strong>"Block at End of Limit"</strong> — without this, the limit just shows a warning your child can dismiss.</p>
+                        <div class="guide-card-callout good">Tip: Set Social Networking to 0 minutes to block the whole category without deleting individual apps.</div>
                     </div>
+
                     <div class="guide-card" data-step="3">
-                        <h2 class="guide-card-title">Downtime Settings</h2>
-                        <p class="guide-card-body">Under <strong>Downtime → Turn On Downtime</strong>, set a schedule (e.g. 9pm–7am) where only specific apps work. During Downtime, all other apps are locked — this is the closest thing to "no phone at night."</p>
-                        <div class="guide-card-callout good">✓ Always Allowed apps (Phone, Messages) still work during Downtime. Everything else is blocked.</div>
+                        <h2 class="guide-card-title">Downtime</h2>
+                        <p class="guide-card-lead">Schedule hours where the phone is essentially off — only approved apps work.</p>
+                        <span class="guide-path">Screen Time → Downtime → Turn On Downtime</span>
+                        <p class="guide-card-body">Set your schedule (most families use 9pm–7am). During Downtime, everything except <strong>Always Allowed</strong> apps is locked. Phone and Messages still work — everything else doesn't.</p>
+                        <div class="guide-card-callout good">This is the single most impactful setting for sleep and homework focus.</div>
                     </div>
+
                     <div class="guide-card" data-step="4">
                         <h2 class="guide-card-title">Communication Limits</h2>
-                        <p class="guide-card-body">Under <strong>Communication Limits</strong>, restrict who your child can call, FaceTime, and iMessage. Set it to <strong>"Contacts Only"</strong> or even more narrowly to specific contacts you approve.</p>
-                        <p class="guide-card-body">During Downtime, set it to "Specific Contacts" — your family's numbers only.</p>
+                        <p class="guide-card-lead">Control who your child can call, FaceTime, and text.</p>
+                        <span class="guide-path">Screen Time → Communication Limits</span>
+                        <ul class="guide-card-list">
+                            <li>During Screen Time → <strong>Contacts Only</strong></li>
+                            <li>During Downtime → <strong>Specific Contacts</strong> (family numbers only)</li>
+                            <li>Review what's actually in their Contacts app first</li>
+                        </ul>
                     </div>
+
                     <div class="guide-card" data-step="5">
-                        <h2 class="guide-card-title">Family Sharing Setup</h2>
-                        <p class="guide-card-body">Go to <strong>Settings → [Your Name] → Family Sharing</strong> to manage Screen Time remotely from your own phone. When your child requests more time, it comes to you as a notification — you approve or deny.</p>
-                        <div class="guide-card-callout good">✓ Pair with Apple Configurator supervision so Screen Time can't be bypassed by signing out of iCloud or resetting the device.</div>
+                        <h2 class="guide-card-title">Family Sharing</h2>
+                        <p class="guide-card-lead">Manage everything remotely from your own phone — including approving time extension requests.</p>
+                        <span class="guide-path">Settings → [Your Name] → Family Sharing</span>
+                        <p class="guide-card-body">Once set up, when your child requests more time it arrives as a notification on your phone. You approve or deny in one tap.</p>
+                        <div class="guide-card-callout warn">Family Sharing alone isn't enough. Pair it with Apple Configurator supervision so your child can't bypass Screen Time by resetting the device.</div>
                     </div>
+
                     <div class="guide-card guide-done-card" data-step="6">
                         <div class="guide-done-icon">✓</div>
                         <h2 class="guide-card-title">Screen Time is live</h2>
-                        <p class="guide-card-body">You've set up the core layer of iPhone parental controls. Combine with the Social Media and Messaging tabs for full coverage.</p>
+                        <p class="guide-card-body">Core layer done. Head to Social Media or Messaging to close the other common gaps.</p>
                     </div>
+
                 </div>
             </div>
             <div class="guide-controls">
@@ -104,51 +122,63 @@
             </div>
         </div>
 
-        <!-- 2. YouTube & Streaming Safety -->
+        <!-- 2. YouTube & Streaming -->
         <div id="tab-youtube" class="db-panel" role="tabpanel" data-guide="youtube">
             <div class="guide-layout">
                 <div class="guide-index"></div>
                 <div class="guide-stage">
+
                     <div class="guide-card active" data-step="0">
                         <h2 class="guide-card-title">Why YouTube Is High-Risk</h2>
-                        <p class="guide-card-body">YouTube's recommendation algorithm is designed to keep viewers watching as long as possible. For kids, this means: one innocent video leads to increasingly intense content within minutes. There is no safe "middle ground" setting that solves this.</p>
-                        <div class="guide-card-callout warn">⚠️ YouTube Kids is safer but not foolproof. The only reliable protection is blocking YouTube entirely for younger children.</div>
+                        <p class="guide-card-lead">One innocent video can lead to deeply inappropriate content within three clicks. This is by design.</p>
+                        <p class="guide-card-body">YouTube's algorithm is built to maximize watch time — not to protect children. There is no parent-approved "safe mode" that actually works for unsupervised use.</p>
+                        <div class="guide-card-callout warn">For children under 12: block YouTube entirely. The risk isn't worth the convenience.</div>
                     </div>
+
                     <div class="guide-card" data-step="1">
-                        <h2 class="guide-card-title">Blocking YouTube on iPhone</h2>
-                        <p class="guide-card-body">Three-layer approach:</p>
+                        <h2 class="guide-card-title">Block YouTube Completely</h2>
+                        <p class="guide-card-lead">Three steps to remove every YouTube access point.</p>
                         <ul class="guide-card-list">
-                            <li><strong>App Limit:</strong> Screen Time → App Limits → set YouTube to 0 min, Block at End</li>
-                            <li><strong>Website Block:</strong> Content Restrictions → Never Allow → add youtube.com</li>
-                            <li><strong>Delete the app</strong> and disable App Store installs so it can't be reinstalled</li>
+                            <li><strong>Delete the app</strong> from the device</li>
+                            <li><strong>App Limit:</strong> Screen Time → App Limits → YouTube → 0 min, Block at End</li>
+                            <li><strong>Website block:</strong> Content Restrictions → Never Allow → add youtube.com</li>
                         </ul>
-                        <p class="guide-card-body">All three together mean YouTube is gone from every access point.</p>
+                        <p class="guide-card-body">All three together close the app, the browser, and prevent reinstalling.</p>
                     </div>
+
                     <div class="guide-card" data-step="2">
-                        <h2 class="guide-card-title">YouTube Kids Setup</h2>
-                        <p class="guide-card-body">If your child is under 12 and you want video access, <strong>YouTube Kids</strong> is the alternative. Install it, then block the main YouTube app. In the YouTube Kids app, set the content level to <strong>Preschool</strong> or <strong>Younger</strong> and enable search-off mode.</p>
-                        <div class="guide-card-callout warn">⚠️ YouTube Kids is not perfect — content can slip through. Check the watch history periodically.</div>
+                        <h2 class="guide-card-title">YouTube Kids (If You Want Video Access)</h2>
+                        <p class="guide-card-lead">A safer alternative for kids under 12 — with one important caveat.</p>
+                        <span class="guide-path">YouTube Kids app → Settings → Content Level → Preschool or Younger</span>
+                        <p class="guide-card-body">Turn <strong>Search Off</strong> in the app settings so your child can only watch curated content, not search freely. Then block the main YouTube app.</p>
+                        <div class="guide-card-callout warn">YouTube Kids isn't perfect. Check their watch history periodically — things slip through.</div>
                     </div>
+
                     <div class="guide-card" data-step="3">
-                        <h2 class="guide-card-title">Netflix &amp; Streaming Controls</h2>
-                        <p class="guide-card-body">Netflix, Disney+, and similar apps have built-in parental controls. Set them up at the account level, not just the device:</p>
+                        <h2 class="guide-card-title">Netflix &amp; Disney+ Controls</h2>
+                        <p class="guide-card-lead">Set content ratings at the account level — not just the device.</p>
                         <ul class="guide-card-list">
-                            <li><strong>Netflix:</strong> Account → Profile &amp; Parental Controls → set maturity rating + PIN</li>
-                            <li><strong>Disney+:</strong> Profile → Content Rating → set level + lock profile</li>
-                            <li>Create a separate child profile so their viewing history is separate from yours</li>
+                            <li><strong>Netflix:</strong> Account → Profile &amp; Parental Controls → set maturity + 4-digit PIN</li>
+                            <li><strong>Disney+:</strong> Profile → Content Rating → lock with PIN</li>
+                            <li><strong>Create a separate child profile</strong> so their viewing history stays separate</li>
                         </ul>
+                        <div class="guide-card-callout good">Account-level controls work even if your child uses the app on someone else's device.</div>
                     </div>
+
                     <div class="guide-card" data-step="4">
-                        <h2 class="guide-card-title">Blocking Streaming via Screen Time</h2>
-                        <p class="guide-card-body">If you want to remove streaming entirely: Screen Time → App Limits → Entertainment → Block All. Or specifically add Netflix, YouTube, Twitch, and TikTok to the blocked list.</p>
-                        <p class="guide-card-body">Also block these domains under Content Restrictions → Never Allow: twitch.tv, tiktok.com, reddit.com (videos), twitter.com.</p>
-                        <div class="guide-card-callout good">✓ The goal isn't zero media — it's intentional media. Streaming on a shared TV you control is very different from a phone in their room at midnight.</div>
+                        <h2 class="guide-card-title">Block Streaming via Screen Time</h2>
+                        <p class="guide-card-lead">Remove all streaming apps in one move.</p>
+                        <span class="guide-path">Screen Time → App Limits → Entertainment → Block All</span>
+                        <p class="guide-card-body">Or block specific domains under Content Restrictions → Never Allow: twitch.tv, tiktok.com, youtube.com, reddit.com.</p>
+                        <div class="guide-card-callout good">Streaming on a shared TV you control is very different from a phone in their bedroom at midnight. Location matters as much as access.</div>
                     </div>
+
                     <div class="guide-card guide-done-card" data-step="5">
                         <div class="guide-done-icon">✓</div>
                         <h2 class="guide-card-title">Streaming is under control</h2>
-                        <p class="guide-card-body">YouTube and streaming are the single biggest time sink for kids. Blocking or limiting them has an outsized impact.</p>
+                        <p class="guide-card-body">YouTube and streaming are the biggest time sink for kids. Blocking or limiting them has an outsized impact on everything else.</p>
                     </div>
+
                 </div>
             </div>
             <div class="guide-controls">
@@ -163,51 +193,61 @@
             <div class="guide-layout">
                 <div class="guide-index"></div>
                 <div class="guide-stage">
+
                     <div class="guide-card active" data-step="0">
-                        <h2 class="guide-card-title">The Gaming Risk Landscape</h2>
-                        <p class="guide-card-body">Mobile games are engineered for addiction. The risks aren't just time — they're financial (in-app purchases), social (stranger chats built into multiplayer), and psychological (reward loops designed to keep kids playing).</p>
-                        <p class="guide-card-body">The most common issues: Roblox, Fortnite, and Minecraft all have chat systems. Kids meet strangers there daily.</p>
+                        <h2 class="guide-card-title">The Real Gaming Risks</h2>
+                        <p class="guide-card-lead">The problem isn't games — it's what's built into them.</p>
+                        <p class="guide-card-body">Most mobile games have three hidden dangers: <strong>in-app purchases</strong> that can rack up charges, <strong>built-in chat</strong> that connects kids to strangers, and <strong>addictive reward loops</strong> designed by engineers whose only job is to maximize playtime.</p>
+                        <div class="guide-card-callout warn">Roblox, Fortnite, and Minecraft all have chat systems. Kids meet strangers in them daily.</div>
                     </div>
+
                     <div class="guide-card" data-step="1">
-                        <h2 class="guide-card-title">In-App Purchase Protection</h2>
-                        <p class="guide-card-body">This is the most urgent gaming setting. Go to <strong>Screen Time → Content &amp; Privacy Restrictions → iTunes &amp; App Store Purchases</strong>:</p>
+                        <h2 class="guide-card-title">Block In-App Purchases</h2>
+                        <p class="guide-card-lead">Do this first. Kids have accidentally spent thousands before parents noticed.</p>
+                        <span class="guide-path">Screen Time → Content &amp; Privacy → iTunes &amp; App Store Purchases</span>
                         <ul class="guide-card-list">
-                            <li>In-app Purchases → Don't Allow</li>
-                            <li>Always Require [your password] for purchases</li>
+                            <li><strong>In-app Purchases</strong> → Don't Allow</li>
+                            <li><strong>Always Require</strong> your password for any purchase</li>
                         </ul>
-                        <div class="guide-card-callout warn">⚠️ Kids have accidentally (and intentionally) spent thousands on in-app purchases. Lock this immediately.</div>
                     </div>
+
                     <div class="guide-card" data-step="2">
-                        <h2 class="guide-card-title">Game Center &amp; Multiplayer Controls</h2>
-                        <p class="guide-card-body">Under <strong>Screen Time → Content &amp; Privacy Restrictions → Game Center</strong>:</p>
+                        <h2 class="guide-card-title">Disable Multiplayer &amp; Stranger Chat</h2>
+                        <p class="guide-card-lead">Stop strangers from connecting to your child through games.</p>
+                        <span class="guide-path">Screen Time → Content &amp; Privacy → Game Center</span>
                         <ul class="guide-card-list">
-                            <li>Multiplayer Games → Don't Allow (for younger kids)</li>
-                            <li>Adding Friends → Don't Allow</li>
-                            <li>Screen Recording → Don't Allow</li>
-                            <li>Nearby Multiplayer → Don't Allow</li>
+                            <li><strong>Multiplayer Games</strong> → Don't Allow (for younger kids)</li>
+                            <li><strong>Adding Friends</strong> → Don't Allow</li>
+                            <li><strong>Nearby Multiplayer</strong> → Don't Allow</li>
+                            <li><strong>Screen Recording</strong> → Don't Allow</li>
                         </ul>
-                        <p class="guide-card-body">This doesn't stop gameplay — it stops strangers from connecting to your child through games.</p>
+                        <div class="guide-card-callout good">This doesn't stop them playing — it stops strangers from connecting to them through games.</div>
                     </div>
+
                     <div class="guide-card" data-step="3">
-                        <h2 class="guide-card-title">Screen Time Limits for Gaming</h2>
-                        <p class="guide-card-body">Under <strong>App Limits → Games</strong>, set a daily category limit. 1 hour on weekdays, 2 on weekends is a common starting point. Enable "Block at End of Limit" so it actually stops.</p>
-                        <p class="guide-card-body">Set Downtime to prevent gaming after dinner or before homework. Specific games can be individually limited too.</p>
+                        <h2 class="guide-card-title">Set Gaming Time Limits</h2>
+                        <p class="guide-card-lead">A daily cap prevents gaming from crowding out everything else.</p>
+                        <span class="guide-path">Screen Time → App Limits → Games → Add Limit</span>
+                        <p class="guide-card-body">1 hour on weekdays, 1.5–2 on weekends is a reasonable starting point. Enable <strong>"Block at End of Limit"</strong> — otherwise it's just a notification they dismiss. Use Downtime to prevent gaming after dinner.</p>
                     </div>
+
                     <div class="guide-card" data-step="4">
-                        <h2 class="guide-card-title">Console vs. Mobile Boundaries</h2>
-                        <p class="guide-card-body">Consoles (Switch, Xbox, PlayStation) have their own parental control systems. Key differences from mobile:</p>
+                        <h2 class="guide-card-title">Console Controls</h2>
+                        <p class="guide-card-lead">Consoles have their own parental control apps — set them up separately.</p>
                         <ul class="guide-card-list">
-                            <li><strong>Nintendo Switch:</strong> Nintendo Switch Parental Controls app — excellent, real-time</li>
-                            <li><strong>Xbox:</strong> Microsoft Family Safety app — screen time + spending controls</li>
+                            <li><strong>Nintendo Switch:</strong> Nintendo Switch Parental Controls app — real-time, excellent</li>
+                            <li><strong>Xbox:</strong> Microsoft Family Safety app — screen time + purchase controls</li>
                             <li><strong>PlayStation:</strong> Family Management at account.sonyentertainmentnetwork.com</li>
                         </ul>
-                        <div class="guide-card-callout good">✓ Console gaming in a shared living space is significantly safer than mobile gaming in a bedroom.</div>
+                        <div class="guide-card-callout good">Console gaming in a shared living space is dramatically safer than mobile gaming alone in a bedroom.</div>
                     </div>
+
                     <div class="guide-card guide-done-card" data-step="5">
                         <div class="guide-done-icon">✓</div>
-                        <h2 class="guide-card-title">Gaming guardrails are set</h2>
-                        <p class="guide-card-body">Purchases locked, chat limited, time controlled. Gaming is one of the safest places to let kids have fun — with these guardrails in place.</p>
+                        <h2 class="guide-card-title">Gaming guardrails set</h2>
+                        <p class="guide-card-body">Purchases locked, chat limited, time capped. Gaming is one of the safest places for kids to have fun — with these in place.</p>
                     </div>
+
                 </div>
             </div>
             <div class="guide-controls">
@@ -222,52 +262,61 @@
             <div class="guide-layout">
                 <div class="guide-index"></div>
                 <div class="guide-stage">
+
                     <div class="guide-card active" data-step="0">
-                        <h2 class="guide-card-title">Why Social Media Is Different</h2>
-                        <p class="guide-card-body">Social media is fundamentally different from other screen time. It's not passive — it's a social environment where kids are performing, comparing, and seeking validation from peers. The psychological impact compounds over time in ways games and videos don't.</p>
-                        <div class="guide-card-callout warn">⚠️ The minimum age for most platforms is 13. But age gates are trivially bypassed. Supervision matters more than policy.</div>
+                        <h2 class="guide-card-title">Why Social Media Hits Different</h2>
+                        <p class="guide-card-lead">It's not screen time — it's a social environment where kids perform, compare, and seek validation from peers 24/7.</p>
+                        <p class="guide-card-body">Games and videos are passive. Social media is active — and the psychological pressure compounds over time in ways other screen use doesn't.</p>
+                        <div class="guide-card-callout warn">The minimum age for most platforms is 13 — but the age gate is a text box. Supervision matters far more than policy.</div>
                     </div>
+
                     <div class="guide-card" data-step="1">
-                        <h2 class="guide-card-title">Blocking Instagram, TikTok &amp; Snapchat</h2>
-                        <p class="guide-card-body">Three-step removal:</p>
+                        <h2 class="guide-card-title">Block Instagram, TikTok &amp; Snapchat</h2>
+                        <p class="guide-card-lead">Three steps to close all three access points.</p>
                         <ul class="guide-card-list">
-                            <li>Delete the apps from the device</li>
-                            <li>Screen Time → App Limits → Social Networking → Block All</li>
-                            <li>Content Restrictions → Never Allow: instagram.com, tiktok.com, snapchat.com, x.com</li>
+                            <li><strong>Delete</strong> the apps from the device</li>
+                            <li><strong>App Limit:</strong> Screen Time → Social Networking → Block All</li>
+                            <li><strong>Website block:</strong> Never Allow → instagram.com, tiktok.com, snapchat.com, x.com</li>
                         </ul>
-                        <p class="guide-card-body">Blocking both the app and the website closes the two main access points.</p>
+                        <p class="guide-card-body">Blocking both app and website closes the two main access points.</p>
                     </div>
+
                     <div class="guide-card" data-step="2">
-                        <h2 class="guide-card-title">What Kids Do to Get Around It</h2>
-                        <p class="guide-card-body">The most common workarounds, and how to close them:</p>
+                        <h2 class="guide-card-title">How Kids Get Around It</h2>
+                        <p class="guide-card-lead">Know the workarounds before your child finds them.</p>
                         <ul class="guide-card-list">
-                            <li><strong>Friend's phone:</strong> No technical fix — conversations are the solution</li>
-                            <li><strong>Browser access:</strong> Block Safari + Chrome, set Web Content to Allowed Websites Only</li>
-                            <li><strong>VPN apps:</strong> Block VPN installs via Apple Configurator profile</li>
-                            <li><strong>New accounts:</strong> App Store disabled = can't install new apps</li>
+                            <li><strong>Browser access:</strong> Block Safari + Chrome, set Web Content → Allowed Websites Only</li>
+                            <li><strong>VPN apps:</strong> Block via Apple Configurator profile — VPNs can tunnel around Screen Time</li>
+                            <li><strong>New accounts:</strong> App Store disabled = nothing new can be installed</li>
+                            <li><strong>Friend's phone:</strong> No tech fix for this — it's a conversation</li>
                         </ul>
                     </div>
+
                     <div class="guide-card" data-step="3">
-                        <h2 class="guide-card-title">If You Allow Limited Social Access</h2>
-                        <p class="guide-card-body">If your child is older and you're allowing limited use, set up these safeguards first:</p>
+                        <h2 class="guide-card-title">If You Allow Limited Access</h2>
+                        <p class="guide-card-lead">Older kids earning social media access should have non-negotiable guardrails.</p>
                         <ul class="guide-card-list">
-                            <li>Private account only — no public profiles</li>
-                            <li>Followers must be approved by you first</li>
-                            <li>Screen Time daily limit (30–60 min max)</li>
-                            <li>No social access after 9pm via Downtime</li>
-                            <li>Know their login credentials</li>
+                            <li><strong>Private account only</strong> — no public profiles</li>
+                            <li><strong>You follow them</strong> before anyone else does</li>
+                            <li><strong>Screen Time limit:</strong> 30–60 min/day max</li>
+                            <li><strong>Downtime</strong> cuts off social apps after 9pm</li>
+                            <li><strong>You know their login</strong> credentials</li>
                         </ul>
                     </div>
+
                     <div class="guide-card" data-step="4">
                         <h2 class="guide-card-title">Monitoring vs. Trust</h2>
-                        <p class="guide-card-body">The goal isn't to surveil your child — it's to protect them while they're still developing judgment. Be transparent: tell them you have parental controls. Explain why. The controls aren't punishment; they're a safety net.</p>
-                        <div class="guide-card-callout good">✓ Research consistently shows that the strongest protective factor isn't technology — it's a parent who talks openly about it. The controls buy you time to have those conversations.</div>
+                        <p class="guide-card-lead">The goal isn't surveillance — it's a safety net while they're still developing judgment.</p>
+                        <p class="guide-card-body">Be transparent: tell them you have parental controls. Explain why. The controls aren't punishment — they're protection from platforms that employ hundreds of engineers to make them addictive.</p>
+                        <div class="guide-card-callout good">Research shows the strongest protective factor isn't technology — it's a parent who talks openly about it. The controls buy you time to have those conversations.</div>
                     </div>
+
                     <div class="guide-card guide-done-card" data-step="5">
                         <div class="guide-done-icon">✓</div>
-                        <h2 class="guide-card-title">Social media is locked down</h2>
-                        <p class="guide-card-body">The Big Conversations tab covers how to talk to your kids about why these restrictions exist.</p>
+                        <h2 class="guide-card-title">Social media locked down</h2>
+                        <p class="guide-card-body">Head to The Big Conversations tab for how to talk to your kids about why these restrictions exist.</p>
                     </div>
+
                 </div>
             </div>
             <div class="guide-controls">
@@ -277,60 +326,68 @@
             </div>
         </div>
 
-        <!-- 5. Messaging & Communication -->
+        <!-- 5. Messaging -->
         <div id="tab-messaging" class="db-panel" role="tabpanel" data-guide="messaging">
             <div class="guide-layout">
                 <div class="guide-index"></div>
                 <div class="guide-stage">
+
                     <div class="guide-card active" data-step="0">
                         <h2 class="guide-card-title">iMessage &amp; FaceTime Basics</h2>
-                        <p class="guide-card-body">iMessage and FaceTime are on by default and require no app install — they're built into the OS. Most parents block social media but forget that messaging can be just as risky with unknown contacts.</p>
-                        <p class="guide-card-body">Start here: <strong>Settings → Messages → Filter Unknown Senders</strong> on. This puts texts from non-contacts in a separate, unnotified folder.</p>
+                        <p class="guide-card-lead">Most parents block social media and forget that messaging is already on by default.</p>
+                        <p class="guide-card-body">iMessage and FaceTime require no app install — they're built into iOS. Start here: turn on <strong>Filter Unknown Senders</strong> so texts from non-contacts go to a separate folder without notifications.</p>
+                        <span class="guide-path">Settings → Messages → Filter Unknown Senders → On</span>
                     </div>
+
                     <div class="guide-card" data-step="1">
-                        <h2 class="guide-card-title">Communication Limits Setup</h2>
-                        <p class="guide-card-body">Under <strong>Screen Time → Communication Limits</strong>:</p>
+                        <h2 class="guide-card-title">Communication Limits</h2>
+                        <p class="guide-card-lead">Choose exactly who your child can reach — and when.</p>
+                        <span class="guide-path">Screen Time → Communication Limits</span>
                         <ul class="guide-card-list">
-                            <li>During Screen Time → Contacts Only (or Everyone if you trust their contact list)</li>
-                            <li>During Downtime → Specific Contacts (your family only)</li>
-                            <li>Manage [Child]'s Contacts → review who's in there</li>
+                            <li>During Screen Time → <strong>Contacts Only</strong></li>
+                            <li>During Downtime → <strong>Specific Contacts</strong> (family only)</li>
                         </ul>
-                        <div class="guide-card-callout warn">⚠️ "Contacts Only" only works if you control what's in the Contacts app. Review it.</div>
+                        <div class="guide-card-callout warn">"Contacts Only" only works if you control what's in their Contacts app. Review it first.</div>
                     </div>
+
                     <div class="guide-card" data-step="2">
-                        <h2 class="guide-card-title">Unknown Contacts &amp; Stranger Safety</h2>
-                        <p class="guide-card-body">Kids are approached by strangers through games, apps, and iMessage spam. Teach your child these rules:</p>
+                        <h2 class="guide-card-title">Stranger Safety Rules</h2>
+                        <p class="guide-card-lead">Tech controls help — but these four rules are equally important.</p>
                         <ul class="guide-card-list">
                             <li>Never respond to unknown numbers</li>
-                            <li>Tell a parent if someone they don't know contacts them</li>
-                            <li>Don't share their number in games or apps</li>
-                            <li>No video calls with anyone you haven't met in person</li>
+                            <li>Tell a parent immediately if a stranger contacts them</li>
+                            <li>Never share their number in games or apps</li>
+                            <li>No video calls with anyone not met in person</li>
                         </ul>
                     </div>
+
                     <div class="guide-card" data-step="3">
-                        <h2 class="guide-card-title">Group Chats &amp; AirDrop Safety</h2>
-                        <p class="guide-card-body">Group chats are where a lot of peer pressure, bullying, and inappropriate content spreads. No technical fix fully solves this — but you can reduce exposure:</p>
+                        <h2 class="guide-card-title">Group Chats &amp; AirDrop</h2>
+                        <p class="guide-card-lead">Group chats are where peer pressure, bullying, and inappropriate content spreads fastest.</p>
                         <ul class="guide-card-list">
-                            <li>AirDrop: Settings → General → AirDrop → Contacts Only (or Receiving Off)</li>
-                            <li>Know about the group chats your child is in</li>
-                            <li>Establish a rule: "You can leave any group at any time and I'll back you up"</li>
+                            <li><strong>AirDrop:</strong> Settings → General → AirDrop → Contacts Only</li>
+                            <li><strong>Know what group chats</strong> your child is in</li>
+                            <li><strong>Give them an out:</strong> "You can leave any group and I'll back you up"</li>
                         </ul>
                     </div>
+
                     <div class="guide-card" data-step="4">
                         <h2 class="guide-card-title">Third-Party Messaging Apps</h2>
-                        <p class="guide-card-body">WhatsApp, Discord, Telegram, and Snapchat are popular messaging apps kids use to get around parent monitoring of iMessage. If you've blocked social media but not these:</p>
+                        <p class="guide-card-lead">WhatsApp, Discord, and Telegram are how kids work around iMessage monitoring.</p>
                         <ul class="guide-card-list">
-                            <li>Block Discord: App Limits → Social Networking + domain block discord.com</li>
-                            <li>Block Snapchat: same as above + snapchat.com</li>
-                            <li>WhatsApp: consider allowing with a review of contacts</li>
+                            <li><strong>Discord:</strong> App Limit → Social Networking + block discord.com</li>
+                            <li><strong>Snapchat:</strong> Delete + block snapchat.com</li>
+                            <li><strong>Telegram:</strong> Delete + block telegram.org</li>
                         </ul>
-                        <div class="guide-card-callout good">✓ The App Store install block means once these apps are deleted, they can't come back.</div>
+                        <div class="guide-card-callout good">With App Store installs blocked, deleted apps can't come back.</div>
                     </div>
+
                     <div class="guide-card guide-done-card" data-step="5">
                         <div class="guide-done-icon">✓</div>
                         <h2 class="guide-card-title">Messaging is under control</h2>
-                        <p class="guide-card-body">Unknown contacts filtered, communication limits set, third-party apps blocked. Communication is one of the hardest areas — the Big Conversations tab covers the human side.</p>
+                        <p class="guide-card-body">Unknown contacts filtered, limits set, third-party apps blocked. The Big Conversations tab covers the human side of all of this.</p>
                     </div>
+
                 </div>
             </div>
             <div class="guide-controls">
@@ -345,56 +402,58 @@
             <div class="guide-layout">
                 <div class="guide-index"></div>
                 <div class="guide-stage">
+
                     <div class="guide-card active" data-step="0">
-                        <h2 class="guide-card-title">How to Talk About Tech Rules</h2>
-                        <p class="guide-card-body">Parental controls without conversation breed resentment. The most effective approach: be honest with your child about why the rules exist, what you're trying to protect them from, and what they need to do to earn more freedom.</p>
-                        <p class="guide-card-body">Frame it as protection, not punishment. "I want to make sure you have a great childhood" lands better than "because I said so."</p>
+                        <h2 class="guide-card-title">How to Introduce the Rules</h2>
+                        <p class="guide-card-lead">Parental controls without a conversation breed resentment. Controls with a conversation build trust.</p>
+                        <p class="guide-card-body">Be honest about why the rules exist and what your child needs to do to earn more freedom. <strong>"I want to make sure you have a great childhood"</strong> lands very differently than <strong>"because I said so."</strong></p>
                     </div>
+
                     <div class="guide-card" data-step="1">
-                        <h2 class="guide-card-title">Setting Boundaries Without Battles</h2>
-                        <p class="guide-card-body">Start with co-created rules where possible. Kids who help make the rules are more likely to follow them. Some questions to ask together:</p>
+                        <h2 class="guide-card-title">Setting Rules Without Battles</h2>
+                        <p class="guide-card-lead">Kids who help make the rules are far more likely to follow them.</p>
+                        <p class="guide-card-body">You set the non-negotiables. But giving them input on the edges — bedtime, which apps, weekend limits — builds buy-in. Try asking:</p>
                         <ul class="guide-card-list">
                             <li>What time should the phone charge outside your room?</li>
-                            <li>Which apps feel like a waste of your time?</li>
-                            <li>When do you think you're ready for more access?</li>
+                            <li>Which apps feel like a waste of your own time?</li>
+                            <li>What would you need to show me to earn more access?</li>
                         </ul>
-                        <div class="guide-card-callout good">✓ You set the non-negotiables. But giving them input on the edges builds buy-in.</div>
                     </div>
+
                     <div class="guide-card" data-step="2">
-                        <h2 class="guide-card-title">What to Say When They Push Back</h2>
-                        <p class="guide-card-body">Common pushback and responses:</p>
+                        <h2 class="guide-card-title">When They Push Back</h2>
+                        <p class="guide-card-lead">Every kid will push back. Having responses ready makes a big difference.</p>
                         <ul class="guide-card-list">
-                            <li><em>"Everyone else has it"</em> → "I'm responsible for you, not everyone else. Let's talk about what you'd do with it."</li>
-                            <li><em>"You don't trust me"</em> → "I trust you. I don't trust the app. They design it to be addictive — even adults struggle."</li>
-                            <li><em>"I'll just use a friend's phone"</em> → "You might. That's your choice. My job is still to make good rules for our house."</li>
+                            <li><em>"Everyone else has it"</em> — "I'm responsible for you, not everyone else."</li>
+                            <li><em>"You don't trust me"</em> — "I trust you. I don't trust the app. They hire engineers to make it addictive — even adults can't stop."</li>
+                            <li><em>"I'll use a friend's phone"</em> — "Maybe. That's your choice. My job is still to make good rules here."</li>
                         </ul>
                     </div>
+
                     <div class="guide-card" data-step="3">
-                        <h2 class="guide-card-title">Building Trust Around Phones</h2>
-                        <p class="guide-card-body">Trust is built incrementally. A good framework:</p>
+                        <h2 class="guide-card-title">Building Trust Over Time</h2>
+                        <p class="guide-card-lead">The goal isn't lifetime restrictions — it's gradually earning autonomy.</p>
                         <ul class="guide-card-list">
-                            <li><strong>Earn access:</strong> More privileges come with demonstrated responsibility</li>
-                            <li><strong>Lose access:</strong> Hiding things, lying about usage, or bypassing restrictions = reset</li>
-                            <li><strong>No secrets policy:</strong> You know their passwords, they know you might check</li>
-                            <li><strong>Regular check-ins:</strong> Monthly conversations about what they're seeing online</li>
+                            <li><strong>Earn access:</strong> more privileges come from demonstrated responsibility</li>
+                            <li><strong>Lose access:</strong> hiding things or bypassing controls = reset</li>
+                            <li><strong>No secrets policy:</strong> you know their passwords; they know you might check</li>
+                            <li><strong>Monthly check-ins:</strong> brief conversations about what they're seeing online</li>
                         </ul>
                     </div>
+
                     <div class="guide-card" data-step="4">
-                        <h2 class="guide-card-title">When to Seek Outside Help</h2>
-                        <p class="guide-card-body">Signs that tech use has crossed into something more serious:</p>
-                        <ul class="guide-card-list">
-                            <li>Extreme anger or distress when device is removed</li>
-                            <li>Lying or hiding usage repeatedly</li>
-                            <li>Sleep disruption, declining grades, withdrawing from family</li>
-                            <li>Secretive about who they're talking to</li>
-                        </ul>
-                        <p class="guide-card-body">A therapist familiar with adolescent tech use can help. This isn't failure — it's the same as getting a doctor for a physical problem.</p>
+                        <h2 class="guide-card-title">When to Get Outside Help</h2>
+                        <p class="guide-card-lead">Some situations go beyond what parental controls can fix.</p>
+                        <p class="guide-card-body">If you're seeing extreme distress when devices are removed, repeated deception, declining grades, sleep problems, or your child withdrawing from family — these are signs worth taking to a professional.</p>
+                        <div class="guide-card-callout good">A therapist familiar with adolescent tech use can help. This isn't failure — it's the same as seeing a doctor for a physical problem.</div>
                     </div>
+
                     <div class="guide-card guide-done-card" data-step="5">
                         <div class="guide-done-icon">✓</div>
                         <h2 class="guide-card-title">The foundation is communication</h2>
                         <p class="guide-card-body">Technology changes fast. Your relationship with your child is what stays constant. The conversations matter more than the controls.</p>
                     </div>
+
                 </div>
             </div>
             <div class="guide-controls">
@@ -404,62 +463,67 @@
             </div>
         </div>
 
-        <!-- 7. Quick-Start Guides by Age -->
+        <!-- 7. Quick-Start by Age -->
         <div id="tab-byage" class="db-panel" role="tabpanel" data-guide="byage">
             <div class="guide-layout">
                 <div class="guide-index"></div>
                 <div class="guide-stage">
+
                     <div class="guide-card active" data-step="0">
                         <h2 class="guide-card-title">Ages 8–10: The Basics</h2>
-                        <p class="guide-card-body">At this age, a phone is not necessary. If a child has one, it should be tightly restricted. Recommended setup:</p>
+                        <p class="guide-card-lead">At this age, a phone is a communication device — not a portal to the internet.</p>
                         <ul class="guide-card-list">
-                            <li>Phone and Messages only (no social, no browser)</li>
-                            <li>Screen Time Downtime: 8pm–7am</li>
-                            <li>App Limits: no games after 1 hour</li>
+                            <li>Phone and Messages only — no browser, no social, no games</li>
+                            <li>Downtime: 8pm–7am, no exceptions</li>
                             <li>Phone charges in a common area, not the bedroom</li>
                             <li>No front-facing camera apps</li>
                         </ul>
-                        <div class="guide-card-callout good">✓ If they're upset about restrictions at this age, that's developmentally appropriate — and means the controls are working.</div>
+                        <div class="guide-card-callout good">If they're upset about restrictions at this age, that's developmentally normal — and means the controls are working.</div>
                     </div>
+
                     <div class="guide-card" data-step="1">
                         <h2 class="guide-card-title">Ages 11–13: The Critical Window</h2>
-                        <p class="guide-card-body">This is the highest-risk period. Social media pressure is intense, platforms are designed for this age, and the brain is uniquely susceptible to social comparison.</p>
+                        <p class="guide-card-lead">This is the highest-risk period. Social media pressure peaks, and the adolescent brain is uniquely susceptible to social comparison.</p>
                         <ul class="guide-card-list">
-                            <li>No social media — full block, no exceptions</li>
-                            <li>YouTube: blocked or YouTube Kids only</li>
+                            <li><strong>No social media</strong> — full block, no exceptions</li>
+                            <li>YouTube blocked or YouTube Kids only</li>
                             <li>Messaging: contacts only, reviewed contact list</li>
-                            <li>Gaming: 1 hr/day max, multiplayer with known friends only</li>
-                            <li>Phone stays in kitchen after 8:30pm</li>
+                            <li>Gaming: 1 hr/day max, known friends only</li>
+                            <li>Phone in kitchen by 8:30pm</li>
                         </ul>
-                        <div class="guide-card-callout warn">⚠️ This is the age where most kids ask for Instagram. The research on social media and this age group is clear — wait.</div>
+                        <div class="guide-card-callout warn">This is the age they'll ask for Instagram. The research on social media and this age group is unambiguous — wait.</div>
                     </div>
+
                     <div class="guide-card" data-step="2">
                         <h2 class="guide-card-title">Ages 14–16: Earned Trust</h2>
-                        <p class="guide-card-body">Start loosening restrictions based on demonstrated responsibility, not age alone. A trust ladder approach:</p>
+                        <p class="guide-card-lead">Start loosening restrictions based on demonstrated responsibility — not age alone.</p>
                         <ul class="guide-card-list">
-                            <li>Allow one social platform at a time, with a private account you're connected to</li>
+                            <li>One social platform at a time, private account, you're connected</li>
                             <li>Browser access with content filters still on</li>
                             <li>Downtime moves to 10pm instead of 9pm</li>
                             <li>Monthly check-ins replace constant monitoring</li>
                         </ul>
-                        <p class="guide-card-body">The goal: they're making more of their own decisions, and coming to you when things go wrong.</p>
+                        <p class="guide-card-body">The goal: they're making more decisions independently, and coming to you when things go wrong.</p>
                     </div>
+
                     <div class="guide-card" data-step="3">
                         <h2 class="guide-card-title">Ages 17+: Transition to Autonomy</h2>
-                        <p class="guide-card-body">At this stage, hard blocks shift to conversations and soft guardrails. They're going to be independent soon — the goal is habits and judgment, not compliance.</p>
+                        <p class="guide-card-lead">Hard blocks shift to conversations. The goal now is habits and judgment — not compliance.</p>
                         <ul class="guide-card-list">
                             <li>Remove most content restrictions, keep the relationship open</li>
-                            <li>Talk about specific apps and platforms you're still concerned about, and why</li>
-                            <li>Focus on sleep hygiene: phone out of room at night is still valuable</li>
+                            <li>Talk about specific platforms you're still concerned about, and why</li>
+                            <li>Phone out of room at night — still valuable even now</li>
                             <li>Help them audit their own usage in Screen Time — make it self-directed</li>
                         </ul>
-                        <div class="guide-card-callout good">✓ Kids who have had guardrails their whole childhood tend to set their own limits better as adults. The habits stick.</div>
+                        <div class="guide-card-callout good">Kids who have had guardrails their whole childhood tend to set their own limits better as adults. The habits stick.</div>
                     </div>
+
                     <div class="guide-card guide-done-card" data-step="4">
                         <div class="guide-done-icon">✓</div>
                         <h2 class="guide-card-title">You have the full picture</h2>
-                        <p class="guide-card-body">Every child is different. Use these as starting points, not rigid rules. Questions? Reach out at <a href="mailto:hello@corephone.org">hello@corephone.org</a>.</p>
+                        <p class="guide-card-body">Every child is different. Use these as starting points, not rigid rules. Questions? <a href="mailto:hello@corephone.org">hello@corephone.org</a></p>
                     </div>
+
                 </div>
             </div>
             <div class="guide-controls">
@@ -469,21 +533,18 @@
             </div>
         </div>
 
-    </div><!-- /.db-panels -->
+    </div>
 
-    <!-- Footer -->
     <footer class="db-footer">
         <div class="container">
             <p>© 2026 CorePhone · <a href="mailto:hello@corephone.org">hello@corephone.org</a></p>
         </div>
     </footer>
 
-</div><!-- /#db-content -->
+</div>
 
 <script>
 (function () {
-
-    // ── step navigator ──────────────────────────────────────────────────────────
 
     function initGuide(panel) {
         var cards = Array.from(panel.querySelectorAll('.guide-card'));
@@ -491,10 +552,9 @@
         var dotsWrap = panel.querySelector('.guide-dots');
         var prevBtn = panel.querySelector('.guide-prev');
         var nextBtn = panel.querySelector('.guide-next');
-        var total = cards.length - 1; // last card is done card
+        var total = cards.length - 1;
         var current = 0;
 
-        // Build left index from card titles (exclude done card)
         for (var i = 0; i < total; i++) {
             var title = cards[i].querySelector('.guide-card-title').textContent.trim();
             var item = document.createElement('button');
@@ -525,7 +585,6 @@
             nextBtn.textContent = current >= total ? 'Start over' : (current === total - 1 ? 'Finish ✓' : 'Next →');
         }
 
-        // Build mobile dots
         for (var j = 0; j < total; j++) {
             var dot = document.createElement('button');
             dot.className = 'guide-dot' + (j === 0 ? ' active' : '');
@@ -534,9 +593,7 @@
             dotsWrap.appendChild(dot);
         }
 
-        prevBtn.addEventListener('click', function() {
-            if (current > 0) goTo(current - 1);
-        });
+        prevBtn.addEventListener('click', function() { if (current > 0) goTo(current - 1); });
         nextBtn.addEventListener('click', function() {
             if (current < total) goTo(current + 1);
             else goTo(0);
@@ -544,8 +601,6 @@
 
         goTo(0);
     }
-
-    // ── tab logic ───────────────────────────────────────────────────────────────
 
     function initTabs() {
         var tabs = document.querySelectorAll('.db-tab');
@@ -556,9 +611,7 @@
                     t.classList.remove('active');
                     t.setAttribute('aria-selected', 'false');
                 });
-                document.querySelectorAll('.db-panel').forEach(function (p) {
-                    p.classList.remove('active');
-                });
+                document.querySelectorAll('.db-panel').forEach(function (p) { p.classList.remove('active'); });
                 tab.classList.add('active');
                 tab.setAttribute('aria-selected', 'true');
                 var panel = document.getElementById('tab-' + target);
@@ -571,11 +624,7 @@
         });
     }
 
-    // ── init ────────────────────────────────────────────────────────────────────
-
-    document.addEventListener('DOMContentLoaded', function () {
-        initTabs();
-    });
+    document.addEventListener('DOMContentLoaded', function () { initTabs(); });
 
 })();
 </script>
