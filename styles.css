@@ -6162,7 +6162,7 @@ button.bundle-preview:hover {
 }
 
 .floating-icons-bg {
-    position: absolute;
+    position: fixed;
     inset: 0;
     pointer-events: none;
     z-index: 0;
