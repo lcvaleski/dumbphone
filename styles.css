@@ -4232,7 +4232,7 @@ header {
 
 .packages-hero {
     padding: 60px 0 20px;
-    background: var(--bg-cream);
+    background: transparent;
     text-align: center;
 }
 
@@ -4341,7 +4341,7 @@ header {
 
 .packages-section {
     padding: 0 0 80px;
-    background: var(--bg-cream);
+    background: transparent;
 }
 
 .packages-section .container {
@@ -6158,7 +6158,6 @@ button.bundle-preview:hover {
 /* ── Floating app icons background ─────────────────────────── */
 .packages-section {
     position: relative;
-    overflow: hidden;
 }
 
 .floating-icons-bg {
