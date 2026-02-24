@@ -6140,12 +6140,7 @@ button.bundle-preview:hover {
 .guide-index-item.done .guide-index-num {
     background: #e8f5ee;
     border-color: #86efac;
-    color: #16a34a;
-    font-size: 10px;
-}
-
-.guide-index-item.done .guide-index-num::before {
-    content: '✓';
+    color: transparent;
 }
 
 .guide-index-item.done .guide-index-label {
