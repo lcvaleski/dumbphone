@@ -4484,25 +4484,69 @@ button.bundle-preview:hover {
 }
 
 /* Bundle card */
-.bundle-flat {
-    max-width: 560px;
-    margin: 16px auto 0;
+.bundle-card {
+    margin-top: 8px;
+    background: #FFF8F0;
+    border: 1.5px solid #F5D9B8;
+    border-radius: 40px;
+    padding: 52px 56px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 28px;
+    gap: 32px;
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(16px) scale(0.98);
     animation: bundleFadeIn 0.6s ease forwards;
-    animation-delay: 0.4s;
+    animation-delay: 0.6s;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 32px rgba(200, 140, 80, 0.1);
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 @keyframes bundleFadeIn {
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
+}
+
+.bundle-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.bundle-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: bundleShimmer 3s ease-in-out infinite;
+    animation-delay: 1.2s;
+    pointer-events: none;
+}
+
+@keyframes bundleShimmer {
+    0% { left: -60%; }
+    100% { left: 120%; }
+}
+
+.bundle-content,
+.bundle-pricing {
+    position: relative;
+    z-index: 1;
 }
 
 .bundle-content h3 {
@@ -4735,8 +4779,11 @@ button.bundle-preview:hover {
         border-radius: 8px;
     }
 
-    .bundle-flat {
-        gap: 20px;
+    .bundle-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 28px 24px;
+        gap: 16px;
     }
 
     .bundle-content h3 {
@@ -5535,16 +5582,21 @@ button.bundle-preview:hover {
 /* ── Bundle preview video ───────────────────────────────────── */
 .bundle-preview-video {
     width: 100%;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
     line-height: 0;
+    padding: 12px;
+    background: linear-gradient(135deg, #f5ede0 0%, #ede4d6 100%);
+    border-bottom: 1px solid #e8ddd0;
 }
 
 .preview-video {
     width: 100%;
     display: block;
-    max-height: 420px;
+    max-height: 400px;
     object-fit: cover;
-    border-radius: 16px;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.06);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18), 0 0 0 1px rgba(0,0,0,0.06);
 }
 
 /* ── Step-by-step guide navigator ──────────────────────────── */
