@@ -17,49 +17,7 @@
 </head>
 <body>
 
-<!-- Loading state -->
-<div id="db-loading" class="db-loading">
-    <div class="db-loading-inner">
-        <div class="db-spinner"></div>
-        <p>Verifying your order…</p>
-    </div>
-</div>
-
-<!-- Error / manual entry state -->
-<div id="db-gate" class="db-gate" style="display:none">
-    <div class="container">
-        <div class="db-gate-card">
-            <div class="db-gate-logo">
-                <img src="core.svg" alt="CorePhone" class="logo">
-                <span class="logo-text">CorePhone</span>
-            </div>
-            <h1>Access your guides</h1>
-            <p class="db-gate-subtitle">Enter the email address and order number from your confirmation email.</p>
-
-            <div id="db-gate-error" class="db-gate-error" style="display:none"></div>
-
-            <form id="db-verify-form" class="db-verify-form">
-                <div class="db-field">
-                    <label for="db-email">Email address</label>
-                    <input type="email" id="db-email" name="email" placeholder="you@example.com" required autocomplete="email">
-                </div>
-                <div class="db-field">
-                    <label for="db-order">Order number</label>
-                    <input type="text" id="db-order" name="order" placeholder="e.g. 12345" required>
-                </div>
-                <button type="submit" class="db-submit-btn">
-                    <span class="db-submit-label">Access my guides</span>
-                    <span class="db-submit-spinner" style="display:none"></span>
-                </button>
-            </form>
-
-            <p class="db-gate-help">Need help? Email <a href="mailto:hello@corephone.org">hello@corephone.org</a></p>
-        </div>
-    </div>
-</div>
-
-<!-- Dashboard (authenticated) -->
-<div id="db-content" class="db-page" style="display:none">
+<div id="db-content" class="db-page">
 
     <!-- Top bar -->
     <div class="db-topbar">
@@ -69,39 +27,22 @@
                     <img src="core.svg" alt="CorePhone" class="logo">
                     <span class="logo-text">CorePhone</span>
                 </div>
-                <button id="db-logout" class="db-logout-btn">Sign out</button>
+                <a href="/packages" class="db-back-link">← Back</a>
             </div>
         </div>
     </div>
 
-    <!-- Hero -->
-    <section class="db-hero">
-        <div class="container">
-            <h1>Your <span class="underline-accent">2026 Tech Parenting</span> guides</h1>
-            <p class="db-hero-sub">Step-by-step instructions to lock down your child's iPhone — for good.</p>
-        </div>
-    </section>
-
     <!-- Tab nav -->
     <div class="db-tabs-wrap">
-        <div class="container">
+        <div class="db-tabs-scroll">
             <nav class="db-tabs" role="tablist">
-                <button class="db-tab active" data-tab="configurator" data-color="blue" role="tab" aria-selected="true">
-                    <span class="db-tab-icon">⚙️</span>
-                    <span class="db-tab-label">Apple Configurator</span>
-                </button>
-                <button class="db-tab" data-tab="screentime" data-color="amber" role="tab" aria-selected="false">
-                    <span class="db-tab-icon">⏱️</span>
-                    <span class="db-tab-label">Screen Time</span>
-                </button>
-                <button class="db-tab" data-tab="blocking" data-color="red" role="tab" aria-selected="false">
-                    <span class="db-tab-icon">🛡️</span>
-                    <span class="db-tab-label">Blocking Apps</span>
-                </button>
-                <button class="db-tab" data-tab="newsletter" data-color="green" role="tab" aria-selected="false">
-                    <span class="db-tab-icon">📬</span>
-                    <span class="db-tab-label">Newsletter</span>
-                </button>
+                <button class="db-tab active" data-tab="screentime" role="tab" aria-selected="true">Apple Screen Time</button>
+                <button class="db-tab" data-tab="youtube" role="tab" aria-selected="false">YouTube &amp; Streaming</button>
+                <button class="db-tab" data-tab="gaming" role="tab" aria-selected="false">Gaming</button>
+                <button class="db-tab" data-tab="social" role="tab" aria-selected="false">Social Media</button>
+                <button class="db-tab" data-tab="messaging" role="tab" aria-selected="false">Messaging</button>
+                <button class="db-tab" data-tab="conversations" role="tab" aria-selected="false">The Big Conversations</button>
+                <button class="db-tab" data-tab="byage" role="tab" aria-selected="false">Quick-Start by Age</button>
             </nav>
         </div>
     </div>
@@ -109,207 +50,432 @@
     <!-- Tab panels -->
     <div class="db-panels">
 
-            <!-- Apple Configurator -->
-            <div id="tab-configurator" class="db-panel active" role="tabpanel" data-guide="configurator">
-                <div class="guide-layout">
-                <div class="guide-index"></div>
-                <div class="guide-stage">
-                    <!-- Step cards -->
-                    <div class="guide-card active" data-step="0">
-                        <div class="guide-card-eyebrow">Apple Configurator · Step 1 of 5</div>
-                        <h2 class="guide-card-title">Download Apple Configurator 2</h2>
-                        <p class="guide-card-body">Open the Mac App Store and search for <strong>Apple Configurator 2</strong>. It's free. You'll need a Mac — this tool is Mac-only.</p>
-                    </div>
-                    <div class="guide-card" data-step="1">
-                        <div class="guide-card-eyebrow">Apple Configurator · Step 2 of 5</div>
-                        <h2 class="guide-card-title">Connect &amp; supervise the iPhone</h2>
-                        <p class="guide-card-body">Plug the iPhone into your Mac via USB. In Apple Configurator, go to <strong>Actions → Prepare</strong> and follow the prompts. This supervises the device — do it before handing it to your child.</p>
-                        <div class="guide-card-callout warn">⚠️ Supervision erases all data. Restore from backup <em>after</em>.</div>
-                    </div>
-                    <div class="guide-card" data-step="2">
-                        <div class="guide-card-eyebrow">Apple Configurator · Step 3 of 5</div>
-                        <h2 class="guide-card-title">Create a configuration profile</h2>
-                        <p class="guide-card-body">Click <strong>File → New Profile</strong>. Name it "Family Controls". Under <strong>Restrictions</strong>, disable app installation, Safari, passcode changes, and AirDrop.</p>
-                        <ul class="guide-card-list">
-                            <li>Disable installing apps</li>
-                            <li>Disable Safari</li>
-                            <li>Force content filter</li>
-                            <li>Prevent passcode changes</li>
-                        </ul>
-                    </div>
-                    <div class="guide-card" data-step="3">
-                        <div class="guide-card-eyebrow">Apple Configurator · Step 4 of 5</div>
-                        <h2 class="guide-card-title">Push the profile to the device</h2>
-                        <p class="guide-card-body">With the iPhone connected, drag your <code>.mobileconfig</code> file onto it in Apple Configurator — or go to <strong>Actions → Add → Profiles</strong>. Installs silently.</p>
-                        <div class="guide-card-callout good">✓ Because the device is supervised, your child cannot remove this profile or reset Screen Time. It's hardware-enforced.</div>
-                    </div>
-                    <div class="guide-card" data-step="4">
-                        <div class="guide-card-eyebrow">Apple Configurator · Step 5 of 5</div>
-                        <h2 class="guide-card-title">Set a passcode they don't know</h2>
-                        <p class="guide-card-body">In the profile's <strong>Passcode</strong> payload, enforce minimum complexity and a max number of failed attempts. Layer Screen Time → Communication Limits on top for extra control.</p>
-                        <a href="https://support.apple.com/guide/apple-configurator-2/welcome/mac" target="_blank" rel="noopener" class="guide-card-link">Official Apple Configurator docs →</a>
-                    </div>
-                    <!-- Done card -->
-                    <div class="guide-card guide-done-card" data-step="5">
-                        <div class="guide-done-icon">✓</div>
-                        <h2 class="guide-card-title">Guide complete</h2>
-                        <p class="guide-card-body">You've set up hardware-enforced parental controls. Check the other guides for Screen Time and app blocking layers.</p>
-                    </div>
-                </div><!-- /.guide-stage -->
-                </div><!-- /.guide-layout -->
-                <div class="guide-controls">
-                    <button class="guide-btn guide-prev" disabled>← Back</button>
-                    <div class="guide-dots"></div>
-                    <button class="guide-btn guide-next">Next →</button>
-                </div>
-            </div>
-
-            <!-- Screen Time -->
-            <div id="tab-screentime" class="db-panel" role="tabpanel" data-guide="screentime">
-                <div class="guide-layout">
+        <!-- 1. Apple Screen Time -->
+        <div id="tab-screentime" class="db-panel active" role="tabpanel" data-guide="screentime">
+            <div class="guide-layout">
                 <div class="guide-index"></div>
                 <div class="guide-stage">
                     <div class="guide-card active" data-step="0">
-                        <div class="guide-card-eyebrow">Screen Time · Step 1 of 5</div>
-                        <h2 class="guide-card-title">Turn on Screen Time</h2>
-                        <p class="guide-card-body">Go to <strong>Settings → Screen Time → Turn On Screen Time</strong>. Tap <strong>"This is my child's iPhone"</strong>. Set a passcode only you know.</p>
-                        <div class="guide-card-callout warn">⚠️ Use a random 6-digit code stored in your password manager — not a birthday.</div>
+                        <h2 class="guide-card-title">Turn On Screen Time</h2>
+                        <p class="guide-card-body">Go to <strong>Settings → Screen Time → Turn On Screen Time</strong>. Tap <strong>"This is my child's iPhone"</strong>. You'll be prompted to set a Screen Time passcode — use one only you know, not your device passcode.</p>
+                        <div class="guide-card-callout warn">⚠️ Use a random 6-digit code stored in your password manager. Not a birthday. Not your PIN.</div>
                     </div>
                     <div class="guide-card" data-step="1">
-                        <div class="guide-card-eyebrow">Screen Time · Step 2 of 5</div>
-                        <h2 class="guide-card-title">Enable Content &amp; Privacy Restrictions</h2>
-                        <p class="guide-card-body">Under <strong>Screen Time → Content &amp; Privacy Restrictions</strong>, toggle it on and set:</p>
+                        <h2 class="guide-card-title">Content &amp; Privacy Restrictions</h2>
+                        <p class="guide-card-body">Under <strong>Screen Time → Content &amp; Privacy Restrictions</strong>, toggle it on. Key settings to lock down:</p>
                         <ul class="guide-card-list">
                             <li>Installing Apps → Don't Allow</li>
-                            <li>Disable Safari &amp; unwanted apps</li>
+                            <li>Deleting Apps → Don't Allow</li>
                             <li>Web Content → Limit Adult Websites</li>
-                            <li>Prevent Location Services changes</li>
+                            <li>Location Services → While Using / Don't Allow Changes</li>
+                            <li>Account Changes → Don't Allow</li>
                         </ul>
                     </div>
                     <div class="guide-card" data-step="2">
-                        <div class="guide-card-eyebrow">Screen Time · Step 3 of 5</div>
-                        <h2 class="guide-card-title">Set App Limits</h2>
-                        <p class="guide-card-body">Under <strong>App Limits → Add Limit</strong>, pick a specific app or category. Set it to 0 minutes and enable <strong>Block at End of Limit</strong> to effectively lock it out.</p>
+                        <h2 class="guide-card-title">App Limits</h2>
+                        <p class="guide-card-body">Under <strong>App Limits → Add Limit</strong>, select categories or individual apps. Set a daily time limit and enable <strong>"Block at End of Limit"</strong> so the app locks — not just shows a warning.</p>
+                        <p class="guide-card-body">Tip: Set social and entertainment categories to 0 minutes to effectively block them without deleting them.</p>
                     </div>
                     <div class="guide-card" data-step="3">
-                        <div class="guide-card-eyebrow">Screen Time · Step 4 of 5</div>
-                        <h2 class="guide-card-title">Restrict communication</h2>
-                        <p class="guide-card-body">Under <strong>Communication Limits</strong>, set who your child can call and text. Restrict to your family's contacts only — both during normal hours and during Downtime.</p>
+                        <h2 class="guide-card-title">Downtime Settings</h2>
+                        <p class="guide-card-body">Under <strong>Downtime → Turn On Downtime</strong>, set a schedule (e.g. 9pm–7am) where only specific apps work. During Downtime, all other apps are locked — this is the closest thing to "no phone at night."</p>
+                        <div class="guide-card-callout good">✓ Always Allowed apps (Phone, Messages) still work during Downtime. Everything else is blocked.</div>
                     </div>
                     <div class="guide-card" data-step="4">
-                        <div class="guide-card-eyebrow">Screen Time · Step 5 of 5</div>
-                        <h2 class="guide-card-title">Enable Family Sharing</h2>
-                        <p class="guide-card-body">Go to <strong>Settings → [Your Name] → Family Sharing</strong> to manage Screen Time remotely. Time extension requests come to your phone as notifications.</p>
-                        <div class="guide-card-callout good">✓ Pair with Apple Configurator supervision so your child can't bypass Screen Time by signing out of iCloud.</div>
+                        <h2 class="guide-card-title">Communication Limits</h2>
+                        <p class="guide-card-body">Under <strong>Communication Limits</strong>, restrict who your child can call, FaceTime, and iMessage. Set it to <strong>"Contacts Only"</strong> or even more narrowly to specific contacts you approve.</p>
+                        <p class="guide-card-body">During Downtime, set it to "Specific Contacts" — your family's numbers only.</p>
                     </div>
-                    <div class="guide-card guide-done-card" data-step="5">
+                    <div class="guide-card" data-step="5">
+                        <h2 class="guide-card-title">Family Sharing Setup</h2>
+                        <p class="guide-card-body">Go to <strong>Settings → [Your Name] → Family Sharing</strong> to manage Screen Time remotely from your own phone. When your child requests more time, it comes to you as a notification — you approve or deny.</p>
+                        <div class="guide-card-callout good">✓ Pair with Apple Configurator supervision so Screen Time can't be bypassed by signing out of iCloud or resetting the device.</div>
+                    </div>
+                    <div class="guide-card guide-done-card" data-step="6">
                         <div class="guide-done-icon">✓</div>
-                        <h2 class="guide-card-title">Guide complete</h2>
-                        <p class="guide-card-body">Screen Time is live. For stronger protection, combine it with the Apple Configurator guide.</p>
+                        <h2 class="guide-card-title">Screen Time is live</h2>
+                        <p class="guide-card-body">You've set up the core layer of iPhone parental controls. Combine with the Social Media and Messaging tabs for full coverage.</p>
                     </div>
-                </div><!-- /.guide-stage -->
-                </div><!-- /.guide-layout -->
-                <div class="guide-controls">
-                    <button class="guide-btn guide-prev" disabled>← Back</button>
-                    <div class="guide-dots"></div>
-                    <button class="guide-btn guide-next">Next →</button>
                 </div>
             </div>
+            <div class="guide-controls">
+                <button class="guide-btn guide-prev" disabled>← Back</button>
+                <div class="guide-dots"></div>
+                <button class="guide-btn guide-next">Next →</button>
+            </div>
+        </div>
 
-            <!-- Blocking Apps -->
-            <div id="tab-blocking" class="db-panel" role="tabpanel" data-guide="blocking">
-                <div class="guide-layout">
+        <!-- 2. YouTube & Streaming Safety -->
+        <div id="tab-youtube" class="db-panel" role="tabpanel" data-guide="youtube">
+            <div class="guide-layout">
                 <div class="guide-index"></div>
                 <div class="guide-stage">
                     <div class="guide-card active" data-step="0">
-                        <div class="guide-card-eyebrow">Blocking Apps · Step 1 of 5</div>
-                        <h2 class="guide-card-title">Block via App Limits</h2>
-                        <p class="guide-card-body">Go to <strong>Screen Time → App Limits → Add Limit</strong>. Pick TikTok, Instagram, or any app. Set the daily limit to 1 minute and enable <strong>"Block at End of Limit"</strong>.</p>
-                        <p class="guide-card-body">To hide the icon entirely: delete the app and disable App Store installs under Content &amp; Privacy Restrictions.</p>
+                        <h2 class="guide-card-title">Why YouTube Is High-Risk</h2>
+                        <p class="guide-card-body">YouTube's recommendation algorithm is designed to keep viewers watching as long as possible. For kids, this means: one innocent video leads to increasingly intense content within minutes. There is no safe "middle ground" setting that solves this.</p>
+                        <div class="guide-card-callout warn">⚠️ YouTube Kids is safer but not foolproof. The only reliable protection is blocking YouTube entirely for younger children.</div>
                     </div>
                     <div class="guide-card" data-step="1">
-                        <div class="guide-card-eyebrow">Blocking Apps · Step 2 of 5</div>
-                        <h2 class="guide-card-title">Block websites in Screen Time</h2>
-                        <p class="guide-card-body">Go to <strong>Content Restrictions → Web Content → Limit Adult Websites → Never Allow</strong>. Add domains:</p>
+                        <h2 class="guide-card-title">Blocking YouTube on iPhone</h2>
+                        <p class="guide-card-body">Three-layer approach:</p>
                         <ul class="guide-card-list">
-                            <li>tiktok.com</li>
-                            <li>instagram.com</li>
-                            <li>snapchat.com</li>
-                            <li>x.com &amp; twitter.com</li>
-                            <li>reddit.com</li>
+                            <li><strong>App Limit:</strong> Screen Time → App Limits → set YouTube to 0 min, Block at End</li>
+                            <li><strong>Website Block:</strong> Content Restrictions → Never Allow → add youtube.com</li>
+                            <li><strong>Delete the app</strong> and disable App Store installs so it can't be reinstalled</li>
                         </ul>
-                        <div class="guide-card-callout warn">⚠️ This blocks the website — the native app still works unless blocked separately.</div>
+                        <p class="guide-card-body">All three together mean YouTube is gone from every access point.</p>
                     </div>
                     <div class="guide-card" data-step="2">
-                        <div class="guide-card-eyebrow">Blocking Apps · Step 3 of 5</div>
-                        <h2 class="guide-card-title">Add DNS-level filtering</h2>
-                        <p class="guide-card-body">DNS filtering blocks domains at the network level — even inside apps. Install a profile via <strong>Settings → General → VPN &amp; Device Management</strong>.</p>
-                        <p class="guide-card-body"><strong>NextDNS</strong> and <strong>CleanBrowsing</strong> offer free profiles that block thousands of social, adult, and gambling domains automatically.</p>
+                        <h2 class="guide-card-title">YouTube Kids Setup</h2>
+                        <p class="guide-card-body">If your child is under 12 and you want video access, <strong>YouTube Kids</strong> is the alternative. Install it, then block the main YouTube app. In the YouTube Kids app, set the content level to <strong>Preschool</strong> or <strong>Younger</strong> and enable search-off mode.</p>
+                        <div class="guide-card-callout warn">⚠️ YouTube Kids is not perfect — content can slip through. Check the watch history periodically.</div>
                     </div>
                     <div class="guide-card" data-step="3">
-                        <div class="guide-card-eyebrow">Blocking Apps · Step 4 of 5</div>
-                        <h2 class="guide-card-title">Allowlist only specific apps via MDM</h2>
-                        <p class="guide-card-body">In Apple Configurator, go to <strong>Restrictions → Applications → Allow specific apps</strong> and add only the bundle IDs you want:</p>
+                        <h2 class="guide-card-title">Netflix &amp; Streaming Controls</h2>
+                        <p class="guide-card-body">Netflix, Disney+, and similar apps have built-in parental controls. Set them up at the account level, not just the device:</p>
                         <ul class="guide-card-list">
-                            <li><code>com.apple.mobilephone</code></li>
-                            <li><code>com.apple.MobileSMS</code></li>
-                            <li><code>com.apple.maps</code></li>
+                            <li><strong>Netflix:</strong> Account → Profile &amp; Parental Controls → set maturity rating + PIN</li>
+                            <li><strong>Disney+:</strong> Profile → Content Rating → set level + lock profile</li>
+                            <li>Create a separate child profile so their viewing history is separate from yours</li>
                         </ul>
                     </div>
                     <div class="guide-card" data-step="4">
-                        <div class="guide-card-eyebrow">Blocking Apps · Step 5 of 5</div>
-                        <h2 class="guide-card-title">Remove the browser entirely</h2>
-                        <p class="guide-card-body">The most common bypass: kids use Safari or Chrome to reach blocked apps on the web.</p>
-                        <ul class="guide-card-list">
-                            <li>Screen Time → Allowed Apps → Safari: OFF</li>
-                            <li>Delete Chrome &amp; Firefox</li>
-                            <li>Web Content → Allowed Websites Only → zero sites</li>
-                        </ul>
-                        <div class="guide-card-callout good">✓ No browser + App Store disabled = nothing new can be installed or accessed.</div>
+                        <h2 class="guide-card-title">Blocking Streaming via Screen Time</h2>
+                        <p class="guide-card-body">If you want to remove streaming entirely: Screen Time → App Limits → Entertainment → Block All. Or specifically add Netflix, YouTube, Twitch, and TikTok to the blocked list.</p>
+                        <p class="guide-card-body">Also block these domains under Content Restrictions → Never Allow: twitch.tv, tiktok.com, reddit.com (videos), twitter.com.</p>
+                        <div class="guide-card-callout good">✓ The goal isn't zero media — it's intentional media. Streaming on a shared TV you control is very different from a phone in their room at midnight.</div>
                     </div>
                     <div class="guide-card guide-done-card" data-step="5">
                         <div class="guide-done-icon">✓</div>
-                        <h2 class="guide-card-title">Guide complete</h2>
-                        <p class="guide-card-body">All three blocking layers are in place. Sign up for the newsletter to stay ahead of new workarounds.</p>
+                        <h2 class="guide-card-title">Streaming is under control</h2>
+                        <p class="guide-card-body">YouTube and streaming are the single biggest time sink for kids. Blocking or limiting them has an outsized impact.</p>
                     </div>
-                </div><!-- /.guide-stage -->
-                </div><!-- /.guide-layout -->
-                <div class="guide-controls">
-                    <button class="guide-btn guide-prev" disabled>← Back</button>
-                    <div class="guide-dots"></div>
-                    <button class="guide-btn guide-next">Next →</button>
                 </div>
             </div>
+            <div class="guide-controls">
+                <button class="guide-btn guide-prev" disabled>← Back</button>
+                <div class="guide-dots"></div>
+                <button class="guide-btn guide-next">Next →</button>
+            </div>
+        </div>
 
-            <!-- Newsletter -->
-            <div id="tab-newsletter" class="db-panel" role="tabpanel">
-                <div class="guide-newsletter-wrap">
-                    <div class="guide-newsletter-card">
-                        <div class="guide-newsletter-icon">📬</div>
-                        <h2>Stay one step ahead</h2>
-                        <p>Kids find new workarounds. iOS updates shift what's possible. Our monthly newsletter covers what's changed and what to do about it.</p>
-                        <ul class="guide-newsletter-perks">
-                            <li>New apps parents should know about</li>
-                            <li>iOS update impact on parental controls</li>
-                            <li>Workarounds kids are using — and how to close them</li>
-                            <li>Q&amp;A from other parents</li>
+        <!-- 3. Gaming -->
+        <div id="tab-gaming" class="db-panel" role="tabpanel" data-guide="gaming">
+            <div class="guide-layout">
+                <div class="guide-index"></div>
+                <div class="guide-stage">
+                    <div class="guide-card active" data-step="0">
+                        <h2 class="guide-card-title">The Gaming Risk Landscape</h2>
+                        <p class="guide-card-body">Mobile games are engineered for addiction. The risks aren't just time — they're financial (in-app purchases), social (stranger chats built into multiplayer), and psychological (reward loops designed to keep kids playing).</p>
+                        <p class="guide-card-body">The most common issues: Roblox, Fortnite, and Minecraft all have chat systems. Kids meet strangers there daily.</p>
+                    </div>
+                    <div class="guide-card" data-step="1">
+                        <h2 class="guide-card-title">In-App Purchase Protection</h2>
+                        <p class="guide-card-body">This is the most urgent gaming setting. Go to <strong>Screen Time → Content &amp; Privacy Restrictions → iTunes &amp; App Store Purchases</strong>:</p>
+                        <ul class="guide-card-list">
+                            <li>In-app Purchases → Don't Allow</li>
+                            <li>Always Require [your password] for purchases</li>
                         </ul>
-                        <form class="db-newsletter-form" action="https://app.convertkit.com/forms/subscribe" method="post" target="_blank">
-                            <input type="hidden" name="form_id" value="newsletter">
-                            <input type="email" name="email_address" placeholder="your@email.com" required class="db-newsletter-input">
-                            <button type="submit" class="db-newsletter-btn">Subscribe — it's free</button>
-                        </form>
-                        <p class="db-newsletter-note">No spam. Unsubscribe anytime.</p>
+                        <div class="guide-card-callout warn">⚠️ Kids have accidentally (and intentionally) spent thousands on in-app purchases. Lock this immediately.</div>
+                    </div>
+                    <div class="guide-card" data-step="2">
+                        <h2 class="guide-card-title">Game Center &amp; Multiplayer Controls</h2>
+                        <p class="guide-card-body">Under <strong>Screen Time → Content &amp; Privacy Restrictions → Game Center</strong>:</p>
+                        <ul class="guide-card-list">
+                            <li>Multiplayer Games → Don't Allow (for younger kids)</li>
+                            <li>Adding Friends → Don't Allow</li>
+                            <li>Screen Recording → Don't Allow</li>
+                            <li>Nearby Multiplayer → Don't Allow</li>
+                        </ul>
+                        <p class="guide-card-body">This doesn't stop gameplay — it stops strangers from connecting to your child through games.</p>
+                    </div>
+                    <div class="guide-card" data-step="3">
+                        <h2 class="guide-card-title">Screen Time Limits for Gaming</h2>
+                        <p class="guide-card-body">Under <strong>App Limits → Games</strong>, set a daily category limit. 1 hour on weekdays, 2 on weekends is a common starting point. Enable "Block at End of Limit" so it actually stops.</p>
+                        <p class="guide-card-body">Set Downtime to prevent gaming after dinner or before homework. Specific games can be individually limited too.</p>
+                    </div>
+                    <div class="guide-card" data-step="4">
+                        <h2 class="guide-card-title">Console vs. Mobile Boundaries</h2>
+                        <p class="guide-card-body">Consoles (Switch, Xbox, PlayStation) have their own parental control systems. Key differences from mobile:</p>
+                        <ul class="guide-card-list">
+                            <li><strong>Nintendo Switch:</strong> Nintendo Switch Parental Controls app — excellent, real-time</li>
+                            <li><strong>Xbox:</strong> Microsoft Family Safety app — screen time + spending controls</li>
+                            <li><strong>PlayStation:</strong> Family Management at account.sonyentertainmentnetwork.com</li>
+                        </ul>
+                        <div class="guide-card-callout good">✓ Console gaming in a shared living space is significantly safer than mobile gaming in a bedroom.</div>
+                    </div>
+                    <div class="guide-card guide-done-card" data-step="5">
+                        <div class="guide-done-icon">✓</div>
+                        <h2 class="guide-card-title">Gaming guardrails are set</h2>
+                        <p class="guide-card-body">Purchases locked, chat limited, time controlled. Gaming is one of the safest places to let kids have fun — with these guardrails in place.</p>
                     </div>
                 </div>
             </div>
+            <div class="guide-controls">
+                <button class="guide-btn guide-prev" disabled>← Back</button>
+                <div class="guide-dots"></div>
+                <button class="guide-btn guide-next">Next →</button>
+            </div>
+        </div>
+
+        <!-- 4. Social Media -->
+        <div id="tab-social" class="db-panel" role="tabpanel" data-guide="social">
+            <div class="guide-layout">
+                <div class="guide-index"></div>
+                <div class="guide-stage">
+                    <div class="guide-card active" data-step="0">
+                        <h2 class="guide-card-title">Why Social Media Is Different</h2>
+                        <p class="guide-card-body">Social media is fundamentally different from other screen time. It's not passive — it's a social environment where kids are performing, comparing, and seeking validation from peers. The psychological impact compounds over time in ways games and videos don't.</p>
+                        <div class="guide-card-callout warn">⚠️ The minimum age for most platforms is 13. But age gates are trivially bypassed. Supervision matters more than policy.</div>
+                    </div>
+                    <div class="guide-card" data-step="1">
+                        <h2 class="guide-card-title">Blocking Instagram, TikTok &amp; Snapchat</h2>
+                        <p class="guide-card-body">Three-step removal:</p>
+                        <ul class="guide-card-list">
+                            <li>Delete the apps from the device</li>
+                            <li>Screen Time → App Limits → Social Networking → Block All</li>
+                            <li>Content Restrictions → Never Allow: instagram.com, tiktok.com, snapchat.com, x.com</li>
+                        </ul>
+                        <p class="guide-card-body">Blocking both the app and the website closes the two main access points.</p>
+                    </div>
+                    <div class="guide-card" data-step="2">
+                        <h2 class="guide-card-title">What Kids Do to Get Around It</h2>
+                        <p class="guide-card-body">The most common workarounds, and how to close them:</p>
+                        <ul class="guide-card-list">
+                            <li><strong>Friend's phone:</strong> No technical fix — conversations are the solution</li>
+                            <li><strong>Browser access:</strong> Block Safari + Chrome, set Web Content to Allowed Websites Only</li>
+                            <li><strong>VPN apps:</strong> Block VPN installs via Apple Configurator profile</li>
+                            <li><strong>New accounts:</strong> App Store disabled = can't install new apps</li>
+                        </ul>
+                    </div>
+                    <div class="guide-card" data-step="3">
+                        <h2 class="guide-card-title">If You Allow Limited Social Access</h2>
+                        <p class="guide-card-body">If your child is older and you're allowing limited use, set up these safeguards first:</p>
+                        <ul class="guide-card-list">
+                            <li>Private account only — no public profiles</li>
+                            <li>Followers must be approved by you first</li>
+                            <li>Screen Time daily limit (30–60 min max)</li>
+                            <li>No social access after 9pm via Downtime</li>
+                            <li>Know their login credentials</li>
+                        </ul>
+                    </div>
+                    <div class="guide-card" data-step="4">
+                        <h2 class="guide-card-title">Monitoring vs. Trust</h2>
+                        <p class="guide-card-body">The goal isn't to surveil your child — it's to protect them while they're still developing judgment. Be transparent: tell them you have parental controls. Explain why. The controls aren't punishment; they're a safety net.</p>
+                        <div class="guide-card-callout good">✓ Research consistently shows that the strongest protective factor isn't technology — it's a parent who talks openly about it. The controls buy you time to have those conversations.</div>
+                    </div>
+                    <div class="guide-card guide-done-card" data-step="5">
+                        <div class="guide-done-icon">✓</div>
+                        <h2 class="guide-card-title">Social media is locked down</h2>
+                        <p class="guide-card-body">The Big Conversations tab covers how to talk to your kids about why these restrictions exist.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="guide-controls">
+                <button class="guide-btn guide-prev" disabled>← Back</button>
+                <div class="guide-dots"></div>
+                <button class="guide-btn guide-next">Next →</button>
+            </div>
+        </div>
+
+        <!-- 5. Messaging & Communication -->
+        <div id="tab-messaging" class="db-panel" role="tabpanel" data-guide="messaging">
+            <div class="guide-layout">
+                <div class="guide-index"></div>
+                <div class="guide-stage">
+                    <div class="guide-card active" data-step="0">
+                        <h2 class="guide-card-title">iMessage &amp; FaceTime Basics</h2>
+                        <p class="guide-card-body">iMessage and FaceTime are on by default and require no app install — they're built into the OS. Most parents block social media but forget that messaging can be just as risky with unknown contacts.</p>
+                        <p class="guide-card-body">Start here: <strong>Settings → Messages → Filter Unknown Senders</strong> on. This puts texts from non-contacts in a separate, unnotified folder.</p>
+                    </div>
+                    <div class="guide-card" data-step="1">
+                        <h2 class="guide-card-title">Communication Limits Setup</h2>
+                        <p class="guide-card-body">Under <strong>Screen Time → Communication Limits</strong>:</p>
+                        <ul class="guide-card-list">
+                            <li>During Screen Time → Contacts Only (or Everyone if you trust their contact list)</li>
+                            <li>During Downtime → Specific Contacts (your family only)</li>
+                            <li>Manage [Child]'s Contacts → review who's in there</li>
+                        </ul>
+                        <div class="guide-card-callout warn">⚠️ "Contacts Only" only works if you control what's in the Contacts app. Review it.</div>
+                    </div>
+                    <div class="guide-card" data-step="2">
+                        <h2 class="guide-card-title">Unknown Contacts &amp; Stranger Safety</h2>
+                        <p class="guide-card-body">Kids are approached by strangers through games, apps, and iMessage spam. Teach your child these rules:</p>
+                        <ul class="guide-card-list">
+                            <li>Never respond to unknown numbers</li>
+                            <li>Tell a parent if someone they don't know contacts them</li>
+                            <li>Don't share their number in games or apps</li>
+                            <li>No video calls with anyone you haven't met in person</li>
+                        </ul>
+                    </div>
+                    <div class="guide-card" data-step="3">
+                        <h2 class="guide-card-title">Group Chats &amp; AirDrop Safety</h2>
+                        <p class="guide-card-body">Group chats are where a lot of peer pressure, bullying, and inappropriate content spreads. No technical fix fully solves this — but you can reduce exposure:</p>
+                        <ul class="guide-card-list">
+                            <li>AirDrop: Settings → General → AirDrop → Contacts Only (or Receiving Off)</li>
+                            <li>Know about the group chats your child is in</li>
+                            <li>Establish a rule: "You can leave any group at any time and I'll back you up"</li>
+                        </ul>
+                    </div>
+                    <div class="guide-card" data-step="4">
+                        <h2 class="guide-card-title">Third-Party Messaging Apps</h2>
+                        <p class="guide-card-body">WhatsApp, Discord, Telegram, and Snapchat are popular messaging apps kids use to get around parent monitoring of iMessage. If you've blocked social media but not these:</p>
+                        <ul class="guide-card-list">
+                            <li>Block Discord: App Limits → Social Networking + domain block discord.com</li>
+                            <li>Block Snapchat: same as above + snapchat.com</li>
+                            <li>WhatsApp: consider allowing with a review of contacts</li>
+                        </ul>
+                        <div class="guide-card-callout good">✓ The App Store install block means once these apps are deleted, they can't come back.</div>
+                    </div>
+                    <div class="guide-card guide-done-card" data-step="5">
+                        <div class="guide-done-icon">✓</div>
+                        <h2 class="guide-card-title">Messaging is under control</h2>
+                        <p class="guide-card-body">Unknown contacts filtered, communication limits set, third-party apps blocked. Communication is one of the hardest areas — the Big Conversations tab covers the human side.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="guide-controls">
+                <button class="guide-btn guide-prev" disabled>← Back</button>
+                <div class="guide-dots"></div>
+                <button class="guide-btn guide-next">Next →</button>
+            </div>
+        </div>
+
+        <!-- 6. The Big Conversations -->
+        <div id="tab-conversations" class="db-panel" role="tabpanel" data-guide="conversations">
+            <div class="guide-layout">
+                <div class="guide-index"></div>
+                <div class="guide-stage">
+                    <div class="guide-card active" data-step="0">
+                        <h2 class="guide-card-title">How to Talk About Tech Rules</h2>
+                        <p class="guide-card-body">Parental controls without conversation breed resentment. The most effective approach: be honest with your child about why the rules exist, what you're trying to protect them from, and what they need to do to earn more freedom.</p>
+                        <p class="guide-card-body">Frame it as protection, not punishment. "I want to make sure you have a great childhood" lands better than "because I said so."</p>
+                    </div>
+                    <div class="guide-card" data-step="1">
+                        <h2 class="guide-card-title">Setting Boundaries Without Battles</h2>
+                        <p class="guide-card-body">Start with co-created rules where possible. Kids who help make the rules are more likely to follow them. Some questions to ask together:</p>
+                        <ul class="guide-card-list">
+                            <li>What time should the phone charge outside your room?</li>
+                            <li>Which apps feel like a waste of your time?</li>
+                            <li>When do you think you're ready for more access?</li>
+                        </ul>
+                        <div class="guide-card-callout good">✓ You set the non-negotiables. But giving them input on the edges builds buy-in.</div>
+                    </div>
+                    <div class="guide-card" data-step="2">
+                        <h2 class="guide-card-title">What to Say When They Push Back</h2>
+                        <p class="guide-card-body">Common pushback and responses:</p>
+                        <ul class="guide-card-list">
+                            <li><em>"Everyone else has it"</em> → "I'm responsible for you, not everyone else. Let's talk about what you'd do with it."</li>
+                            <li><em>"You don't trust me"</em> → "I trust you. I don't trust the app. They design it to be addictive — even adults struggle."</li>
+                            <li><em>"I'll just use a friend's phone"</em> → "You might. That's your choice. My job is still to make good rules for our house."</li>
+                        </ul>
+                    </div>
+                    <div class="guide-card" data-step="3">
+                        <h2 class="guide-card-title">Building Trust Around Phones</h2>
+                        <p class="guide-card-body">Trust is built incrementally. A good framework:</p>
+                        <ul class="guide-card-list">
+                            <li><strong>Earn access:</strong> More privileges come with demonstrated responsibility</li>
+                            <li><strong>Lose access:</strong> Hiding things, lying about usage, or bypassing restrictions = reset</li>
+                            <li><strong>No secrets policy:</strong> You know their passwords, they know you might check</li>
+                            <li><strong>Regular check-ins:</strong> Monthly conversations about what they're seeing online</li>
+                        </ul>
+                    </div>
+                    <div class="guide-card" data-step="4">
+                        <h2 class="guide-card-title">When to Seek Outside Help</h2>
+                        <p class="guide-card-body">Signs that tech use has crossed into something more serious:</p>
+                        <ul class="guide-card-list">
+                            <li>Extreme anger or distress when device is removed</li>
+                            <li>Lying or hiding usage repeatedly</li>
+                            <li>Sleep disruption, declining grades, withdrawing from family</li>
+                            <li>Secretive about who they're talking to</li>
+                        </ul>
+                        <p class="guide-card-body">A therapist familiar with adolescent tech use can help. This isn't failure — it's the same as getting a doctor for a physical problem.</p>
+                    </div>
+                    <div class="guide-card guide-done-card" data-step="5">
+                        <div class="guide-done-icon">✓</div>
+                        <h2 class="guide-card-title">The foundation is communication</h2>
+                        <p class="guide-card-body">Technology changes fast. Your relationship with your child is what stays constant. The conversations matter more than the controls.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="guide-controls">
+                <button class="guide-btn guide-prev" disabled>← Back</button>
+                <div class="guide-dots"></div>
+                <button class="guide-btn guide-next">Next →</button>
+            </div>
+        </div>
+
+        <!-- 7. Quick-Start Guides by Age -->
+        <div id="tab-byage" class="db-panel" role="tabpanel" data-guide="byage">
+            <div class="guide-layout">
+                <div class="guide-index"></div>
+                <div class="guide-stage">
+                    <div class="guide-card active" data-step="0">
+                        <h2 class="guide-card-title">Ages 8–10: The Basics</h2>
+                        <p class="guide-card-body">At this age, a phone is not necessary. If a child has one, it should be tightly restricted. Recommended setup:</p>
+                        <ul class="guide-card-list">
+                            <li>Phone and Messages only (no social, no browser)</li>
+                            <li>Screen Time Downtime: 8pm–7am</li>
+                            <li>App Limits: no games after 1 hour</li>
+                            <li>Phone charges in a common area, not the bedroom</li>
+                            <li>No front-facing camera apps</li>
+                        </ul>
+                        <div class="guide-card-callout good">✓ If they're upset about restrictions at this age, that's developmentally appropriate — and means the controls are working.</div>
+                    </div>
+                    <div class="guide-card" data-step="1">
+                        <h2 class="guide-card-title">Ages 11–13: The Critical Window</h2>
+                        <p class="guide-card-body">This is the highest-risk period. Social media pressure is intense, platforms are designed for this age, and the brain is uniquely susceptible to social comparison.</p>
+                        <ul class="guide-card-list">
+                            <li>No social media — full block, no exceptions</li>
+                            <li>YouTube: blocked or YouTube Kids only</li>
+                            <li>Messaging: contacts only, reviewed contact list</li>
+                            <li>Gaming: 1 hr/day max, multiplayer with known friends only</li>
+                            <li>Phone stays in kitchen after 8:30pm</li>
+                        </ul>
+                        <div class="guide-card-callout warn">⚠️ This is the age where most kids ask for Instagram. The research on social media and this age group is clear — wait.</div>
+                    </div>
+                    <div class="guide-card" data-step="2">
+                        <h2 class="guide-card-title">Ages 14–16: Earned Trust</h2>
+                        <p class="guide-card-body">Start loosening restrictions based on demonstrated responsibility, not age alone. A trust ladder approach:</p>
+                        <ul class="guide-card-list">
+                            <li>Allow one social platform at a time, with a private account you're connected to</li>
+                            <li>Browser access with content filters still on</li>
+                            <li>Downtime moves to 10pm instead of 9pm</li>
+                            <li>Monthly check-ins replace constant monitoring</li>
+                        </ul>
+                        <p class="guide-card-body">The goal: they're making more of their own decisions, and coming to you when things go wrong.</p>
+                    </div>
+                    <div class="guide-card" data-step="3">
+                        <h2 class="guide-card-title">Ages 17+: Transition to Autonomy</h2>
+                        <p class="guide-card-body">At this stage, hard blocks shift to conversations and soft guardrails. They're going to be independent soon — the goal is habits and judgment, not compliance.</p>
+                        <ul class="guide-card-list">
+                            <li>Remove most content restrictions, keep the relationship open</li>
+                            <li>Talk about specific apps and platforms you're still concerned about, and why</li>
+                            <li>Focus on sleep hygiene: phone out of room at night is still valuable</li>
+                            <li>Help them audit their own usage in Screen Time — make it self-directed</li>
+                        </ul>
+                        <div class="guide-card-callout good">✓ Kids who have had guardrails their whole childhood tend to set their own limits better as adults. The habits stick.</div>
+                    </div>
+                    <div class="guide-card guide-done-card" data-step="4">
+                        <div class="guide-done-icon">✓</div>
+                        <h2 class="guide-card-title">You have the full picture</h2>
+                        <p class="guide-card-body">Every child is different. Use these as starting points, not rigid rules. Questions? Reach out at <a href="mailto:hello@corephone.org">hello@corephone.org</a>.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="guide-controls">
+                <button class="guide-btn guide-prev" disabled>← Back</button>
+                <div class="guide-dots"></div>
+                <button class="guide-btn guide-next">Next →</button>
+            </div>
+        </div>
 
     </div><!-- /.db-panels -->
 
     <!-- Footer -->
     <footer class="db-footer">
         <div class="container">
-            <p>© 2026 CorePhone · <a href="mailto:hello@corephone.org">hello@corephone.org</a> · <a href="/terms.html">Terms</a></p>
+            <p>© 2026 CorePhone · <a href="mailto:hello@corephone.org">hello@corephone.org</a></p>
         </div>
     </footer>
 
@@ -317,48 +483,8 @@
 
 <script>
 (function () {
-    const TOKEN_KEY = 'cp_access_token';
-    const ORDER_KEY = 'cp_order_id';
 
-    // ── helpers ────────────────────────────────────────────────────────────────
-
-    function showState(id) {
-        ['db-loading', 'db-gate', 'db-content'].forEach(function (s) {
-            var el = document.getElementById(s);
-            if (el) el.style.display = s === id ? '' : 'none';
-        });
-    }
-
-    function showError(msg) {
-        var el = document.getElementById('db-gate-error');
-        el.textContent = msg;
-        el.style.display = '';
-    }
-
-    function clearError() {
-        var el = document.getElementById('db-gate-error');
-        el.style.display = 'none';
-    }
-
-    async function callVerify(orderId, email) {
-        var params = new URLSearchParams({ order_id: orderId, email: email });
-        var res = await fetch('/api/verify?' + params.toString());
-        var body = await res.json();
-        if (!res.ok) throw new Error(body.error || 'Verification failed');
-        return body; // { verified, token, order_id }
-    }
-
-    function storeSession(token, orderId) {
-        localStorage.setItem(TOKEN_KEY, token);
-        localStorage.setItem(ORDER_KEY, orderId);
-    }
-
-    function clearSession() {
-        localStorage.removeItem(TOKEN_KEY);
-        localStorage.removeItem(ORDER_KEY);
-    }
-
-    // ── step navigator ─────────────────────────────────────────────────────────
+    // ── step navigator ──────────────────────────────────────────────────────────
 
     function initGuide(panel) {
         var cards = Array.from(panel.querySelectorAll('.guide-card'));
@@ -386,13 +512,11 @@
             current = idx;
             cards[current].classList.add('active');
 
-            // Update index items
             indexWrap.querySelectorAll('.guide-index-item').forEach(function(item, i) {
                 item.classList.toggle('active', i === current);
                 item.classList.toggle('done', i < current);
             });
 
-            // Update dots (still shown on mobile)
             dotsWrap.querySelectorAll('.guide-dot').forEach(function(d, i) {
                 d.classList.toggle('active', i === current);
                 d.classList.toggle('done', i < current);
@@ -402,7 +526,7 @@
             nextBtn.textContent = current >= total ? 'Start over' : (current === total - 1 ? 'Finish ✓' : 'Next →');
         }
 
-        // Build mobile dots too
+        // Build mobile dots
         for (var j = 0; j < total; j++) {
             var dot = document.createElement('button');
             dot.className = 'guide-dot' + (j === 0 ? ' active' : '');
@@ -422,7 +546,7 @@
         goTo(0);
     }
 
-    // ── tab logic ──────────────────────────────────────────────────────────────
+    // ── tab logic ───────────────────────────────────────────────────────────────
 
     function initTabs() {
         var tabs = document.querySelectorAll('.db-tab');
@@ -443,104 +567,15 @@
             });
         });
 
-        // Init step guides
         document.querySelectorAll('.db-panel[data-guide]').forEach(function(panel) {
             initGuide(panel);
         });
     }
 
-    // ── main flow ──────────────────────────────────────────────────────────────
-
-    async function boot() {
-        // 1. Check localStorage for existing token
-        var storedToken = localStorage.getItem(TOKEN_KEY);
-        var storedOrder = localStorage.getItem(ORDER_KEY);
-        if (storedToken && storedOrder) {
-            initTabs();
-            showState('db-content');
-            return;
-        }
-
-        // 2. Check URL params
-        var params = new URLSearchParams(window.location.search);
-        var urlOrderId = params.get('order_id');
-        var urlEmail = params.get('email');
-
-        if (urlOrderId && urlEmail) {
-            try {
-                var result = await callVerify(urlOrderId, urlEmail);
-                storeSession(result.token, urlOrderId);
-                // Clean up URL without reload
-                window.history.replaceState({}, '', '/dashboard');
-                initTabs();
-                showState('db-content');
-            } catch (err) {
-                // URL params failed — show manual form with message
-                showState('db-gate');
-                showError('We could not automatically verify your order. Please enter your details below.');
-            }
-            return;
-        }
-
-        // 3. Nothing to try — show gate
-        showState('db-gate');
-    }
-
-    // ── form submission ────────────────────────────────────────────────────────
-
-    function initForm() {
-        var form = document.getElementById('db-verify-form');
-        if (!form) return;
-
-        form.addEventListener('submit', async function (e) {
-            e.preventDefault();
-            clearError();
-
-            var email = document.getElementById('db-email').value.trim();
-            var rawOrder = document.getElementById('db-order').value.trim();
-            // Strip leading # if user typed it
-            var orderId = rawOrder.replace(/^#/, '');
-
-            var label = form.querySelector('.db-submit-label');
-            var spinner = form.querySelector('.db-submit-spinner');
-            var btn = form.querySelector('.db-submit-btn');
-            btn.disabled = true;
-            label.style.display = 'none';
-            spinner.style.display = '';
-
-            try {
-                var result = await callVerify(orderId, email);
-                storeSession(result.token, orderId);
-                initTabs();
-                showState('db-content');
-            } catch (err) {
-                showError(err.message || 'Could not verify your order. Check the details and try again.');
-            } finally {
-                btn.disabled = false;
-                label.style.display = '';
-                spinner.style.display = 'none';
-            }
-        });
-    }
-
-    // ── logout ─────────────────────────────────────────────────────────────────
-
-    function initLogout() {
-        var btn = document.getElementById('db-logout');
-        if (btn) {
-            btn.addEventListener('click', function () {
-                clearSession();
-                showState('db-gate');
-            });
-        }
-    }
-
-    // ── init ──────────────────────────────────────────────────────────────────
+    // ── init ────────────────────────────────────────────────────────────────────
 
     document.addEventListener('DOMContentLoaded', function () {
-        initForm();
-        initLogout();
-        boot();
+        initTabs();
     });
 
 })();
