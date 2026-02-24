@@ -4486,8 +4486,8 @@ button.bundle-preview:hover {
 /* Bundle card */
 .bundle-card {
     margin-top: 8px;
-    background: #FFF8F0;
-    border: 1.5px solid #F5D9B8;
+    background: #F8F8F6;
+    border: 1.5px solid #E8E8E4;
     border-radius: 40px;
     padding: 52px 56px;
     display: flex;
