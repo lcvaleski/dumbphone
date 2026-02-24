@@ -4274,8 +4274,8 @@ header {
     display: inline-block;
     margin-top: 20px;
     padding: 6px 16px;
-    background: rgba(239, 68, 68, 0.08);
-    color: rgba(239, 68, 68, 0.7);
+    background: rgba(59, 130, 246, 0.08);
+    color: rgba(59, 130, 246, 0.7);
     border-radius: 999px;
     font-size: 13px;
     font-weight: 500;
@@ -4284,8 +4284,8 @@ header {
 }
 
 .about-pill:hover {
-    background: rgba(239, 68, 68, 0.14);
-    color: rgba(239, 68, 68, 0.9);
+    background: rgba(59, 130, 246, 0.14);
+    color: rgba(59, 130, 246, 0.9);
 }
 
 /* Testimonials marquee */
