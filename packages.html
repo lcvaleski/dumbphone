@@ -254,7 +254,7 @@
         }
 
         function spawn() {
-            var size = 72;
+            var size = window.innerWidth < 600 ? 44 : 72;
             var x = 5 + Math.random() * 90;
             var y = 5 + Math.random() * 90;
             var dur = 3.5 + Math.random() * 3;
