@@ -5909,6 +5909,14 @@ button.bundle-preview:hover {
     color: #065f46;
 }
 
+.guide-card-callout.critical {
+    background: #fff5f5;
+    border-color: #f87171;
+    color: #7f1d1d;
+    border-left-width: 4px;
+    font-weight: 500;
+}
+
 .guide-card-link {
     display: inline-block;
     margin-top: 16px;
