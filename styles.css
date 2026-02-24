@@ -4270,6 +4270,24 @@ header {
     line-height: 1.6;
 }
 
+.about-pill {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 6px 16px;
+    background: rgba(239, 68, 68, 0.08);
+    color: rgba(239, 68, 68, 0.7);
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+}
+
+.about-pill:hover {
+    background: rgba(239, 68, 68, 0.14);
+    color: rgba(239, 68, 68, 0.9);
+}
+
 /* Testimonials marquee */
 .testimonials-section {
     padding: 0 0 80px;
