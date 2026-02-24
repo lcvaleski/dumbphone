@@ -9,6 +9,11 @@
       "source": "/dashboard",
       "destination": "/dashboard.html",
       "permanent": false
+    },
+    {
+      "source": "/about",
+      "destination": "/about.html",
+      "permanent": false
     }
   ],
   "functions": {
