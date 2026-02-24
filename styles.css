@@ -6011,7 +6011,6 @@ button.bundle-preview:hover {
 .floating-icon {
     position: absolute;
     opacity: 0;
-    filter: grayscale(1);
     animation: floatIcon var(--dur, 4s) ease-in-out forwards;
     animation-delay: var(--delay, 0s);
 }

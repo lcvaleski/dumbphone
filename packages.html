@@ -209,29 +209,55 @@
         var container = document.getElementById('floating-icons');
         if (!container) return;
 
-        function spawn() {
-            var el = document.createElement('div');
-            el.className = 'floating-icon';
-            var size = 48 + Math.random() * 56; // 48–104px
-            var x = 5 + Math.random() * 90;     // 5–95% from left
-            var y = 5 + Math.random() * 90;     // 5–95% from top
-            var dur = 3.5 + Math.random() * 3;  // 3.5–6.5s
-            var opacity = 0.05 + Math.random() * 0.07; // 0.05–0.12
+        var PIXEL_SIZE = 14; // render at this many pixels then scale up → blocky look
 
-            el.style.cssText = [
-                'width:' + size + 'px',
-                'height:' + size + 'px',
+        function spawnPixel(svgStr, displaySize, x, y, dur, opacity) {
+            var canvas = document.createElement('canvas');
+            canvas.width = PIXEL_SIZE;
+            canvas.height = PIXEL_SIZE;
+            canvas.style.cssText = [
+                'position:absolute',
+                'width:' + displaySize + 'px',
+                'height:' + displaySize + 'px',
                 'left:' + x + '%',
                 'top:' + y + '%',
+                'image-rendering:pixelated',
+                'image-rendering:crisp-edges',
+                'opacity:0',
                 '--dur:' + dur + 's',
                 '--peak-opacity:' + opacity,
             ].join(';');
+            canvas.className = 'floating-icon';
 
-            el.innerHTML = icons[Math.floor(Math.random() * icons.length)];
-            container.appendChild(el);
+            // Draw SVG into tiny canvas
+            var blob = new Blob(
+                ['<svg xmlns="http://www.w3.org/2000/svg" width="' + PIXEL_SIZE + '" height="' + PIXEL_SIZE + '">' + svgStr.replace('<svg ', '<svg xmlns="http://www.w3.org/2000/svg" ').replace(/<svg[^>]*>/, '<g>').replace('</svg>', '</g>') + '</svg>'],
+                {type: 'image/svg+xml'}
+            );
+            // Simpler: just inline the full svg with correct namespace
+            var fullSvg = svgStr
+                .replace('viewBox="0 0 24 24"', 'viewBox="0 0 24 24" width="' + PIXEL_SIZE + '" height="' + PIXEL_SIZE + '" xmlns="http://www.w3.org/2000/svg"')
+                .replace('fill="currentColor"', 'fill="#1a1a1a"');
+            var url = URL.createObjectURL(new Blob([fullSvg], {type: 'image/svg+xml'}));
+            var img = new Image();
+            img.onload = function () {
+                canvas.getContext('2d').drawImage(img, 0, 0, PIXEL_SIZE, PIXEL_SIZE);
+                URL.revokeObjectURL(url);
+            };
+            img.src = url;
 
-            // Remove after animation ends
-            setTimeout(function () { el.remove(); }, (dur + 0.2) * 1000);
+            container.appendChild(canvas);
+            setTimeout(function () { canvas.remove(); }, (dur + 0.2) * 1000);
+        }
+
+        function spawn() {
+            var size = 56 + Math.random() * 64;
+            var x = 5 + Math.random() * 90;
+            var y = 5 + Math.random() * 90;
+            var dur = 3.5 + Math.random() * 3;
+            var opacity = 0.08 + Math.random() * 0.1;
+            var svgStr = icons[Math.floor(Math.random() * icons.length)];
+            spawnPixel(svgStr, size, x, y, dur, opacity);
         }
 
         // Spawn a few immediately, then keep a steady trickle
