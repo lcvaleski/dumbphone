@@ -5167,6 +5167,20 @@ button.bundle-preview:hover {
     height: 24px;
 }
 
+.db-guide-title {
+    font-family: 'Crimson Text', Georgia, serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--text-primary);
+    letter-spacing: 0.01em;
+}
+
+.db-guide-title em {
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-right: 2px;
+}
+
 .db-back-link {
     font-size: 13px;
     color: var(--text-secondary);
