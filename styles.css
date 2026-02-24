@@ -4271,8 +4271,9 @@ header {
 }
 
 .about-pill {
-    display: inline-block;
-    margin-top: 20px;
+    display: block;
+    width: fit-content;
+    margin: 20px auto 0;
     padding: 6px 16px;
     background: rgba(59, 130, 246, 0.08);
     color: rgba(59, 130, 246, 0.7);
