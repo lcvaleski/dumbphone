@@ -6297,6 +6297,7 @@ button.bundle-preview:hover {
 .onboarding-content {
     max-width: 480px;
     padding: 40px 40px 32px;
+    position: relative;
 }
 
 .ob-logo {
@@ -6313,6 +6314,24 @@ button.bundle-preview:hover {
 .ob-logo-img {
     width: 28px;
     height: 28px;
+}
+
+.ob-close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #ccc;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px;
+    transition: color 0.2s;
+}
+
+.ob-close-btn:hover {
+    color: #999;
 }
 
 .ob-guide-name {

@@ -589,6 +589,7 @@
     <!-- Onboarding Tutorial Modal -->
     <div id="onboarding-modal" class="modal-overlay">
         <div class="modal-content onboarding-content">
+            <button class="ob-close-btn" id="ob-close-btn">&times;</button>
 
             <!-- Step 1: Age Selection -->
             <div class="onboarding-step" id="ob-step-1">
@@ -885,6 +886,15 @@
         // Skip buttons
         document.querySelectorAll('.ob-skip-btn').forEach(function (btn) {
             btn.addEventListener('click', closeOnboardingModal);
+        });
+
+        // Close button
+        var closeBtn = document.getElementById('ob-close-btn');
+        if (closeBtn) closeBtn.addEventListener('click', closeOnboardingModal);
+
+        // Click outside to close
+        document.getElementById('onboarding-modal').addEventListener('click', function (e) {
+            if (e.target === this) closeOnboardingModal();
         });
 
         // Restart button in footer
