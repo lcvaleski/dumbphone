@@ -6145,8 +6145,7 @@ button.bundle-preview:hover {
 
 .guide-index-item.done .guide-index-label {
     color: #999;
-    text-decoration: line-through;
-    text-decoration-color: #ccc;
+    text-decoration: none;
 }
 
 /* Stage takes remaining space */
