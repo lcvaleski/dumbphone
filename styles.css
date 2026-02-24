@@ -4255,8 +4255,8 @@ header {
     left: -2px;
     width: 0;
     height: 10px;
-    background: #16a34a;
-    opacity: 0.35;
+    background: #4ade80;
+    opacity: 0.45;
     z-index: -1;
     transform: skewY(-0.5deg);
     animation: underlineReveal 1s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
