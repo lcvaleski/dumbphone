@@ -31,7 +31,8 @@
     <div class="db-tabs-wrap">
         <div class="db-tabs-scroll">
             <nav class="db-tabs" role="tablist">
-                <button class="db-tab active" data-tab="screentime" role="tab" aria-selected="true">Apple Screen Time</button>
+                <button class="db-tab active" data-tab="home" role="tab" aria-selected="true">Home</button>
+                <button class="db-tab" data-tab="screentime" role="tab" aria-selected="false">Apple Screen Time</button>
                 <button class="db-tab" data-tab="youtube" role="tab" aria-selected="false">YouTube &amp; Streaming</button>
                 <button class="db-tab" data-tab="gaming" role="tab" aria-selected="false">Gaming</button>
                 <button class="db-tab" data-tab="social" role="tab" aria-selected="false">Social Media</button>
@@ -44,8 +45,15 @@
 
     <div class="db-panels">
 
+        <!-- Home Panel -->
+        <div id="tab-home" class="db-panel active" role="tabpanel">
+            <div class="home-panel" id="home-panel">
+                <!-- Built dynamically by buildHomePanel() -->
+            </div>
+        </div>
+
         <!-- 1. Apple Screen Time -->
-        <div id="tab-screentime" class="db-panel active" role="tabpanel" data-guide="screentime">
+        <div id="tab-screentime" class="db-panel" role="tabpanel" data-guide="screentime">
             <div class="guide-layout">
                 <div class="guide-index"></div>
                 <div class="guide-stage">
@@ -618,9 +626,28 @@
                 <button class="ob-skip-btn">Skip — I'll explore on my own</button>
             </div>
 
-            <!-- Step 2: Recommended Guide -->
+            <!-- Step 2: Concerns -->
             <div class="onboarding-step" id="ob-step-2" style="display: none;">
-                <button class="ob-back-btn">← Back</button>
+                <button class="ob-back-btn" id="ob-back-btn-2">← Back</button>
+                <h2 class="ob-title">What are you most worried about?</h2>
+                <p class="ob-subtitle">Select all that apply — we'll tailor your plan.</p>
+
+                <div class="ob-concern-grid">
+                    <button class="ob-concern-card" data-concern="social">Social media &amp; Instagram</button>
+                    <button class="ob-concern-card" data-concern="gaming">Gaming &amp; Roblox</button>
+                    <button class="ob-concern-card" data-concern="youtube">YouTube &amp; streaming</button>
+                    <button class="ob-concern-card" data-concern="messaging">Who they're messaging</button>
+                    <button class="ob-concern-card" data-concern="screentime">Too much screen time</button>
+                    <button class="ob-concern-card" data-concern="conversations">Having the conversation</button>
+                </div>
+
+                <button class="ob-continue-btn" id="ob-continue-btn">See my plan →</button>
+                <button class="ob-skip-btn">Skip — I'll explore on my own</button>
+            </div>
+
+            <!-- Step 3: Recommended Guide -->
+            <div class="onboarding-step" id="ob-step-3" style="display: none;">
+                <button class="ob-back-btn" id="ob-back-btn-3">← Back</button>
                 <h2 class="ob-title" id="ob-profile-title"></h2>
                 <p class="ob-subtitle" id="ob-profile-desc"></p>
 
@@ -726,14 +753,14 @@
 
 <script>
 // ============================================
-// ONBOARDING TUTORIAL
+// ONBOARDING TUTORIAL + HOME PANEL
 // ============================================
 (function () {
 
     var AGE_PROFILES = {
         'under10': {
             title: 'Under 10 — Maximum Safety',
-            desc: 'At this age, a phone is for communication only. We\'ll start you with Screen Time basics.',
+            desc: 'At this age, a phone is for communication only. Start with Screen Time basics.',
             firstTab: 'screentime',
             guides: ['Apple Screen Time', 'Messaging'],
             guideTabs: ['screentime', 'messaging'],
@@ -754,13 +781,80 @@
         },
     };
 
-    var selectedAgeKey = null;
+    var GUIDE_META = {
+        screentime:    { label: 'Apple Screen Time',      desc: 'Screen Time passcode, App Limits, and Downtime — the foundation of every other control.', tab: 'screentime' },
+        social:        { label: 'Social Media',            desc: 'Instagram, TikTok, Snapchat — age ratings, time limits, and who can find them.', tab: 'social' },
+        gaming:        { label: 'Gaming',                  desc: 'Time limits, Roblox privacy settings, and console parental controls.', tab: 'gaming' },
+        youtube:       { label: 'YouTube & Streaming',     desc: 'Restricted Mode, Netflix PIN, and blocking platforms they\'re too young for.', tab: 'youtube' },
+        messaging:     { label: 'Messaging',               desc: 'Contact limits, iMessage filters, and blocking unknown senders.', tab: 'messaging' },
+        conversations: { label: 'The Big Conversations',   desc: 'Scripts and conversation starters for the hard talks about phones and safety.', tab: 'conversations' },
+        byage:         { label: 'Quick-Start by Age',      desc: 'Age-specific checklists from under 8 through 17+.', tab: 'byage' },
+    };
 
+    var BASE_ORDER = {
+        'under10':    ['screentime', 'messaging', 'gaming', 'youtube', 'social', 'conversations', 'byage'],
+        'teen10to13': ['social', 'screentime', 'youtube', 'gaming', 'messaging', 'conversations', 'byage'],
+        'teen14to17': ['byage', 'conversations', 'social', 'screentime', 'gaming', 'youtube', 'messaging'],
+    };
+
+    var DEFAULT_ORDER = ['screentime', 'social', 'gaming', 'youtube', 'messaging', 'conversations', 'byage'];
+
+    var CONCERN_LABELS = {
+        'social':        'Social media',
+        'gaming':        'Gaming & Roblox',
+        'youtube':       'YouTube & streaming',
+        'messaging':     'Messaging',
+        'screentime':    'Screen time',
+        'conversations': 'Having the conversation',
+    };
+
+    var selectedAgeKey = null;
+    var selectedConcerns = [];
+
+    // ---- STEP TRANSITION HELPER ----
+    function transitionSteps(fromId, toId, direction) {
+        var from = document.getElementById(fromId);
+        var to   = document.getElementById(toId);
+        var exitY  = direction === 'forward' ? '-8px' : '8px';
+        var enterY = direction === 'forward' ? '12px' : '-8px';
+
+        from.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+        from.style.opacity = '0';
+        from.style.transform = 'translateY(' + exitY + ')';
+
+        setTimeout(function () {
+            from.style.display = 'none';
+            from.style.opacity = '';
+            from.style.transform = '';
+            from.style.transition = '';
+
+            to.style.opacity = '0';
+            to.style.transform = 'translateY(' + enterY + ')';
+            to.style.transition = 'none';
+            to.style.display = 'block';
+
+            requestAnimationFrame(function () {
+                requestAnimationFrame(function () {
+                    to.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                    to.style.opacity = '1';
+                    to.style.transform = 'translateY(0)';
+                });
+            });
+        }, 250);
+    }
+
+    // ---- MODAL OPEN/CLOSE ----
     function showOnboardingModal() {
         var modal = document.getElementById('onboarding-modal');
         if (!modal) return;
+        // Reset to step 1
         document.getElementById('ob-step-1').style.display = 'block';
         document.getElementById('ob-step-2').style.display = 'none';
+        document.getElementById('ob-step-3').style.display = 'none';
+        selectedConcerns = [];
+        document.querySelectorAll('.ob-concern-card').forEach(function (c) {
+            c.classList.remove('ob-concern-card--selected');
+        });
         modal.classList.add('show');
     }
 
@@ -768,6 +862,9 @@
         var modal = document.getElementById('onboarding-modal');
         if (modal) modal.classList.remove('show');
         localStorage.setItem('corephoneOnboardingDone', '1');
+        if (selectedAgeKey) localStorage.setItem('corephoneAgeGroup', selectedAgeKey);
+        localStorage.setItem('corephoneConcerns', JSON.stringify(selectedConcerns));
+        buildHomePanel();
     }
 
     function switchToTab(tabKey) {
@@ -775,13 +872,113 @@
         if (tab) tab.click();
     }
 
+    // ---- HOME PANEL BUILDER ----
+    function buildHomePanel() {
+        var panel = document.getElementById('home-panel');
+        if (!panel) return;
+
+        var ageKey = localStorage.getItem('corephoneAgeGroup');
+        var concernsRaw = localStorage.getItem('corephoneConcerns');
+        var concerns = [];
+        try { concerns = JSON.parse(concernsRaw) || []; } catch (e) {}
+        var onboardingDone = localStorage.getItem('corephoneOnboardingDone');
+
+        var ageLabel = { 'under10': 'Under 10', 'teen10to13': 'Ages 10–13', 'teen14to17': 'Ages 14–17' }[ageKey] || null;
+
+        // Build priority order
+        var order = (ageKey && BASE_ORDER[ageKey]) ? BASE_ORDER[ageKey].slice() : DEFAULT_ORDER.slice();
+
+        // Boost selected concerns to front
+        if (concerns.length > 0) {
+            var boosted = concerns.filter(function (c) { return GUIDE_META[c]; });
+            order = boosted.concat(order.filter(function (t) { return boosted.indexOf(t) === -1; }));
+        }
+
+        var html = '';
+
+        if (!onboardingDone && !ageKey) {
+            // Never completed onboarding
+            html = '<div class="home-welcome">' +
+                '<h2 class="home-heading">Welcome to your guide</h2>' +
+                '<p class="home-subtext">Tell us about your child and we\'ll show you where to start.</p>' +
+                '<button class="home-setup-btn" id="home-setup-btn">Start setup →</button>' +
+                '</div>' +
+                '<p class="home-section-title">All guides</p>' +
+                renderAllGuidesList(DEFAULT_ORDER);
+        } else {
+            var headingText = ageLabel ? 'Your plan — ' + ageLabel : 'Your recommended guides';
+            var subText = (ageLabel || concerns.length > 0)
+                ? 'Based on your answers — start here:'
+                : 'Browse the guides below:';
+
+            var concernTagsHtml = '';
+            if (concerns.length > 0) {
+                concernTagsHtml = '<div class="home-concern-tags">' +
+                    concerns.map(function (c) {
+                        return '<span class="home-concern-tag">' + (CONCERN_LABELS[c] || c) + '</span>';
+                    }).join('') +
+                    '</div>';
+            }
+
+            var topGuides  = order.slice(0, 3);
+            var restGuides = order.slice(3);
+
+            var recCardsHtml = topGuides.map(function (tabKey) {
+                var meta = GUIDE_META[tabKey];
+                if (!meta) return '';
+                return '<button class="home-rec-card" data-tab-link="' + meta.tab + '">' +
+                    '<span class="home-rec-title">' + meta.label + '</span>' +
+                    '<span class="home-rec-desc">' + meta.desc + '</span>' +
+                    '<span class="home-rec-arrow">→</span>' +
+                    '</button>';
+            }).join('');
+
+            html = '<h2 class="home-heading">' + headingText + '</h2>' +
+                '<p class="home-subtext">' + subText + '</p>' +
+                concernTagsHtml +
+                '<div class="home-recs">' + recCardsHtml + '</div>' +
+                '<p class="home-section-title">All guides</p>' +
+                renderAllGuidesList(restGuides);
+        }
+
+        panel.innerHTML = html;
+
+        // Wire tab links
+        panel.querySelectorAll('[data-tab-link]').forEach(function (el) {
+            el.addEventListener('click', function () {
+                switchToTab(el.getAttribute('data-tab-link'));
+            });
+        });
+
+        // Setup button (welcome state)
+        var setupBtn = document.getElementById('home-setup-btn');
+        if (setupBtn) setupBtn.addEventListener('click', showOnboardingModal);
+    }
+
+    function renderAllGuidesList(keys) {
+        return '<div class="home-all-list">' +
+            keys.map(function (tabKey) {
+                var meta = GUIDE_META[tabKey];
+                if (!meta) return '';
+                return '<button class="home-all-item" data-tab-link="' + meta.tab + '">' +
+                    '<span>' + meta.label + '</span><span>→</span>' +
+                    '</button>';
+            }).join('') +
+            '</div>';
+    }
+
+    // ---- WIRE UP DOM ----
     document.addEventListener('DOMContentLoaded', function () {
-        // Show on first visit
+
+        // Build home panel on load
+        buildHomePanel();
+
+        // Show onboarding on first visit
         if (!localStorage.getItem('corephoneOnboardingDone')) {
             setTimeout(showOnboardingModal, 500);
         }
 
-        // Age card clicks
+        // ---- AGE CARD CLICKS (step 1 → step 2) ----
         document.querySelectorAll('.ob-age-card').forEach(function (card) {
             card.addEventListener('click', function () {
                 if (card.classList.contains('ob-loading')) return;
@@ -790,57 +987,60 @@
                 var profile = AGE_PROFILES[selectedAgeKey];
                 if (!profile) return;
 
-                // Lock all cards, mark selected as loading
-                document.querySelectorAll('.ob-age-card').forEach(function (c) {
-                    c.classList.add('ob-locked');
-                });
+                // Lock all cards, animate selected
+                document.querySelectorAll('.ob-age-card').forEach(function (c) { c.classList.add('ob-locked'); });
                 card.classList.add('ob-loading');
 
-                // Pre-populate step 2 while loading
+                setTimeout(function () {
+                    // Reset cards
+                    document.querySelectorAll('.ob-age-card').forEach(function (c) {
+                        c.classList.remove('ob-locked', 'ob-loading');
+                    });
+                    transitionSteps('ob-step-1', 'ob-step-2', 'forward');
+                }, 820);
+            });
+        });
+
+        // ---- CONCERN CARD TOGGLES ----
+        document.querySelectorAll('.ob-concern-card').forEach(function (card) {
+            card.addEventListener('click', function () {
+                var concern = card.getAttribute('data-concern');
+                var idx = selectedConcerns.indexOf(concern);
+                if (idx === -1) {
+                    selectedConcerns.push(concern);
+                    card.classList.add('ob-concern-card--selected');
+                } else {
+                    selectedConcerns.splice(idx, 1);
+                    card.classList.remove('ob-concern-card--selected');
+                }
+            });
+        });
+
+        // ---- CONTINUE (step 2 → step 3) ----
+        var continueBtn = document.getElementById('ob-continue-btn');
+        if (continueBtn) {
+            continueBtn.addEventListener('click', function () {
+                var profile = selectedAgeKey && AGE_PROFILES[selectedAgeKey];
+                if (!profile) return;
+
+                // Populate step 3
                 document.getElementById('ob-profile-title').textContent = profile.title;
                 document.getElementById('ob-profile-desc').textContent = profile.desc;
                 document.getElementById('ob-guide-tags').innerHTML =
                     profile.guides.map(function (g) { return '<span class="ob-app-tag">' + g + '</span>'; }).join('');
 
-                setTimeout(function () {
-                    var step1 = document.getElementById('ob-step-1');
-                    var step2 = document.getElementById('ob-step-2');
-
-                    // Fade out step 1
-                    step1.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
-                    step1.style.opacity = '0';
-                    step1.style.transform = 'translateY(-8px)';
-
-                    setTimeout(function () {
-                        step1.style.display = 'none';
-                        step1.style.opacity = '';
-                        step1.style.transform = '';
-                        step1.style.transition = '';
-
-                        // Reset cards
-                        document.querySelectorAll('.ob-age-card').forEach(function (c) {
-                            c.classList.remove('ob-locked', 'ob-loading');
-                        });
-
-                        // Prepare step 2 hidden, then fade in
-                        step2.style.opacity = '0';
-                        step2.style.transform = 'translateY(12px)';
-                        step2.style.transition = 'none';
-                        step2.style.display = 'block';
-
-                        requestAnimationFrame(function () {
-                            requestAnimationFrame(function () {
-                                step2.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-                                step2.style.opacity = '1';
-                                step2.style.transform = 'translateY(0)';
-                            });
-                        });
-                    }, 250);
-                }, 820);
+                transitionSteps('ob-step-2', 'ob-step-3', 'forward');
             });
-        });
+        }
 
-        // Apply — go to first recommended guide
+        // ---- BACK BUTTONS ----
+        var backBtn2 = document.getElementById('ob-back-btn-2');
+        if (backBtn2) backBtn2.addEventListener('click', function () { transitionSteps('ob-step-2', 'ob-step-1', 'back'); });
+
+        var backBtn3 = document.getElementById('ob-back-btn-3');
+        if (backBtn3) backBtn3.addEventListener('click', function () { transitionSteps('ob-step-3', 'ob-step-2', 'back'); });
+
+        // ---- APPLY (go to first guide) ----
         var applyBtn = document.getElementById('ob-apply-btn');
         if (applyBtn) {
             applyBtn.addEventListener('click', function () {
@@ -850,58 +1050,23 @@
             });
         }
 
-        // Back button
-        var backBtn = document.querySelector('.ob-back-btn');
-        if (backBtn) {
-            backBtn.addEventListener('click', function () {
-                var step1 = document.getElementById('ob-step-1');
-                var step2 = document.getElementById('ob-step-2');
-
-                step2.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
-                step2.style.opacity = '0';
-                step2.style.transform = 'translateY(8px)';
-
-                setTimeout(function () {
-                    step2.style.display = 'none';
-                    step2.style.opacity = '';
-                    step2.style.transform = '';
-                    step2.style.transition = '';
-
-                    step1.style.opacity = '0';
-                    step1.style.transform = 'translateY(-8px)';
-                    step1.style.transition = 'none';
-                    step1.style.display = 'block';
-
-                    requestAnimationFrame(function () {
-                        requestAnimationFrame(function () {
-                            step1.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
-                            step1.style.opacity = '1';
-                            step1.style.transform = 'translateY(0)';
-                        });
-                    });
-                }, 200);
-            });
-        }
-
-        // Skip buttons
+        // ---- SKIP BUTTONS ----
         document.querySelectorAll('.ob-skip-btn').forEach(function (btn) {
             btn.addEventListener('click', closeOnboardingModal);
         });
 
-        // Close button
+        // ---- CLOSE BUTTON ----
         var closeBtn = document.getElementById('ob-close-btn');
         if (closeBtn) closeBtn.addEventListener('click', closeOnboardingModal);
 
-        // Click outside to close
+        // ---- CLICK OUTSIDE ----
         document.getElementById('onboarding-modal').addEventListener('click', function (e) {
             if (e.target === this) closeOnboardingModal();
         });
 
-        // Restart button in footer
+        // ---- RESTART BUTTON ----
         var restartBtn = document.getElementById('restart-tutorial-btn');
-        if (restartBtn) {
-            restartBtn.addEventListener('click', showOnboardingModal);
-        }
+        if (restartBtn) restartBtn.addEventListener('click', showOnboardingModal);
     });
 
 })();
