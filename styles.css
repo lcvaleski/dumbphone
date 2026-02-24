@@ -6549,21 +6549,27 @@ button.bundle-preview:hover {
     background: #f3f4f6;
     border: 1.5px dashed #d1d5db;
     border-radius: 10px;
-    height: 180px;
-    margin: 16px 0;
+    height: 160px;
+    margin: 14px 0;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 6px;
     color: #9ca3af;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 500;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
+    text-align: center;
+    padding: 0 20px;
     user-select: none;
 }
 
-.screenshot-placeholder::after {
-    content: 'Screenshot';
+.screenshot-placeholder::before {
+    content: 'SCREENSHOT';
+    font-size: 10px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: #d1d5db;
 }
 
 /* Restart tutorial button in footer */
