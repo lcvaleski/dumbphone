@@ -4675,7 +4675,10 @@ button.bundle-preview:hover {
 .bundle-price-main {
     font-size: 44px;
     font-weight: 800;
-    color: var(--text-primary);
+    background: linear-gradient(160deg, #111111 0%, #4a4a4a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     line-height: 1;
     letter-spacing: -0.02em;
 }
