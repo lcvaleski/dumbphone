@@ -6591,6 +6591,13 @@ button.bundle-preview:hover {
     color: #d1d5db;
 }
 
+.guide-screenshot {
+    width: 100%;
+    border-radius: 10px;
+    margin: 14px 0;
+    display: block;
+}
+
 /* Restart tutorial button in footer */
 .restart-tutorial-btn {
     display: block;
