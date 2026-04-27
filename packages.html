@@ -34,11 +34,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Returning user login link -->
-    <div class="returning-bar">
-        <a href="/dashboard" id="returning-link">Already purchased? Access your guides →</a>
-    </div>
-
     <!-- Hero -->
     <section class="packages-hero">
         <div class="container">
@@ -62,8 +57,7 @@
 
                 <!-- Step 0: Intro -->
                 <div class="splash-ob-step active" data-step="0">
-                    <h2 class="splash-ob-title">Build a free plan<br>in 60 seconds.</h2>
-                    <p class="splash-ob-subtitle">Personalized to your child's age and your concerns. No signup needed.</p>
+                    <h2 class="splash-ob-title">Build a custom tailored plan in 60 seconds</h2>
                     <button class="splash-ob-continue" id="splash-ob-step0-next">Get started now →</button>
                     <p class="splash-ob-meta">Trusted by 10,000+ parents · Built on AAP &amp; CDC guidance</p>
                 </div>
@@ -173,9 +167,8 @@
                 <!-- Step 6: Refer 2 parents + Accept/Decline -->
                 <div class="splash-ob-step" data-step="6">
                     <button class="splash-ob-back" data-back-to="5">← Back</button>
-                    <p class="splash-ob-eyebrow"><em>Wait</em> — before you check out</p>
-                    <h2 class="splash-ob-title">Refer 2 parents, save <span class="underline-yellow">$10</span>.</h2>
-                    <p class="splash-ob-subtitle">They get a free plan. You pay <strong>$33</strong> instead of $43. Win-win.</p>
+                    <h2 class="splash-ob-statement">Your child will benefit most if their friends are following <span class="underline-yellow">the same guidelines</span>.</h2>
+                    <p class="splash-ob-subtitle">Invite two parents to commit to healthier screen use.</p>
 
                     <div class="splash-ob-referral-progress" aria-label="Referral progress">
                         <div class="splash-ob-referral-step">
@@ -206,8 +199,8 @@
                     </div>
 
                     <div class="splash-ob-decision">
-                        <button class="splash-ob-accept" id="splash-ob-accept" type="button">Accept — save $10</button>
-                        <button class="splash-ob-decline" id="splash-ob-decline" type="button">Decline — pay $43</button>
+                        <button class="splash-ob-accept" id="splash-ob-accept" type="button">Send invites</button>
+                        <button class="splash-ob-decline" id="splash-ob-decline" type="button">Skip for now</button>
                     </div>
                 </div>
 
@@ -223,45 +216,6 @@
                 </div>
             </div>
             <a href="/about" class="about-pill">About us</a>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="testimonials-section">
-        <div class="testimonials-track">
-            <blockquote class="testimonial">
-                <p>"YouTube gone. He's reading again."</p>
-                <cite>— Sarah M.</cite>
-            </blockquote>
-            <blockquote class="testimonial">
-                <p>"No more Instagram at 2am."</p>
-                <cite>— David R.</cite>
-            </blockquote>
-            <blockquote class="testimonial">
-                <p>"Blocked Roblox in 20 minutes."</p>
-                <cite>— Jennifer L.</cite>
-            </blockquote>
-            <blockquote class="testimonial">
-                <p>"Only thing that stopped Snapchat."</p>
-                <cite>— Mark T.</cite>
-            </blockquote>
-            <!-- Duplicated for seamless loop -->
-            <blockquote class="testimonial">
-                <p>"YouTube gone. He's reading again."</p>
-                <cite>— Sarah M.</cite>
-            </blockquote>
-            <blockquote class="testimonial">
-                <p>"No more Instagram at 2am."</p>
-                <cite>— David R.</cite>
-            </blockquote>
-            <blockquote class="testimonial">
-                <p>"Blocked Roblox in 20 minutes."</p>
-                <cite>— Jennifer L.</cite>
-            </blockquote>
-            <blockquote class="testimonial">
-                <p>"Only thing that stopped Snapchat."</p>
-                <cite>— Mark T.</cite>
-            </blockquote>
         </div>
     </section>
 
@@ -330,14 +284,6 @@
         </div>
     </div>
 
-    <script>
-        // If returning user has a session, the dashboard will auto-show content
-        // If not, dashboard shows the login form — either way, just go there
-        var returningLink = document.getElementById('returning-link');
-        if (returningLink && localStorage.getItem('cp_access_token')) {
-            returningLink.textContent = 'Access your guides →';
-        }
-    </script>
     <script>
     (function () {
         var icons = [
@@ -420,9 +366,6 @@
         setInterval(spawn, 800);
     })();
     </script>
-    <footer class="site-footer packages-footer">
-        <a href="mailto:hello@corephone.org">hello@corephone.org</a>
-    </footer>
     <script src="script.js"></script>
     <script>
     (function () {
@@ -565,6 +508,8 @@
         });
 
         // Step 3: Loading sequence — authentic reasoning-style progress
+        // SPEED: multiplier on every beat duration. 1 = production pace, higher = slower for testing.
+        var LOADING_SPEED = 1;
         var statusEl = document.getElementById('splash-ob-loading-status');
 
         var concernNames = {
@@ -612,17 +557,17 @@
             function next() {
                 i++;
                 if (i >= script.length) {
-                    setTimeout(showPlan, 500);
+                    setTimeout(showPlan, 500 * LOADING_SPEED);
                     return;
                 }
                 statusEl.classList.add('fade-out');
                 setTimeout(function () {
                     statusEl.textContent = script[i].txt;
                     statusEl.classList.remove('fade-out');
-                    setTimeout(next, script[i].t);
+                    setTimeout(next, script[i].t * LOADING_SPEED);
                 }, 220);
             }
-            setTimeout(next, script[0].t);
+            setTimeout(next, script[0].t * LOADING_SPEED);
         }
 
         // Step 4: Plan
@@ -691,15 +636,15 @@
 
         // Step 6 → Step 7 (final)
         document.getElementById('splash-ob-accept').addEventListener('click', function () {
-            document.getElementById('splash-ob-final-title').textContent = 'Locked in — $33.';
+            document.getElementById('splash-ob-final-title').textContent = 'Plan sent.';
             document.getElementById('splash-ob-final-subtitle').textContent =
-                "We'll text you when both parents sign up. Your $10 discount applies automatically at checkout.";
+                "We'll let you know when the other parents come on board.";
             showStep(7);
         });
         document.getElementById('splash-ob-decline').addEventListener('click', function () {
-            document.getElementById('splash-ob-final-title').textContent = 'All set — $43.';
+            document.getElementById('splash-ob-final-title').textContent = 'Plan sent.';
             document.getElementById('splash-ob-final-subtitle').textContent =
-                "Your plan is on its way to " + (state.email || 'your inbox') + ".";
+                "Check your inbox at " + (state.email || 'your email') + ".";
             showStep(7);
         });
 

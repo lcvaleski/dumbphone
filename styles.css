@@ -4236,9 +4236,28 @@ header {
     text-align: center;
 }
 
+body:has(.packages-hero) {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+}
+
+body:has(.packages-hero) .packages-hero {
+    padding: 24px 0 20px;
+}
+
+body:has(.packages-hero) .packages-section {
+    padding: 0 0 24px;
+}
+
 .packages-hero h1 {
-    font-size: 52px;
+    font-size: 48px;
     font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    margin: 0;
 }
 
 .underline-red {
@@ -4263,11 +4282,12 @@ header {
 }
 
 .packages-subtitle {
-    font-size: 22px;
-    color: var(--text-secondary);
-    max-width: 600px;
-    margin: 12px auto 0;
-    line-height: 1.6;
+    font-size: 19px;
+    color: #6B7280;
+    max-width: 560px;
+    margin: 16px auto 0;
+    line-height: 1.5;
+    font-weight: 400;
 }
 
 .about-pill {
@@ -6847,13 +6867,13 @@ button.bundle-preview:hover {
    ============================================ */
 
 .splash-ob-card {
-    max-width: 560px;
-    margin: 0 auto;
+    max-width: 580px;
+    margin: 32px auto 0;
     background: white;
     border: 1px solid var(--border-light);
     border-radius: 20px;
-    padding: 44px 44px 40px;
-    box-shadow: 0 4px 24px rgba(17, 24, 39, 0.04);
+    padding: 44px 48px 40px;
+    box-shadow: 0 4px 24px rgba(17, 24, 39, 0.05), 0 1px 3px rgba(17, 24, 39, 0.03);
     position: relative;
     overflow: hidden;
 }
@@ -6862,7 +6882,7 @@ button.bundle-preview:hover {
     display: flex;
     justify-content: center;
     gap: 6px;
-    margin-bottom: 28px;
+    margin-bottom: 32px;
     transition: opacity 0.3s ease, height 0.3s ease, margin 0.3s ease;
 }
 
@@ -6913,7 +6933,8 @@ button.bundle-preview:hover {
     font-size: 15px;
     color: var(--text-secondary);
     text-align: center;
-    margin-bottom: 8px;
+    margin: 0 0 10px;
+    line-height: 1.4;
 }
 
 .splash-ob-eyebrow em {
@@ -6924,21 +6945,49 @@ button.bundle-preview:hover {
 
 .splash-ob-title {
     font-family: 'Crimson Text', Georgia, serif;
-    font-size: 30px;
+    font-size: 32px;
     font-weight: 400;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
+    line-height: 1.18;
+    letter-spacing: -0.015em;
     color: #111827;
     text-align: center;
-    margin: 0 0 10px;
+    margin: 0 0 12px;
 }
 
 .splash-ob-subtitle {
     font-size: 15px;
-    color: var(--text-secondary);
+    color: #4B5563;
     text-align: center;
-    margin: 0 0 28px;
-    line-height: 1.5;
+    margin: 0 auto 32px;
+    line-height: 1.55;
+    max-width: 440px;
+}
+
+.splash-ob-statement {
+    font-family: 'Crimson Text', Georgia, serif;
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 1.22;
+    letter-spacing: -0.012em;
+    color: #111827;
+    text-align: center;
+    margin: 28px auto 18px;
+    max-width: 480px;
+}
+
+.splash-ob-statement + .splash-ob-subtitle {
+    margin-bottom: 36px;
+}
+
+.splash-ob-statement .underline-yellow {
+    white-space: normal;
+}
+
+@media (max-width: 600px) {
+    .splash-ob-statement {
+        font-size: 26px;
+        margin: 20px auto 32px;
+    }
 }
 
 .splash-ob-back {
@@ -7103,7 +7152,7 @@ button.bundle-preview:hover {
 .splash-ob-continue {
     display: block;
     width: 100%;
-    padding: 16px 20px;
+    padding: 17px 20px;
     background: var(--accent-blue);
     color: white;
     border: none;
@@ -7111,13 +7160,16 @@ button.bundle-preview:hover {
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-weight: 600;
+    letter-spacing: 0.005em;
     cursor: pointer;
-    transition: background 0.2s, transform 0.15s, opacity 0.2s;
+    box-shadow: 0 3px 12px rgba(74, 95, 255, 0.22);
+    transition: background 0.2s, transform 0.15s, opacity 0.2s, box-shadow 0.2s;
 }
 
 .splash-ob-continue:hover:not(:disabled) {
     background: #3a4fe0;
     transform: translateY(-1px);
+    box-shadow: 0 5px 18px rgba(74, 95, 255, 0.32);
 }
 
 .splash-ob-continue:disabled {
@@ -7499,16 +7551,16 @@ button.bundle-preview:hover {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 }
 
 .splash-ob-block {
     background: #f7f8fb;
     border: 1.5px solid transparent;
     border-radius: 12px;
-    padding: 14px 16px;
+    padding: 15px 18px;
     font-family: 'Inter', sans-serif;
-    font-size: 14px;
+    font-size: 14.5px;
     font-weight: 500;
     color: var(--text-primary);
     text-align: left;
@@ -7592,10 +7644,20 @@ button.bundle-preview:hover {
     .splash-ob-card {
         padding: 32px 22px 28px;
         border-radius: 16px;
+        margin-top: 16px;
     }
 
     .splash-ob-title {
-        font-size: 26px;
+        font-size: 27px;
+    }
+
+    .splash-ob-subtitle {
+        font-size: 14.5px;
+        margin-bottom: 26px;
+    }
+
+    .splash-ob-progress {
+        margin-bottom: 24px;
     }
 
     .splash-ob-share {
