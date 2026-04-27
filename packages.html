@@ -43,7 +43,7 @@
     <section class="packages-hero">
         <div class="container">
             <h1>Finally <span class="underline-red">stop worrying</span><br>about your kids and tech</h1>
-            <p class="packages-subtitle">All your questions answered, in one place</p>
+            <p class="packages-subtitle">Answers for every platform, for every age.</p>
         </div>
     </section>
 
@@ -52,24 +52,174 @@
     <!-- Offer -->
     <section class="packages-section">
         <div class="container">
-            <div class="bundle-card">
-                <!-- Preview video -->
-                <div class="bundle-preview-video">
-                    <video src="screenrecording.mp4" playsinline muted loop autoplay class="preview-video"></video>
+            <div class="splash-ob-card" data-current-step="0">
+                <div class="splash-ob-progress">
+                    <span class="splash-ob-dot"></span>
+                    <span class="splash-ob-dot"></span>
+                    <span class="splash-ob-dot"></span>
+                    <span class="splash-ob-dot"></span>
                 </div>
-                <div class="bundle-content">
-                    <h3 class="bundle-product-title">The 2026 Tech Parenting Guide</h3>
-                    <ul class="bundle-features">
-                        <li><span class="feature-check">✓</span>Apple Device Restrictions Setup</li>
-                        <li><span class="feature-check">✓</span>Gaming Safety & Protocols</li>
-                        <li><span class="feature-check">✓</span>Social Media & YouTube Best Practices</li>
-                        <li><span class="feature-check">✓</span>Behavioral Boundaries & Conflict Resolution</li>
-                    </ul>
+
+                <!-- Step 0: Intro -->
+                <div class="splash-ob-step active" data-step="0">
+                    <h2 class="splash-ob-title">Build a free plan<br>in 60 seconds.</h2>
+                    <p class="splash-ob-subtitle">Personalized to your child's age and your concerns. No signup needed.</p>
+                    <button class="splash-ob-continue" id="splash-ob-step0-next">Get started now →</button>
+                    <p class="splash-ob-meta">Trusted by 10,000+ parents · Built on AAP &amp; CDC guidance</p>
                 </div>
-                <div class="bundle-pricing">
-                    <div class="bundle-price-main">$43.99</div>
-                    <p class="bundle-price-descriptor">One-time · Instant access</p>
-                    <a href="#" class="bundle-cta" data-guide="bundle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:6px"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>Get Everything</a>
+
+                <!-- Step 1: Age -->
+                <div class="splash-ob-step" data-step="1">
+                    <p class="splash-ob-eyebrow"><em>Step 1</em> — Tell us about your child</p>
+                    <h2 class="splash-ob-title">How old is your child?</h2>
+                    <p class="splash-ob-subtitle">We'll tailor recommendations to age-appropriate concerns.</p>
+
+                    <div class="splash-ob-slider-wrap">
+                        <div class="splash-ob-slider-value">
+                            <span id="splash-ob-age-display">11</span>
+                            <span class="splash-ob-slider-unit">years old</span>
+                        </div>
+                        <input type="range" id="splash-ob-age" class="splash-ob-slider" min="5" max="17" value="11" step="1" aria-label="Child's age">
+                        <div class="splash-ob-slider-ticks">
+                            <span>5</span>
+                            <span>8</span>
+                            <span>11</span>
+                            <span>14</span>
+                            <span>17</span>
+                        </div>
+                    </div>
+
+                    <button class="splash-ob-continue" id="splash-ob-step1-next">Continue →</button>
+                </div>
+
+                <!-- Step 2: Concerns -->
+                <div class="splash-ob-step" data-step="2">
+                    <button class="splash-ob-back" data-back-to="1">← Back</button>
+                    <p class="splash-ob-eyebrow"><em>Step 2</em> — What's worrying you?</p>
+                    <h2 class="splash-ob-title">Pick everything you're worried about.</h2>
+                    <p class="splash-ob-subtitle">Choose any platforms or behaviors. We'll build the plan around them.</p>
+
+                    <div class="splash-ob-blocks" id="splash-ob-blocks">
+                        <button class="splash-ob-block" data-concern="instagram" type="button">Instagram</button>
+                        <button class="splash-ob-block" data-concern="tiktok" type="button">TikTok</button>
+                        <button class="splash-ob-block" data-concern="snapchat" type="button">Snapchat</button>
+                        <button class="splash-ob-block" data-concern="youtube" type="button">YouTube</button>
+                        <button class="splash-ob-block" data-concern="roblox" type="button">Roblox</button>
+                        <button class="splash-ob-block" data-concern="discord" type="button">Discord</button>
+                        <button class="splash-ob-block" data-concern="screentime" type="button">Screen time</button>
+                        <button class="splash-ob-block" data-concern="texting" type="button">Who they text</button>
+                        <button class="splash-ob-block" data-concern="gaming" type="button">Gaming addiction</button>
+                        <button class="splash-ob-block splash-ob-block-other" data-concern="other" id="splash-ob-other-toggle" type="button">Other...</button>
+                    </div>
+
+                    <div class="splash-ob-other-wrap" id="splash-ob-other-wrap">
+                        <input type="text" id="splash-ob-other-input" class="splash-ob-other-input" placeholder="Tell us what's on your mind" maxlength="80">
+                    </div>
+
+                    <button class="splash-ob-continue" id="splash-ob-step2-next" disabled>Build my plan →</button>
+                </div>
+
+                <!-- Step 3: Generating -->
+                <div class="splash-ob-step" data-step="3">
+                    <div class="splash-ob-loading">
+                        <div class="splash-ob-spinner" aria-hidden="true">
+                            <div class="splash-ob-spinner-ring"></div>
+                        </div>
+                        <h2 class="splash-ob-title">Generating your plan...</h2>
+                        <p class="splash-ob-loading-status" id="splash-ob-loading-status">Analyzing your concerns</p>
+                    </div>
+                </div>
+
+                <!-- Step 4: Plan -->
+                <div class="splash-ob-step" data-step="4">
+                    <div class="splash-ob-success-icon" aria-hidden="true">
+                        <svg width="44" height="44" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#06D6A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h2 class="splash-ob-title">Plan made.</h2>
+                    <p class="splash-ob-subtitle" id="splash-ob-plan-summary">Personalized for your child.</p>
+
+                    <div class="splash-ob-plan-card">
+                        <p class="splash-ob-plan-label">Your recommended setup</p>
+                        <ul class="splash-ob-plan-list" id="splash-ob-plan-list"></ul>
+                    </div>
+
+                    <button class="splash-ob-continue" id="splash-ob-step4-next">Get my plan — $43 →</button>
+                </div>
+
+                <!-- Step 5: Email capture -->
+                <div class="splash-ob-step" data-step="5">
+                    <button class="splash-ob-back" data-back-to="4">← Back</button>
+                    <p class="splash-ob-eyebrow"><em>Almost there</em> — one quick thing</p>
+                    <h2 class="splash-ob-title">Where should we send your plan?</h2>
+                    <p class="splash-ob-subtitle">We'll email it now and check in once a week as new platform risks emerge.</p>
+
+                    <div class="splash-ob-email-wrap">
+                        <input type="email"
+                               id="splash-ob-email"
+                               class="splash-ob-email-input"
+                               placeholder="you@example.com"
+                               autocomplete="email"
+                               inputmode="email"
+                               required>
+                        <p class="splash-ob-email-error" id="splash-ob-email-error">Please enter a valid email.</p>
+                    </div>
+
+                    <button class="splash-ob-continue" id="splash-ob-step5-next" disabled>Send my plan →</button>
+                    <p class="splash-ob-meta">We'll never spam. Unsubscribe anytime.</p>
+                </div>
+
+                <!-- Step 6: Refer 2 parents + Accept/Decline -->
+                <div class="splash-ob-step" data-step="6">
+                    <button class="splash-ob-back" data-back-to="5">← Back</button>
+                    <p class="splash-ob-eyebrow"><em>Wait</em> — before you check out</p>
+                    <h2 class="splash-ob-title">Refer 2 parents, save <span class="underline-yellow">$10</span>.</h2>
+                    <p class="splash-ob-subtitle">They get a free plan. You pay <strong>$33</strong> instead of $43. Win-win.</p>
+
+                    <div class="splash-ob-referral-progress" aria-label="Referral progress">
+                        <div class="splash-ob-referral-step">
+                            <div class="splash-ob-referral-circle">1</div>
+                            <span>Parent 1</span>
+                        </div>
+                        <div class="splash-ob-referral-line"></div>
+                        <div class="splash-ob-referral-step">
+                            <div class="splash-ob-referral-circle">2</div>
+                            <span>Parent 2</span>
+                        </div>
+                    </div>
+                    <p class="splash-ob-referral-count"><strong>0</strong> of 2 referred</p>
+
+                    <div class="splash-ob-share">
+                        <button class="splash-ob-share-btn" data-share="copy" type="button">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 1 0-7.07-7.07l-1.5 1.5M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 1 0 7.07 7.07l1.5-1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <span id="splash-ob-copy-label">Copy link</span>
+                        </button>
+                        <button class="splash-ob-share-btn" data-share="text" type="button">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <span>Text</span>
+                        </button>
+                        <button class="splash-ob-share-btn" data-share="email" type="button">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <span>Email</span>
+                        </button>
+                    </div>
+
+                    <div class="splash-ob-decision">
+                        <button class="splash-ob-accept" id="splash-ob-accept" type="button">Accept — save $10</button>
+                        <button class="splash-ob-decline" id="splash-ob-decline" type="button">Decline — pay $43</button>
+                    </div>
+                </div>
+
+                <!-- Step 7: Final -->
+                <div class="splash-ob-step" data-step="7">
+                    <div class="splash-ob-success-icon" aria-hidden="true">
+                        <svg width="44" height="44" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#06D6A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h2 class="splash-ob-title" id="splash-ob-final-title">All set.</h2>
+                    <p class="splash-ob-subtitle" id="splash-ob-final-subtitle">Your plan is on its way.</p>
                 </div>
             </div>
             <a href="/about" class="about-pill">About us</a>
@@ -274,5 +424,307 @@
         <a href="mailto:hello@corephone.org">hello@corephone.org</a>
     </footer>
     <script src="script.js"></script>
+    <script>
+    (function () {
+        var card = document.querySelector('.splash-ob-card');
+        if (!card) return;
+
+        var state = { age: '', concerns: [], otherText: '' };
+
+        function ageProfile(age) {
+            if (age <= 7)  return { base: 'A phone is for communication only at this age — block everything else.' };
+            if (age <= 10) return { base: 'Lock the foundation: block social, gaming, and unsupervised browsing.' };
+            if (age <= 13) return { base: 'Block social platforms; allow educational, communication, and family apps.' };
+            return { base: 'Earned trust with firm guardrails on social and screen time.' };
+        }
+
+        var concernRecs = {
+            instagram:  'Block Instagram (app + instagram.com)',
+            tiktok:     'Block TikTok (app + tiktok.com)',
+            snapchat:   'Block Snapchat — no workaround for ephemeral messaging',
+            youtube:    'Restrict YouTube to YouTube Kids or block entirely',
+            roblox:     'Block Roblox + monitor for sideloaded gaming clients',
+            discord:    'Block Discord and discord.com webchat',
+            screentime: 'Set hard daily limits with downtime after 9pm',
+            texting:    'Restrict iMessage to known contacts only',
+            gaming:     'Block App Store gaming category + set time limits'
+        };
+
+        function showStep(n) {
+            var startH = card.offsetHeight;
+            card.dataset.currentStep = String(n);
+            card.querySelectorAll('.splash-ob-step').forEach(function (s) {
+                s.classList.toggle('active', s.dataset.step === String(n));
+            });
+            card.querySelectorAll('.splash-ob-dot').forEach(function (d, i) {
+                d.classList.toggle('active', i + 1 === n);
+                d.classList.toggle('done', i + 1 < n);
+            });
+            // Animate card height: snap to current pixels, then to target
+            card.style.transition = 'none';
+            card.style.height = 'auto';
+            var endH = card.offsetHeight;
+            card.style.height = startH + 'px';
+            card.offsetHeight; // reflow
+            card.style.transition = 'height 0.42s cubic-bezier(0.4, 0, 0.2, 1)';
+            card.style.height = endH + 'px';
+            setTimeout(function () {
+                card.style.transition = '';
+                card.style.height = '';
+            }, 480);
+        }
+
+        // Step 0: Intro
+        document.getElementById('splash-ob-step0-next').addEventListener('click', function () {
+            showStep(1);
+        });
+
+        // Step 1: Age slider
+        var ageSlider = document.getElementById('splash-ob-age');
+        var ageDisplay = document.getElementById('splash-ob-age-display');
+        var step1Next = document.getElementById('splash-ob-step1-next');
+
+        function paintSlider() {
+            var pct = ((ageSlider.value - ageSlider.min) / (ageSlider.max - ageSlider.min)) * 100;
+            ageSlider.style.background =
+                'linear-gradient(to right, var(--accent-blue) 0%, var(--accent-blue) ' + pct + '%, var(--border-light) ' + pct + '%, var(--border-light) 100%)';
+        }
+        ageSlider.addEventListener('input', function () {
+            ageDisplay.textContent = ageSlider.value;
+            state.age = parseInt(ageSlider.value, 10);
+            paintSlider();
+        });
+        state.age = parseInt(ageSlider.value, 10);
+        paintSlider();
+        step1Next.addEventListener('click', function () { showStep(2); });
+
+        // Step 2: Concern blocks
+        var blocks = document.getElementById('splash-ob-blocks');
+        var step2Next = document.getElementById('splash-ob-step2-next');
+        var otherToggle = document.getElementById('splash-ob-other-toggle');
+        var otherWrap = document.getElementById('splash-ob-other-wrap');
+        var otherInput = document.getElementById('splash-ob-other-input');
+
+        function refreshConcerns() {
+            state.concerns = [];
+            blocks.querySelectorAll('.splash-ob-block').forEach(function (b) {
+                if (b.classList.contains('is-selected') && b.dataset.concern !== 'other') {
+                    state.concerns.push(b.dataset.concern);
+                }
+            });
+            var hasOther = otherToggle.classList.contains('is-selected') && otherInput.value.trim();
+            var hasAny = state.concerns.length > 0 || hasOther;
+            step2Next.disabled = !hasAny;
+        }
+
+        blocks.querySelectorAll('.splash-ob-block').forEach(function (b) {
+            b.addEventListener('click', function () {
+                if (b.dataset.concern === 'other') {
+                    var on = b.classList.toggle('is-selected');
+                    animateHeight(otherWrap, on);
+                    if (on) setTimeout(function () { otherInput.focus(); }, 220);
+                    else otherInput.value = '';
+                } else {
+                    b.classList.toggle('is-selected');
+                }
+                refreshConcerns();
+            });
+        });
+        otherInput.addEventListener('input', refreshConcerns);
+
+        step2Next.addEventListener('click', function () {
+            state.otherText = otherToggle.classList.contains('is-selected') ? otherInput.value.trim() : '';
+            showStep(3);
+            runLoading();
+        });
+
+        // Smooth height animation for collapsible regions
+        function animateHeight(el, expand) {
+            if (expand) {
+                el.style.height = 'auto';
+                var target = el.offsetHeight;
+                el.style.height = '0px';
+                el.offsetHeight; // reflow
+                el.style.height = target + 'px';
+                el.addEventListener('transitionend', function done(e) {
+                    if (e.propertyName !== 'height') return;
+                    el.style.height = 'auto';
+                    el.removeEventListener('transitionend', done);
+                });
+            } else {
+                el.style.height = el.offsetHeight + 'px';
+                el.offsetHeight;
+                el.style.height = '0px';
+            }
+        }
+
+        card.querySelectorAll('.splash-ob-back').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                showStep(parseInt(btn.dataset.backTo, 10));
+            });
+        });
+
+        // Step 3: Loading sequence — authentic reasoning-style progress
+        var statusEl = document.getElementById('splash-ob-loading-status');
+
+        var concernNames = {
+            instagram: 'Instagram', tiktok: 'TikTok', snapchat: 'Snapchat',
+            youtube: 'YouTube', roblox: 'Roblox', discord: 'Discord',
+            screentime: 'screen time', texting: 'messaging', gaming: 'gaming addiction'
+        };
+
+        function buildLoadingScript() {
+            var age = state.age;
+            var concerns = state.concerns.slice();
+            var primary = concernNames[concerns[0]] || 'platform';
+            var secondary = concernNames[concerns[1]] || 'screen time';
+
+            var pool = [
+                { txt: 'Reading your inputs',                                              t: 600 },
+                { txt: 'Looking up developmental guidelines for age ' + age,               t: 950 },
+                { txt: 'Pulling latest research on ' + primary + ' for kids under ' + (age + 1), t: 1200 },
+                { txt: 'Cross-referencing CDC and AAP screen time guidance',               t: 1100 },
+                { txt: 'Evaluating ' + concerns.length + ' concern' + (concerns.length === 1 ? '' : 's') + ' against age-' + age + ' risk profile', t: 950 },
+                { txt: 'Considering bypass methods kids use for ' + primary,               t: 1050 },
+                { txt: 'Weighing strict vs. flexible enforcement for ' + secondary,        t: 950 },
+                { txt: 'Mapping iOS Screen Time controls to your concerns',                t: 900 },
+                { txt: 'Drafting recommendations',                                         t: 800 },
+                { txt: 'Refining for your child specifically',                             t: 750 },
+                { txt: 'Finalizing your plan',                                             t: 600 }
+            ];
+
+            // If user added "Other" text, swap in a custom-tailored beat
+            if (state.otherText) {
+                pool.splice(5, 0, { txt: 'Reasoning about: "' + state.otherText.slice(0, 38) + (state.otherText.length > 38 ? '…' : '') + '"', t: 1050 });
+            }
+
+            // If only 1 concern, drop the "concerns count" beat
+            if (concerns.length <= 1) pool.splice(4, 1);
+
+            return pool;
+        }
+
+        function runLoading() {
+            var script = buildLoadingScript();
+            var i = 0;
+            statusEl.textContent = script[0].txt;
+
+            function next() {
+                i++;
+                if (i >= script.length) {
+                    setTimeout(showPlan, 500);
+                    return;
+                }
+                statusEl.classList.add('fade-out');
+                setTimeout(function () {
+                    statusEl.textContent = script[i].txt;
+                    statusEl.classList.remove('fade-out');
+                    setTimeout(next, script[i].t);
+                }, 220);
+            }
+            setTimeout(next, script[0].t);
+        }
+
+        // Step 4: Plan
+        function showPlan() {
+            var profile = ageProfile(state.age);
+            document.getElementById('splash-ob-plan-summary').textContent =
+                'Personalized for your ' + state.age + ' year old.';
+
+            var list = document.getElementById('splash-ob-plan-list');
+            list.innerHTML = '';
+
+            var items = [profile.base];
+            state.concerns.forEach(function (c) {
+                if (concernRecs[c]) items.push(concernRecs[c]);
+            });
+            if (state.otherText) {
+                items.push('Custom: monitor "' + state.otherText + '" and adjust as needed');
+            }
+            items.slice(0, 6).forEach(function (txt) {
+                var li = document.createElement('li');
+                li.textContent = txt;
+                list.appendChild(li);
+            });
+
+            showStep(4);
+        }
+
+        // Step 4 → Step 5 (email capture)
+        document.getElementById('splash-ob-step4-next').addEventListener('click', function () {
+            showStep(5);
+            setTimeout(function () { document.getElementById('splash-ob-email').focus(); }, 350);
+        });
+
+        // Step 5: Email capture
+        var emailInput = document.getElementById('splash-ob-email');
+        var emailError = document.getElementById('splash-ob-email-error');
+        var step5Next = document.getElementById('splash-ob-step5-next');
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        function validateEmail() {
+            var v = emailInput.value.trim();
+            var ok = emailRegex.test(v);
+            step5Next.disabled = !ok;
+            return ok;
+        }
+        emailInput.addEventListener('input', function () {
+            emailError.classList.remove('show');
+            validateEmail();
+        });
+        emailInput.addEventListener('blur', function () {
+            if (emailInput.value.trim() && !emailRegex.test(emailInput.value.trim())) {
+                emailError.classList.add('show');
+            }
+        });
+        emailInput.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' && validateEmail()) step5Next.click();
+        });
+        step5Next.addEventListener('click', function () {
+            if (!validateEmail()) {
+                emailError.classList.add('show');
+                return;
+            }
+            state.email = emailInput.value.trim();
+            showStep(6);
+        });
+
+        // Step 6 → Step 7 (final)
+        document.getElementById('splash-ob-accept').addEventListener('click', function () {
+            document.getElementById('splash-ob-final-title').textContent = 'Locked in — $33.';
+            document.getElementById('splash-ob-final-subtitle').textContent =
+                "We'll text you when both parents sign up. Your $10 discount applies automatically at checkout.";
+            showStep(7);
+        });
+        document.getElementById('splash-ob-decline').addEventListener('click', function () {
+            document.getElementById('splash-ob-final-title').textContent = 'All set — $43.';
+            document.getElementById('splash-ob-final-subtitle').textContent =
+                "Your plan is on its way to " + (state.email || 'your inbox') + ".";
+            showStep(7);
+        });
+
+        // Sharing
+        var referralLink = window.location.origin + '/?ref=' + Math.random().toString(36).slice(2, 8);
+        var copyLabel = document.getElementById('splash-ob-copy-label');
+
+        card.querySelectorAll('.splash-ob-share-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var kind = btn.dataset.share;
+                var msg = "I built a free CorePhone plan to lock down my kid's phone — try it: " + referralLink;
+                if (kind === 'copy') {
+                    navigator.clipboard?.writeText(referralLink).then(function () {
+                        copyLabel.textContent = 'Copied!';
+                        setTimeout(function () { copyLabel.textContent = 'Copy link'; }, 1800);
+                    });
+                } else if (kind === 'text') {
+                    window.location.href = 'sms:?&body=' + encodeURIComponent(msg);
+                } else if (kind === 'email') {
+                    window.location.href = 'mailto:?subject=' + encodeURIComponent('A free plan for safer kid phones')
+                        + '&body=' + encodeURIComponent(msg);
+                }
+            });
+        });
+    })();
+    </script>
 </body>
 </html>
